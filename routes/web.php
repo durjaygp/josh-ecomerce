@@ -31,6 +31,7 @@ Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blo
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 
+
 Route::get('/about-me', [WebController::class,'about'])->name('home.about');
 Route::get('/search',[WebController::class,'searchRecipe'])->name('search.blog');
 Route::get('sitemap.xml', [WebController::class, 'siteMap']);
