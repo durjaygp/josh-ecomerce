@@ -1,5 +1,5 @@
 @extends('backEnd.master')
-@section('title','Category')
+@section('title','Product Category')
 @section('content')
     <div class="container-fluid">
         <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -10,7 +10,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a class="text-muted " href="{{route('admin.index')}}">Dashboard</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Category</li>
+                                <li class="breadcrumb-item" aria-current="page">Product Category</li>
                             </ol>
                         </nav>
                     </div>
@@ -28,11 +28,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-4 ">
-                            <h2>Category List</h2>
+                            <h2>Product Category List</h2>
                         </div>
                         <div class="col-md-8 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-                            <a href="{{route('category.create')}}" class="btn btn-info d-flex align-items-center">
-                                <i class="ti ti-new-section text-white me-1 fs-5"></i> Add Category
+                            <a href="{{route('admin-product-category.create')}}" class="btn btn-info d-flex align-items-center">
+                                <i class="ti ti-new-section text-white me-1 fs-5"></i> Add Product Category
                             </a>
                         </div>
                     </div>
@@ -70,12 +70,9 @@
                                             </td>
                                             <td>
                                                 <div class="action-btn">
-                                                    <a href="{{route('category.edit',$row->id)}}" class="btn btn-sm btn-primary">
+                                                    <a href="{{route('admin-product-category.edit',$row->id)}}" class="btn btn-sm btn-primary">
                                                         <i class="ti ti-pencil fs-5"></i>
                                                     </a>
-{{--                                                    <a href="{{route('blog.create', ['category_id' => $row->id])}}" class="btn btn-sm btn-warning">--}}
-{{--                                                        <i class="ti ti-brand-blogger fs-5"></i> Blog--}}
-{{--                                                    </a>--}}
                                                     <a href="{{ route('category.delete', $row->id) }}"
                                                        onclick="event.preventDefault();
                                                            if (confirm('Are you sure you want to delete?'))

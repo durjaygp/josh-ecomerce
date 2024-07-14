@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
 
-                        <a href="{{route('category.index')}}" class="btn btn-info d-flex align-items-center">
+                        <a href="{{route('admin-product-category.index')}}" class="btn btn-info d-flex align-items-center">
                             <i class="ti ti-list text-white me-1 fs-5"></i> Category List
                         </a>
                     </div>
@@ -44,14 +44,14 @@
                             end Contact
                         ---------------- -->
             <div class="card card-body">
-                <form method="post" action="{{route('category.update')}}">
+                <form method="post" action="{{route('admin-product-category.update',$category->id)}}">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label fw-semibold">Category Name</label>
                                 <input type="text" name="name" class="form-control" id="exampleInputtext" placeholder="Book Name" value="{{$category->name}}">
-                                <input type="hidden" name="id" class="form-control"  value="{{$category->id}}">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -63,6 +63,8 @@
                                 </select>
                             </div>
                         </div>
+
+
                         <div class="col-lg-12">
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label fw-semibold">Description</label>

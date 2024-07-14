@@ -22,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrap();
+         Paginator::useBootstrap();
 
-        $website = Setting::find(1);
-        View::share('website', $website);
+         $website = Setting::find(1);
+         View::share('website', $website);
     }
 }

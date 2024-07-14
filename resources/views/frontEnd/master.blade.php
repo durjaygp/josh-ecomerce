@@ -19,7 +19,7 @@
     <meta name="twitter:url" content="https://jsb-tech.com/" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 
@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-
+    <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/aos.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/animate.min.css">
@@ -110,6 +110,32 @@
 <script src="https://jsb-tech.com/public/plugins/image-uploader/js/image-uploader.min.js"></script>
 <script src="https://jsb-tech.com/public/plugins/fancybox/js/fancybox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 
+@yield('script')
+
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <script>
+            iziToast.error({
+                title: '',
+                position:'topRight',
+                message: '{{$error}}',
+            });
+        </script>
+    @endforeach
+
+@endif
+
+@if(session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position:'topRight',
+            message: '{{session()->get('success')}}',
+        });
+
+    </script>
+@endif
 </body>
 </html>

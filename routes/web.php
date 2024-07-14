@@ -23,6 +23,10 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SocialMediaLinksController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\Web\WebProductController;
+use App\Http\Controllers\CartController;
 
 
 // =============== Home Routes ===============
@@ -30,6 +34,8 @@ Route::get('/', [WebController::class,'index'])->name('home');
 Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
+Route::get('products',[WebProductController::class,'index'])->name('home.products');
+Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 
 
 Route::get('/about-me', [WebController::class,'about'])->name('home.about');
@@ -146,5 +152,9 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
 
     Route::resource('project',ProjectController::class);
     Route::resource('affiliate', AffiliateProductController::class);
+    Route::resource('admin-products',ProductController::class);
+    Route::resource('admin-product-category',ProductCategoryController::class);
+
+
 });
 require __DIR__.'/auth.php';
