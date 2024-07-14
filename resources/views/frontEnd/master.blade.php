@@ -1,69 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
-    @yield('meta_tag')
-    <link rel="shortcut icon" type="image/png" href="{{asset($website->fav_icon)}}" />
-    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/tailwind.css">
-    <!-- Alpine Plugins -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="{{asset('homePage/clock.css')}}">
+    <title>Home - JSB Tech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow" />
 
-</head>
+    <meta property="og:title" content="jsb-teche">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!" />
+    <meta property="og:url" content="{{url('/')}}">
 
-<body class="" style="">
-<!-- background -->
-<img src="{{asset('homePage')}}/assets/images/bg.jpg" alt="" class="fixed inset-0 object-cover w-screen h-screen -z-50">
-<!-- Ads -->
-<div class="container max-w-5xl p-4 mx-auto" style="height:4.5rem"></div>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="jsb-teche" />
+    <meta name="twitter:description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!" />
+    <meta name="twitter:url" content="https://jsb-tech.com/" />
 
-<!-- Main Page -->
-<div class="border-t border-dashed border-slate-400">
-
-    @include('frontEnd.inc.header')
-
-    <!-- Main content Start -->
-    @yield('content')
-    <!-- Main content End -->
-
-    <!-- Footer -->
-    @include('frontEnd.inc.footer')
-
-</div>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="csrf-token" content="{{csrf_token()}}">
 
 
 
-<script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
-@if($errors->any())
-    @foreach($errors->all() as $error)
-        <script>
-            iziToast.error({
-                title: '',
-                position:'topRight',
-                message: '{{$error}}',
-            });
-        </script>
-    @endforeach
+    <link rel="canonical" href="https://jsb-tech.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-@endif
 
-@if(session()->get('success'))
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/aos.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/animate.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/remixicon.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/odometer.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/fancybox.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/navbar.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/footer.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/dark.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/responsive.css">
+    <link rel="stylesheet" href="https://jsb-tech.com/public/plugins/image-uploader/css/image-uploader.min.css">
+    <link rel="stylesheet" href="https://jsb-tech.com/public/plugins/fancybox/css/fancybox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-        iziToast.success({
-            title: '',
-            position:'topRight',
-            message: '{{session()->get('success')}}',
-        });
-
+        var SITE_URL = "https:\/\/jsb-tech.com"
     </script>
-@endif
-<script src="{{asset('homePage/clock.js')}}"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ76SN2K4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QCJ76SN2K4');
+    </script>
+
+    <style>
+        .main-hero-content{
+            background: #00000028 !important;
+            padding: 10px !important;
+        }
+    </style>
+</head>
+<body>
+<!-- Header Section -->
+@include('frontEnd.inc.header')
+
+<!-- Content Section -->
+<main>
+  @yield('content')
+</main>
+
+@include('frontEnd.inc.footer')
+<!-- End Footer Area -->
+
+<!-- Start Go Top Area -->
+<div class="go-top">
+    <i class="ri-arrow-up-s-line"></i>
+</div>
+<script src="{{asset('homePage')}}/assets/js/jquery.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/jquery.meanmenu.js"></script>
+<script src="{{asset('homePage')}}/assets/js/owl.carousel.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/jquery.appear.js"></script>
+<script src="{{asset('homePage')}}/assets/js/odometer.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/fancybox.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/tweenmax.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/ScrollMagic.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/animation.gsap.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/debug.addIndicators.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/mixitup.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/nice-select.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/tilt.jquery.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/parallax.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/form-validator.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/contact-form-script.js"></script>
+<script src="{{asset('homePage')}}/assets/js/aos.js"></script>
+<script src="{{asset('homePage')}}/assets/js/wow.min.js"></script>
+<script src="{{asset('homePage')}}/assets/js/main.js"></script>
+<script src="https://jsb-tech.com/public/plugins/image-uploader/js/image-uploader.min.js"></script>
+<script src="https://jsb-tech.com/public/plugins/fancybox/js/fancybox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 </body>
 </html>

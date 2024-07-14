@@ -1,0 +1,277 @@
+/*================================================
+Footer Area CSS
+=================================================*/
+.footer-area {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    &.with-black-background {
+        background-color: var(--black-color);
+        margin: {
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+        };
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    &.margin-zero {
+        margin: {
+            left: 0;
+            right: 0;
+            bottom: 0;
+        };
+        border-radius: 0;
+    }
+}
+.single-footer-widget {
+    margin-bottom: 25px;
+
+    .widget-logo {
+        margin-bottom: 25px;
+    }
+    p {
+        margin-bottom: 0;
+        color: #CDC4D9;
+    }
+    .widget-social {
+        padding: 0;
+        margin-bottom: 0;
+        margin-top: 25px;
+
+        li {
+            display: inline-block;
+            list-style-type: none;
+            margin-right: 5px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                i {
+                    color: #CDC4D9;
+                    display: inline-block;
+                    transition: var(--transition);
+                    height: 35px;
+                    width: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    border-radius: 50px;
+                    background-color: var(--black-color);
+                    border: 1px solid #A66BFF;
+                    font-size: 15px;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        color: var(--black-color);
+                        background-color: var(--main-color);
+                        border: 1px solid var(--main-color);
+                    }
+                }
+            }
+        }
+    }
+    h3 {
+        font-size: 22px;
+        margin-bottom: 25px;
+        color: var(--white-color);
+        font-weight: bold;
+    }
+    .quick-links {
+        padding: 0;
+        margin-bottom: 0;
+
+        li {
+            margin-bottom: 18px;
+            list-style-type: none;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            a {
+                color: #CDC4D9;
+
+                &:hover {
+                    color: var(--main-color);
+                }
+            }
+        }
+    }
+    .newsletter-form {
+        margin-top: 20px;
+        position: relative;
+
+        .input-newsletter {
+            display: block;
+            width: 100%;
+            background-color: #2E2141;
+            border: 1px solid #2E2141;
+            height: 65px;
+            padding: 20px;
+            border-radius: 15px;
+            outline: 0;
+            color: #CDC4D9;
+            transition: var(--transition);
+
+            &::placeholder {
+                color: #CDC4D9;
+            }
+            &:focus {
+                border: 1px solid var(--main-color);
+
+                &::placeholder {
+                    color: transparent;
+                    transition: var(--transition);
+                }
+            }
+        }
+        button {
+            border: none;
+            width: 100%;
+            border-radius: 15px;
+            padding: 18.8px 35px;
+            margin-top: 15px;
+        }
+        #validator-newsletter {
+            color: red;
+            font-weight: 400;
+            font-size: 14px;
+            position: relative;
+            top: 5px;
+        }
+    }
+}
+.copyright-area {
+    margin-top: 75px;
+
+    .copyright-area-content {
+        text-align: center;
+        padding: {
+            top: 35px;
+            bottom: 35px;
+        };
+        border-top: 1px solid #2E2141;
+
+        p {
+            color: #CDC4D9;
+
+            a {
+                display: inline-block;
+                font-weight: bold;
+                color: #A66BFF;
+
+                &:hover {
+                    color: var(--main-color);
+                }
+            }
+        }
+    }
+}
+.footer-shape-1 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+
+    img {
+        animation: {
+            name: rotateme;
+            duration: 5s;
+            iteration-count: infinite;
+            timing-function: linear;
+        };
+    }
+}
+.footer-shape-2 {
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    z-index: -1;
+    transform: translateY(-15%) translateX(-5%);
+    animation: moveleftbounce 1s linear infinite;
+}
+.footer-shape-3 {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    z-index: -1;
+    transform: translateY(-15%) translateX(-50%);
+    animation: animationFramesOne 10s infinite linear;
+    opacity: 25%;
+}
+
+// Responsive CSS
+@media only screen and (max-width: 767px) {
+    .footer-area {
+        &.with-black-background {
+            margin: {
+                left: 0;
+                right: 0;
+                bottom: 0;
+            };
+            border-radius: 0;
+        }
+    }
+    .single-footer-widget {
+        &.ps-5 {
+            padding-left: 0 !important;
+        }
+        h3 {
+            font-size: 20px;
+        }
+        .quick-links {
+            li {
+                font-size: 15px;
+            }
+        }
+    }
+    .copyright-area {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .footer-area {
+        &.with-black-background {
+            margin: {
+                left: 0;
+                right: 0;
+                bottom: 0;
+            };
+            border-radius: 0;
+        }
+    }
+    .single-footer-widget {
+        &.ps-5 {
+            padding-left: 0 !important;
+        }
+        h3 {
+            font-size: 20px;
+        }
+        .quick-links {
+            li {
+                font-size: 15px;
+            }
+        }
+    }
+    .copyright-area {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .single-footer-widget {
+        h3 {
+            font-size: 20px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    
+}

@@ -1,450 +1,358 @@
 @extends('frontEnd.master')
-@section('title')
-{{ $website->name }}
-@endsection
-@section('meta_tag')
-    <meta name="description" content="{{$website->description}}">
-    <link rel="canonical" href="{{url('/')}}">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{$website->name}}">
-    <meta property="og:description" content="{{$website->description}}">
-    <meta property="og:keywords" content="{{$website->keywords}}">
-    <meta property="og:tags" content="{{$website->tags}}">
-    <meta property="og:url" content="{{url('/')}}">
-    <meta property="og:site_name" content="{{$website->name}}">
-    <meta property="og:image" content="{{asset($website->website_logo)}}">
-    <meta property="og:image:secure_url" content="{{asset($website->fav_icon)}}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:description" content="{{$website->description}}">
-    <meta name="twitter:title" content="{{$website->title}}">
-    <meta name="twitter:image" content="{{asset($website->fav_icon)}}">
-@endsection
-
 @section('content')
-    <div class="container py-3">
-        <div class="mb-5 md:grid md:grid-cols-12">
-            <div class="lg:col-span-3 col-span-full lg:border-r lg:border-dashed lg:border-slate-400 lg:pr-5">
-                <div class="flex overflow-x-auto lg:flex-col">
-                    <div class="hidden p-3 mb-6 bg-gray-500/20 lg:block">
-                        <h4 class="mb-2 text-2xl text-gray-900">Today’s Flagship</h4>
-                        @foreach($latestBlogs->take(1) as $row)
-                        <p class="mb-2 text-base font-light text-gray-700">{{ $row->name }}</p>
-                        <a href="{{route('home.blog',$row->slug)}}"
-                           class="flex items-center text-sm tracking-wider uppercase font-extralight font-helvetica">Read
-                            it →</a>
-                        @endforeach
-                    </div>
+    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
 
-                    <div class="flex lg:flex-col *:px-3 lg:*:px-0 *:py-2 *:border-r lg:*:border-r-0 lg:*:border-b *:border-dashed *:border-slate-400"
-                         x-data>
-                        @foreach($leftBlogs as $row)
-                        <template x-for="item in 1">
-                                <a href="{{route('home.blog',$row->slug)}}"
-                                   class="block last:border-b-0 group w-[170px] lg:w-auto first:!pl-0 min-h-48 lg:min-h-0 last:border-r-0">
-                                    <div
-                                        class="flex items-center gap-2 mb-2 text-xs text-gray-900 uppercase group-hover:text-blue-700 font-extralight font-helvetica">
-                                        <span>{{ $row->created_at->diffForHumans() }}</span>
-                                        <span>{{$row->category?->name}}</span>
-                                    </div>
-                                    <div
-                                        class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200">
-                                        <h6 class="relative text-base group-hover:text-blue-700"><img alt="Signal icon"
-                                                                                                      width="16" height="13" class="inline-block mr-0.5"
-                                                                                                      src="{{asset('homePage')}}/assets/images/2circles-blue.svg">
-                                            {{$row->name}}</h6>
-                                    </div>
-                                </a>
+    <div class="main-hero-area">
+        <div class="hero-slides owl-carousel owl-theme">
 
-                        </template>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
 
-            <div class="lg:col-span-9 col-span-full">
-                <div class="grid md:grid-cols-9">
-                    <div class="md:col-span-6 md:border-r md:border-dashed md:border-slate-400 md:pr-5 lg:px-5">
-                        @foreach($latestBlogs->take(1) as $row)
-                            <a href="{{route('home.blog',$row->slug)}}" class="block group">
-                                <div class="flex items-center gap-2 pb-2 border-b border-dashed border-slate-400">
-                                    <img src="{{ asset($row->user?->image ?? 'user.jpg') }}" alt="" class="w-10 h-10">
-                                    <div>
-                                        <p class="text-lg text-gray-800 group-hover:text-blue-700 mb-0.5">
-                                            {{$row->user->name}}
-                                        </p>
-                                        <p
-                                            class="text-sm text-gray-500 uppercase font-extralight font-helvetica group-hover:text-blue-700">
-                                            {{$row->category?->name}}</p>
-                                    </div>
-                                </div>
+            <div class="main-hero-item jarallax"  style="background-image: url(https://jsb-tech.com/public/images/slider/1620191276_slider.jpg);" data-jarallax='{"speed": 0.3}'>
+                <div class="container-fluid">
+                    <div class="main-hero-content">
+                        <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">WE ARE LEADING TECHNOLOGY SOLUTIONS PROVIDING COMPANY</span>
+                        <h1 data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                            Let us eliminate any technology struggles or difficulties.
+                            <span class="overlay"></span>
+                        </h1>
+                        <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                            JSB-Tech LLC provides technology solutions and or services to make your business run more efficient and business ready.
+                        </p>
 
-                                <div class="py-2">
-                                    <div
-                                        class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200">
-                                        <h2
-                                            class="relative z-10 pr-12 text-3xl text-gray-900 group-hover:text-blue-700">
-                                            {{ $row->name }}
-                                        </h2>
-                                    </div>
-
-                                    <div class="mb-2 text-lg font-light group-hover:text-blue-700">{{ $row->description }}</div>
-                                    <img src="{{asset($row->image)}}"
-                                         alt="" class="aspect-[auto_644/491] w-full h-full object-cover">
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                    <div class="md:col-span-3 md:pl-5">
-                        <div class="space-y-10">
-                            @foreach($randomBlogs as $row)
-                                <a href="{{route('home.blog',$row->slug)}}" class="block group">
-                                    <div class="flex items-center gap-2 pb-2 border-b border-dashed border-slate-400">
-                                        <img src="{{ asset($row->user?->image ?? 'user.jpg') }}" alt="" class="w-10 h-10">
-                                        <div>
-                                            <p class="text-lg text-gray-800 group-hover:text-blue-700 mb-0.5">{{$row->user->name}}
-                                            </p>
-                                            <p
-                                                class="text-sm text-gray-500 uppercase font-extralight font-helvetica group-hover:text-blue-700">
-                                                {{$row->category->name}}</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="py-2">
-                                        <div
-                                            class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200">
-                                            <h2
-                                                class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                {{$row->name}}</h2>
-                                        </div>
-
-                                        <div class="mb-2 text-base font-light group-hover:text-blue-700">{{$row->description}}</div>
-                                        <img src="{{asset($row->image)}}" alt=""
-                                             class="aspect-[auto_644/491] w-full h-full object-cover">
-                                    </div>
-                                </a>
-                            @endforeach
-
-                        </div>
-                    </div>
-                </div>
-                <hr class="my-5 border-dashed md:ml-5 border-slate-400">
-
-                <div class="grid md:grid-cols-9">
-                    <div class="md:col-span-6">
-                        <div class="px-5 md:border-r md:border-dashed md:border-slate-400">
-                            <div class="grid grid-cols-2" x-data>
-                                @foreach($latestBlogs->skip(1)->take(8) as $row)
-                                <template x-for="item in 1">
-                                        <a href="{{route('home.blog',$row->slug)}}"
-                                           class="block group odd:pl-3 even:pr-3 even:border-r even:border-dashed even:border-slate-400 after:content-[''] after:my-3 after:border-t after:border-dashed after:border-slate-400 after:w-full after:h-px relative after:absolute after:-bottom-6 after:inset-x-0 my-3 last:after:border-0 [&:nth-last-child(2)]:after:border-0">
-                                            <div
-                                                class="flex items-center gap-2 pb-2 border-b border-dashed border-slate-400">
-                                                <img src="{{ asset($row->user?->image ?? 'user.jpg') }}" alt="" class="w-10 h-10">
-                                                <div>
-                                                    <p class="text-lg text-gray-800 group-hover:text-blue-700 mb-0.5">
-                                                        {{$row->user->name}}
-                                                    </p>
-                                                    <p
-                                                        class="text-sm text-gray-500 uppercase font-extralight font-helvetica group-hover:text-blue-700">
-                                                        {{$row->category?->name}}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="py-2">
-                                                <div
-                                                    class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200">
-                                                    <h2
-                                                        class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                        {{ $row->name }}</h2>
-                                                </div>
-
-                                                <div class="mb-2 text-base font-light group-hover:text-blue-700">
-                                                    {!! $row->description !!}
-                                                </div>
-                                            </div>
-                                        </a>
-                                </template>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden md:block md:col-span-3 md:pl-5">
-                        <hr class="mb-3 border-black">
-                        <h5 class="mb-3 text-lg text-black">Sign up for our Newsletters.</h5>
-                        <div class="flex mb-2">
-                            <form class="flex mb-2" action="{{route('newsletter.save')}}" method="post">
-                                @csrf
-                                <input type="email" name="email"
-                                       class="w-full bg-gray-200 text-base border border-[#1f1d1a] px-3 py-2 font-extralight"
-                                       placeholder="Email address">
-                                <button type="submit"
-                                    class="bg-slate-200 border border-black text-base border-l-0 text-gray-900 px-2.5 min-w-[84px]">Subscribe</button>
-                            </form>
-
-                        </div>
-                        <div class="mt-5" x-data>
-                            @foreach(printMenuCategory()->take(8) as $row)
-                                <template x-for="i in 1">
-                                    <div
-                                        class="flex items-stretch gap-2.5 py-2 border-t border-dashed border-slate-400">
-                                        <input type="checkbox" name="categories" :id="`category-${i}`"
-                                               class="w-5 h-5 mt-2 bg-transparent border border-black form-checkbox checked:text-red-200 checked:border checked:border-black">
-                                        <label :for="`category-${i}`" class="block w-full">
-                                            <a href="{{route('home.category',$row->slug)}}">
-                                            <p class="text-2xl text-black">{{$row->name}}</p></a>
-                                            <p class="text-base font-light text-black mb-2.5">{{$row->description}}</p>
-                                            <p
-                                                class="text-sm text-gray-500 uppercase font-extralight font-helvetica space-x-2.5">
-                                                <span>2x/Weekday</span><a href="#">Read it</a>
-                                            </p>
-                                        </label>
-                                    </div>
-                                </template>
-                            @endforeach
+                        <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                            <a href="https://jsb-tech.com/login" class="default-btn">Sign Up Now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Ads -->
-        <div class="border-dashed h-28 border-y border-slate-400"></div>
-
-        <!-- Category News -->
-        <div class="mt-5">
-            @foreach($categoryWiseBlogs as $row)
-                @if($row->design_format == 1)
-                    <!-- format 1 -->
-                        <div class="mb-5">
-                            <hr class="mb-3 border border-black">
-                            <a href="#" class="block text-[42px] text-black capitalize mb-5">{{ $row->name }}</a>
-                            <div class="grid md:grid-cols-3">
-                                <div class="md:col-span-2 md:border-r md:border-dashed md:border-slate-400 md:pr-5">
-                                    <div class="grid h-full grid-cols-2 grid-rows-2" x-data>
-                                        @foreach($row->blog->take(4) as $blog)
-                                            <template x-for="item in 1">
-                                                <a href="{{route('home.blog',$blog->slug)}}"
-                                                   class="block group odd:pl-3 even:pr-3 even:border-r even:border-dashed even:border-slate-400 after:content-[''] after:my-3 after:border-t after:border-dashed after:border-slate-400 after:w-full after:h-px relative after:absolute after:-bottom-6 after:inset-x-0 my-3 last:after:border-0 [&:nth-last-child(2)]:after:border-0">
-                                                    <div class="">
-                                                        <div
-                                                            class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                            <h2
-                                                                class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                                {{$blog->name}}</h2>
-                                                        </div>
-
-                                                        <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">The
-                                                            {{$blog->description}}
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-                                            </template>
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                                @foreach($row->blog->skip(4)->take(1) as $blog)
-                                    <div class="md:pl-5">
-                                        <a href="{{route('home.blog',$blog->slug)}}" class="block group">
-                                            <div class="py-2">
-                                                <div
-                                                    class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                    <h2
-                                                        class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                        {{$blog->name}}</h2>
-                                                </div>
-
-                                                <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">
-                                                    {{$blog->description}}
-                                                </div>
-                                                <img src="{{asset($blog->image)}}"
-                                                     alt="" class="aspect-[auto_644/491] w-full h-full object-cover">
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                @elseif($row->design_format == 2)
-                    <!-- format 2 -->
-                        <div class="mb-5">
-                            <hr class="mb-3 border border-black">
-                            <a href="#" class="block text-[42px] text-black capitalize mb-5">{{ $row->name }}</a>
-                            <div class="grid md:grid-cols-4 *:md:border-r *:border-dashed *:border-slate-400 -mx-5" x-data>
-                                @foreach($row->blog->take(4) as $blog)
-{{--                                <template x-for="i in 1">--}}
-                                    <div class="px-5 last:border-r-0">
-                                        <a href="{{route('home.blog',$blog->slug)}}" class="block group">
-                                            <div class="py-2">
-                                                <div
-                                                    class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                    <h2
-                                                        class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                        {{$blog->name}}</h2>
-                                                </div>
-
-                                                <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">{{$blog->description}}
-                                                </div>
-                                                <img src="{{asset($blog->image)}}"
-                                                     alt="" class="aspect-[auto_644/491] w-full h-full object-cover">
-                                            </div>
-                                        </a>
-                                    </div>
-{{--                                </template>--}}
-                                @endforeach
-                            </div>
-                        </div>
-                @elseif($row->design_format == 3)
-                    <!-- format 3 -->
-                        <div class="mb-5">
-                            <hr class="mb-3 border border-black">
-                            <a href="#" class="block text-[42px] text-black capitalize mb-5">{{$row->name}}</a>
-                            <div class="grid md:grid-cols-3 *:md:border-r *:border-dashed *:border-slate-400 -mx-5" x-data>
-                                @foreach($row->blog->take(2) as $blog)
-                                    <div class="px-5 last:border-r-0">
-                                        <a href="{{route('home.blog',$blog->slug)}}" class="block group">
-                                            <div class="py-2">
-                                                <div
-                                                    class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                    <h2
-                                                        class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                        {{$blog->name}}</h2>
-                                                </div>
-
-                                                <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">
-                                                    {{$blog->description}}
-                                                </div>
-                                                <img src="{{asset($blog->image)}}"
-                                                     alt="" class="aspect-[auto_644/491] w-full h-full object-cover">
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-                                <div class="px-5 last:border-r-0">
-                                    <div
-                                        class="grid grid-cols-2 md:grid-cols-1 *:border-b *:border-dashed *:border-slate-400 md:gap-2 *:border-r *:md:border-r-0">
-                                        @foreach($row->blog->skip(2)->take(3) as $blog)
-                                        <template x-for="item in 1">
-                                            <a href="{{route('home.blog',$blog->slug)}}"
-                                               class="block group last:border-b-0 first:md:border-r-0 first:border-dashed first:border-slate-400 last:col-span-2 last:md:col-span-1 last:border-r-0 [&:nth-last-child(2)]:border-r-0 p-2 md:px-0">
-                                                <div class="">
-                                                    <div
-                                                        class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                        <h2
-                                                            class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                            {{$blog->name}}
-                                                        </h2>
-                                                    </div>
-
-                                                    <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">
-                                                        {{$blog->description}}
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </template>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @elseif($row->design_format == 4)
-                                        <!-- format 4 -->
-                                        <div class="mb-5">
-                                            <hr class="mb-3 border border-black">
-                                            <a href="#" class="block text-[42px] text-black capitalize mb-5">{{$row->name}}</a>
-                                            <div class="grid md:grid-cols-3">
-                                                <div class="md:pr-5 md:border-r md:border-dashed md:border-slate-400">
-                                                    @foreach($row->blog->take(1) as $blog)
-                                                        <a href="{{route('home.blog',$blog->slug)}}" class="block group">
-                                                            <div class="py-2">
-                                                                <div
-                                                                    class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                                    <h2
-                                                                        class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                                        {{ $blog->name }}
-                                                                    </h2>
-                                                                </div>
-
-                                                                <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">
-                                                                    {{ $blog->name }}
-                                                                </div>
-                                                                <img src="{{asset($blog->image)}}"
-                                                                     alt="{{ $blog->name }}" class="aspect-[auto_644/491] w-full h-full object-cover">
-                                                            </div>
-                                                        </a>
-                                                    @endforeach
-
-                                                </div>
-                                                <div class="md:col-span-2 md:pl-5">
-                                                    <div class="grid h-full grid-cols-2 grid-rows-2" x-data>
-                                                        @foreach($row->blog->skip(1)->take(4) as $blog)
-                                                            <template x-for="item in 1">
-                                                                <a href="{{route('home.blog',$blog->slug)}}"
-                                                                   class="block group odd:pl-3 even:pr-3 even:border-r even:border-dashed even:border-slate-400 after:content-[''] after:my-3 after:border-t after:border-dashed after:border-slate-400 after:w-full after:h-px relative after:absolute after:-bottom-6 after:inset-x-0 my-3 last:after:border-0 [&:nth-last-child(2)]:after:border-0">
-                                                                    <div class="">
-                                                                        <div
-                                                                            class="relative before:content-[''] before:absolute before:inset-0 before:bg-white/70 before:w-0 before:group-hover:w-full before:transition-all before:duration-200 mb-2">
-                                                                            <h2
-                                                                                class="relative z-10  text-[22px]/7 text-gray-900 group-hover:text-blue-700">
-                                                                                {{$blog->name}}</h2>
-                                                                        </div>
-
-                                                                        <div class="mt-auto mb-2 text-base font-light group-hover:text-blue-700">
-                                                                            {{ $blog->description }}
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </template>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                @endif
-
-
-
-            @endforeach
+        <div class="hero-shape-1">
+            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-1.png" alt="image">
         </div>
-
-
-
-
-
-{{--        <div class="mb-5 md:hidden">--}}
-{{--            <hr class="mb-3 border-black">--}}
-{{--            <h5 class="mb-3 text-lg text-black">Sign up for our Newsletters.</h5>--}}
-{{--            <div class="flex mb-2">--}}
-{{--                <input type="text"--}}
-{{--                       class="w-full bg-[#fcfae4] text-base border border-[#1f1d1a] px-3 py-2 font-extralight"--}}
-{{--                       placeholder="Email address">--}}
-{{--                <button--}}
-{{--                    class="bg-[#f8f5d7] border border-black text-base text-gray-900 px-2.5 min-w-[84px]">Sign&nbsp;Up</button>--}}
-{{--            </div>--}}
-{{--            <p class="pb-2 text-base text-center text-gray-500 border-b border-dashed border-slate-400">--}}
-{{--                2--}}
-{{--                newsletters selected</p>--}}
-
-{{--            <div class="mt-5" x-data>--}}
-{{--                <template x-for="i in 8">--}}
-{{--                    <div class="flex items-stretch gap-2.5 py-2 border-t border-dashed border-slate-400">--}}
-{{--                        <input type="checkbox" name="categories" :id="`category-${i}`"--}}
-{{--                               class="w-5 h-5 mt-2 bg-transparent border border-black form-checkbox checked:text-red-200 checked:border checked:border-black">--}}
-{{--                        <label :for="`category-${i}`" class="block w-full">--}}
-{{--                            <p class="text-2xl text-black">Flagship</p>--}}
-{{--                            <p class="text-base font-light text-black mb-2.5">The daily global news--}}
-{{--                                briefing can trust.</p>--}}
-{{--                            <p class="text-sm text-gray-500 uppercase font-extralight font-helvetica space-x-2.5">--}}
-{{--                                <span>2x/Weekday</span><a href="#">Read it</a>--}}
-{{--                            </p>--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                </template>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <!-- Ads -->
-        <div class="border-dashed h-28 border-y border-slate-400"></div>
+        <div class="hero-shape-2">
+            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-2.png" alt="image">
+        </div>
+        <div class="hero-shape-3">
+            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-3.png" alt="image">
+        </div>
     </div>
+    <!-- End Main Hero Area -->
+
+
+    <!-- End About Area -->
+
+    <!-- Start Choose Area -->
+
+    <!-- End Choose Area -->
+
+
+    <!-- Start Services Area -->
+    <div class="services-area bg-with-14042C-color ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <span>OUR SERVICES</span>
+                <h2>Solutions & Focus Areas <span class="overlay"></span></h2>
+                <p>JSB-Tech LLC provides technology solutions and services to make your business run more efficiently and business-ready.</p>
+            </div>
+
+            <div class="row justify-content-center overflow-hidden" style="height:515px">
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="services-item h-100">
+                        <div class="services-image">
+                            <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">
+                                <img src="https://jsb-tech.com/public/images/services/1620209915_service.jpg" alt="image"></a>
+                        </div>
+                        <div class="services-content">
+                            <h3>
+                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">Consult and install Layered Security to protect your company from cyber threats.</a>
+                            </h3>
+                            <p>JSB-Tech LLC will provide you with a project plan along with mediation plan. </p>
+                            <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats" class="services-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="services-item h-100">
+                        <div class="services-image">
+                            <a href="https://jsb-tech.com/service/our-service/cyber-security">
+                                <img src="https://jsb-tech.com/public/images/services/1705936205_service.png" alt="image"></a>
+                        </div>
+                        <div class="services-content">
+                            <h3>
+                                <a href="https://jsb-tech.com/service/our-service/cyber-security">Cyber Security</a>
+                            </h3>
+                            <p><p><span style="background-color: transparent; color: rgb(0, 0, 0); "></span> </p>
+                            <a href="https://jsb-tech.com/service/our-service/cyber-security" class="services-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="services-item h-100">
+                        <div class="services-image">
+                            <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery">
+                                <img src="https://jsb-tech.com/public/images/services/1620207828_service.jpg" alt="image"></a>
+                        </div>
+                        <div class="services-content">
+                            <h3>
+                                <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery">Data backup and Recovery</a>
+                            </h3>
+                            <p><p>JSB-Tech has the experience and understanding to provide every aspect of your... </p>
+                            <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery" class="services-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-all-btn mt-5">
+                <a href="https://jsb-tech.com/services" class="default-btn">Explore All Services</a>
+            </div>
+        </div>
+
+        <div class="services-shape-1">
+            <img src="{{asset('homePage')}}assets/images/services/services-shape-1.png" alt="image">
+        </div>
+        <div class="services-shape-2">
+            <img src="{{asset('homePage')}}assets/images/services/services-shape-2.png" alt="image">
+        </div>
+    </div>
+    <!-- End Services Area -->
+
+    <!-- Start Projects Area -->
+
+    <!-- End Projects Area -->
+
+    <!-- Start Pricing Area -->
+
+    <!-- End Pricing Area -->
+
+    <!-- Start Testimonials Area -->
+    <div class="testimonials-area ptb-100">
+        <div class="container-fluid">
+            <div class="section-title">
+                <span>TESTIMONIALS</span>
+                <h2>What <b>Our Clients </b> Say About Us <span class="overlay"></span></h2>
+            </div>
+
+            <div class="testimonials-slides owl-carousel owl-theme">
+
+
+                <div class="single-testimonials-card" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                    <p>Contact was immediate and a date to work was set within just a few days. Technician was knowledgeable and quick. Notes were made to help me remember items new to me. Very good experience 2/17/2022 /</p>
+
+                    <div class="info-item-box">
+                        <img src="https://jsb-tech.com/public/images/testimonial/1674596813_testimonial.png" class="rounded-circle" alt="IT Management Service">
+                        <h4>Catherine J., <span>Tech support at my house</span></h4>
+                        <ul class="rating-list">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="single-testimonials-card" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                    <p>Very personable. Anxious to please and do a good job.</p>
+
+                    <div class="info-item-box">
+                        <img src="https://jsb-tech.com/public/images/testimonial/1674596793_testimonial.png" class="rounded-circle" alt="IT Management Service">
+                        <h4>Lynda G., <span>Very personable</span></h4>
+                        <ul class="rating-list">
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-fill"></i></li>
+                            <li><i class="ri-star-line"></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Testimonials Area -->
+
+    <!-- Start Skill Area -->
+    <div class="skill-area ptb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="skill-content">
+                        <span>JSBTech</span>
+                        <h3>Document management by the numbers <span class="overlay"></span></h3>
+                    </div>
+
+                    <div class="skill-bar" data-percentage="90%" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                        <p class="progress-title-holder">
+                            <span class="progress-title">Of critical info is only on papers</span>
+                            <span class="progress-number-wrapper">
+                            <span class="progress-number-mark">
+                                <span class="percent"></span>
+                                <span class="down-arrow"></span>
+                            </span>
+                        </span>
+                        </p>
+                        <div class="progress-content-outter">
+                            <div class="progress-content"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percentage="70%" data-aos="fade-up" data-aos-delay="60" data-aos-duration="600" data-aos-once="true">
+                        <p class="progress-title-holder">
+                            <span class="progress-title">Of paper documents are losts</span>
+                            <span class="progress-number-wrapper">
+                            <span class="progress-number-mark">
+                                <span class="percent"></span>
+                                <span class="down-arrow"></span>
+                            </span>
+                        </span>
+                        </p>
+                        <div class="progress-content-outter bg-D5158F">
+                            <div class="progress-content bg-D5158F"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percentage="50%" data-aos="fade-up" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                        <p class="progress-title-holder">
+                            <span class="progress-title">To reproduce a lost documents</span>
+                            <span class="progress-number-wrapper">
+                            <span class="progress-number-mark">
+                                <span class="percent"></span>
+                                <span class="down-arrow"></span>
+                            </span>
+                        </span>
+                        </p>
+                        <div class="progress-content-outter bg-FEB302">
+                            <div class="progress-content bg-FEB302"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar" data-percentage="53%" data-aos="fade-up" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
+                        <p class="progress-title-holder">
+                            <span class="progress-title">Of businesses aren’t disaster ready</span>
+                            <span class="progress-number-wrapper">
+                            <span class="progress-number-mark">
+                                <span class="percent"></span>
+                                <span class="down-arrow"></span>
+                            </span>
+                        </span>
+                        </p>
+                        <div class="progress-content-outter bg-A66BFF">
+                            <div class="progress-content bg-A66BFF"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar-btn" data-aos="fade-up" data-aos-delay="90" data-aos-duration="900" data-aos-once="true">
+                        <a href="https://jsb-tech.com/about-us" class="default-btn">Explore More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="skill-image" data-aos="fade-left" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
+                        <img src="https://jsb-tech.com/public/web/images/fr.jpg" alt="IT Management" data-tilt>
+
+                        <div class="skill-shape-1">
+                            <img src="{{asset('homePage')}}assets/images/skill/skill-shape-1.png" alt="image">
+                        </div>
+                        <div class="skill-shape-2">
+                            <img src="{{asset('homePage')}}assets/images/skill/skill-shape-2.png" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-bg-shape">
+            <img src="{{asset('homePage')}}assets/images/skill/skill-bg-shape.png" alt="image">
+        </div>
+    </div>
+    <!-- End Skill Area -->
+
+    <div class="talk-area ptb-100 w-100" id="contact-form">
+        <div class="container">
+            <div class="row align-items-center bg-light">
+                <div class="col-lg-6 col-md-12 p-5 con-rg-sc">
+                    <div class="button-area position-relative">
+                        <h2 class="" style="color:white;">
+                            LET US ELIMINATE
+                            YOUR STRUGGLES</h2><p style="font-size: 18px; color:white !important;
+    color: black;"><br style="height: 5px"></p><p style="font-size: 18px;color:white !important;
+    color: black;">JSB-Tech is the best tool your company has in the utility belt. JSB-Tech manages all business technology that you utilize daily. Specializing in support for Windows operating system. This includes but is not limited to hardware, software, network, and stand-alone printers, phone systems, and document management systems. Whether it is auditing your files so they do not leave the office or providing your company a security assessment, let JSB-Tech show you what Customer service is all about.</p><ul class="icon-list-items" style="font-size: 18px; color:white
+    color: black;"><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">We are committed to providing quality IT Services</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">Provided by experts to help challenge critical activities</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;JSB-Tech LLC is a company with employees that have a passion for technology and want to do a good job.</span></li></ul><ul class="icon-list-items">
+                        </ul>
+
+                        <a href="https://jsb-tech.com/about-us" class="btn default-btn mt-2"> Learn More  </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 ps-lg-5">
+                    <div class="talk-content margin-zero">
+                        <span>LET'S TALK</span>
+                        <h3>We Would Like To Hear From You Anytime <span class="overlay"></span></h3>
+
+                        <form id="contactFormTwo" method="post" action="https://jsb-tech.com/contact-store">
+                            <input type="hidden" name="_token" value="Nys3Y4vFWn5PhAhilUpboTNeFWeJ5El7E588t3we">                                                <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" required data-error="Please enter your name" placeholder="Your name">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" required data-error="Please enter your email" placeholder="Your email address">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <select name="service" class="form-control" required data-error="Please select service">
+                                            <option selected disabled>Select Service</option>
+                                            <option value="Data backup and Recovery">Data backup and Recovery</option>
+                                            <option value="Email Anti-Spam Solutions">Email Anti-Spam Solutions</option>
+                                            <option value="Remote Computer repair">Remote Computer repair</option>
+                                            <option value="Server and Network Managment">Server and Network Managment</option>
+                                            <option value="VOIP Phone Services recommnedation and contract nogotiation.">VOIP Phone Services recommnedation and contract nogotiation.</option>
+                                            <option value="Ransomware Remediation">Ransomware Remediation</option>
+                                        </select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" name="phone" class="form-control" required data-error="Please enter your phone" placeholder="Your Phone">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="description" class="form-control" cols="30" rows="6" required data-error="Please enter your message" placeholder="Your message..."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div data-sitekey="6LfY_SAkAAAAAK_UZFLnxFfWj36HYisD59zAz6Ol" class="g-recaptcha"></div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 mt-2">
+                                    <button type="submit" class="default-btn">Submit<span></span></button>
+                                    <div id="msgSubmitTwo" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Blog Area -->
 @endsection
