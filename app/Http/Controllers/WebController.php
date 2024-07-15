@@ -18,7 +18,7 @@ use Illuminate\Http\Response; // Import the Response class
 class WebController extends Controller
 {
     public function index(){
-        $categoryWiseBlogs = Category::with('blog')->whereStatus(1)->where('is_featured',1)->get();
+        $categoryWiseBlogs = Category::with('blog')->whereStatus(1)->get();
         $randomBlogs = Blog::where('status', 1)->inRandomOrder()->take(2)->get();
 
         $latestBlogs = Blog::latest()->whereStatus(1)->take(9)->get();

@@ -36,6 +36,7 @@ Route::get('/category/{slug}', [WebController::class,'category'])->name('home.ca
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
+Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
 
 
 Route::get('/about-me', [WebController::class,'about'])->name('home.about');

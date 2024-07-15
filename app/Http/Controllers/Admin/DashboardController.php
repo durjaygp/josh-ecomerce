@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     public function createAdmin()
     {
-        $roles = Role::latest()->whereNotIn('id', [1, 2])->get();
+        $roles = Role::latest()->get();
         return view('backEnd.create_admin.create', compact('roles'));
     }
 

@@ -137,5 +137,7 @@
 
     </script>
 @endif
+<script src="{{asset('homePage/custom.js')}}"></script>
+
 </body>
 </html>

@@ -15,6 +15,10 @@ class CartController extends Controller
     {
        //
     }
+    public function cartCount(){
+        $cart = Cart::where('user_id',auth()->user()->id)->count();
+        return response()->json(['cart' => $cart]);
+    }
 
     /**
      * Show the form for creating a new resource.

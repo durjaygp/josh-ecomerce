@@ -74,7 +74,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('admin-products.index')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-category-2"></i>
+                    <i class="ti ti-brand-producthunt"></i>
                   </span>
                             <span class="hide-menu">Products</span>
                         </a>

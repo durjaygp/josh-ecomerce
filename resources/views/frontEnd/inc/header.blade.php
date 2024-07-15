@@ -55,7 +55,7 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="https://jsb-tech.com" class="nav-link  active ">Home</a>
+                            <a href="{{route('home')}}" class="nav-link  active ">Home</a>
                         </li>
 
                         <li class="nav-item">
@@ -109,26 +109,8 @@
                         <li class="nav-item d-flex">
                             <div class="dropdown cart_drop01 my-auto">
                                 <button type="button" class="btn default-btn px-3 py-2" data-toggle="dropdown">
-                                    <i class="ri-shopping-cart-fill me-1" aria-hidden="true"></i> Cart <span class="ms-1 cart-count">{{ $cartCount }}</span>
+                                    <i class="ri-shopping-cart-fill me-1" aria-hidden="true"></i> Cart <span class="ms-1 cart-count"></span>
                                 </button>
-                                <div class="dropdown-menu p-2" style="width: 350px">
-                                    <div class="row total-header-section mb-1">
-                                        <div class="col-lg-6 col-sm-6 col-6 d-flex">
-                                            <p>
-                                                <i class="ri-shopping-cart-fill me-1 my-auto" aria-hidden="true"></i>
-                                                <span class="ms-1 cart-count">{{ $cartCount }}</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                            <p><b>Total</b>: <span class="text-info-def">$<span class="cart-total">1000</span></span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                            <a href="https://jsb-tech.com/product-cart" class="btn default-btn py-2 w-100">View all</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </li>
 
