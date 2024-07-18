@@ -27,6 +27,18 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\Web\WebProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CuponController;
+
+
+
+
+
+
+
+
+
+
+
 
 
 // =============== Home Routes ===============
@@ -37,8 +49,6 @@ Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.pag
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
-
-
 Route::get('/about-me', [WebController::class,'about'])->name('home.about');
 Route::get('/search',[WebController::class,'searchRecipe'])->name('search.blog');
 Route::get('sitemap.xml', [WebController::class, 'siteMap']);
@@ -47,6 +57,8 @@ Route::post('comment/save',[CommentController::class,'store'])->name('comment.sa
 Route::post('newsletter/save',[NewsletterController::class,'store'])->name('newsletter.save');
 Route::get('/comments/delete/{id}', [CommentController::class,'destroy'])->name('comments.destroy');
 Route::post('/summernote/upload', [WebController::class, 'upload'])->name('summernote.upload');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -57,6 +69,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('cart/',[CartController::class,'index'])->name('home.cart');
+    Route::get('cart/remove/{id}',[CartController::class,'removeCart'])->name('cart.remove');
+    Route::get('cart/add/{id}',[CartController::class,'cartAdd'])->name('cart.cartAdd');
+    Route::get('cart/cartOneRemove/{id}',[CartController::class,'cartOneRemove'])->name('cart.cartOneRemove');
+
+    Route::post('coupon-apply',[CuponController::class,'applyCoupon'])->name('coupon-apply');
+    Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remove-coupon');
+
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function(){
@@ -155,6 +175,7 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('affiliate', AffiliateProductController::class);
     Route::resource('admin-products',ProductController::class);
     Route::resource('admin-product-category',ProductCategoryController::class);
+    Route::resource('admin-coupons',CuponController::class);
 
 
 });

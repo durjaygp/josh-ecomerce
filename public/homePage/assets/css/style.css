@@ -4773,7 +4773,7 @@ Page Banner Area CSS
 }
 
 .page-banner-area {
-  background-image: url('/public/web/images/df.jpg') !important;
+  /*background-image: url('/public/web/images/df.jpg') !important;*/
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4793,9 +4793,6 @@ Page Banner Area CSS
   background-image: url(../../assets/images/page-banner/banner-bg-4.jpg);
 }
 
-.page-banner-area.bg-5 {
-  background-image: url(../../assets/images/page-banner/banner-bg-5.jpg);
-}
 
 .page-banner-area.bg-6 {
   background-image: url(../../assets/images/page-banner/banner-bg-6.jpg);

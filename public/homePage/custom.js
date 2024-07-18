@@ -64,4 +64,47 @@ $(document).ready(function() {
         });
     });
 
+    $(document).ready(function(){
+        $('#coupon-form').on('submit', function(e){
+            e.preventDefault(); // Prevent the form from submitting the default way
+            var couponCode = $('#code').val();
+
+            $.ajax({
+                url: "/coupon-apply",
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    'code': couponCode
+                },
+                success: function(response) {
+                    if (response.success) {
+                        iziToast.success({
+                            title: '',
+                            position: 'topRight',
+                            message: response.success,
+                        });
+                        // You can update the cart or UI as needed here
+                    } else {
+                        iziToast.error({
+                            title: '',
+                            position: 'topRight',
+                            message: response.error,
+                        });
+                    }
+                },
+                error: function(xhr) {
+                    iziToast.error({
+                        title: '',
+                        position: 'topRight',
+                        message: xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred.',
+                    });
+                }
+            });
+        });
+    });
+
+
+
 });

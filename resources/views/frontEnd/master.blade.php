@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home - JSB Tech</title>
+    <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!">

@@ -1,5 +1,10 @@
 @extends('frontEnd.master')
+@section('title')
+    Products
+@endsection
 @section('content')
+
+
 <!-- Start Products Area -->
 <div class="products-area pt-100 pb-100">
     <div class="container">

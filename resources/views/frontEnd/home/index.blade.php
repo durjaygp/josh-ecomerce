@@ -1,4 +1,7 @@
 @extends('frontEnd.master')
+@section('title')
+    Home
+@endsection
 @section('content')
     <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
 

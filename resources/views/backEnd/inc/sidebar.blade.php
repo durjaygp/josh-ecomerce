@@ -80,6 +80,15 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-coupons.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-discount"></i>
+                  </span>
+                            <span class="hide-menu">Coupons</span>
+                        </a>
+                    </li>
+
 
                 <!-- =================== -->
                     <!-- Recipe Intro -->

@@ -107,11 +107,13 @@
                         </li>
 
                         <li class="nav-item d-flex">
-                            <div class="dropdown cart_drop01 my-auto">
-                                <button type="button" class="btn default-btn px-3 py-2" data-toggle="dropdown">
-                                    <i class="ri-shopping-cart-fill me-1" aria-hidden="true"></i> Cart <span class="ms-1 cart-count"></span>
-                                </button>
-                            </div>
+
+                                <div class="dropdown cart_drop01 my-auto">
+                                    <a href="{{route('home.cart')}}" class="btn default-btn px-3 py-2" data-toggle="dropdown">
+                                        <i class="ri-shopping-cart-fill me-1" aria-hidden="true"></i> Cart <span class="ms-1 cart-count"></span>
+                                    </a>
+                                </div>
+
                         </li>
 
 

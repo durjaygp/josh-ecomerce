@@ -1,5 +1,5 @@
 @extends('backEnd.master')
-@section('title','Create Category')
+@section('title','Create Coupon')
 @section('content')
     <div class="container-fluid">
         <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -10,7 +10,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a class="text-muted " href="{{route('admin.index')}}">Dashboard</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Category</li>
+                                <li class="breadcrumb-item" aria-current="page">Coupon</li>
                             </ol>
                         </nav>
                     </div>
@@ -34,8 +34,8 @@
                     </div>
                     <div class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
 
-                        <a href="{{route('category.index')}}" class="btn btn-info d-flex align-items-center">
-                            <i class="ti ti-list text-white me-1 fs-5"></i> Category List
+                        <a href="{{route('admin-coupons.index')}}" class="btn btn-info d-flex align-items-center">
+                            <i class="ti ti-list text-white me-1 fs-5"></i> Coupons List
                         </a>
                     </div>
                 </div>
@@ -44,13 +44,40 @@
                             end Contact
                         ---------------- -->
              <div class="card card-body">
-                 <form method="post" action="{{route('category.save')}}">
+                 <form method="post" action="{{route('admin-coupons.store')}}">
                      @csrf
                      <div class="row">
                          <div class="col-lg-6">
                              <div class="mb-4">
-                                 <label for="Name" class="form-label fw-semibold">Category Name</label>
-                                 <input type="text" name="name" class="form-control" id="Name" placeholder="Category Name">
+                                 <label for="Name" class="form-label fw-semibold">Coupon Title</label>
+                                 <input type="text" name="title" class="form-control" id="Name" placeholder="Coupon Title">
+                             </div>
+                         </div>
+                         <div class="col-lg-6">
+                             <div class="mb-4">
+                                 <label for="code" class="form-label fw-semibold">Coupon code</label>
+                                 <input type="text" name="code" class="form-control" id="code" placeholder="Coupon code">
+                             </div>
+                         </div>
+                         <div class="col-lg-6">
+                             <div class="mb-4">
+                                 <label for="value" class="form-label fw-semibold">Coupon value</label>
+                                 <input type="number" name="value" class="form-control" id="value" placeholder="Coupon value">
+                             </div>
+                         </div>
+                         <div class="col-lg-6">
+                             <div class="mb-4">
+                                 <label for="expiry_date" class="form-label fw-semibold">Expiry Date</label>
+                                 <input type="datetime-local" name="expiry_date" class="form-control" id="expiry_date">
+                             </div>
+                         </div>
+                         <div class="col-lg-6">
+                             <div class="mb-4">
+                                 <label for="type" class="form-label fw-semibold">Type</label>
+                                 <select name="type" id="type" class="form-select">
+                                     <option value="1">Percentage</option>
+                                     <option value="2">Discount</option>
+                                 </select>
                              </div>
                          </div>
                          <div class="col-lg-6">
@@ -63,12 +90,6 @@
                              </div>
                          </div>
 
-                         <div class="col-lg-12">
-                             <div class="mb-4">
-                                 <label for="exampleInputPassword1" class="form-label fw-semibold">Description</label>
-                                 <textarea type="text" name="description" class="form-control" placeholder="Short Description"></textarea>
-                             </div>
-                         </div>
                          <div class="col-12 mt-2">
                                  <div class="ms-auto mt-3 mt-md-0">
                                      <button

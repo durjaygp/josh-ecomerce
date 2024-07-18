@@ -368,7 +368,7 @@ Main Slides Area CSS
     padding: {
         top: 150px;
         bottom: 100px;
-    }; 
+    };
     .container-fluid {
         padding: {
             left: 30px;
@@ -533,14 +533,14 @@ Main Slides Area CSS
 }
 @keyframes moveleftbounce {
     0% {
-        transform: translateX(0px); 
+        transform: translateX(0px);
     }
     50% {
-        transform: translateX(20px); 
+        transform: translateX(20px);
     }
     100% {
-        transform: translateX(0px); 
-    } 
+        transform: translateX(0px);
+    }
 }
 
 /*================================================
@@ -559,7 +559,7 @@ Main Hero Area CSS
     padding: {
         top: 165px;
         bottom: 250px;
-    }; 
+    };
     position: relative;
     z-index: 1;
 
@@ -576,7 +576,7 @@ Main Hero Area CSS
         right: 0;
         height: 100%;
         width: 100%;
-         
+
     }
     .container-fluid {
         padding: {
@@ -1162,7 +1162,7 @@ Services Area CSS
 
         a {
             display: block;
-            
+
             img {
                 border-radius: 15px;
                 transition: var(--transition);
@@ -1194,7 +1194,7 @@ Services Area CSS
             font-family: var(--heading-font-family);
             transition: var(--transition);
             position: relative;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -1229,7 +1229,7 @@ Services Area CSS
             }
             .services-btn {
                 padding-left: 25px;
-                
+
                 &::before {
                     opacity: 1;
                     visibility: visible;
@@ -1603,7 +1603,7 @@ Video Area CSS
         }
         &:hover {
             background-color: var(--optional-color);
-            
+
             i {
                 background: var(--btn-gradient-color);
                 -webkit-background-clip: text;
@@ -1614,7 +1614,7 @@ Video Area CSS
     &:hover {
         .video-image {
             overflow: hidden;
-            
+
             img {
                 transform: scale(1.1);
                 filter: blur(5px);
@@ -1688,7 +1688,7 @@ Projects Area CSS
 
         a {
             display: block;
-            
+
             img {
                 border-radius: 15px;
                 transition: var(--transition);
@@ -1715,7 +1715,7 @@ Projects Area CSS
             font-family: var(--heading-font-family);
             transition: var(--transition);
             position: relative;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -1789,7 +1789,7 @@ Projects Area CSS
                 background: var(--main-color);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                
+
                 &::before {
                     background: var(--main-color);
                     opacity: 0;
@@ -1814,7 +1814,7 @@ Projects Area CSS
                     background: var(--btn-gradient-color);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    
+
                     &::before {
                         background: var(--btn-gradient-color);
                         opacity: 1;
@@ -1844,7 +1844,7 @@ Projects Area CSS
                 line-height: 55px;
                 text-align: center;
                 font-size: 35px;
-                
+
                 i {
                     position: relative;
                     left: -2px;
@@ -1961,7 +1961,7 @@ Projects Area CSS
 
         a {
             display: block;
-            
+
             img {
                 border-radius: 20px;
                 transition: var(--transition);
@@ -2000,7 +2000,7 @@ Projects Area CSS
             font-family: var(--heading-font-family);
             transition: var(--transition);
             position: relative;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -2073,7 +2073,7 @@ Projects Area CSS
         margin-bottom: 15px;
         line-height: 1.4;
         position: relative;
-        
+
         .overlay {
             position: absolute;
             left: 0;
@@ -2110,7 +2110,7 @@ Projects Area CSS
                 line-height: 55px;
                 text-align: center;
                 font-size: 35px;
-                
+
                 i {
                     position: relative;
                     left: -2px;
@@ -2148,7 +2148,7 @@ Projects Details Area CSS
     .article-projects-with-info {
         .projects-info-image {
             position: relative;
-            
+
             img {
                 border-radius: 25px;
             }
@@ -2183,7 +2183,7 @@ Projects Details Area CSS
                 margin-bottom: 0;
                 line-height: 1.4;
                 position: relative;
-                
+
                 .overlay {
                     position: absolute;
                     left: 0;
@@ -2243,7 +2243,7 @@ Projects Details Area CSS
         .image {
             overflow: hidden;
             border-radius: 15px;
-    
+
             img {
                 border-radius: 15px;
                 transition: var(--transition);
@@ -2455,7 +2455,7 @@ Testimonials Area CSS
 }
 .single-testimonials-card {
     margin-bottom: 25px;
-    
+
     p {
         background-color: #F2F1F3;
         padding: 30px;
@@ -2730,10 +2730,10 @@ Blog Area CSS
     .blog-image {
         overflow: hidden;
         border-radius: 15px;
-    
+
         a {
             display: block;
-            
+
             img {
                 border-radius: 15px;
                 transition: var(--transition);
@@ -2776,7 +2776,7 @@ Blog Area CSS
             transition: var(--transition);
             position: relative;
             margin-top: 20px;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -2815,7 +2815,7 @@ Blog Area CSS
             }
             .blog-btn {
                 padding-left: 25px;
-                
+
                 &::before {
                     opacity: 1;
                     visibility: visible;
@@ -2847,7 +2847,7 @@ Blog Area CSS
                 left: -80px;
                 top: 45%;
                 transform: translateY(-45%);
-                
+
                 i {
                     position: relative;
                     left: -2px;
@@ -2962,7 +2962,7 @@ Blog Area CSS
     form {
         position: relative;
         max-width: 450px;
-        
+
         .search-field {
             height: 70px;
             color: #9B8DAC;
@@ -2976,7 +2976,7 @@ Blog Area CSS
             font-weight: 400;
             outline: 0;
             background: #F2F1F3;
-            
+
             &::placeholder {
                 color: #9B8DAC;
                 transition: var(--transition);
@@ -3059,7 +3059,7 @@ Blog Area CSS
             transition: var(--transition);
             position: relative;
             margin-top: 15px;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -3096,7 +3096,7 @@ Blog Area CSS
             }
             .blog-btn {
                 padding-left: 25px;
-                
+
                 &::before {
                     opacity: 1;
                     visibility: visible;
@@ -3144,7 +3144,7 @@ Blog Details Area CSS
             font-size: 45px;
             transition: var(--transition);
             border: 2px solid #FB64BF;
-    
+
             i {
                 transition: var(--transition);
                 background: radial-gradient(circle, #a66bff, #c666ef, #dd62df, #ee61cf, #fb64bf);
@@ -3166,7 +3166,7 @@ Blog Details Area CSS
             }
             &:hover {
                 background-color: var(--optional-color);
-                
+
                 i {
                     background: var(--btn-gradient-color);
                     -webkit-background-clip: text;
@@ -3300,7 +3300,7 @@ Blog Details Area CSS
                 right: -45px;
                 bottom: -45px;
                 max-width: 100px;
-    
+
                 img {
                     animation: {
                         name: rotateme;
@@ -3333,7 +3333,7 @@ Blog Details Area CSS
                 display: inline-block;
                 list-style-type: none;
                 margin-right: 5px;
-    
+
                 &:last-child {
                     margin-right: 0;
                 }
@@ -3349,7 +3349,7 @@ Blog Details Area CSS
                         background-color: var(--white-color);
                         color: #9B8DAC;
                         font-size: 18px;
-    
+
                         &:hover {
                             color: var(--white-color);
                             background: radial-gradient(circle, #a66bff, #c666ef, #dd62df, #ee61cf, #fb64bf);
@@ -3415,7 +3415,7 @@ Blog Details Area CSS
         }
         .form-group {
             margin-bottom: 25px;
-    
+
             label {
                 display: block;
                 margin-bottom: 10px;
@@ -3437,7 +3437,7 @@ Blog Details Area CSS
                 font-weight: 400;
                 outline: 0;
                 font-family: var(--heading-font-family);
-    
+
                 &::placeholder {
                     color: #9B8DAC;
                 }
@@ -3458,10 +3458,10 @@ Blog Details Area CSS
         }
         .form-cookies-consent {
             margin-bottom: 20px;
-    
+
             a {
                 color: var(--main-color);
-    
+
                 &:hover {
                     color: var(--optional-color);
                 }
@@ -3522,7 +3522,7 @@ Blog Details Area CSS
                 display: inline-block;
                 margin-bottom: 0;
                 margin-right: 25px;
-    
+
                 &:last-child {
                     margin-right: 0;
                 }
@@ -3556,7 +3556,7 @@ Blog Details Area CSS
                 left: 15px;
                 top: 45%;
                 transform: translateY(-45%);
-                
+
                 i {
                     position: relative;
                     left: -2px;
@@ -3604,7 +3604,7 @@ Skill Area CSS
         margin-bottom: 15px;
         line-height: 1.4;
         position: relative;
-        
+
         .overlay {
             position: absolute;
             left: 0;
@@ -3637,7 +3637,7 @@ Skill Area CSS
         font-weight: 500;
         color: var(--black-color);
         font-family: var(--heading-font-family);
-    } 
+    }
     .progress-content-outter {
         background-color: var(--white-color);
         border-radius: 30px;
@@ -3796,7 +3796,7 @@ Features Area CSS
             font-family: var(--heading-font-family);
             transition: var(--transition);
             position: relative;
-            
+
             &::before {
                 content: "";
                 position: absolute;
@@ -3954,7 +3954,7 @@ Talk Area CSS
                 &:focus {
                     border-color: var(--main-color);
                     background-color: transparent;
-            
+
                     &::placeholder {
                         color: transparent;
                     }
@@ -4005,7 +4005,7 @@ Team Area CSS
 
     .team-image {
         position: relative;
-        
+
         .team-social {
             padding: 0;
             margin-bottom: 0;
@@ -4065,7 +4065,7 @@ Team Area CSS
     &:hover {
         .team-image {
             position: relative;
-            
+
             .team-social {
                 bottom: 25px;
                 opacity: 1;
@@ -4176,7 +4176,7 @@ Page Banner Area CSS
         background-image: url(../../assets/images/page-banner/banner-bg-4.jpg);
     }
     &.bg-5 {
-        background-image: url(../../assets/images/page-banner/banner-bg-5.jpg);
+        //background-image: url(../../assets/images/page-banner/banner-bg-5.jpg);
     }
     &.bg-6 {
         background-image: url(../../assets/images/page-banner/banner-bg-6.jpg);
@@ -4223,7 +4223,7 @@ Page Banner Area CSS
                 display: block;
                 color: #CDC4D9;
                 transition: var(--transition);
-                
+
                 &:hover {
                     color: var(--main-color);
                 }
@@ -4237,13 +4237,13 @@ Page Banner Area CSS
         ul {
             li {
                 color: var(--main-color);
-    
+
                 &::before {
                     background: var(--paragraph-color);
                 }
                 a {
                     color: var(--paragraph-color);
-                    
+
                     &:hover {
                         color: var(--main-color);
                     }
@@ -4266,7 +4266,7 @@ Gallery Area CSS
     a {
         display: block;
         border-radius: 10px;
-        
+
         img {
             transition: var(--transition);
         }
@@ -4312,7 +4312,7 @@ FAQ Area CSS
             transition: var(--transition);
             background-color: transparent;
             font-family: var(--heading-font-family);
-            
+
             &::before {
                 position: absolute;
                 right: 20px;
@@ -4492,7 +4492,7 @@ Events Area CSS
             padding-left: 22px;
             font-size: 14px;
             font-weight: 500;
-            
+
             i {
                 color: var(--main-color);
                 position: absolute;
@@ -4529,7 +4529,7 @@ Events Details Area CSS
 .events-details-image {
     position: relative;
     margin-bottom: 50px;
-    
+
     #timer {
         position: absolute;
         z-index: 2;
@@ -4570,7 +4570,7 @@ Events Details Area CSS
         padding: 30px;
         border-radius: 15px;
         border: 1px solid #f3f3f3;
-        
+
         li {
             display: inline-block;
             margin-right: 20px;
@@ -4579,7 +4579,7 @@ Events Details Area CSS
             padding-left: 25px;
             font-size: 14px;
             font-weight: 500;
-            
+
             i {
                 color: var(--main-color);
                 position: absolute;
@@ -4632,7 +4632,7 @@ Events Details Area CSS
             font-weight: 500;
             padding-top: 15px;
             padding-bottom: 15px;
-            
+
             span {
                 font-weight: 600;
                 color: var(--black-color);
@@ -4658,7 +4658,7 @@ Events Details Area CSS
     .events-btn-box {
         text-align: center;
         margin-top: 30px;
-        
+
         p {
             margin-top: 20px;
 
@@ -4674,7 +4674,7 @@ Events Details Area CSS
     .events-share {
         text-align: center;
         margin-top: 30px;
-        
+
         .share-info {
             display: inline-block;
             position: relative;
@@ -4693,11 +4693,11 @@ Events Details Area CSS
                 list-style-type: none;
                 margin-bottom: 0;
                 margin-top: 12px;
-                
+
                 li {
                     display: inline-block;
                     margin-right: 5px;
-        
+
                     &:last-child {
                         margin-right: 0;
                     }
@@ -4795,7 +4795,7 @@ Apply Area CSS
     padding: 45px;
     border-radius: 15px;
     max-width: 550px;
-    
+
     .content {
         margin-bottom: 30px;
 
@@ -4827,7 +4827,7 @@ Apply Area CSS
                 &:focus {
                     border-color: var(--main-color);
                     background-color: transparent;
-            
+
                     &::placeholder {
                         color: transparent;
                     }
@@ -4852,7 +4852,7 @@ Apply Area CSS
                 font-size: 15px;
                 font-weight: 400;
                 border-radius: 10px;
-    
+
                 .list {
                     background-color: var(--white-color);
                     border-radius: 10px;
@@ -4865,7 +4865,7 @@ Apply Area CSS
                     padding-left: 0;
                     padding-top: 10px;
                     padding-bottom: 10px;
-    
+
                     .option {
                         line-height: 38px;
                         min-height: 38px;
@@ -4875,7 +4875,7 @@ Apply Area CSS
                         padding-left: 15px;
                         padding-right: 25px;
                         font-weight: 400;
-    
+
                         &.selected {
                             &.focus {
                                 color: var(--main-color);
@@ -4992,7 +4992,7 @@ Career Details Area CSS
             font-size: 45px;
             transition: var(--transition);
             border: 2px solid #FB64BF;
-    
+
             i {
                 transition: var(--transition);
                 background: radial-gradient(circle, #a66bff, #c666ef, #dd62df, #ee61cf, #fb64bf);
@@ -5014,7 +5014,7 @@ Career Details Area CSS
             }
             &:hover {
                 background-color: var(--optional-color);
-                
+
                 i {
                     background: var(--btn-gradient-color);
                     -webkit-background-clip: text;
@@ -5274,7 +5274,7 @@ Membership Levels Area CSS
                 border-left: 1px solid var(--white-color);
                 border-right: 1px solid var(--white-color);
                 border-bottom: none;
-                
+
                 .desc-1 {
                     color: var(--white-color);
                     margin-bottom: 0;
@@ -5316,7 +5316,7 @@ Membership Levels Area CSS
                     text-align: center;
                     font-size: var(--font-size);
                     font-weight: 600;
-                    
+
                     &:first-child {
                         text-align: start;
                     }
@@ -5586,7 +5586,7 @@ Coming Soon Area CSS
     margin: 0 auto 0 0;
     transition: var(--transition);
     border: 1px solid var(--white-color);
-    
+
     .logo {
         display: inline-block;
     }
@@ -5609,7 +5609,7 @@ Coming Soon Area CSS
             margin-left: 5px;
             margin-right: 5px;
             transition: var(--transition);
-            
+
             &:hover {
                 transform: translateY(-5px);
             }
@@ -5642,7 +5642,7 @@ Coming Soon Area CSS
                 transition: var(--transition);
                 font-size: var(--font-size);
                 font-weight: 400;
-    
+
                 &::placeholder {
                     color: var(--paragraph-color);
                 }
@@ -5736,7 +5736,7 @@ Courses Area CSS
             line-height: 1.5;
             font-size: 22px;
             font-weight: bold;
-            
+
             a {
                 display: inline-block;
             }
@@ -5748,7 +5748,7 @@ Courses Area CSS
             margin-left: -7px;
             margin-right: -7px;
             margin-top: 25px;
-            
+
             li {
                 color: var(--paragraph-color);
                 font-size: 15px;
@@ -5795,7 +5795,7 @@ Courses Details Area CSS
 }
 .courses-details-image {
     position: relative;
-    
+
     img {
         transition: var(--transition);
     }
@@ -5863,11 +5863,11 @@ Courses Details Area CSS
         background-color: var(--white-color);
         border: none;
         border-radius: 15px;
-        
+
         .nav-item {
             margin-bottom: 0;
             margin-right: 20px;
-            
+
             .nav-link {
                 border-radius: 0;
                 border: none;
@@ -5878,7 +5878,7 @@ Courses Details Area CSS
                 font-size: var(--font-size);
                 font-weight: bold;
                 color: var(--black-color);
-                
+
                 &:hover, &.active {
                     color: var(--white-color);
                     background-color: var(--main-color);
@@ -5897,7 +5897,7 @@ Courses Details Area CSS
                 margin-bottom: 20px;
                 font-size: 22px;
                 font-weight: bold;
-                
+
                 &:not(:first-child) {
                     margin-top: 25px;
                 }
@@ -5912,7 +5912,7 @@ Courses Details Area CSS
                 margin-bottom: 18px;
                 font-size: 20px;
                 font-weight: bold;
-                
+
                 &:not(:first-child) {
                     margin-top: 20px;
                 }
@@ -5934,7 +5934,7 @@ Courses Details Area CSS
                         padding-bottom: 15px;
                         margin-left: -30px;
                         margin-right: -30px;
-                        
+
                         .courses-name {
                             font-size: var(--font-size);
                             font-weight: 500;
@@ -6047,12 +6047,12 @@ Courses Details Area CSS
                     padding-left: 0;
                     margin-bottom: 0;
                     margin-top: 25px;
-            
+
                     li {
                         list-style-type: none;
                         display: inline-block;
                         margin-right: 8px;
-            
+
                         &:last-child {
                             margin-right: 0;
                         }
@@ -6068,7 +6068,7 @@ Courses Details Area CSS
                                 color: var(--white-color);
                                 border-radius: 50px;
                                 font-size: 18px;
-            
+
                                 &:hover {
                                     transform: translateY(-5px);
                                 }
@@ -6089,7 +6089,7 @@ Courses Details Area CSS
                 span {
                     font-size: var(--font-size);
                     color: #cecfd2;
-    
+
                     &.checked {
                         color: orange;
                     }
@@ -6098,7 +6098,7 @@ Courses Details Area CSS
             .rating-count {
                 margin-top: 10px;
                 margin-bottom: 20px;
-                
+
                 span {
                     display: block;
                     font-size: 15px;
@@ -6172,7 +6172,7 @@ Courses Details Area CSS
         }
         .courses-review-comments {
             margin-top: 40px;
-        
+
             h3 {
                 border-bottom: 1px solid var(--white-color);
                 padding-bottom: 12px;
@@ -6184,7 +6184,7 @@ Courses Details Area CSS
                 border-bottom: 1px solid var(--white-color);
                 padding: 20px 0 20px 110px;
                 position: relative;
-        
+
                 img {
                     position: absolute;
                     left: 0;
@@ -6205,16 +6205,16 @@ Courses Details Area CSS
                 .review-rating {
                     display: block;
                     margin-bottom: 8px;
-        
+
                     .review-stars {
                         display: inline-block;
-        
+
                         i {
                             color: #cecfd2;
                             font-size: 15px;
                             display: inline-block;
                             margin-right: -2px;
-            
+
                             &.checked {
                                 color: orange;
                             }
@@ -6242,7 +6242,7 @@ Courses Details Area CSS
     .image {
         text-align: center;
         position: relative;
-        
+
         img {
             border-radius: 15px;
         }
@@ -6287,7 +6287,7 @@ Courses Details Area CSS
             }
             &:hover {
                 background-color: var(--main-color);
-                
+
                 i {
                     color: var(--white-color);
                 }
@@ -6298,7 +6298,7 @@ Courses Details Area CSS
         margin-bottom: 0;
         list-style-type: none;
         padding: 30px 20px;
-        
+
         li {
             border-bottom: 1px solid #e5e5e7;
             color: var(--paragraph-color);
@@ -6306,7 +6306,7 @@ Courses Details Area CSS
             font-weight: 500;
             padding-top: 15px;
             padding-bottom: 15px;
-            
+
             span {
                 font-weight: 600;
                 color: var(--black-color);
@@ -6317,7 +6317,7 @@ Courses Details Area CSS
                 font-size: 28px;
                 font-weight: bold;
                 font-family: var(--heading-font-family);
-                
+
                 span {
                     color: var(--black-color);
                     font-size: var(--font-size);
@@ -6335,7 +6335,7 @@ Courses Details Area CSS
     .courses-share {
         text-align: center;
         margin-top: 25px;
-        
+
         .share-info {
             display: inline-block;
             position: relative;
@@ -6353,11 +6353,11 @@ Courses Details Area CSS
                 list-style-type: none;
                 margin-bottom: 0;
                 margin-top: 12px;
-                
+
                 li {
                     display: inline-block;
                     margin-right: 5px;
-        
+
                     &:last-child {
                         margin-right: 0;
                     }
@@ -6465,7 +6465,7 @@ Products Area CSS
         }
         form {
             position: relative;
-            
+
             .search-field {
                 height: 70px;
                 color: #9B8DAC;
@@ -6479,7 +6479,7 @@ Products Area CSS
                 font-weight: 400;
                 outline: 0;
                 background: #F2F1F3;
-                
+
                 &::placeholder {
                     color: #9B8DAC;
                     transition: var(--transition);
@@ -6517,7 +6517,7 @@ Products Area CSS
         border-radius: 15px;
         position: relative;
         text-align: center;
-    
+
         &::before {
             position: absolute;
             content: '';
@@ -6534,7 +6534,7 @@ Products Area CSS
         }
         a {
             display: block;
-            
+
             img {
                 border-radius: 15px;
                 transition: var(--transition);
@@ -6707,7 +6707,7 @@ Cart Area CSS
                     font-weight: 400;
                     font-size: var(--font-size);
                     border: none;
-                    
+
                     &.product-thumbnail {
                         a {
                             display: block;
@@ -6756,8 +6756,8 @@ Cart Area CSS
                         .input-counter {
                             text-align: center;
                             display: inline-block;
-                            position: relative;    
-                
+                            position: relative;
+
                             span {
                                 display: inline-block;
                                 background-color: var(--optional-color);
@@ -6769,7 +6769,7 @@ Cart Area CSS
                                 transition: var(--transition);
                                 font-size: 20px;
                                 border-radius: 10px;
-                                
+
                                 &:hover {
                                     color: var(--white-color);
                                     background-color: var(--main-color);
@@ -6863,7 +6863,7 @@ Cart Area CSS
     border-radius: 15px;
     text-align: center;
     transition: var(--transition);
-    
+
     h3 {
         margin-bottom: 25px;
         font-size: 22px;
@@ -6873,7 +6873,7 @@ Cart Area CSS
         padding-left: 0;
         margin: 0 0 25px;
         list-style-type: none;
-        
+
         li {
             border-bottom: 1px solid #F2F1F3;
             color: var(--paragraph-color);
@@ -6883,7 +6883,7 @@ Cart Area CSS
             margin-bottom: 15px;
             padding-bottom: 15px;
             font-family: var(--heading-font-family);
-            
+
             &:last-child {
                 span {
                     color: var(--optional-color);
@@ -6937,7 +6937,7 @@ Wishlist Area CSS
                     font-weight: 400;
                     font-size: var(--font-size);
                     border: none;
-                    
+
                     &.product-thumbnail {
                         a {
                             display: block;
@@ -7094,7 +7094,7 @@ Checkout Area CSS
                 width: 100%;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                
+
                 .option {
                     transition: var(--transition);
                     padding: {
@@ -7154,7 +7154,7 @@ Checkout Area CSS
     .order-table {
         table {
             margin-bottom: 0;
-    
+
             thead {
                 tr {
                     th {
@@ -7224,7 +7224,7 @@ Checkout Area CSS
         margin-top: 30px;
         padding: 30px;
         border-radius: 15px;
-        
+
         .payment-method {
             p {
                 font-size: 15px;
@@ -7401,7 +7401,7 @@ Products Details Area CSS
         font-size: 22px;
         font-weight: 600;
         letter-spacing: 1px;
-        
+
         .old-price {
             text-decoration: line-through;
             color: var(--optional-color);
@@ -7416,7 +7416,7 @@ Products Details Area CSS
     }
     .products-meta {
         margin-top: 25px;
-        
+
         span {
             display: block;
             color: var(--paragraph-color);
@@ -7456,7 +7456,7 @@ Products Details Area CSS
         .input-counter {
             text-align: center;
             display: inline-block;
-            position: relative;    
+            position: relative;
 
             span {
                 display: inline-block;
@@ -7469,7 +7469,7 @@ Products Details Area CSS
                 transition: var(--transition);
                 font-size: 20px;
                 border-radius: 10px;
-                
+
                 &:hover {
                     color: var(--white-color);
                     background-color: var(--main-color);
@@ -7517,7 +7517,7 @@ Products Details Area CSS
         .nav-item {
             display: inline-block;
             margin-right: 20px;
-            
+
             &:last-child {
                 margin-right: 0;
             }
@@ -7532,7 +7532,7 @@ Products Details Area CSS
                 font-weight: bold;
                 background-color: #F2F1F3;
                 color: var(--black-color);
-                
+
                 &:hover, &.active {
                     color: var(--white-color);
                     background: radial-gradient(circle, #a66bff, #c666ef, #dd62df, #ee61cf, #fb64bf);
@@ -7562,7 +7562,7 @@ Products Details Area CSS
                     span {
                         font-size: var(--font-size);
                         color: #cecfd2;
-        
+
                         &.checked {
                             color: orange;
                         }
@@ -7571,7 +7571,7 @@ Products Details Area CSS
                 .rating-count {
                     margin-top: 10px;
                     margin-bottom: 20px;
-                    
+
                     span {
                         display: block;
                         font-size: 15px;
@@ -7590,7 +7590,7 @@ Products Details Area CSS
                     margin-top: 10px;
                     padding-left: 0;
                     padding-right: 0;
-    
+
                     div {
                         font-size: var(--font-size);
                         font-weight: 600;
@@ -7645,7 +7645,7 @@ Products Details Area CSS
             }
             .products-review-comments {
                 margin-top: 40px;
-        
+
                 h3 {
                     border-bottom: 1px solid var(--white-color);
                     padding-bottom: 12px;
@@ -7657,7 +7657,7 @@ Products Details Area CSS
                     border-bottom: 1px solid var(--white-color);
                     padding: 20px 0 20px 110px;
                     position: relative;
-            
+
                     img {
                         position: absolute;
                         left: 0;
@@ -7678,16 +7678,16 @@ Products Details Area CSS
                     .review-rating {
                         display: block;
                         margin-bottom: 8px;
-            
+
                         .review-stars {
                             display: inline-block;
-            
+
                             i {
                                 color: #cecfd2;
                                 font-size: 15px;
                                 display: inline-block;
                                 margin-right: -2px;
-                
+
                                 &.checked {
                                     color: orange;
                                 }
@@ -7736,7 +7736,7 @@ Products Details Area CSS
                             transition: var(--transition);
                             font-size: 15px;
                             font-weight: 400;
-                
+
                             &::placeholder {
                                 color: var(--paragraph-color);
                             }
@@ -7761,7 +7761,7 @@ Products Details Area CSS
                         max-width: 115px;
                         margin-top: -5px;
                         margin-bottom: 30px;
-                        
+
                         label {
                             float: right;
                             position: relative;
@@ -7796,7 +7796,7 @@ Products Details Area CSS
                     .default-btn {
                         margin-top: 22px;
                         border: none;
-                        padding: 15px 30px; 
+                        padding: 15px 30px;
                     }
                 }
             }
@@ -7831,7 +7831,7 @@ Widget Sidebar CSS
             padding-bottom: 15px;
             font-size: 20px;
             font-weight: bold;
-            
+
             &::before {
                 content: '';
                 position: absolute;
@@ -7847,7 +7847,7 @@ Widget Sidebar CSS
     .widget_search {
         form {
             position: relative;
-            
+
             .search-field {
                 height: 70px;
                 color: var(--black-color);
@@ -7861,7 +7861,7 @@ Widget Sidebar CSS
                 font-weight: 400;
                 outline: 0;
                 background: #F2F1F3;
-                
+
                 &::placeholder {
                     color: var(--paragraph-color);
                     transition: var(--transition);
@@ -8000,7 +8000,7 @@ Widget Sidebar CSS
                     line-height: 1.5;
                     font-size: var(--font-size);
                     font-weight: 600;
-                    
+
                     a {
                         display: inline-block;
                     }
@@ -8034,7 +8034,7 @@ Widget Sidebar CSS
             font-weight: 500;
             margin-top: 8px;
             margin-right: 5px;
-            
+
             &:hover, &:focus {
                 color: var(--white-color);
                 background-color: var(--main-color);
@@ -8124,7 +8124,7 @@ Widget Sidebar CSS
                     line-height: 1.5;
                     font-size: var(--font-size);
                     font-weight: 600;
-                    
+
                     a {
                         display: inline-block;
                     }
@@ -8164,7 +8164,7 @@ Widget Sidebar CSS
                     font-size: 15px;
                     font-weight: 500;
                     border-radius: 15px;
-                    
+
                     &::before {
                         width: 5px;
                         height: 5px;
@@ -8225,7 +8225,7 @@ Pagination CSS
         font-size: var(--font-size);
         font-weight: bold;
         font-family: var(--heading-font-family);
-        
+
         &:hover, &.current {
             color: var(--white-color);
             background-color: var(--main-color);
