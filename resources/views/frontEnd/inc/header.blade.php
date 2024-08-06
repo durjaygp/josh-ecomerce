@@ -100,11 +100,16 @@
                         <li class="nav-item">
                             <a href="https://jsb-tech.com/contact-us" class="nav-link ">Contact Us</a>
                         </li>
-
-
+                        @auth
+                            <li class="nav-item">
+                                <a href="{{route('admin.index')}}" class="nav-link ">Dashboard</a>
+                            </li>
+                        @else
                         <li class="nav-item">
                             <a href="{{route('login')}}" class="nav-link ">Login</a>
                         </li>
+                        @endauth
+
 
                         <li class="nav-item d-flex">
 

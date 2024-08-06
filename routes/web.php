@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -58,6 +60,15 @@ Route::post('newsletter/save',[NewsletterController::class,'store'])->name('news
 Route::get('/comments/delete/{id}', [CommentController::class,'destroy'])->name('comments.destroy');
 Route::post('/summernote/upload', [WebController::class, 'upload'])->name('summernote.upload');
 
+Route::get('/create-transaction', [PaypalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('/process-transaction/', [PaypalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('/success-transaction', [PaypalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('/cancel-transaction', [PaypalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 
 Route::get('/dashboard', function () {
@@ -69,13 +80,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('cart/',[CartController::class,'index'])->name('home.cart');
     Route::get('cart/remove/{id}',[CartController::class,'removeCart'])->name('cart.remove');
     Route::get('cart/add/{id}',[CartController::class,'cartAdd'])->name('cart.cartAdd');
     Route::get('cart/cartOneRemove/{id}',[CartController::class,'cartOneRemove'])->name('cart.cartOneRemove');
-
     Route::post('coupon-apply',[CuponController::class,'applyCoupon'])->name('coupon-apply');
     Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remove-coupon');
+
 
 });
 
