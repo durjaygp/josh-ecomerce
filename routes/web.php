@@ -30,6 +30,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\Web\WebProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CuponController;
+use App\Http\Controllers\OrderController;
 
 
 
@@ -87,6 +88,9 @@ Route::middleware('auth')->group(function () {
     Route::get('cart/cartOneRemove/{id}',[CartController::class,'cartOneRemove'])->name('cart.cartOneRemove');
     Route::post('coupon-apply',[CuponController::class,'applyCoupon'])->name('coupon-apply');
     Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remove-coupon');
+
+    //Checkout Controller
+    Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
 
 
 });
