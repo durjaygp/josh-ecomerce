@@ -128,7 +128,7 @@
                 </ul>
 
 
-                <a href="checkout.html" class="default-btn">Proceed to Checkout</a>
+                <a href="{{route('home.checkout')}}" class="default-btn">Proceed to Checkout</a>
             </div>
         </div>
     </div>

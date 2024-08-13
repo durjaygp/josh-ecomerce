@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
 
     //Checkout Controller
     Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
+    Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
 
 
 });

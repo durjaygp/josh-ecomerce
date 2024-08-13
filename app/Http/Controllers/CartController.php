@@ -28,7 +28,7 @@ class CartController extends Controller
     public function removeCart($id){
         $cart = CartItems::find($id);
         $cart->delete();
-        return redirect()->back()->with('success', 'Cart Removed Successfully');
+        return redirect()->back()->with('success', 'Cart Updated Successfully');
     }
 
     public function cartAdd($id){
@@ -36,15 +36,19 @@ class CartController extends Controller
         $cart->update([
             'quantity' => $cart->quantity + 1,
         ]);
-        return redirect()->back()->with('success', 'Cart Added Successfully');
+        return redirect()->back()->with('success', 'Cart Updated Successfully');
     }
 
     public function cartOneRemove($id){
         $cart = CartItems::find($id);
-        $cart->update([
-            'quantity' => $cart->quantity - 1,
-        ]);
-        return redirect()->back()->with('success', 'Cart Removed Successfully');
+        if ($cart->quantity == 1){
+            $this->removeCart($id);
+        }else{
+            $cart->update([
+                'quantity' => $cart->quantity - 1,
+            ]);
+        }
+        return redirect()->back()->with('success', 'Cart Updated Successfully');
     }
 
     /**
