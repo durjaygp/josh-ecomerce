@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('code');
             $table->string('value');
-            $table->string('type');
+            $table->string('type');// 1 = Percent, 2 = Flat Discount
             $table->string('expiry_date')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

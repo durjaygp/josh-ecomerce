@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('order_number')->unique();
             $table->string('coupon_id')->nullable();
             $table->decimal('total_price', 10, 2);
-            $table->text('shipping_address');
-            $table->text('billing_address')->nullable();
+            $table->string('shipping_id');
             $table->string('status')->default(1);
             $table->string('payment_status')->default('1');
             $table->string('shipping_status')->default('1');

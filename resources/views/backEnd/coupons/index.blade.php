@@ -71,7 +71,7 @@
                                                 @if($row->type == 1)
                                                     <span class="badge bg-secondary">Percentage</span>
                                                 @elseif($row->type == 2)
-                                                    <span class="badge bg-danger">Discount</span>
+                                                    <span class="badge bg-danger">Flat Discount</span>
                                                 @endif
                                             </td>
 
