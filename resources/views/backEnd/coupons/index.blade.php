@@ -65,6 +65,8 @@
                                             <td>{{$row->title}}</td>
                                             <td>{{$row->code}}</td>
                                             <td>{{$row->value}}</td>
+
+                                            <td>{{ \Carbon\Carbon::parse($row->expiry_date)->format('d F Y, h:i A') }}</td>
                                             <td>
                                                 @if($row->type == 1)
                                                     <span class="badge bg-secondary">Percentage</span>
@@ -72,7 +74,7 @@
                                                     <span class="badge bg-danger">Discount</span>
                                                 @endif
                                             </td>
-                                            <td>{{$row->expiry_date}}</td>
+
                                             <td>
                                                 @if($row->status == 1)
                                                     <span class="badge bg-secondary">Active</span>
