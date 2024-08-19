@@ -193,6 +193,7 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('admin-products',ProductController::class);
     Route::resource('admin-product-category',ProductCategoryController::class);
     Route::resource('admin-coupons',CuponController::class);
+    // Route::
 
 
 });
