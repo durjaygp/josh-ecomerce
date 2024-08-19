@@ -103,41 +103,35 @@ class OrderController extends Controller
 //        return redirect()->back()->with('success', 'Order successfully');
 //    }
 
-    public function store(Request $request)
-    {
-        // Validate the incoming request
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'company_name' => 'nullable|string|max:255',
-            'address' => 'required|string|max:255',
-            'town' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'details' => 'nullable|string|max:500',
-        ]);
+public function store(Request $request)
+{
+    // Validate the incoming request
+    $request->validate([
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'company_name' => 'nullable|string|max:255',
+        'address' => 'required|string|max:255',
+        'town' => 'required|string|max:255',
+        'state' => 'required|string|max:255',
+        'postal_code' => 'required|string|max:20',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|string|max:20',
+        'details' => 'nullable|string|max:500',
+    ]);
 
-        $user = auth()->user();
+    $user = auth()->user();
 
-        // Store shipping information
-        $shipping = Shiping::updateOrCreate(
-            ['user_id' => $user->id],
-            $request->all()
-        );
+    // Store shipping information
+    $shipping = Shiping::updateOrCreate(
+        ['user_id' => $user->id],
+        $request->all()
+    );
 
-        // Retrieve the main cart and its items
-        $mainCart = Cart::where('user_id', $user->id)->first();
-        $cartItems = CartItems::where('user_id', $user->id)->where('cart_id', $mainCart->id)->get();
+    // Retrieve the main cart and its items
+    $mainCart = Cart::where('user_id', $user->id)->first();
+    $cartItems = CartItems::where('user_id', $user->id)->where('cart_id', $mainCart->id)->get();
 
-        // Calculate the total price
-        $totalPrice = 0;
-        foreach ($cartItems as $item) {
-            $totalPrice += $item->quantity * $item->product->price; // Assuming you have a relationship with Product
-        }
-
-        // PayPal payment process
+    if ($request->radioGroup == 1) {
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -151,52 +145,32 @@ class OrderController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $totalPrice
+                        "value" => "1000.00" // Update this with the actual cart total
                     ]
                 ]
             ]
         ]);
 
         if (isset($response['id']) && $response['id'] != null) {
-            // Store order information
-            $order = Order::create([
-                'user_id' => $user->id,
-                'order_number' => 'ORD-' . strtoupper(Str::random(10)),
-                'coupon_id' => $mainCart->coupon_id,
-                'total_price' => $totalPrice,
-                'shipping_id' => $shipping->id,
-                'status' => 1,
-                'payment_status' => '1', // Set as pending or processing
-                'shipping_status' => '1', // Set as pending or processing
-            ]);
-
-            // Store order items
-            foreach ($cartItems as $item) {
-                OrderItems::create([
-                    'user_id' => $user->id,
-                    'order_id' => $order->id,
-                    'product_id' => $item->product_id,
-                    'quantity' => $item->quantity,
-                    'price' => $item->product->price,
-                    'discount' => 0, // Assuming no discount for now
-                    'total' => $item->quantity * $item->product->price,
-                ]);
-            }
-
-            // Redirect to PayPal approval
+            // redirect to approve href
             foreach ($response['links'] as $links) {
                 if ($links['rel'] == 'approve') {
                     return redirect()->away($links['href']);
                 }
             }
-
-            return redirect()->route('createTransaction')->with('error', 'Something went wrong with the PayPal approval.');
+            return redirect()->back()->with('error', 'No approval link found.');
         } else {
-            return redirect()->route('createTransaction')->with('error', $response['message'] ?? 'Something went wrong with the PayPal process.');
+            \Log::error('PayPal error:', $response);
+            return redirect()->back()->with('error', $response['message'] ?? 'Something went wrong.');
         }
 
-        return redirect()->back()->with('success', 'Order successfully placed.');
+    } elseif ($request->radioGroup == 2) {
+        return "PayPal"; // Ensure this is the expected behavior
     }
+
+    return redirect()->back()->with('success', 'Order successfully placed.');
+}
+
 
 
     public function processTransaction(Request $request)

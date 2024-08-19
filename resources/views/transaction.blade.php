@@ -9,7 +9,7 @@
 <body>
 <h2>Product: Laptop</h2>
 <h3>Price: $5</h3>
-<form action="{{ route('processTransaction') }}" method="get">
+<form action="{{ route('processTransaction') }}" method="post">
     @csrf
     <input type="hidden" name="price" value="5">
     <input type="hidden" name="product_name" value="Laptop">

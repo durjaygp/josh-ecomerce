@@ -1,6 +1,6 @@
 @extends('frontEnd.master')
 @section('title')
-    Cart
+    Checkout
 @endsection
 @section('content')
     <!-- Start Page Banner Area -->
@@ -148,7 +148,7 @@
 
                                     <tr>
                                         <td class="order-shipping">
-                                            <span>Shipping</span>
+                                            <span>Discount</span>
                                         </td>
 
                                         <td class="shipping-price">
@@ -187,13 +187,15 @@
                             <div class="payment-box">
                                 <div class="payment-method">
                                     <p>
-                                        <input type="radio" id="stripe" name="radioGroup" value="1">
-                                        <label for="stripe">Stripe</label>
-                                    </p>
-                                    <p>
-                                        <input type="radio" id="paypal" name="radioGroup" value="2">
+                                        <input type="radio" id="paypal" name="radioGroup" value="1" required>
                                         <label for="paypal">PayPal</label>
                                     </p>
+
+                                    <p>
+                                        <input type="radio" id="stripe" name="radioGroup" value="2" required>
+                                        <label for="stripe">Stripe</label>
+                                    </p>
+
 {{--                                    <p>--}}
 {{--                                        <input type="radio" id="cash-on-delivery" name="radio-group">--}}
 {{--                                        <label for="cash-on-delivery">Cash on Delivery</label>--}}

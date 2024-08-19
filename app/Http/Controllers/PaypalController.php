@@ -31,7 +31,7 @@ class PaypalController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => "5.00"
+                        "value" => "1000.00"
                     ]
                 ]
             ]
@@ -44,11 +44,11 @@ class PaypalController extends Controller
                 }
             }
             return redirect()
-                ->route('createTransaction')
+                ->back()
                 ->with('error', 'Something went wrong.');
         } else {
             return redirect()
-                ->route('createTransaction')
+            ->back()
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
