@@ -193,7 +193,12 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('admin-products',ProductController::class);
     Route::resource('admin-product-category',ProductCategoryController::class);
     Route::resource('admin-coupons',CuponController::class);
-    // Route::
+
+    // Order Details
+    Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');
+    Route::get('/admin/order/invoice/{id}',[AdminOrderController::class,'invoice'])->name('admin-order.invoice');
+
+
 
 
 });

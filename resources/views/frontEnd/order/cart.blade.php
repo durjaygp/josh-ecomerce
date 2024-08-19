@@ -62,7 +62,7 @@
                 <div class="cart-buttons">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-6 col-md-6">
-                            @if($mainCart->coupon_id == null)
+                            @if(optional($mainCart)->coupon_id == null)
                             <form action="{{route('coupon-apply')}}" method="post">
                                 @csrf
                                 <div class="shopping-coupon-code">
@@ -99,19 +99,24 @@
 
                                 <li class="d-flex justify-content-between align-items-center">Discount
                                     <span>
-                                        @if(optional($mainCart->coupon)->type == 1) <!-- Percentage -->
-                                            @php
-                                                $discount = $subtotal * (optional($mainCart->coupon)->value / 100);
-                                            @endphp
-                                            -${{ number_format($discount, 2) }}
-                                            @elseif(optional($mainCart->coupon)->type == 2) <!-- Fixed discount -->
-                                            @php
-                                                $discount = optional($mainCart->coupon)->value;
-                                            @endphp
-                                            -${{ number_format($discount, 2) }}
-                                            @else
-                                                $0.00
-                                            @endif
+                                       @if($mainCart && $mainCart->coupon)
+                                           @if($mainCart->coupon->type == 1) <!-- Percentage -->
+                                               @php
+                                                   $discount = $subtotal * ($mainCart->coupon->value / 100);
+                                               @endphp
+                                               -${{ number_format($discount, 2) }}
+                                               @elseif($mainCart->coupon->type == 2) <!-- Fixed discount -->
+                                               @php
+                                                   $discount = $mainCart->coupon->value;
+                                               @endphp
+                                               -${{ number_format($discount, 2) }}
+                                               @else
+                                                   $0.00
+                                               @endif
+                                           @else
+                                               $0.00
+                                           @endif
+
                                     </span>
                                 </li>
 
