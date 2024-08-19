@@ -61,7 +61,7 @@
             </div>
                 <div class="cart-buttons">
                     <div class="row align-items-center">
-                        <div class="col-lg-7 col-sm-7 col-md-7">
+                        <div class="col-lg-6 col-sm-6 col-md-6">
                             @if($mainCart->coupon_id == null)
                             <form action="{{route('coupon-apply')}}" method="post">
                                 @csrf
@@ -80,56 +80,58 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-lg-5 col-sm-5 col-md-5">
-                            <a href="cart.html" class="default-btn">Update Cart</a>
+                        <div class="col-md-6">
+                               <div class="cart-totals">
+                            <h3>Cart Totals</h3>
+
+                            <ul>
+                                <li class="d-flex justify-content-between align-items-center">Subtotal
+                                    <span>
+                                        @php
+                                            $subtotal = 0;
+                                            foreach ($carts as $item) {
+                                                $subtotal += $item->product->price * $item->quantity;
+                                            }
+                                        @endphp
+                                        ${{ number_format($subtotal, 2) }}
+                                    </span>
+                                </li>
+
+                                <li class="d-flex justify-content-between align-items-center">Discount
+                                    <span>
+                                        @if(optional($mainCart->coupon)->type == 1) <!-- Percentage -->
+                                            @php
+                                                $discount = $subtotal * (optional($mainCart->coupon)->value / 100);
+                                            @endphp
+                                            -${{ number_format($discount, 2) }}
+                                            @elseif(optional($mainCart->coupon)->type == 2) <!-- Fixed discount -->
+                                            @php
+                                                $discount = optional($mainCart->coupon)->value;
+                                            @endphp
+                                            -${{ number_format($discount, 2) }}
+                                            @else
+                                                $0.00
+                                            @endif
+                                    </span>
+                                </li>
+
+                                <li class="d-flex justify-content-between align-items-center">Total
+                                    <span>
+                                    ${{ number_format($subtotal - ($discount ?? 0), 2) }}
+                                </span>
+                                </li>
+                            </ul>
+
+
+                            <a href="{{route('home.checkout')}}" class="default-btn">Proceed to Checkout</a>
                         </div>
+                        </div>
+
+
                     </div>
                 </div>
 
-            <div class="cart-totals">
-                <h3>Cart Totals</h3>
 
-                <ul>
-                    <li class="d-flex justify-content-between align-items-center">Subtotal
-                        <span>
-                            @php
-                                $subtotal = 0;
-                                foreach ($carts as $item) {
-                                    $subtotal += $item->product->price * $item->quantity;
-                                }
-                            @endphp
-                            ${{ number_format($subtotal, 2) }}
-                        </span>
-                    </li>
-
-                    <li class="d-flex justify-content-between align-items-center">Discount
-                        <span>
-                            @if(optional($mainCart->coupon)->type == 1) <!-- Percentage -->
-                                @php
-                                    $discount = $subtotal * (optional($mainCart->coupon)->value / 100);
-                                @endphp
-                                -${{ number_format($discount, 2) }}
-                                @elseif(optional($mainCart->coupon)->type == 2) <!-- Fixed discount -->
-                                @php
-                                    $discount = optional($mainCart->coupon)->value;
-                                @endphp
-                                -${{ number_format($discount, 2) }}
-                                @else
-                                    $0.00
-                                @endif
-                        </span>
-                    </li>
-
-                    <li class="d-flex justify-content-between align-items-center">Total
-                        <span>
-                        ${{ number_format($subtotal - ($discount ?? 0), 2) }}
-                    </span>
-                    </li>
-                </ul>
-
-
-                <a href="{{route('home.checkout')}}" class="default-btn">Proceed to Checkout</a>
-            </div>
         </div>
     </div>
     <!-- End Cart Area -->

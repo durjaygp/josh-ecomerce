@@ -62,7 +62,7 @@ Route::get('/comments/delete/{id}', [CommentController::class,'destroy'])->name(
 Route::post('/summernote/upload', [WebController::class, 'upload'])->name('summernote.upload');
 
 Route::get('/create-transaction', [PaypalController::class, 'createTransaction'])->name('createTransaction');
-Route::get('/process-transaction/', [PaypalController::class, 'processTransaction'])->name('processTransaction');
+Route::post('/process-transaction/', [PaypalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('/success-transaction', [PaypalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('/cancel-transaction', [PaypalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
