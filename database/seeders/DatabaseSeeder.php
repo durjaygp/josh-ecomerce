@@ -26,36 +26,40 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        \App\Models\Role::factory()->create([
-            'id' => 1,
-            'name' => 'user',
-        ]);
+        // \App\Models\Role::factory()->create([
+        //     'id' => 1,
+        //     "guard_name"=>'web',
+        //     'name' => 'user',
+        // ]);
 
-        \App\Models\Role::factory()->create([
-            'id' => 2,
-            'name' => 'admin',
-        ]);
+        // \App\Models\Role::factory()->create([
+        //     'id' => 2,
+        //     "guard_name"=>'web',
+        //     'name' => 'admin',
+        // ]);
 
 
-        \App\Models\User::create([
-            'id' => 1,
-            'name' => 'Durjay Ghosh',
-            'email' => 'admin@gmail.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'), // password = 12345678
-            'remember_token' => Str::random(10),
-            'role_id' => 2
-        ]);
+        // \App\Models\User::create([
+        //     'id' => 1,
+        //     'name' => 'Durjay Ghosh',
+        //     'email' => 'admin@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'password' => bcrypt('12345678'), // password = 12345678
+        //     'remember_token' => Str::random(10),
+        //     'role_id' => 2
+        // ]);
 
-        \App\Models\User::create([
-            'id' => 2,
-            'name' => 'Test User',
-            'email' => 'user@gmail.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'), // password = 12345678
-            'remember_token' => Str::random(10),
-            'role_id' => 1
-        ]);
+        // \App\Models\User::create([
+        //     'id' => 2,
+        //     'name' => 'Test User',
+        //     'email' => 'user@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'password' => bcrypt('12345678'), // password = 12345678
+        //     'remember_token' => Str::random(10),
+        //     'role_id' => 1
+        // ]);
+
+        $this->call(AdminSeeder::class);
 
         \App\Models\Setting::create([
             'id' => 1,
