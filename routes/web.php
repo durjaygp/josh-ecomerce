@@ -62,9 +62,9 @@ Route::get('/comments/delete/{id}', [CommentController::class,'destroy'])->name(
 Route::post('/summernote/upload', [WebController::class, 'upload'])->name('summernote.upload');
 
 Route::get('/create-transaction', [PaypalController::class, 'createTransaction'])->name('createTransaction');
-Route::post('/process-transaction/', [PaypalController::class, 'processTransaction'])->name('processTransaction');
-Route::get('/success-transaction', [PaypalController::class, 'successTransaction'])->name('successTransaction');
-Route::get('/cancel-transaction', [PaypalController::class, 'cancelTransaction'])->name('cancelTransaction');
+Route::post('/process-transaction/', [OrderController::class, 'processTransaction'])->name('processTransaction');
+Route::get('/success-transaction', [OrderController::class, 'successTransaction'])->name('successTransaction');
+Route::get('/cancel-transaction', [OrderController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 Route::controller(StripePaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
