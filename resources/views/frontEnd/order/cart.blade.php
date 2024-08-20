@@ -62,6 +62,7 @@
                 <div class="cart-buttons">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-6 col-md-6">
+
                             @if(optional($mainCart)->coupon_id == null)
                             <form action="{{route('coupon-apply')}}" method="post">
                                 @csrf

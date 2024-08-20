@@ -28,7 +28,7 @@
                 }
             </style>
             <a href="{{route('home')}}">
-                <img src="{{asset($website->website_logo)}}" class="logo-image" style="width:25%;">
+                <img src="{{asset(optional(setting())->website_logo)}}" class="logo-image" style="width:25%;">
             </a>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">

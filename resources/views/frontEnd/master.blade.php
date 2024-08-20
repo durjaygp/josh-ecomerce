@@ -124,8 +124,8 @@
             });
         </script>
     @endforeach
-
 @endif
+
 
 @if(session()->get('success'))
     <script>
@@ -137,6 +137,7 @@
 
     </script>
 @endif
+
 <script src="{{asset('homePage/custom.js')}}"></script>
 
 </body>

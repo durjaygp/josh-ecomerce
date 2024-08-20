@@ -13,7 +13,7 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{asset($website->fav_icon)}}" />
+    <link rel="shortcut icon" type="image/png" href="{{asset(optional(setting())->fav_icon)}}" />
     <!-- Owl Carousel -->
     @yield('style')
     <link rel="stylesheet" href="{{asset('back')}}/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -22,16 +22,16 @@
     <link  id="themeColors"  rel="stylesheet" href="{{asset('back')}}/assets/css/style.min.css" />
     <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 </head>
 <body>
 <!-- Preloader -->
 <div class="preloader">
-    <img src="{{asset($website->fav_icon)}}" alt="loader" class="lds-ripple img-fluid" />
+    <img src="{{asset(optional(setting())->fav_icon)}}" alt="loader" class="lds-ripple img-fluid" />
 </div>
 <!-- Preloader -->
 <div class="preloader">
-    <img src="{{asset($website->fav_icon)}}" alt="loader" class="lds-ripple img-fluid" />
+    <img src="{{asset(optional(setting())->fav_icon)}}" alt="loader" class="lds-ripple img-fluid" />
 </div>
 <!-- Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">

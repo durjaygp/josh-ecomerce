@@ -24,7 +24,7 @@
     <header>
         <div class="row align-items-center gy-3">
             <div class="col-sm-7 text-center text-sm-start">
-                <img id="logo" src="{{asset('homePage/invoice/logo.png')}}" title="Koice" alt="Koice" />
+                <img id="logo" src="{{asset(optional(setting())->website_logo)}}" title="Koice" alt="Koice" class="img-fluid w-50" />
             </div>
             <div class="col-sm-5 text-center text-sm-end">
                 <h4 class="text-7 mb-0">Invoice</h4>
@@ -36,7 +36,7 @@
     <!-- Main Content -->
     <main>
         <div class="row">
-            <div class="col-sm-6"><strong>Date:</strong> 05/12/2020</div>
+            <div class="col-sm-6"><strong>Date:</strong> {{$order->created_at->format('d M Y')}}</div>
             <div class="col-sm-6 text-sm-end"> <strong>Invoice No:</strong> 16835</div>
 
         </div>
@@ -44,26 +44,28 @@
         <div class="row">
             <div class="col-sm-6 text-sm-end order-sm-1"> <strong>Pay To:</strong>
                 <address>
-                    Koice Inc<br />
-                    2705 N. Enterprise St<br />
-                    Orange, CA 92865<br />
-                    contact@koiceinc.com
+                    {{ optional(setting())->name ?? ""}}<br />
+                    {{ optional(setting())->address ?? ""}}<br />
+                    {{ optional(setting())->email ?? ""}}<br />
+                    {{ optional(setting())->phone ?? ""}}
+                    {{ optional(setting())->phone ?? ""}}
                 </address>
             </div>
             <div class="col-sm-6 order-sm-0"> <strong>Invoiced To:</strong>
                 <address>
-                    Smith Rhodes<br />
-                    15 Hodges Mews, High Wycombe<br />
-                    HP12 3JL<br />
-                    United Kingdom
+                    {{$order->ship?->first_name .' '.$order->ship?->last_name}}<br />
+                    {{$order->ship?->address}}<br />
+                    {{$order->ship?->town}}, {{$order->ship?->state}}, {{$order->ship?->postal_code}}<br />
+                    {{$order->ship?->email}}<br />
+                    {{$order->ship?->phone}}
                 </address>
+
             </div>
         </div>
         <div class="table-responsive">
             <table class="table border mb-0">
                 <thead>
                 <tr class="bg-light">
-                    <td class="col-3"><strong>Service</strong></td>
                     <td class="col-4"><strong>Description</strong></td>
                     <td class="col-2 text-center"><strong>Rate</strong></td>
                     <td class="col-1 text-center"><strong>QTY</strong></td>
@@ -71,55 +73,51 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="col-3">Design</td>
-                    <td class="col-4 text-1">Creating a website design</td>
-                    <td class="col-2 text-center">$50.00</td>
-                    <td class="col-1 text-center">10</td>
-                    <td class="col-2 text-end">$500.00</td>
-                </tr>
-                <tr>
-                    <td>Development</td>
-                    <td class="text-1">Website Development</td>
-                    <td class="text-center">$120.00</td>
-                    <td class="text-center">10</td>
-                    <td class="text-end">$1200.00</td>
-                </tr>
-                <tr>
-                    <td>SEO</td>
-                    <td class="text-1">Optimize the site for search engines (SEO)</td>
-                    <td class="text-center">$450.00</td>
-                    <td class="text-center">1</td>
-                    <td class="text-end">$450.00</td>
-                </tr>
+                @foreach($orderItems as $row)
+                    <tr>
+                        <td class="col-4 text-1">{{ $row->product?->name }}</td>
+                        <td class="col-2 text-center">${{ number_format($row->product?->price, 2) }}</td>
+                        <td class="col-1 text-center">{{ $row->quantity }}</td>
+                        <td class="col-2 text-end">${{ number_format($row->product?->price * $row->quantity, 2) }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
+
         <div class="table-responsive">
             <table class="table border border-top-0 mb-0">
                 <tr class="bg-light">
                     <td class="text-end"><strong>Sub Total:</strong></td>
-                    <td class="col-sm-2 text-end">$2150.00</td>
+                    <td class="col-sm-2 text-end">${{ number_format($subTotal, 2) }}</td>
                 </tr>
-                <tr class="bg-light">
-                    <td class="text-end"><strong>Tax:</strong></td>
-                    <td class="col-sm-2 text-end">$215.00</td>
-                </tr>
+
+                @if($discount > 0)
+                    <tr class="bg-light">
+                        <td class="text-end"><strong>Discount:</strong></td>
+                        <td class="col-sm-2 text-end">- ${{ number_format($discount, 2) }}</td>
+                    </tr>
+                @endif
+
                 <tr class="bg-light">
                     <td class="text-end"><strong>Total:</strong></td>
-                    <td class="col-sm-2 text-end">$2365.00</td>
+                    <td class="col-sm-2 text-end">${{ number_format($total, 2) }}</td>
                 </tr>
             </table>
         </div>
+
     </main>
     <!-- Footer -->
     <footer class="text-center mt-4">
         <p class="text-1"><strong>NOTE :</strong> This is computer generated receipt and does not require physical signature.</p>
-        <div class="btn-group btn-group-sm d-print-none"> <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none">
+        <div class="btn-group btn-group-sm d-print-none">
+
+            <a class="btn btn-primary" href="{{route('admin-order.index')}}">Back</a>
+
+            <a href="javascript:window.print()" class="btn btn-success border text-white shadow-none">
                 &#128438; Print & Download</a>
             <br>
 
-            <a class="btn btn-primary" href="{{route('admin-order.index')}}">Back</a>
         </div>
 
     </footer>

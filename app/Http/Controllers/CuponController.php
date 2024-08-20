@@ -92,36 +92,56 @@ class CuponController extends Controller
 
     public function applyCoupon(Request $request)
     {
-        $couponCode = $request->input('code');
+        try {
+            $couponCode = $request->input('code');
 
-        // Find the coupon by code
-        $coupon = Cupon::where('code', $couponCode)->first();
+            // Ensure the coupon code is provided
+            if (!$couponCode) {
+                return redirect()->back()->with('error', 'Please enter a coupon code.');
+            }
 
-        // Check if the coupon is expired
-        if ($coupon->expiry_date && Carbon::parse($coupon->expiry_date)->isPast()) {
-            return redirect()->back()->with('error','Coupon has expired.');
-//            return response()->json(['error' => 'Coupon has expired.']);
-        }
-        // Active and Deactivated
-        if ($coupon->status == 2) {
-            return redirect()->back()->with('error','Coupon has Deactivated.');
-//            return response()->json(['error' => 'Coupon has Deactivated.']);
-        }
+            // Find the coupon by code
+            $coupon = Cupon::where('code', $couponCode)->first();
 
-        if ($coupon) {
+            // Check if the coupon exists
+            if (!$coupon) {
+                return redirect()->back()->with('error', 'Invalid coupon code.');
+            }
+
+            // Check if the coupon is expired
+            if ($coupon->expiry_date && Carbon::parse($coupon->expiry_date)->isPast()) {
+                return redirect()->back()->with('error', 'Coupon has expired.');
+            }
+
+            // Check if the coupon is deactivated
+            if ($coupon->status == 2) {
+                return redirect()->back()->with('error', 'Coupon has been deactivated.');
+            }
+
             // Assuming user is authenticated and cart belongs to the user
-            $cart = Cart::where('user_id',auth()->user()->id)->first();
+            $cart = Cart::where('user_id', auth()->user()->id)->first();
+
+            if (!$cart) {
+                return redirect()->back()->with('error', 'Cart not found.');
+            }
+
             // Apply the coupon to the cart
             $cart->coupon_id = $coupon->id;
             $cart->save();
-        }else {
-            return redirect()->back()->with('error','Invalid coupon code.');
-//            return response()->json(['error' => 'Invalid coupon code.']);
-        }
 
-        return redirect()->back()->with('success','Coupon applied successfully.');
-//        return response()->json(['success' => 'Coupon applied successfully.', 'discount' => $coupon->value]);
+            return redirect()->back()->with('success', 'Coupon applied successfully.');
+
+        } catch (\Exception $e) {
+            // Log the exception for debugging purposes
+            \Log::error('Error applying coupon: ' . $e->getMessage());
+
+            // Redirect back with a generic error message
+            return redirect()->back()->with('error', 'An error occurred while applying the coupon. Please try again.');
+        }
     }
+
+
+
 
 
     public function removeCoupon()
