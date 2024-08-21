@@ -153,7 +153,7 @@ class OrderController extends Controller
             }
 
         } elseif ($request->radioGroup == 2) {
-            return "PayPal"; // Ensure this is the expected behavior
+            return view('stripe');
         }
 
         return redirect()->back()->with('success', 'Order successfully placed.');
@@ -199,7 +199,7 @@ class OrderController extends Controller
                      ]);
                  }
                  $delCart = Cart::where('user_id', $orderData['user_id'])->first();
-                 
+
                  // Delete the cart items
                  CartItems::where('cart_id', $delCart->id)->delete();
 
