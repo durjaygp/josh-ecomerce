@@ -26,12 +26,18 @@ class WebController extends Controller
         return view('frontEnd.home.index',compact('latestBlogs','categoryWiseBlogs','leftBlogs','randomBlogs'));
     }
 
+    public function blog(){
+        $blogs = Blog::latest()->whereStatus(1)->paginate(8);
+        return view('frontEnd.blog.index',compact('blogs'));
+    }
+
+
     public function blogDetails($slug){
         $blog = Blog::where('slug',$slug)->firstOrFail();
         $blogs = Blog::latest()->whereStatus(1)->whereCategoryId($blog->category_id)->take(4)->get();
         $wordCount = str_word_count(strip_tags($blog->main_content));
         $readingTime = ceil($wordCount / 200);
-        return view('frontEnd.blog.index',compact('blog','readingTime','blogs'));
+        return view('frontEnd.blog.details',compact('blog','readingTime','blogs'));
     }
 
     public function pageDetails($slug){
@@ -39,10 +45,9 @@ class WebController extends Controller
         return view('frontEnd.page.details',compact('page'));
     }
 
-
     public function category($slug) {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $blogs = Blog::where('category_id', $category->id)->whereStatus(1)->paginate(15);
+        $blogs = Blog::where('category_id', $category->id)->whereStatus(1)->paginate(9);
         return view('frontEnd.blog.category', compact('category', 'blogs'));
     }
 

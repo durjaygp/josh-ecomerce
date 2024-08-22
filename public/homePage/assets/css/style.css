@@ -4768,36 +4768,36 @@ Page Banner Area CSS
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     z-index: 0;
 }
 
 .page-banner-area {
   /*background-image: url('/public/web/images/df.jpg') !important;*/
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 120px;
-  padding-bottom: 150px;
+  /*background-position: center center;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
-.page-banner-area.bg-2 {
-  background-image: url(../../assets/images/page-banner/banner-bg-2.jpg);
-}
+/*.page-banner-area.bg-2 {*/
+/*  background-image: url(../../assets/images/page-banner/banner-bg-2.jpg);*/
+/*}*/
 
-.page-banner-area.bg-3 {
-  background-image: url(../../assets/images/page-banner/banner-bg-3.jpg);
-}
+/*.page-banner-area.bg-3 {*/
+/*  background-image: url(../../assets/images/page-banner/banner-bg-3.jpg);*/
+/*}*/
 
-.page-banner-area.bg-4 {
-  background-image: url(../../assets/images/page-banner/banner-bg-4.jpg);
-}
+/*.page-banner-area.bg-4 {*/
+/*  background-image: url(../../assets/images/page-banner/banner-bg-4.jpg);*/
+/*}*/
 
 
-.page-banner-area.bg-6 {
-  background-image: url(../../assets/images/page-banner/banner-bg-6.jpg);
-  background-attachment: fixed;
-}
+/*.page-banner-area.bg-6 {*/
+/*  background-image: url(../../assets/images/page-banner/banner-bg-6.jpg);*/
+/*  background-attachment: fixed;*/
+/*}*/
 
 .page-banner-content h2 {
   font-size: 70px;
@@ -8395,7 +8395,7 @@ Products Details Area CSS
 }
 
 .products-details-desc .price .old-price {
-  text-decoration: line-through;
+  /*text-decoration: line-through;*/
   color: var(--optional-color);
   font-weight: 600;
   position: relative;
@@ -8435,7 +8435,6 @@ Products Details Area CSS
 .products-details-desc .products-meta span span.in-stock {
   color: #05CE69;
 }
-
 .products-details-desc .products-meta span a {
   display: inline-block;
   color: var(--paragraph-color);

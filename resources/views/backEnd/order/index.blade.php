@@ -50,6 +50,7 @@
                                         <th>Customer Details</th>
                                         <th>Price</th>
                                         <th>Shipping Address</th>
+                                        <th>Payment Method</th>
                                         <th>Payment Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -73,6 +74,9 @@
                                                 <p>{{$row->ship?->phone}}</p>
                                             </td>
                                             <td>
+                                                <p>{{$row->payment_method}}</p>
+                                            </td>
+                                            <td>
                                                 @if($row->payment_status == "paid")
                                                     <span class="badge bg-secondary">Paid</span>
                                                 @else
@@ -83,7 +87,7 @@
                                             <td>
                                                 <div class="action-btn">
                                                     <a href="{{route('admin-order.invoice',$row->id)}}" class="btn btn-sm btn-primary">
-                                                        <i class="ti ti-pencil fs-5"></i>
+                                                        <i class="ti ti-file-invoice fs-5"></i>
                                                     </a>
                                                     <a href="#"
                                                        onclick="event.preventDefault();

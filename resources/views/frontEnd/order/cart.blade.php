@@ -4,12 +4,14 @@
 @endsection
 @section('content')
     <!-- Start Page Banner Area -->
-    <div class="page-banner-area bg-5 jarallax" data-jarallax='{"speed": 0.3}' style="background-image: url({{ asset('homePage/assets/images/page-banner/banner-bg-5.jpg') }});">
+    <div class="page-banner-area bg-4 jarallax" data-jarallax='{"speed": 0.3}'>
         <div class="container">
-            <div class="page-banner-content" data-aos="fade-right" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
-                <h2>Cart</h2>
+            <div class="page-banner-content text-center" data-aos="fade-center" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                <h2 class="text-black">@yield('title')</h2>
                 <ul>
-                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li>
+                        <a href="{{route('home')}}">Home</a>
+                    </li>
                     <li>Cart</li>
                 </ul>
             </div>

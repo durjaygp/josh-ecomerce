@@ -46,10 +46,13 @@ use App\Http\Controllers\OrderController;
 
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
-Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
+Route::get('/details/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
+Route::get('/blog', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
+Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
+
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
 Route::get('/about-me', [WebController::class,'about'])->name('home.about');
