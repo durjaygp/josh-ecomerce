@@ -4158,13 +4158,13 @@ Overview Area CSS
 Page Banner Area CSS
 =================================================*/
 .page-banner-area {
-    background-image: url(../../assets/images/page-banner/banner-bg.jpg);
+    //background-image: url(../../assets/images/page-banner/banner-bg.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: {
-        top: 120px;
-        bottom: 150px;
+        top: 60px;
+        bottom: 60px;
     };
     &.bg-2 {
         background-image: url(../../assets/images/page-banner/banner-bg-2.jpg);
@@ -7403,7 +7403,7 @@ Products Details Area CSS
         letter-spacing: 1px;
 
         .old-price {
-            text-decoration: line-through;
+            //text-decoration: line-through;
             color: var(--optional-color);
             font-weight: 600;
             position: relative;

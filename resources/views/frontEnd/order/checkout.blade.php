@@ -4,21 +4,21 @@
 @endsection
 @section('content')
     <!-- Start Page Banner Area -->
-{{--    <div class="page-banner-area bg-2 jarallax" data-jarallax='{"speed": 0.3}'>--}}
-{{--        <div class="container">--}}
-{{--            <div class="page-banner-content" data-aos="fade-right" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">--}}
-{{--                <h2>Checkout</h2>--}}
-
-{{--                <ul>--}}
-{{--                    <li>--}}
-{{--                        <a href="index.html">Home</a>--}}
-{{--                    </li>--}}
-{{--                    <li>Checkout</li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="page-banner-area bg-4 jarallax" data-jarallax='{"speed": 0.3}'>
+        <div class="container">
+            <div class="page-banner-content text-center" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                <h2 class="text-black">@yield('title')</h2>
+                <ul>
+                    <li>
+                        <a href="{{route('home')}}">Home</a>
+                    </li>
+                    <li>Checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- End Page Banner Area -->
+
     <!-- Start Checkout Area -->
     <div class="checkout-area ptb-100">
         <div class="container">

@@ -106,6 +106,7 @@ class StripePaymentController extends Controller
             'status' => 'completed',
             'payment_status' => 'paid',
             'shipping_status' => 'pending',
+            'payment_method' => 'Stripe',
         ]);
 
         // Store order items

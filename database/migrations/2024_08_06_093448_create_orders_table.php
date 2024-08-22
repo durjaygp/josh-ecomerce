@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status')->default(1);
             $table->string('payment_status')->default('1');
             $table->string('shipping_status')->default('1');
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

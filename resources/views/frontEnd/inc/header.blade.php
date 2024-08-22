@@ -98,6 +98,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{route('home.blogs')}}" class="nav-link ">Blog</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="https://jsb-tech.com/contact-us" class="nav-link ">Contact Us</a>
                         </li>
                         @auth
