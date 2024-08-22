@@ -31,7 +31,9 @@ use App\Http\Controllers\Web\WebProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CuponController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminFaqController;
+use App\Http\Controllers\Admin\AdminSliderController;
 
 
 
@@ -196,6 +198,10 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('admin-products',ProductController::class);
     Route::resource('admin-product-category',ProductCategoryController::class);
     Route::resource('admin-coupons',CuponController::class);
+
+    Route::resource('admin-service',AdminServiceController::class);
+    Route::resource('admin-faq',AdminFaqController::class);
+    Route::resource('admin-slider',AdminSliderController::class);
 
     // Order Details
     Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');

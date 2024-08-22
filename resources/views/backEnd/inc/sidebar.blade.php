@@ -98,6 +98,33 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-service.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-world-code"></i>
+                  </span>
+                            <span class="hide-menu">Services</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-faq.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-bell-question"></i>
+                  </span>
+                            <span class="hide-menu">FAQ</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-slider.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-slideshow"></i>
+                  </span>
+                            <span class="hide-menu">Slider</span>
+                        </a>
+                    </li>
+
 
                 <!-- =================== -->
                     <!-- Recipe Intro -->

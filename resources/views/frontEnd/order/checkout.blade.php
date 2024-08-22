@@ -3,6 +3,7 @@
     Checkout
 @endsection
 @section('content')
+
     <!-- Start Page Banner Area -->
     <div class="page-banner-area bg-4 jarallax" data-jarallax='{"speed": 0.3}'>
         <div class="container">

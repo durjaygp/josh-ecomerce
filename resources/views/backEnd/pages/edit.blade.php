@@ -30,7 +30,11 @@
                         <div class="col-md-4 ">
                             <h2>@yield('title')</h2>
                         </div>
-
+                        <div class="mt-3 col-md-8 text-end d-flex justify-content-md-end justify-content-center mt-md-0">
+                            <a href="{{route('new-page.index')}}" class="btn btn-info d-flex align-items-center">
+                                <i class="text-white ti ti-new-section me-1 fs-5"></i> Pages List
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -75,7 +79,7 @@
                                         <div class="mb-4">
                                             <label for="exampleInputPassword1" class="form-label fw-semibold">Status</label>
                                             <select name="status" class="form-select">
-                                                <option>Select</option>
+                                                <option value="">Select</option>
                                                 <option value="1" @selected(old('status', $row->status) == 1)>Active</option>
                                                 <option value="2" @selected(old('status', $row->status) == 2)>Inactive</option>
                                             </select>
@@ -86,7 +90,7 @@
                                         <div class="mb-4">
                                             <label for="exampleInputPassword1" class="form-label fw-semibold">Is Featured</label>
                                             <select name="is_featured" class="form-select">
-                                                <option>Select</option>
+                                                <option value="">Select</option>
                                                 <option value="1" @selected(old('is_featured', $row->is_featured) == 1)>Featured</option>
                                                 <option value="2" @selected(old('is_featured', $row->is_featured) == 2)>Not Featured</option>
                                             </select>
