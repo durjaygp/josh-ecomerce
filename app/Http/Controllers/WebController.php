@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\NewPages;
 use App\Models\Page;
 use App\Models\Project;
+use App\Models\Service;
+use App\Models\Slider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Auth;
@@ -18,12 +20,14 @@ use Illuminate\Http\Response; // Import the Response class
 class WebController extends Controller
 {
     public function index(){
-        $categoryWiseBlogs = Category::with('blog')->whereStatus(1)->get();
-        $randomBlogs = Blog::where('status', 1)->inRandomOrder()->take(2)->get();
-
-        $latestBlogs = Blog::latest()->whereStatus(1)->take(9)->get();
-        $leftBlogs = Blog::latest()->whereStatus(1)->take(15)->get();
-        return view('frontEnd.home.index',compact('latestBlogs','categoryWiseBlogs','leftBlogs','randomBlogs'));
+        $latestBlogs = Blog::latest()->whereStatus(1)->take(6)->get();
+        $sliders = Slider::latest()->whereStatus(1)->get();
+        $services = Service::latest()->whereStatus(1)->take(3)->get();
+        return view('frontEnd.home.index',compact('latestBlogs','sliders','services'));
+    }
+    public function services(){
+        $services = Service::latest()->whereStatus(1)->take(6)->get();
+        return view('frontEnd.home.index',compact('services'));
     }
 
     public function blog(){

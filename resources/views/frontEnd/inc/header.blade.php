@@ -28,9 +28,6 @@
         </div>
     </div>
 </div>
-<div style="position:fixed; bottom: 10px; left: 10px; z-index:99999;">
-    <a href="https://support.jsb-tech.com/" target="_blank"><img src="{{asset('site')}}/remote-support-button.png" class="img-fluid" alt="support" width="80"></a>
-</div>
 
 <div class="navbar-area">
     <div class="main-responsive-nav">

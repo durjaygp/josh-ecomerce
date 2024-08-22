@@ -90,5 +90,26 @@
 
     </script>
 @endif
+
+@if(session()->get('error'))
+    <script>
+        iziToast.error({
+            title: '',
+            position:'topRight',
+            message: '{{session()->get('error')}}',
+        });
+    </script>
+@endif
+
+@if(session()->get('warning'))
+    <script>
+        iziToast.warning({
+            title: '',
+            position:'topRight',
+            message: '{{session()->get('warning')}}',
+        });
+    </script>
+@endif
+
 </body>
 </html>

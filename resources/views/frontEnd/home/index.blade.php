@@ -7,36 +7,36 @@
 
     <div class="main-hero-area">
         <div class="hero-slides owl-carousel owl-theme">
+            @foreach($sliders as $row)
+                <div class="main-hero-item jarallax"  style="background-image: url({{asset($row->image)}});" data-jarallax='{"speed": 0.3}'>
+                    <div class="container-fluid">
+                        <div class="main-hero-content">
+                            <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">{{$row->upper_subtitle}}</span>
+                            <h1 data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                {{$row->title}}
+                                <span class="overlay"></span>
+                            </h1>
+                            <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                {!! $row->description !!}
+                            </p>
 
-
-            <div class="main-hero-item jarallax"  style="background-image: url(https://jsb-tech.com/public/images/slider/1620191276_slider.jpg);" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="main-hero-content">
-                        <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">WE ARE LEADING TECHNOLOGY SOLUTIONS PROVIDING COMPANY</span>
-                        <h1 data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                            Let us eliminate any technology struggles or difficulties.
-                            <span class="overlay"></span>
-                        </h1>
-                        <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                            JSB-Tech LLC provides technology solutions and or services to make your business run more efficient and business ready.
-                        </p>
-
-                        <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                            <a href="https://jsb-tech.com/login" class="default-btn">Sign Up Now</a>
+                            <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                <a href="{{route('register')}}" class="default-btn">Sign Up Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="hero-shape-1">
-            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-1.png" alt="image">
+            <img src="{{asset('homePage/assets/images/main-hero/slides-shape-1.png')}}" alt="image">
         </div>
         <div class="hero-shape-2">
-            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-2.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/main-hero/slides-shape-2.png" alt="image">
         </div>
         <div class="hero-shape-3">
-            <img src="{{asset('homePage')}}assets/images/main-hero/slides-shape-3.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/main-hero/slides-shape-3.png" alt="image">
         </div>
     </div>
     <!-- End Main Hero Area -->
@@ -58,64 +58,36 @@
                 <p>JSB-Tech LLC provides technology solutions and services to make your business run more efficiently and business-ready.</p>
             </div>
 
-            <div class="row justify-content-center overflow-hidden" style="height:515px">
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="services-item h-100">
-                        <div class="services-image">
-                            <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">
-                                <img src="https://jsb-tech.com/public/images/services/1620209915_service.jpg" alt="image"></a>
-                        </div>
-                        <div class="services-content">
-                            <h3>
-                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">Consult and install Layered Security to protect your company from cyber threats.</a>
-                            </h3>
-                            <p>JSB-Tech LLC will provide you with a project plan along with mediation plan. </p>
-                            <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats" class="services-btn">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="services-item h-100">
-                        <div class="services-image">
-                            <a href="https://jsb-tech.com/service/our-service/cyber-security">
-                                <img src="https://jsb-tech.com/public/images/services/1705936205_service.png" alt="image"></a>
-                        </div>
-                        <div class="services-content">
-                            <h3>
-                                <a href="https://jsb-tech.com/service/our-service/cyber-security">Cyber Security</a>
-                            </h3>
-                            <p><p><span style="background-color: transparent; color: rgb(0, 0, 0); "></span> </p>
-                            <a href="https://jsb-tech.com/service/our-service/cyber-security" class="services-btn">Read More</a>
+            <div class="overflow-hidden row justify-content-center" style="height:515px">
+                @foreach($services as $row)
+                    <div class="col-lg-4 col-md-6 h-100">
+                        <div class="services-item h-100">
+                            <div class="services-image">
+                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">
+                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}"></a>
+                            </div>
+                            <div class="services-content">
+                                <h3>
+                                    <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">{{$row->title}}</a>
+                                </h3>
+                                <p>{!! $row->description !!}</p>
+                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats" class="services-btn">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="services-item h-100">
-                        <div class="services-image">
-                            <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery">
-                                <img src="https://jsb-tech.com/public/images/services/1620207828_service.jpg" alt="image"></a>
-                        </div>
-                        <div class="services-content">
-                            <h3>
-                                <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery">Data backup and Recovery</a>
-                            </h3>
-                            <p><p>JSB-Tech has the experience and understanding to provide every aspect of your... </p>
-                            <a href="https://jsb-tech.com/service/managed-it-services/data-backup-and-recovery" class="services-btn">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
-            <div class="services-all-btn mt-5">
+            <div class="mt-5 services-all-btn">
                 <a href="https://jsb-tech.com/services" class="default-btn">Explore All Services</a>
             </div>
         </div>
 
         <div class="services-shape-1">
-            <img src="{{asset('homePage')}}assets/images/services/services-shape-1.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/services/services-shape-1.png" alt="image">
         </div>
         <div class="services-shape-2">
-            <img src="{{asset('homePage')}}assets/images/services/services-shape-2.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/services/services-shape-2.png" alt="image">
         </div>
     </div>
     <!-- End Services Area -->
@@ -253,13 +225,13 @@
 
                 <div class="col-lg-6 col-md-12">
                     <div class="skill-image" data-aos="fade-left" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
-                        <img src="https://jsb-tech.com/public/web/images/fr.jpg" alt="IT Management" data-tilt>
+                        <img src="{{asset('homePage/fr.jpg')}}" alt="IT Management" data-tilt>
 
                         <div class="skill-shape-1">
-                            <img src="{{asset('homePage')}}assets/images/skill/skill-shape-1.png" alt="image">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image">
                         </div>
                         <div class="skill-shape-2">
-                            <img src="{{asset('homePage')}}assets/images/skill/skill-shape-2.png" alt="image">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-2.png" alt="image">
                         </div>
                     </div>
                 </div>
@@ -267,15 +239,54 @@
         </div>
 
         <div class="skill-bg-shape">
-            <img src="{{asset('homePage')}}assets/images/skill/skill-bg-shape.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/skill/skill-bg-shape.png" alt="image">
         </div>
     </div>
     <!-- End Skill Area -->
 
+    <!-- Start Blog Area -->
+    <div class="blog-area pt-100 pb-75">
+        <div class="container">
+            <div class="section-title">
+                <span>ARTICLE</span>
+                <h2>Read Our Blog To Get All Recent Tech <b>News</b> <span class="overlay"></span></h2>
+            </div>
+
+            <div class="blog-slides owl-carousel owl-theme">
+                @foreach($latestBlogs as $row)
+                    <div class="blog-card" data-aos="fade-up" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="blog-image">
+                                    <a href="{{route('home.blog',$row->slug)}}"><img src="{{asset($row->image)}}" alt="{{$row->name}}"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog-content">
+                                    <div class="date">{{$row->created_at->format('d M Y')}}</div>
+                                    <h3>
+                                        <a href="{{route('home.blog',$row->slug)}}">{{$row->name}}</a>
+                                    </h3>
+                                    <p>{{\Illuminate\Support\Str::limit($row->description,110)}}</p>
+                                    <a href="{{route('home.blog',$row->slug)}}" class="blog-btn">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="blog-shape-1">
+            <img src="assets/images/blog/blog-shape-1.png" alt="image">
+        </div>
+    </div>
+    <!-- End Blog Area -->
+
     <div class="talk-area ptb-100 w-100" id="contact-form">
         <div class="container">
             <div class="row align-items-center bg-light">
-                <div class="col-lg-6 col-md-12 p-5 con-rg-sc">
+                <div class="p-5 col-lg-6 col-md-12 con-rg-sc">
                     <div class="button-area position-relative">
                         <h2 class="" style="color:white;">
                             LET US ELIMINATE
@@ -285,7 +296,7 @@
     color: black;"><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">We are committed to providing quality IT Services</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">Provided by experts to help challenge critical activities</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;JSB-Tech LLC is a company with employees that have a passion for technology and want to do a good job.</span></li></ul><ul class="icon-list-items">
                         </ul>
 
-                        <a href="https://jsb-tech.com/about-us" class="btn default-btn mt-2"> Learn More  </a>
+                        <a href="https://jsb-tech.com/about-us" class="mt-2 btn default-btn"> Learn More  </a>
                     </div>
                 </div>
 
@@ -344,9 +355,9 @@
                                     <div data-sitekey="6LfY_SAkAAAAAK_UZFLnxFfWj36HYisD59zAz6Ol" class="g-recaptcha"></div>
                                 </div>
 
-                                <div class="col-lg-12 col-md-12 mt-2">
+                                <div class="mt-2 col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn">Submit<span></span></button>
-                                    <div id="msgSubmitTwo" class="h3 text-center hidden"></div>
+                                    <div id="msgSubmitTwo" class="hidden text-center h3"></div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -357,5 +368,5 @@
         </div>
     </div>
 
-    <!-- Start Blog Area -->
+
 @endsection

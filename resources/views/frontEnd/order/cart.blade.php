@@ -37,10 +37,10 @@
                     @foreach($carts as $row)
                         <tr>
                             <td class="product-thumbnail">
-                                <a href="#"><img src="{{ asset($row->product->image) }}" alt="item"></a>
+                                <a href="{{route('home.product',$row->product->slug)}}"><img src="{{ asset($row->product->image) }}" alt="item"></a>
                             </td>
                             <td class="product-name">
-                                <a href="products-details.html">{{ $row->product->name }}</a>
+                                <a href="{{route('home.product',$row->product->slug)}}">{{ $row->product->name }}</a>
                             </td>
                             <td class="product-price"><span class="unit-amount">${{ $row->product->price }}</span></td>
                             <td class="product-quantity">

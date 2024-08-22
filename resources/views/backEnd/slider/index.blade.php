@@ -47,7 +47,7 @@
                                     <!-- start row -->
                                     <tr>
                                         <th>#</th>
-                                        <th width="350px">Image</th>
+                                        <th width="250px">Image</th>
                                         <th>Slider Title</th>
                                         <th>Upper Subtitle</th>
                                         <th>Description</th>
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td><img src="{{asset($row->image)}}" alt="" class="img-fluid w-50"></td>
-                                        <td>{{$row->title}}</td>
+                                        <td>{{\Illuminate\Support\Str::limit($row->title,30)}}</td>
                                         <td>{{\Illuminate\Support\Str::limit($row->upper_subtitle,20)}}</td>
                                         <td>{{\Illuminate\Support\Str::limit($row->description,20)}}</td>
                                         <td>

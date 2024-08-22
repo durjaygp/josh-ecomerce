@@ -19,10 +19,13 @@ class OrderController extends Controller
     public function index()
     {
         $user = auth()->user()->id;
-        $carts = CartItems::where('user_id',$user)->get();
         $mainCart = Cart::where('user_id',$user)->first();
-        $ship = Shiping::where('user_id',$user)->first();
-        return view('frontEnd.order.checkout',compact('ship','carts','mainCart'));
+        if ($mainCart){
+            $carts = CartItems::where('user_id',$user)->get();
+            $ship = Shiping::where('user_id',$user)->first();
+            return view('frontEnd.order.checkout',compact('ship','carts','mainCart'));
+        }
+        return redirect()->route('home.products')->with('error','Please add some product');
     }
 
     /**

@@ -50,6 +50,7 @@ use App\Http\Controllers\Admin\AdminSliderController;
 Route::get('/', [WebController::class,'index'])->name('home');
 Route::get('/details/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blog', [WebController::class,'blog'])->name('home.blogs');
+Route::get('/services', [WebController::class,'services'])->name('home.services');
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
@@ -97,6 +98,10 @@ Route::middleware('auth')->group(function () {
     //Checkout Controller
     Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
     Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
+
+    // User Routes
+
+
 
 
 });
