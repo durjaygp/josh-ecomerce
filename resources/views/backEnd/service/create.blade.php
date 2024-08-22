@@ -1,5 +1,5 @@
 @extends('backEnd.master')
-@section('title','Create Pages')
+@section('title','Create Services')
 @section('content')
     <div class="container-fluid">
         <div class="overflow-hidden shadow-none card bg-light-info position-relative">
@@ -31,38 +31,74 @@
                             <h2>@yield('title')</h2>
                         </div>
                         <div class="mt-3 col-md-8 text-end d-flex justify-content-md-end justify-content-center mt-md-0">
-                            <a href="{{route('new-page.index')}}" class="btn btn-info d-flex align-items-center">
-                                <i class="text-white ti ti-new-section me-1 fs-5"></i> Pages List
+                            <a href="{{route('admin-service.index')}}" class="btn btn-info d-flex align-items-center">
+                                <i class="text-white ti ti-new-section me-1 fs-5"></i> Services List
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{route('new-page.store')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin-service.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Page Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Page Title" >
+                                    <label for="serviceTitle" class="form-label fw-semibold">Service Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="Service Title" value="{{ old('title') }}">
+                                    @error('title')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Description</label>
-                                    <textarea name="description" id="" cols="10" rows="5" class="form-control" placeholder="Write a short Description"></textarea>
+                                    <label for="description" class="form-label fw-semibold">Description</label>
+                                    <textarea name="description" id="description" cols="10" rows="5" class="form-control" placeholder="Write a short Description">{{ old('description') }}</textarea>
+                                    @error('description')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="exampleInputPassword1" class="form-label fw-semibold"> Image</label>
+                                <label for="image" class="form-label fw-semibold"> Image</label>
                                 <input class="dropify" type="file" name="image" accept="image/*">
+                                @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Page Content</label>
-                                    <textarea name="main_content" id="summernote" cols="10" rows="5" class="form-control" placeholder="Write a short Description"></textarea>
+                                    <label for="main_content" class="form-label fw-semibold">Service Content</label>
+                                    <textarea name="main_content" id="summernote" cols="10" rows="5" class="form-control" placeholder="Write a short Description">{{ old('main_content') }}</textarea>
+                                    @error('main_content')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <hr>
+
+
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="seo_description" class="form-label fw-semibold">Seo Description</label>
+                                    <input type="text" name="seo_description" class="form-control" id="seo_description" placeholder="seo description" value="{{ old('seo_description') }}">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="seo_tags" class="form-label fw-semibold">Seo Tags</label>
+                                    <input type="text" name="seo_tags" class="form-control" id="seo_tags" placeholder="seo_tags" value="{{ old('seo_tags') }}">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="seo_keywords" class="form-label fw-semibold">Seo Keywords</label>
+                                    <input type="text" name="seo_keywords" class="form-control" id="seo_keywords" placeholder="seo keywords" value="{{ old('seo_keywords') }}">
                                 </div>
                             </div>
 
@@ -70,34 +106,23 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-4">
-                                            <label for="exampleInputPassword1" class="form-label fw-semibold">Status</label>
+                                            <label for="status" class="form-label fw-semibold">Status</label>
                                             <select name="status" class="form-select">
                                                 <option value="">Select</option>
-                                                <option value="1">Active</option>
-                                                <option value="2">Inactive</option>
+                                                <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
+                                                <option value="2" {{ old('status') == 2 ? 'selected' : '' }}>Inactive</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-
-                                            <div class="mb-4">
-                                                <label for="exampleInputPassword1" class="form-label fw-semibold">Is Featured</label>
-                                                <select name="is_featured" class="form-select">
-                                                    <option value="">Select</option>
-                                                    <option value="1">Featured</option>
-                                                    <option value="2">Not Featured</option>
-                                                </select>
-
+                                            @error('status')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
                         <button class="btn btn-primary">Submit</button>
                     </form>
+
                 </div>
             </div>
 
@@ -107,14 +132,11 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('/')}}dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="{{asset('back')}}/assets/libs/summernote/dist/summernote-lite.min.css">
-
-    <link rel="stylesheet" href="{{asset('back')}}/assets/libs/quill/dist/quill.snow.css">
 @endsection
 @section('script')
 
     <script src="{{asset('/')}}dropify/dist/js/dropify.min.js"></script>
     <script src="{{asset('back')}}/assets/libs/summernote/dist/summernote-lite.min.js"></script>
-    <script src="{{asset('back')}}/assets/libs/quill/dist/quill.min.js"></script>
     <script>
         $("#summernote").summernote({
             height: 350, // set editor height
@@ -129,11 +151,6 @@
                 'remove':  'Remove',
                 'error':   'Ooops, something wrong happended.'
             }
-        });
-    </script>
-    <script>
-        var quill = new Quill("#editor", {
-            theme: "snow",
         });
     </script>
 @endsection

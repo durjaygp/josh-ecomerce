@@ -38,77 +38,100 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{route('blog.save')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('blog.save') }}" enctype="multipart/form-data">
                         @csrf
-
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="mb-4">
                                     <label for="blog_title" class="form-label fw-semibold">Blog Title</label>
-                                    <input type="text" name="name" class="form-control" id="blog_title" placeholder="Blog Title" required>
+                                    <input type="text" name="name" class="form-control" id="blog_title" placeholder="Blog Title" value="{{ old('name') }}" required>
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Category</label>
+                                    <label for="category" class="form-label fw-semibold">Category</label>
                                     @php
                                         $categories = \App\Models\Category::latest()->get();
                                     @endphp
-                                    <select name="category_id" id="" class="form-control" required>
+                                    <select name="category_id" id="category" class="form-control" required>
                                         <option>Select Category</option>
                                         @foreach($categories as $row)
-                                            <option value="{{$row->id}}" >{{$row->name}}</option>
+                                            <option value="{{ $row->id }}" {{ old('category_id') == $row->id ? 'selected' : '' }}>{{ $row->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Short description</label>
-                                    <textarea name="description" id="editor" class="form-control" placeholder="Short description" required></textarea>
+                                    <label for="description" class="form-label fw-semibold">Short description</label>
+                                    <textarea name="description" id="editor" class="form-control" placeholder="Short description" required>{{ old('description') }}</textarea>
+                                    @error('description')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Image</label>
+                                    <label for="image" class="form-label fw-semibold">Image</label>
                                     <input type="file" name="image" class="form-control dropify" required>
+                                    @error('image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Main Blog Content</label>
-                                    <textarea name="main_content" id="summernote" cols="30" rows="10" required></textarea>
+                                    <label for="main_content" class="form-label fw-semibold">Main Blog Content</label>
+                                    <textarea name="main_content" id="summernote" cols="30" rows="10" required>{{ old('main_content') }}</textarea>
+                                    @error('main_content')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Status</label>
-                                    <select name="status" id="" class="form-select" required="">
-                                        <option value="1">Publish</option>
-                                        <option value="2">Draft/Unpublished</option>
+                                    <label for="status" class="form-label fw-semibold">Status</label>
+                                    <select name="status" id="status" class="form-select" required>
+                                        <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Publish</option>
+                                        <option value="2" {{ old('status') == 2 ? 'selected' : '' }}>Draft/Unpublished</option>
                                     </select>
+                                    @error('status')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <hr>
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Seo Description</label>
-                                    <input type="text" name="seo_description" class="form-control" id="exampleInputtext" placeholder="seo description">
+                                    <label for="seo_description" class="form-label fw-semibold">Seo Description</label>
+                                    <input type="text" name="seo_description" class="form-control" id="seo_description" placeholder="Seo description" value="{{ old('seo_description') }}">
+                                    @error('seo_description')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Seo Tags</label>
-                                    <input type="text" name="seo_tags" class="form-control" id="exampleInputtext" placeholder="seo_tags">
+                                    <label for="seo_tags" class="form-label fw-semibold">Seo Tags</label>
+                                    <input type="text" name="seo_tags" class="form-control" id="seo_tags" placeholder="Seo Tags" value="{{ old('seo_tags') }}">
+                                    @error('seo_tags')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Seo Keywords</label>
-                                    <input type="text" name="seo_keywords" class="form-control" id="exampleInputtext" placeholder="seo keywords">
+                                    <label for="seo_keywords" class="form-label fw-semibold">Seo Keywords</label>
+                                    <input type="text" name="seo_keywords" class="form-control" id="seo_keywords" placeholder="Seo Keywords" value="{{ old('seo_keywords') }}">
+                                    @error('seo_keywords')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12">
@@ -117,8 +140,8 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
 
-                     </form>
                 </div>
             </div>
 
