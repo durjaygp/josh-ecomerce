@@ -56,7 +56,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="https://jsb-tech.com/about-us" class="nav-link ">About</a>
+                            <a href="{{route('home.about')}}" class="nav-link ">About</a>
                         </li>
 
 
@@ -83,7 +83,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="https://jsb-tech.com/faq" class="nav-link ">FAQ</a>
+                            <a href="{{route('home.faq')}}" class="nav-link ">FAQ</a>
                         </li>
 
                         <li class="nav-item">
@@ -99,7 +99,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="https://jsb-tech.com/contact-us" class="nav-link ">Contact Us</a>
+                            <a href="{{route('home.contact')}}" class="nav-link ">Contact Us</a>
                         </li>
                         @auth
                             <li class="nav-item">

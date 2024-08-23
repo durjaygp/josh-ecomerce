@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\AdminSliderController;
 
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
+
 Route::get('/details/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blog', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/services', [WebController::class,'services'])->name('home.services');
@@ -56,9 +57,24 @@ Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.pag
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
 Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
 
+
+Route::get('/about-us', [PageController::class,'about'])->name('home.about');
+Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
+Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
+
+
+
+
+
+
+
+
+
+
+
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
-Route::get('/about-me', [WebController::class,'about'])->name('home.about');
+
 Route::get('/search',[WebController::class,'searchRecipe'])->name('search.blog');
 Route::get('sitemap.xml', [WebController::class, 'siteMap']);
 Route::post('/contact/save', [HomeController::class,'contactMessage'])->name('contact.save');

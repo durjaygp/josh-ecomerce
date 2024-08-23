@@ -92,7 +92,7 @@
                     </div>
 
                     <button type="submit" class="btn default-btn">Login</button>
-                    <p class="message mt-3">Not registered? <a href="#">Create an account</a></p>
+                    <p class="message mt-3">Not registered? <a href="{{route('register')}}">Create an account</a></p>
                     <p class="" style="margin: 15px 0 0;color: #b3b3b3;font-size: 12px;">Forget password? <a href="{{url('/')}}">Reset</a></p>
                 </form>
             </div>
