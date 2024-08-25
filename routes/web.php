@@ -35,6 +35,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminSliderController;
+use App\Http\Controllers\SupportController;
 
 
 
@@ -119,6 +120,8 @@ Route::middleware('auth')->group(function () {
     // User Routes
 
     Route::get('my-orders',[UserRouteController::class,'index'])->name('my-orders');
+
+    Route::resource('user-support',SupportController::class);
 
 
 

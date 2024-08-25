@@ -43,6 +43,16 @@
 
 
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('user-support.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-aperture"></i>
+                  </span>
+                        <span class="hide-menu">My Support Tickets</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('home')}}" target="_blank">
                   <span>
                     <i class="ti ti-world"></i>
