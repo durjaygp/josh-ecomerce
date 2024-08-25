@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="images/favicon.png" rel="icon" />
-    <title>General Invoice - Koice</title>
+    <link href="{{asset(setting()->fav_icon ?? "")}}" rel="icon" />
+    <title>Order Invoice</title>
     <meta name="author" content="harnishdesign.net">
 
     <!-- Web Fonts

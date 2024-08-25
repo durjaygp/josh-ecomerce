@@ -216,9 +216,7 @@ class OrderController extends Controller
                  // Clear session data after successful order
                  session()->forget('order_data');
 
-                 return redirect()
-                     ->route('home')
-                     ->with('success', 'Transaction complete and order placed successfully.');
+                 return view('order_success');
              }
 
              return redirect()

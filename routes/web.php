@@ -3,6 +3,7 @@
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\UserRouteController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -89,13 +90,13 @@ Route::get('/success-transaction', [OrderController::class, 'successTransaction'
 Route::get('/cancel-transaction', [OrderController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 Route::controller(StripePaymentController::class)->group(function(){
-    Route::get('stripe', 'stripe');
+//    Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -116,6 +117,8 @@ Route::middleware('auth')->group(function () {
     Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
 
     // User Routes
+
+    Route::get('my-orders',[UserRouteController::class,'index'])->name('my-orders');
 
 
 

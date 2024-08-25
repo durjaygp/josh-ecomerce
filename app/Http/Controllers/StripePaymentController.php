@@ -13,10 +13,10 @@ use Stripe;
 
 class StripePaymentController extends Controller
 {
-    public function stripe()
-    {
-        return view('stripe');
-    }
+//    public function stripe()
+//    {
+//        return view('stripe');
+//    }
 
     /**
      * success response method.
@@ -126,8 +126,8 @@ class StripePaymentController extends Controller
         if ($mainCart) {
             $mainCart->delete();
         }
-
-        return redirect()->route('home')->with('success', 'Transaction complete and order placed successfully.');
+        return view('order_success');
+      //  return redirect()->route('home')->with('success', 'Transaction complete and order placed successfully.');
     }
 
 

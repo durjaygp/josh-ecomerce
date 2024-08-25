@@ -45,8 +45,8 @@
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/footer.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/dark.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/responsive.css">
-    <link rel="stylesheet" href="https://jsb-tech.com/public/plugins/image-uploader/css/image-uploader.min.css">
-    <link rel="stylesheet" href="https://jsb-tech.com/public/plugins/fancybox/css/fancybox.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/image-uploader.min.css">
+    <link rel="stylesheet" href="{{asset('homePage')}}/fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
@@ -107,8 +107,8 @@
 <script src="{{asset('homePage')}}/assets/js/aos.js"></script>
 <script src="{{asset('homePage')}}/assets/js/wow.min.js"></script>
 <script src="{{asset('homePage')}}/assets/js/main.js"></script>
-<script src="https://jsb-tech.com/public/plugins/image-uploader/js/image-uploader.min.js"></script>
-<script src="https://jsb-tech.com/public/plugins/fancybox/js/fancybox.min.js"></script>
+<script src="{{asset('homePage')}}/image-uploader.min.js"></script>
+<script src="{{asset('homePage')}}/fancybox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 

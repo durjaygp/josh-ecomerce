@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class UserRouteController extends Controller
@@ -11,7 +12,9 @@ class UserRouteController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user()->id;
+        $orders = Order::latest()->where('user_id',$user)->get();
+        return view('user.order.index',compact('orders'));
     }
 
     /**
