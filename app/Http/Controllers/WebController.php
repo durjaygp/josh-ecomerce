@@ -26,8 +26,8 @@ class WebController extends Controller
         return view('frontEnd.home.index',compact('latestBlogs','sliders','services'));
     }
     public function services(){
-        $services = Service::latest()->whereStatus(1)->take(6)->get();
-        return view('frontEnd.home.index',compact('services'));
+        $services = Service::latest()->whereStatus(1)->paginate(9);
+        return view('frontEnd.service.index',compact('services'));
     }
 
     public function blog(){
@@ -42,6 +42,12 @@ class WebController extends Controller
         $wordCount = str_word_count(strip_tags($blog->main_content));
         $readingTime = ceil($wordCount / 200);
         return view('frontEnd.blog.details',compact('blog','readingTime','blogs'));
+    }
+
+
+    public function serviceDetails($slug){
+        $service = Service::where('slug',$slug)->firstOrFail();
+        return view('frontEnd.service.service',compact('service'));
     }
 
     public function pageDetails($slug){

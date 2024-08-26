@@ -1,5 +1,6 @@
 @php
     $cartCount = \App\Models\Cart::where('user_id', auth()->id())->count();
+    $servics = \App\Models\Service::whereStatus(1)->latest()->get();
 @endphp
 <div class="topbar-area">
     <div class="container-fluid">
@@ -8,18 +9,15 @@
                 <ul class="topbar-information">
                     <li>
                         <i class="ri-phone-line"></i>
-                        <span>Phone: <a href="tel:12096031987">12096031987</a></span>
+                        <span>Phone: <a href="tel:{{setting()->phone ?? ""  }}">{{setting()->phone ?? "" }}</a></span>
                     </li>
                     <li>
                         <i class="ri-mail-line"></i>
-                        <span>Mail: <a href="mailto:support@jsb-tech.com">support@jsb-tech.com</a></span>
+                        <span>Mail: <a href="mailto:support@jsb-tech.com">{{setting()->email ?? ""}}</a></span>
                     </li>
                     <li class="sm-none">
                         <i class="ri-map-pin-line"></i>
-                        <span>Address:</span> JSB-Tech LLC
-                        4719 Quail Lakes Dr
-                        Ste G #1127
-                        Stockton, CA 95207
+                        <span>Address:</span> {{setting()->address ?? ""}}
                     </li>
                 </ul>
             </div>
@@ -61,24 +59,18 @@
 
 
                         <li class="nav-item">
-                            <a href="https://jsb-tech.com/services" class="nav-link ">
+                            <a href="{{route('home.services')}}" class="nav-link ">
                                 Services
                                 <i class="ri-arrow-down-s-line"></i>
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="https://jsb-tech.com/service/managed-it-services" class="nav-link">Managed I.T. Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://jsb-tech.com/service/security-services" class="nav-link">Security Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://jsb-tech.com/service/our-partners" class="nav-link">Our partners</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://jsb-tech.com/service/our-service" class="nav-link">Our Service</a>
-                                </li>
+                                @foreach($servics as $row)
+                                    <li class="nav-item">
+                                        <a href="{{route('service.details',$row->slug)}}" class="nav-link">{{$row->title}}</a>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </li>
 

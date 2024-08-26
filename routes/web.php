@@ -54,6 +54,7 @@ Route::get('/', [WebController::class,'index'])->name('home');
 Route::get('/details/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blog', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/services', [WebController::class,'services'])->name('home.services');
+Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('service.details');
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');

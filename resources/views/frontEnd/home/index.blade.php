@@ -63,15 +63,15 @@
                     <div class="col-lg-4 col-md-6 h-100">
                         <div class="services-item h-100">
                             <div class="services-image">
-                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">
+                                <a href="{{route('service.details',$row->slug)}}">
                                     <img src="{{asset($row->image)}}" alt="{{$row->title}}"></a>
                             </div>
                             <div class="services-content">
                                 <h3>
-                                    <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats">{{$row->title}}</a>
+                                    <a href="{{route('service.details',$row->slug)}}">{{$row->title}}</a>
                                 </h3>
-                                <p>{!! $row->description !!}</p>
-                                <a href="https://jsb-tech.com/service/security-services/consult-and-install-layred-security-to-protect-your-company-from-cyber-threats" class="services-btn">Read More</a>
+                                <p>{!! \Illuminate\Support\Str::limit($row->description,60) !!}</p>
+                                <a href="{{route('service.details',$row->slug)}}" class="services-btn">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="mt-5 services-all-btn">
-                <a href="https://jsb-tech.com/services" class="default-btn">Explore All Services</a>
+                <a href="{{route('home.services')}}" class="default-btn">Explore All Services</a>
             </div>
         </div>
 

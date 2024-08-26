@@ -1,3 +1,6 @@
+@php
+$services = \App\Models\Service::whereStatus(1)->latest()->get();
+@endphp
 <footer class="footer-area with-black-background margin-zero pt-100">
     <div class="container">
         <div class="row justify-content-center">
@@ -9,23 +12,22 @@
                     <div class="cta-text">
                         <h3 class="mb-2">Find us</h3>
                         <p>
-                            JSB-Tech LLC<br />
-                            4719 Quail Lakes Dr., STE G #1127<br />
-                            Stockton, CA 95207
+                            {{setting()->name ?? ""}}<br />
+                            {{setting()->address ?? ""}}
                         </p>
                     </div>
 
                     <ul class="widget-social d-flex" style="flex-direction: column">
                         <li>
-                            <a class="d-flex" href="tel:12096031987" target="_blank">
+                            <a class="d-flex" href="tel:{{setting()->phone ?? ""}}" target="_blank">
                                 <i class="me-2 ri-phone-fill"></i>
-                                <p> 12096031987</p>
+                                <p> {{setting()->phone ?? ""}}</p>
                             </a>
                         </li>
                         <li class="mt-2">
-                            <a class="d-flex" href="mailto:support@jsb-tech.com" target="_blank">
+                            <a class="d-flex" href="mailto:{{setting()->email ?? ""}}" target="_blank">
                                 <i class="me-2 ri-mail-fill"></i>
-                                <p>support@jsb-tech.com</p>
+                                <p>{{setting()->email ?? ""}}</p>
                             </a>
                         </li>
 
@@ -39,11 +41,11 @@
                     <h3>Links</h3>
 
                     <ul class="quick-links">
-                        <li><a href="https://jsb-tech.com">Home</a></li>
-                        <li><a href="https://jsb-tech.com/about-us">About Us</a></li>
-                        <li><a href="https://jsb-tech.com/faq">FAQ</a></li>
-                        <li><a href="https://jsb-tech.com/services">Services</a></li>
-                        <li><a href="https://jsb-tech.com/contact-us">Contact Us</a></li>
+                        <li><a href="{{route('home')}}">Home</a></li>
+                        <li><a href="{{route('home.about')}}">About Us</a></li>
+                        <li><a href="{{route('home.faq')}}">FAQ</a></li>
+                        <li><a href="{{route('home.services')}}">Services</a></li>
+                        <li><a href="{{route('home.contact')}}">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,10 +55,9 @@
                     <h3>Pages</h3>
 
                     <ul class="quick-links">
-                        <li><a href="https://jsb-tech.com/service/managed-it-services">Managed I.T. Services</a></li>
-                        <li><a href="https://jsb-tech.com/service/security-services">Security Services</a></li>
-                        <li><a href="https://jsb-tech.com/terms">Terms of Service</a></li>
-                        <li><a href="https://jsb-tech.com/privacy-policy">Privacy Policy</a></li>
+                        @foreach($services as $row)
+                            <li><a href="{{route('service.details',$row->slug)}}">{{$row->title}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -80,11 +81,7 @@
         <div class="container">
             <div class="copyright-area-content">
                 <p>
-                    Copyright @<script>document.write(new Date().getFullYear())</script>
-                    |
-                    <a href="#">JSBTech</a>
-                    All Rights Reserved
-
+                    {{setting()->footer ?? ""}}
                 </p>
             </div>
         </div>
