@@ -4,8 +4,9 @@
 @endphp
 <aside class="widget-area">
     <div class="widget widget_search">
-        <form class="search-form">
-            <input type="search" class="search-field" placeholder="Search your article">
+        <form class="search-form" action="{{route('search.blog')}}">
+            @csrf
+            <input type="search" class="search-field" name="search" placeholder="Search your blog">
             <button type="submit"><i class="ri-search-line"></i></button>
         </form>
     </div>

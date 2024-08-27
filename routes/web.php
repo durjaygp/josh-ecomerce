@@ -78,7 +78,7 @@ Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
 
-Route::get('/search',[WebController::class,'searchRecipe'])->name('search.blog');
+Route::get('/search',[WebController::class,'searchBlog'])->name('search.blog');
 Route::get('sitemap.xml', [WebController::class, 'siteMap']);
 Route::post('/contact/save', [HomeController::class,'contactMessage'])->name('contact.save');
 Route::post('comment/save',[CommentController::class,'store'])->name('comment.save');

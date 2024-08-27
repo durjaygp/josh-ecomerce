@@ -13,6 +13,7 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
+
     <link rel="shortcut icon" type="image/png" href="{{asset(optional(setting())->fav_icon)}}" />
     <!-- Owl Carousel -->
     @yield('style')

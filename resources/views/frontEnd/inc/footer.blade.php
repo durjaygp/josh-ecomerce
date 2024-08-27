@@ -7,7 +7,7 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
                     <div class="widget-logo">
-                        <a href="index.html"><img src="{{asset('site')}}/1702435059_logo.png" alt="image"></a>
+                        <a href="{{route('home')}}"><img src="{{asset(setting()->website_logo)}}" alt="image"></a>
                     </div>
                     <div class="cta-text">
                         <h3 class="mb-2">Find us</h3>
@@ -87,12 +87,12 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
         </div>
     </div>
     <div class="footer-shape-1">
-        <img src="{{asset('homePage')}}assets/images/footer/footer-shape-1.png" alt="image">
+        <img src="{{asset('homePage/assets/images/footer/footer-shape-1.png')}}" alt="image">
     </div>
     <div class="footer-shape-2">
-        <img src="{{asset('homePage')}}assets/images/footer/footer-shape-2.png" alt="image">
+        <img src="{{asset('homePage/assets/images/footer/footer-shape-2.png')}}" alt="image">
     </div>
     <div class="footer-shape-3">
-        <img src="{{asset('homePage')}}assets/images/footer/footer-shape-3.png" alt="image">
+        <img src="{{asset('homePage/assets/images/footer/footer-shape-3.png')}}" alt="image">
     </div>
 </footer>

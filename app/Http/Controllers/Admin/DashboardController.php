@@ -18,8 +18,21 @@ use Illuminate\Validation\Rules;
 class DashboardController extends Controller
 {
     public function index(){
-        return view('backEnd.admin.admin');
+        $salesData = Order::select(
+            \DB::raw('SUM(total_price) as total_sales'),
+            \DB::raw('MONTH(created_at) as month')
+        )
+            ->groupBy('month')
+            ->pluck('total_sales', 'month')->toArray();
+
+        // Fill missing months with 0 sales
+        $salesData = array_replace(array_fill(1, 12, 0), $salesData);
+
+//        return $salesData;
+
+        return view('backEnd.admin.admin', compact('salesData'));
     }
+
 
     public function createAdmin()
     {

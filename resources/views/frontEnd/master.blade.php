@@ -20,7 +20,8 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <!--  Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{{asset(optional(setting())->fav_icon)}}" />
 
 
     <link rel="canonical" href="https://jsb-tech.com/">

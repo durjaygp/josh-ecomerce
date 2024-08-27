@@ -76,7 +76,7 @@ class WebController extends Controller
     }
 
 
-    public function searchRecipe(Request $request){
+    public function searchBlog(Request $request){
         $search = '%' . $request->input('search') . '%';
 
         $cleanedSearch = str_replace('%', '', $search);
@@ -86,7 +86,7 @@ class WebController extends Controller
             ->orWhere('main_content', 'like', $search)
             ->paginate(9);
 
-        return view('frontEnd.pages.search', compact('blogs', 'cleanedSearch'));
+        return view('frontEnd.blog.index', compact('blogs', 'cleanedSearch'));
     }
 
     public function siteMap(): Response // Update the type hint to Illuminate\Http\Response
