@@ -65,6 +65,7 @@ Route::get('/about-us', [PageController::class,'about'])->name('home.about');
 Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
 Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
 
+Route::get('/products/search', [WebProductController::class, 'search'])->name('products.search');
 
 
 

@@ -64,6 +64,9 @@ class StripePaymentController extends Controller
 
         $total = $subtotal - $discount;
 
+        // Convert total to cents and ensure it's an integer
+        $totalCents = (int)round($total * 100);
+
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Stripe\Customer::create([
@@ -80,7 +83,7 @@ class StripePaymentController extends Controller
         ]);
 
         Stripe\Charge::create([
-            "amount" => $total * 100, // amount in cents
+            "amount" => $totalCents, // amount in cents
             "currency" => "usd",
             "customer" => $customer->id,
             "description" => $shipping->details,
@@ -126,9 +129,11 @@ class StripePaymentController extends Controller
         if ($mainCart) {
             $mainCart->delete();
         }
+
         return view('order_success');
-      //  return redirect()->route('home')->with('success', 'Transaction complete and order placed successfully.');
+        // return redirect()->route('home')->with('success', 'Transaction complete and order placed successfully.');
     }
+
 
 
 //    public function stripePost(Request $request)
