@@ -113,7 +113,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 
-@yield('script')
+
 
 @if($errors->any())
     @foreach($errors->all() as $error)
@@ -150,6 +150,6 @@
 @endif
 
 <script src="{{asset('homePage/custom.js')}}"></script>
-
+@yield('script')
 </body>
 </html>
