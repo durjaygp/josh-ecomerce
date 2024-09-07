@@ -66,6 +66,14 @@ class AdminSeeder extends Seeder
             'role_id' => 2
         ]);
 
+        // Create admin User and assign the role to him.
+        User::create([
+            'name' => 'Customer Account',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' => 1
+        ]);
+
         $permissions = Permission::pluck('id', 'id')->all();
 
         $role->syncPermissions($permissions);
