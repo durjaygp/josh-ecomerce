@@ -68,7 +68,10 @@ Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
 Route::get('/products/search', [WebProductController::class, 'search'])->name('products.search');
 
 
-
+Route::controller(PageController::class)->group(function(){
+    Route::get('image-upload', 'index');
+    Route::post('image-upload', 'store')->name('image.store');
+});
 
 
 
