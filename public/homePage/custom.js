@@ -109,32 +109,70 @@ $(document).ready(function() {
         });
     });
 
-    // AJAX Search and Sorting
-    $('#search-query, #sort-options').on('input change', function() {
-        var query = $('#search-query').val(); // Get the search query
-        var sortOption = $('#sort-options').val(); // Get the current sorting option
-
+// AJAX Search and Sorting
+    function loadProducts(query = '', sortOption = 'default') {
         $.ajax({
-            url: "/products/search", // Define the search route
+            url: "/products", // Call the combined route
             method: 'GET',
             data: {
                 search: query,
-                sort: sortOption // Send the sorting option to the server
+                sort: sortOption
             },
             success: function(response) {
                 // Update the product grid with the response
-                $('.row.justify-content-center').html(response);
+                $('#product-grid').html(response);
 
-                // Rebind the Add to Cart buttons for the new products
+                // Rebind any dynamic elements (like add to cart) after updating the grid
                 bindAddToCart();
             },
             error: function(xhr) {
                 iziToast.error({
                     title: '',
                     position: 'topRight',
-                    message: 'Error fetching products.',
+                    message: 'Error loading products.',
                 });
             }
         });
+    }
+
+    // Initial load of products
+    loadProducts();
+
+    // Event listeners for searching and sorting
+    $('#search-query, #sort-options').on('input change', function() {
+        var query = $('#search-query').val(); // Get the search query
+        var sortOption = $('#sort-options').val(); // Get the current sorting option
+        loadProducts(query, sortOption); // Call the load function with search and sort parameters
     });
+
+
+
+    // // AJAX Search and Sorting
+    // $('#search-query, #sort-options').on('input change', function() {
+    //     var query = $('#search-query').val(); // Get the search query
+    //     var sortOption = $('#sort-options').val(); // Get the current sorting option
+    //
+    //     $.ajax({
+    //         url: "/products/search", // Define the search route
+    //         method: 'GET',
+    //         data: {
+    //             search: query,
+    //             sort: sortOption // Send the sorting option to the server
+    //         },
+    //         success: function(response) {
+    //             // Update the product grid with the response
+    //             $('.row.justify-content-center').html(response);
+    //
+    //             // Rebind the Add to Cart buttons for the new products
+    //             bindAddToCart();
+    //         },
+    //         error: function(xhr) {
+    //             iziToast.error({
+    //                 title: '',
+    //                 position: 'topRight',
+    //                 message: 'Error fetching products.',
+    //             });
+    //         }
+    //     });
+    // });
 });
