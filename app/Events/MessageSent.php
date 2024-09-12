@@ -3,35 +3,35 @@
 namespace App\Events;
 
 use App\Models\SupportMessage;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
-use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
-class MessageSent implements ShouldBroadcastNow
+class MessageSent implements ShouldBroadcast
 {
-    use Dispatchable;
-    use InteractsWithSockets;
-    use SerializesModels;
+    use InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     */
-    public function __construct(public SupportMessage $message)
+    public $message;
+
+    public function __construct(SupportMessage $message)
     {
-        //
+        $this->message = $message;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return array<int, \Illuminate\Broadcasting\Channel>
-     */
-    public function broadcastOn(): array
+    public function broadcastOn()
+    {
+        return new PrivateChannel('chat.' . $this->message->support_id);
+    }
+
+    public function broadcastWith()
     {
         return [
-            new PrivateChannel("chat.{$this->message->user_id}"),
+            'message' => $this->message->message,
+            'user_id' => $this->message->user_id,
+            'created_at' => $this->message->created_at->toDateTimeString(),
         ];
     }
 }

@@ -115,15 +115,15 @@
 {{--                </div>--}}
 {{--            </div>--}}
             <div id="chatMessages" class="flex-grow-1 overflow-auto p-3">
-                @foreach($messages as $message)
-                    <div class="d-flex {{ $message->user_id === auth()->id() ? 'justify-content-end' : '' }} mb-3">
-                        <div class="{{ $message->user_id === auth()->id() ? 'bg-info text-white' : 'bg-light' }} p-2 rounded">
-                            <p class="mb-0">{{ $message->message }}</p>
-                        </div>
-                        <br>
-                        <small class="text-muted">{{ $message->created_at->format('d M Y') }}</small>
-                    </div>
-                @endforeach
+{{--                @foreach($messages as $message)--}}
+{{--                    <div class="d-flex {{ $message->user_id === auth()->id() ? 'justify-content-end' : '' }} mb-3">--}}
+{{--                        <div class="{{ $message->user_id === auth()->id() ? 'bg-info text-white' : 'bg-light' }} p-2 rounded">--}}
+{{--                            <p class="mb-0">{{ $message->message }}</p>--}}
+{{--                        </div>--}}
+{{--                        <br>--}}
+{{--                        <small class="text-muted">{{ $message->created_at->format('d M Y') }}</small>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
             </div>
 
             <div class="bg-white p-3 border-top position-sticky bottom-0">
@@ -141,57 +141,75 @@
     </div>
 @endsection
 @section('style')
-    @vite('resources/js/app.js')
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const chatBox = document.getElementById('chatMessages');
-            const supportId = '{{ $supportId }}';
-
-            // Fetch chat messages
-            function fetchMessages() {
-                fetch(`/chat/messages/${supportId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        chatBox.innerHTML = '';
-                        data.forEach(message => {
-                            const messageElement = `<div class="d-flex ${message.user_id === {{ auth()->id() }} ? 'justify-content-end' : ''} mb-3">
-                        <div class="${message.user_id === {{ auth()->id() }} ? 'bg-info text-white' : 'bg-light'} p-2 rounded">
-                            <p class="mb-0">${message.message}</p>
-                        </div>
-                        <small class="text-muted">${message.created_at}</small>
-                    </div>`;
-                            chatBox.innerHTML += messageElement;
-                        });
-                        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
-                    });
-            }
-
-            // Fetch messages every 5 seconds
-            setInterval(fetchMessages, 5000);
-
-            // Send message
-            document.getElementById('sendMessageBtn').addEventListener('click', function () {
-                const messageInput = document.querySelector('input[name="message"]').value;
-                const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                fetch('/chat/send', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': token
-                    },
-                    body: JSON.stringify({
-                        message: messageInput,
-                        support_id: supportId,
-                    })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        fetchMessages();
-                        document.querySelector('input[name="message"]').value = ''; // Clear input
-                    });
+        Echo.private(`chat.${support_id}`)
+            .listen('MessageSent', (e) => {
+                let message = `
+            <div class="d-flex mb-3">
+                <img src="/path-to-avatar/${e.user_id}" alt="User Avatar" class="rounded-circle" width="40" height="40">
+                <div class="ms-2">
+                    <div class="bg-light p-2 rounded">
+                        <p class="mb-0">${e.message}</p>
+                    </div>
+                    <small class="text-muted">${e.created_at}</small>
+                </div>
+            </div>
+        `;
+                $('#chatMessages').append(message);
             });
-        });
 
     </script>
+{{--    <script>--}}
+{{--        document.addEventListener('DOMContentLoaded', function () {--}}
+{{--            const chatBox = document.getElementById('chatMessages');--}}
+{{--            const supportId = '{{ $supportId }}';--}}
+
+{{--            // Fetch chat messages--}}
+{{--            function fetchMessages() {--}}
+{{--                fetch(`/chat/messages/${supportId}`)--}}
+{{--                    .then(response => response.json())--}}
+{{--                    .then(data => {--}}
+{{--                        chatBox.innerHTML = '';--}}
+{{--                        data.forEach(message => {--}}
+{{--                            const messageElement = `<div class="d-flex ${message.user_id === {{ auth()->id() }} ? 'justify-content-end' : ''} mb-3">--}}
+{{--                        <div class="${message.user_id === {{ auth()->id() }} ? 'bg-info text-white' : 'bg-light'} p-2 rounded">--}}
+{{--                            <p class="mb-0">${message.message}</p>--}}
+{{--                        </div>--}}
+{{--                        <small class="text-muted">${message.created_at}</small>--}}
+{{--                    </div>`;--}}
+{{--                            chatBox.innerHTML += messageElement;--}}
+{{--                        });--}}
+{{--                        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom--}}
+{{--                    });--}}
+{{--            }--}}
+
+{{--            // Fetch messages every 5 seconds--}}
+{{--            setInterval(fetchMessages, 5000);--}}
+
+{{--            // Send message--}}
+{{--            document.getElementById('sendMessageBtn').addEventListener('click', function () {--}}
+{{--                const messageInput = document.querySelector('input[name="message"]').value;--}}
+{{--                const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');--}}
+
+{{--                fetch('/chat/send', {--}}
+{{--                    method: 'POST',--}}
+{{--                    headers: {--}}
+{{--                        'Content-Type': 'application/json',--}}
+{{--                        'X-CSRF-TOKEN': token--}}
+{{--                    },--}}
+{{--                    body: JSON.stringify({--}}
+{{--                        message: messageInput,--}}
+{{--                        support_id: supportId,--}}
+{{--                    })--}}
+{{--                })--}}
+{{--                    .then(response => response.json())--}}
+{{--                    .then(data => {--}}
+{{--                        fetchMessages();--}}
+{{--                        document.querySelector('input[name="message"]').value = ''; // Clear input--}}
+{{--                    });--}}
+{{--            });--}}
+{{--        });--}}
+
+{{--    </script>--}}
 @endsection

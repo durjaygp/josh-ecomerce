@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use App\Models\SupportMessage;
@@ -18,21 +19,18 @@ class SupportChatController extends Controller
 
     public function sendMessage(Request $request)
     {
-        $request->validate([
-            'message' => 'required|string',
-            'support_id' => 'required',
-        ]);
+        $message = new SupportMessage();
+        $message->message = $request->input('message');
+        $message->user_id = auth()->id();
+        $message->support_id = $request->input('support_id');
+        $message->save();
 
-        // Store the new message
-        SupportMessage::create([
-            'message' => $request->message,
-            'files' => $request->files ? json_encode($request->files) : null,
-            'user_id' => auth()->user()->id,
-            'support_id' => $request->support_id,
-        ]);
+        // Broadcast the event
+        broadcast(new MessageSent($message))->toOthers();
 
-        return response()->json(['success' => 'Message sent successfully']);
+        return response()->json(['status' => 'Message Sent!']);
     }
+
 
     public function fetchMessages($supportId)
     {

@@ -22,7 +22,7 @@
     <link  id="themeColors"  rel="stylesheet" href="{{asset('back')}}/assets/css/style.min.css" />
     <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @vite('resources/js/app.js')
 </head>
 <body>
 <!-- Preloader -->
