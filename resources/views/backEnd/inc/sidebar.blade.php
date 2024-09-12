@@ -99,6 +99,15 @@
                     </li>
 
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-support-list')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                            <span class="hide-menu">Supports</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('admin-service.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-world-code"></i>

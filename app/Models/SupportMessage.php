@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SupportMessage extends Model
 {
     use HasFactory;
-    protected $guarded = [''];
+
+    protected $fillable = ['message', 'files', 'user_id', 'support_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

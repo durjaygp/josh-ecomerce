@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('backEnd.master')
 @section('title','Support Tickets')
 @section('content')
     <div class="container-fluid">
@@ -76,7 +76,7 @@
                                             <td>
                                                 <div class="action-btn">
                                                     @if($row->status == 1)
-                                                    <a href="{{route('chat.index',$row->id)}}" class="btn btn btn-primary">
+                                                    <a href="{{route('admin-chat',$row->id)}}" class="btn btn btn-primary">
                                                         <i class="ti ti-message-2-check fs-5"></i>
                                                     </a>
                                                     @else
@@ -96,78 +96,5 @@
 
         </div>
     </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header d-flex align-items-center">
-                    <h4 class="modal-title" id="myLargeModalLabel">
-                        Create Support Ticket
-                    </h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="{{route('user-support.store')}}" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Order <small class="text-danger">*</small></label>
-                                    <select name="order_item_id" id="order_item_id" class="form-control" required>
-                                        <option value="">Select Order</option>
-                                        @foreach($orders as $row)
-                                            <option value="{{$row->id}}" >{{$row->product?->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="title" class="form-label fw-semibold" style="text-align: left;">Title <small class="text-danger">*</small></label>
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="reason" class="form-label fw-semibold" style="text-align: left;">Reason <small class="text-danger">*</small></label>
-                                    <input type="text" name="reason" class="form-control" id="reason" placeholder="Reason" required>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="description" class="form-label fw-semibold">Description</label>
-                                    <textarea name="description" id="description" class="form-control" placeholder="Description" required></textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="Image" class="form-label fw-semibold">Image</label>
-                                    <input type="file" name="image" class="form-control" id="Image">
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="gap-3 d-flex align-items-center">
-                                    <button class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Button trigger modal -->
 
 @endsection

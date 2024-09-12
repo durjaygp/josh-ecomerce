@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AdmniSupportController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\SupportChatController;
 use App\Http\Controllers\UserRouteController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -128,7 +130,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('user-support',SupportController::class);
 
-
+    Route::get('/chat/{supportId}', [SupportChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat/send', [SupportChatController::class, 'sendMessage'])->name('chat.send');
+    Route::get('/chat/messages/{supportId}', [SupportChatController::class, 'fetchMessages']);
 
 
 });
@@ -238,6 +242,9 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     // Order Details
     Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');
     Route::get('/admin/order/invoice/{id}',[AdminOrderController::class,'invoice'])->name('admin-order.invoice');
+
+    Route::get('admin-support-list',[AdmniSupportController::class,'index'])->name('admin-support-list');
+    Route::get('admin-support/{id}',[AdmniSupportController::class,'chat'])->name('admin-chat');
 
 
 
