@@ -10,6 +10,8 @@ use App\Models\Shiping;
 use Illuminate\Http\Request;
 use Session;
 use Stripe;
+use App\Mail\InvoiceMail;
+use Illuminate\Support\Facades\Mail;
 
 class StripePaymentController extends Controller
 {
@@ -130,8 +132,11 @@ class StripePaymentController extends Controller
             $mainCart->delete();
         }
 
+        // Send invoice email to user
+        Mail::to($user->email)->send(new InvoiceMail($order, $cartItems, $subtotal, $discount, $total));
+
+
         return view('order_success');
-        // return redirect()->route('home')->with('success', 'Transaction complete and order placed successfully.');
     }
 
 

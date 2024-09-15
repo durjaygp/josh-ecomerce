@@ -81,7 +81,7 @@
 
                                             <td>
                                                 <div class="action-btn">
-                                                    <a href="{{route('admin-order.invoice',$row->id)}}" class="btn btn-sm btn-primary">
+                                                    <a href="{{route('user-order.invoice',$row->id)}}" class="btn btn-sm btn-primary">
                                                         <i class="ti ti-file-invoice fs-5"></i>
                                                     </a>
                                                 </div>

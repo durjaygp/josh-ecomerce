@@ -127,6 +127,7 @@ Route::middleware('auth')->group(function () {
     // User Routes
 
     Route::get('my-orders',[UserRouteController::class,'index'])->name('my-orders');
+    Route::get('my-order/{id}',[UserRouteController::class,'userOrder'])->name('user-order.invoice');
 
     Route::resource('user-support',SupportController::class);
 
