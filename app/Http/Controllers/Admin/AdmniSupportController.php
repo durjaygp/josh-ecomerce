@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItems;
+use App\Models\Support;
+use App\Models\SupportMessage;
 use Illuminate\Http\Request;
 
 class AdmniSupportController extends Controller
@@ -12,7 +15,15 @@ class AdmniSupportController extends Controller
      */
     public function index()
     {
-        //
+        $support = Support::latest()->get();
+        return view('backEnd.support.index',compact('support'));
+    }
+
+    public function chat($supportId)
+    {
+        $support = Support::find($supportId);
+        $messages = SupportMessage::where('support_id', $support->id)->with('user')->get();
+        return view('backEnd.support.chat',compact('support','messages','supportId'));
     }
 
     /**
