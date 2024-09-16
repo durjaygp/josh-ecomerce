@@ -24,17 +24,20 @@ class SupportChatController extends Controller
         $message->user_id = auth()->id();
         $message->support_id = $request->input('support_id');
         $message->save();
-
-        // Broadcast the event
-        broadcast(new MessageSent($message))->toOthers();
-
         return response()->json(['status' => 'Message Sent!']);
     }
 
 
     public function fetchMessages($supportId)
     {
-        $messages = SupportMessage::where('support_id', $supportId)->with('user')->get();
+        $messages = SupportMessage::where('support_id', $supportId)
+            ->with('user')
+            ->get();
+
+        // Ensure that messages have necessary data
         return response()->json($messages);
     }
+
+
+
 }

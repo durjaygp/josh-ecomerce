@@ -98,14 +98,6 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-support-list')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-shopping-cart"></i>
-                  </span>
-                            <span class="hide-menu">Supports</span>
-                        </a>
-                    </li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('admin-service.index')}}" aria-expanded="false">
@@ -134,6 +126,26 @@
                         </a>
                     </li>
 
+
+                <!-- =================== -->
+                    <!-- Support Intro -->
+                    <!-- =================== -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Support System</span>
+                        </li>
+                    <!-- =================== -->
+                    <!-- Support -->
+                    <!-- =================== -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-support-list')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-message-chatbot"></i>
+                  </span>
+                            <span class="hide-menu">Support</span>
+                        </a>
+                    </li>
+                    <!-- =================== -->
 
                 <!-- =================== -->
                     <!-- Recipe Intro -->

@@ -2,10 +2,11 @@
 @section('title',$support->title)
 @section('content')
     <style>
+        /* General chat application styles */
         .chat-application {
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Ensures the chat takes the full height of the viewport */
+            height: 100vh;
         }
 
         .chat-container {
@@ -24,17 +25,77 @@
 
         .chat-box {
             flex: 1;
-            overflow-y: auto; /* Allows the chat content to scroll */
+            overflow-y: auto;
         }
 
         .chat-send-message-footer {
             position: sticky;
             bottom: 0;
-            background-color: white; /* Ensures background visibility */
-            z-index: 10; /* Ensures it stays on top */
+            background-color: white;
+            z-index: 10;
+        }
+
+        /* Sender message (current user) */
+        .chat-message-receiver {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .chat-message-receiver .message-content {
+            background-color: #e2ffe6; /* Light green */
+            color: #333;
+        }
+
+        /* Receiver message (other users) */
+        .chat-message-sender {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .chat-message-sender .message-content {
+            background-color: #f1f1f1; /* Light grey */
+            color: #333;
+        }
+
+        /* General message styling */
+        .chat-message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+
+        .message-content p {
+            margin: 0;
+        }
+
+        .chat-message img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Avatar for sender and receiver */
+        .chat-message-receiver img {
+            margin-right: 10px;
+        }
+
+        .chat-message-sender img {
+            margin-left: 10px;
+        }
+        .message-content small {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #999;
         }
 
     </style>
+
     <div class="container-fluid">
         <div class="card bg-light-info shadow-none position-relative overflow-hidden">
             <div class="card-body px-4 py-3">
@@ -56,75 +117,9 @@
                 </div>
             </div>
         </div>
+
         <div class="container-fluid vh-100 d-flex flex-column p-0">
-{{--            <!-- Chat Header -->--}}
-{{--            <div class="bg-primary text-white p-3 d-flex align-items-center justify-content-between">--}}
-{{--                <div class="d-flex align-items-center gap-3">--}}
-{{--                    <img src="{{asset('back')}}/assets/images/profile/user-3.jpg" alt="User Avatar" class="rounded-circle" width="40" height="40">--}}
-{{--                    <div>--}}
-{{--                        <h6 class="mb-0">Andrew</h6>--}}
-{{--                        <small>Away</small>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div>--}}
-{{--                    <button class="btn btn-light btn-sm me-2">--}}
-{{--                        <i class="ti ti-phone"></i>--}}
-{{--                    </button>--}}
-{{--                    <button class="btn btn-light btn-sm me-2">--}}
-{{--                        <i class="ti ti-video"></i>--}}
-{{--                    </button>--}}
-{{--                    <button class="btn btn-light btn-sm">--}}
-{{--                        <i class="ti ti-menu-2"></i>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <!-- Chat Messages -->--}}
-{{--            <div class="flex-grow-1 overflow-auto p-3" id="chatMessages">--}}
-{{--                <!-- Received Message -->--}}
-{{--                <div class="d-flex mb-3">--}}
-{{--                    <img src="{{asset('back')}}/assets/images/profile/user-8.jpg" alt="User Avatar" class="rounded-circle" width="40" height="40">--}}
-{{--                    <div class="ms-2">--}}
-{{--                        <div class="bg-light p-2 rounded">--}}
-{{--                            <p class="mb-0">If I don’t like something, I’ll stay away from it.</p>--}}
-{{--                        </div>--}}
-{{--                        <small class="text-muted">2 hours ago</small>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-
-{{--                <!-- Sent Message -->--}}
-{{--                <div class="d-flex justify-content-end mb-3">--}}
-{{--                    <div class="text-end">--}}
-{{--                        <div class="bg-info text-white p-2 rounded">--}}
-{{--                            <p class="mb-0">I understand. That makes sense!</p>--}}
-{{--                        </div>--}}
-{{--                        <small class="text-muted">1 hour ago</small>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--            </div>--}}
-
-{{--            <!-- Chat Input -->--}}
-{{--            <div class="bg-white p-3 border-top position-sticky bottom-0">--}}
-{{--                <div class="input-group">--}}
-{{--                    <input type="text" class="form-control" placeholder="Type a message...">--}}
-{{--                    <button class="btn btn-primary" type="button">--}}
-{{--                        <i class="ti ti-send"></i> Submit--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <div id="chatMessages" class="flex-grow-1 overflow-auto p-3">
-{{--                @foreach($messages as $message)--}}
-{{--                    <div class="d-flex {{ $message->user_id === auth()->id() ? 'justify-content-end' : '' }} mb-3">--}}
-{{--                        <div class="{{ $message->user_id === auth()->id() ? 'bg-info text-white' : 'bg-light' }} p-2 rounded">--}}
-{{--                            <p class="mb-0">{{ $message->message }}</p>--}}
-{{--                        </div>--}}
-{{--                        <br>--}}
-{{--                        <small class="text-muted">{{ $message->created_at->format('d M Y') }}</small>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-            </div>
+            <div id="chatMessages" class="flex-grow-1 overflow-auto p-3"></div>
 
             <div class="bg-white p-3 border-top position-sticky bottom-0">
                 <div class="input-group">
@@ -135,81 +130,106 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 @endsection
-@section('style')
-
+@section('script')
     <script>
-        Echo.private(`chat.${support_id}`)
-            .listen('MessageSent', (e) => {
-                let message = `
-            <div class="d-flex mb-3">
-                <img src="/path-to-avatar/${e.user_id}" alt="User Avatar" class="rounded-circle" width="40" height="40">
-                <div class="ms-2">
-                    <div class="bg-light p-2 rounded">
-                        <p class="mb-0">${e.message}</p>
-                    </div>
-                    <small class="text-muted">${e.created_at}</small>
+        document.addEventListener('DOMContentLoaded', function() {
+    let supportId = '{{ $support->id }}';  // Get the current support ticket ID
+    let userImage = '{{asset(auth()->user()->image)}}';  // Get the current user's avatar
+    let sendMessageBtn = document.getElementById('sendMessageBtn');
+    let chatMessages = document.getElementById('chatMessages');
+    let messageInput = document.querySelector('input[name="message"]');
+
+    // Fetch initial chat messages
+    fetchMessages(supportId);
+
+    // Send message when the send button is clicked
+    if (sendMessageBtn) {
+        sendMessageBtn.addEventListener('click', function() {
+            let message = messageInput.value.trim();
+            if (message !== '') {
+                sendMessage(supportId, message);
+                messageInput.value = '';  // Clear input after sending
+            }
+        });
+    }
+
+    // Function to send message via AJAX
+    function sendMessage(supportId, message) {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('chat.send') }}',
+            data: {
+                _token: '{{ csrf_token() }}',
+                message: message,
+                support_id: supportId
+            },
+            success: function(response) {
+                fetchMessages(supportId);  // Fetch new messages after sending
+                console.log('Message sent successfully.');
+            },
+            error: function(xhr) {
+                console.log('Error sending message:', xhr.responseText);
+            }
+        });
+    }
+
+    // Function to fetch chat messages
+    function fetchMessages(supportId) {
+        $.ajax({
+            type: 'GET',
+            url: `/chat/messages/${supportId}`,
+            success: function(messages) {
+                // Clear existing messages
+                chatMessages.innerHTML = '';
+
+                // Check if there are messages to display
+                if (messages.length > 0) {
+                    messages.forEach((message) => {
+                        appendMessage(message);
+                    });
+                } else {
+                    chatMessages.innerHTML = '<p class="text-center text-muted">No messages yet.</p>';
+                }
+            },
+            error: function(xhr) {
+                console.log('Error fetching messages:', xhr.responseText);
+            }
+        });
+    }
+
+    // Function to append a message to the chat
+    function appendMessage(message) {
+        let currentUserId = '{{ auth()->id() }}'; // Get the current user's ID
+        let isSender = (message.user_id == currentUserId); // Check if the message is from the current user
+        let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/path-to-default-avatar.png';
+
+        // Format message timestamp dynamically
+        let messageTime = new Date(message.created_at);
+        let options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+        let formattedTime = messageTime.toLocaleString('en-US', options); // e.g., "Mar 10, 08:20 PM"
+
+        let messageHtml = `
+            <div class="chat-message ${isSender ? 'chat-message-sender' : 'chat-message-receiver'}">
+                ${!isSender ? `<img src="${receiverImage}" alt="User Avatar">` : ''}
+                <div class="message-content">
+                    <p>${message.message}</p>
+                    <small class="text-muted">${formattedTime}</small>  <!-- Timestamp below the message -->
                 </div>
+                ${isSender ? `<img src="${userImage}" alt="User Avatar">` : ''}
             </div>
         `;
-                $('#chatMessages').append(message);
-            });
+
+        // Append the new message HTML
+        $('#chatMessages').append(messageHtml);
+
+        // Scroll to the bottom of the chat after appending
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+});
 
     </script>
-{{--    <script>--}}
-{{--        document.addEventListener('DOMContentLoaded', function () {--}}
-{{--            const chatBox = document.getElementById('chatMessages');--}}
-{{--            const supportId = '{{ $supportId }}';--}}
-
-{{--            // Fetch chat messages--}}
-{{--            function fetchMessages() {--}}
-{{--                fetch(`/chat/messages/${supportId}`)--}}
-{{--                    .then(response => response.json())--}}
-{{--                    .then(data => {--}}
-{{--                        chatBox.innerHTML = '';--}}
-{{--                        data.forEach(message => {--}}
-{{--                            const messageElement = `<div class="d-flex ${message.user_id === {{ auth()->id() }} ? 'justify-content-end' : ''} mb-3">--}}
-{{--                        <div class="${message.user_id === {{ auth()->id() }} ? 'bg-info text-white' : 'bg-light'} p-2 rounded">--}}
-{{--                            <p class="mb-0">${message.message}</p>--}}
-{{--                        </div>--}}
-{{--                        <small class="text-muted">${message.created_at}</small>--}}
-{{--                    </div>`;--}}
-{{--                            chatBox.innerHTML += messageElement;--}}
-{{--                        });--}}
-{{--                        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom--}}
-{{--                    });--}}
-{{--            }--}}
-
-{{--            // Fetch messages every 5 seconds--}}
-{{--            setInterval(fetchMessages, 5000);--}}
-
-{{--            // Send message--}}
-{{--            document.getElementById('sendMessageBtn').addEventListener('click', function () {--}}
-{{--                const messageInput = document.querySelector('input[name="message"]').value;--}}
-{{--                const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');--}}
-
-{{--                fetch('/chat/send', {--}}
-{{--                    method: 'POST',--}}
-{{--                    headers: {--}}
-{{--                        'Content-Type': 'application/json',--}}
-{{--                        'X-CSRF-TOKEN': token--}}
-{{--                    },--}}
-{{--                    body: JSON.stringify({--}}
-{{--                        message: messageInput,--}}
-{{--                        support_id: supportId,--}}
-{{--                    })--}}
-{{--                })--}}
-{{--                    .then(response => response.json())--}}
-{{--                    .then(data => {--}}
-{{--                        fetchMessages();--}}
-{{--                        document.querySelector('input[name="message"]').value = ''; // Clear input--}}
-{{--                    });--}}
-{{--            });--}}
-{{--        });--}}
-
-{{--    </script>--}}
 @endsection
+
+

@@ -65,6 +65,16 @@
 <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 <script src="{{asset('back')}}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('back')}}/assets/js/datatable/datatable-basic.init.js"></script>
+<script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
+<script>
+    window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: '{{ env('PUSHER_APP_KEY') }}', // Make sure your .env has these values
+        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        forceTLS: true
+    });
+</script>
+
 @yield('script')
 
 @if($errors->any())
