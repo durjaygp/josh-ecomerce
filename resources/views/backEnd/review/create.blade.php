@@ -119,19 +119,11 @@
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{asset('/')}}dropify/dist/css/dropify.min.css">
-    <link rel="stylesheet" href="{{asset('back')}}/assets/libs/summernote/dist/summernote-lite.min.css">
 @endsection
 @section('script')
 
     <script src="{{asset('/')}}dropify/dist/js/dropify.min.js"></script>
-    <script src="{{asset('back')}}/assets/libs/summernote/dist/summernote-lite.min.js"></script>
     <script>
-        $("#summernote").summernote({
-            height: 350, // set editor height
-            minHeight: null, // set minimum height of editor
-            maxHeight: null, // set maximum height of editor
-            focus: false, // set focus to editable area after initializing summernote
-        });
         $('.dropify').dropify({
             messages: {
                 'default': 'Drag and drop a file here or click',

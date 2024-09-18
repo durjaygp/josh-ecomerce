@@ -73,17 +73,37 @@ class CustomReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CustomReview $customReview)
+    public function edit($id)
     {
-        //
+        $customReview = CustomReview::find($id);
+        return view('backEnd.review.edit',compact('customReview'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CustomReview $customReview)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'rating' => 'required|string',
+            'subject' => 'required|string',
+            'review' => 'nullable|string',
+            'image' => 'nullable|image',
+            'status' => 'nullable|string',
+        ]);
+
+        $data = $request->all();
+
+        // Handle image upload if exists
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->saveImage($request);
+        }
+
+        $rev = CustomReview::find($id);
+        $rev->update($data);
+
+        return redirect()->route('custom-review.index')->with('success', 'Review created successfully!');
     }
 
     /**
