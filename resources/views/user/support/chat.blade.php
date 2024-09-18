@@ -135,101 +135,205 @@
 @section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    let supportId = '{{ $support->id }}';  // Get the current support ticket ID
-    let userImage = '{{asset(auth()->user()->image)}}';  // Get the current user's avatar
-    let sendMessageBtn = document.getElementById('sendMessageBtn');
-    let chatMessages = document.getElementById('chatMessages');
-    let messageInput = document.querySelector('input[name="message"]');
+            let supportId = '{{ $support->id }}';  // Get the current support ticket ID
+            let userImage = '{{asset(auth()->user()->image)}}';  // Get the current user's avatar
+            let sendMessageBtn = document.getElementById('sendMessageBtn');
+            let chatMessages = document.getElementById('chatMessages');
+            let messageInput = document.querySelector('input[name="message"]');
 
-    // Fetch initial chat messages
-    fetchMessages(supportId);
+            // Fetch initial chat messages
+            fetchMessages(supportId);
 
-    // Send message when the send button is clicked
-    if (sendMessageBtn) {
-        sendMessageBtn.addEventListener('click', function() {
-            let message = messageInput.value.trim();
-            if (message !== '') {
-                sendMessage(supportId, message);
-                messageInput.value = '';  // Clear input after sending
+            // Poll for new messages every 5 seconds
+            setInterval(function() {
+                fetchMessages(supportId);
+            }, 5000);  // Poll every 5 seconds
+
+            // Send message when the send button is clicked
+            if (sendMessageBtn) {
+                sendMessageBtn.addEventListener('click', function() {
+                    let message = messageInput.value.trim();
+                    if (message !== '') {
+                        sendMessage(supportId, message);
+                        messageInput.value = '';  // Clear input after sending
+                    }
+                });
+            }
+
+            // Function to send message via AJAX
+            function sendMessage(supportId, message) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('chat.send') }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        message: message,
+                        support_id: supportId
+                    },
+                    success: function(response) {
+                        fetchMessages(supportId);  // Fetch new messages after sending
+                        console.log('Message sent successfully.');
+                    },
+                    error: function(xhr) {
+                        console.log('Error sending message:', xhr.responseText);
+                    }
+                });
+            }
+
+            // Function to fetch chat messages
+            function fetchMessages(supportId) {
+                $.ajax({
+                    type: 'GET',
+                    url: `/chat/messages/${supportId}`,
+                    success: function(messages) {
+                        // Clear existing messages
+                        chatMessages.innerHTML = '';
+
+                        // Check if there are messages to display
+                        if (messages.length > 0) {
+                            messages.forEach((message) => {
+                                appendMessage(message);
+                            });
+                        } else {
+                            chatMessages.innerHTML = '<p class="text-center text-muted">No messages yet.</p>';
+                        }
+                    },
+                    error: function(xhr) {
+                        console.log('Error fetching messages:', xhr.responseText);
+                    }
+                });
+            }
+
+            // Function to append a message to the chat
+            function appendMessage(message) {
+                let currentUserId = '{{ auth()->id() }}'; // Get the current user's ID
+                let isSender = (message.user_id == currentUserId); // Check if the message is from the current user
+                let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/path-to-default-avatar.png';
+
+                // Format message timestamp dynamically
+                let messageTime = new Date(message.created_at);
+                let options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                let formattedTime = messageTime.toLocaleString('en-US', options); // e.g., "Mar 10, 08:20 PM"
+
+                let messageHtml = `
+                    <div class="chat-message ${isSender ? 'chat-message-sender' : 'chat-message-receiver'}">
+                        ${!isSender ? `<img src="${receiverImage}" alt="User Avatar">` : ''}
+                        <div class="message-content">
+                            <p>${message.message}</p>
+                            <small class="text-muted">${formattedTime}</small>  <!-- Timestamp below the message -->
+                        </div>
+                        ${isSender ? `<img src="${userImage}" alt="User Avatar">` : ''}
+                    </div>
+                `;
+
+                // Append the new message HTML
+                $('#chatMessages').append(messageHtml);
+
+                // Scroll to the bottom of the chat after appending
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         });
-    }
-
-    // Function to send message via AJAX
-    function sendMessage(supportId, message) {
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('chat.send') }}',
-            data: {
-                _token: '{{ csrf_token() }}',
-                message: message,
-                support_id: supportId
-            },
-            success: function(response) {
-                fetchMessages(supportId);  // Fetch new messages after sending
-                console.log('Message sent successfully.');
-            },
-            error: function(xhr) {
-                console.log('Error sending message:', xhr.responseText);
-            }
-        });
-    }
-
-    // Function to fetch chat messages
-    function fetchMessages(supportId) {
-        $.ajax({
-            type: 'GET',
-            url: `/chat/messages/${supportId}`,
-            success: function(messages) {
-                // Clear existing messages
-                chatMessages.innerHTML = '';
-
-                // Check if there are messages to display
-                if (messages.length > 0) {
-                    messages.forEach((message) => {
-                        appendMessage(message);
-                    });
-                } else {
-                    chatMessages.innerHTML = '<p class="text-center text-muted">No messages yet.</p>';
-                }
-            },
-            error: function(xhr) {
-                console.log('Error fetching messages:', xhr.responseText);
-            }
-        });
-    }
-
-    // Function to append a message to the chat
-    function appendMessage(message) {
-        let currentUserId = '{{ auth()->id() }}'; // Get the current user's ID
-        let isSender = (message.user_id == currentUserId); // Check if the message is from the current user
-        let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/path-to-default-avatar.png';
-
-        // Format message timestamp dynamically
-        let messageTime = new Date(message.created_at);
-        let options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-        let formattedTime = messageTime.toLocaleString('en-US', options); // e.g., "Mar 10, 08:20 PM"
-
-        let messageHtml = `
-            <div class="chat-message ${isSender ? 'chat-message-sender' : 'chat-message-receiver'}">
-                ${!isSender ? `<img src="${receiverImage}" alt="User Avatar">` : ''}
-                <div class="message-content">
-                    <p>${message.message}</p>
-                    <small class="text-muted">${formattedTime}</small>  <!-- Timestamp below the message -->
-                </div>
-                ${isSender ? `<img src="${userImage}" alt="User Avatar">` : ''}
-            </div>
-        `;
-
-        // Append the new message HTML
-        $('#chatMessages').append(messageHtml);
-
-        // Scroll to the bottom of the chat after appending
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-});
-
     </script>
 @endsection
+
+{{--@section('script')--}}
+{{--    <script>--}}
+{{--        document.addEventListener('DOMContentLoaded', function() {--}}
+{{--    let supportId = '{{ $support->id }}';  // Get the current support ticket ID--}}
+{{--    let userImage = '{{asset(auth()->user()->image)}}';  // Get the current user's avatar--}}
+{{--    let sendMessageBtn = document.getElementById('sendMessageBtn');--}}
+{{--    let chatMessages = document.getElementById('chatMessages');--}}
+{{--    let messageInput = document.querySelector('input[name="message"]');--}}
+
+{{--    // Fetch initial chat messages--}}
+{{--    fetchMessages(supportId);--}}
+
+{{--    // Send message when the send button is clicked--}}
+{{--    if (sendMessageBtn) {--}}
+{{--        sendMessageBtn.addEventListener('click', function() {--}}
+{{--            let message = messageInput.value.trim();--}}
+{{--            if (message !== '') {--}}
+{{--                sendMessage(supportId, message);--}}
+{{--                messageInput.value = '';  // Clear input after sending--}}
+{{--            }--}}
+{{--        });--}}
+{{--    }--}}
+
+{{--    // Function to send message via AJAX--}}
+{{--    function sendMessage(supportId, message) {--}}
+{{--        $.ajax({--}}
+{{--            type: 'POST',--}}
+{{--            url: '{{ route('chat.send') }}',--}}
+{{--            data: {--}}
+{{--                _token: '{{ csrf_token() }}',--}}
+{{--                message: message,--}}
+{{--                support_id: supportId--}}
+{{--            },--}}
+{{--            success: function(response) {--}}
+{{--                fetchMessages(supportId);  // Fetch new messages after sending--}}
+{{--                console.log('Message sent successfully.');--}}
+{{--            },--}}
+{{--            error: function(xhr) {--}}
+{{--                console.log('Error sending message:', xhr.responseText);--}}
+{{--            }--}}
+{{--        });--}}
+{{--    }--}}
+
+{{--    // Function to fetch chat messages--}}
+{{--    function fetchMessages(supportId) {--}}
+{{--        $.ajax({--}}
+{{--            type: 'GET',--}}
+{{--            url: `/chat/messages/${supportId}`,--}}
+{{--            success: function(messages) {--}}
+{{--                // Clear existing messages--}}
+{{--                chatMessages.innerHTML = '';--}}
+
+{{--                // Check if there are messages to display--}}
+{{--                if (messages.length > 0) {--}}
+{{--                    messages.forEach((message) => {--}}
+{{--                        appendMessage(message);--}}
+{{--                    });--}}
+{{--                } else {--}}
+{{--                    chatMessages.innerHTML = '<p class="text-center text-muted">No messages yet.</p>';--}}
+{{--                }--}}
+{{--            },--}}
+{{--            error: function(xhr) {--}}
+{{--                console.log('Error fetching messages:', xhr.responseText);--}}
+{{--            }--}}
+{{--        });--}}
+{{--    }--}}
+
+{{--    // Function to append a message to the chat--}}
+{{--    function appendMessage(message) {--}}
+{{--        let currentUserId = '{{ auth()->id() }}'; // Get the current user's ID--}}
+{{--        let isSender = (message.user_id == currentUserId); // Check if the message is from the current user--}}
+{{--        let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/path-to-default-avatar.png';--}}
+
+{{--        // Format message timestamp dynamically--}}
+{{--        let messageTime = new Date(message.created_at);--}}
+{{--        let options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };--}}
+{{--        let formattedTime = messageTime.toLocaleString('en-US', options); // e.g., "Mar 10, 08:20 PM"--}}
+
+{{--        let messageHtml = `--}}
+{{--            <div class="chat-message ${isSender ? 'chat-message-sender' : 'chat-message-receiver'}">--}}
+{{--                ${!isSender ? `<img src="${receiverImage}" alt="User Avatar">` : ''}--}}
+{{--                <div class="message-content">--}}
+{{--                    <p>${message.message}</p>--}}
+{{--                    <small class="text-muted">${formattedTime}</small>  <!-- Timestamp below the message -->--}}
+{{--                </div>--}}
+{{--                ${isSender ? `<img src="${userImage}" alt="User Avatar">` : ''}--}}
+{{--            </div>--}}
+{{--        `;--}}
+
+{{--        // Append the new message HTML--}}
+{{--        $('#chatMessages').append(messageHtml);--}}
+
+{{--        // Scroll to the bottom of the chat after appending--}}
+{{--        chatMessages.scrollTop = chatMessages.scrollHeight;--}}
+{{--    }--}}
+{{--});--}}
+
+{{--    </script>--}}
+{{--@endsection--}}
 
 

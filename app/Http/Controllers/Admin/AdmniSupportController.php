@@ -23,7 +23,7 @@ class AdmniSupportController extends Controller
     {
         $support = Support::find($supportId);
         $messages = SupportMessage::where('support_id', $support->id)->with('user')->get();
-        return view('backEnd.support.chat',compact('support','messages','supportId'));
+        return view('user.support.chat',compact('support','messages','supportId'));
     }
 
     /**
