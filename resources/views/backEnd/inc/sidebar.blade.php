@@ -126,6 +126,15 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('custom-review.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-star-half"></i>
+                  </span>
+                            <span class="hide-menu">Custom Review</span>
+                        </a>
+                    </li>
+
 
                 <!-- =================== -->
                     <!-- Support Intro -->

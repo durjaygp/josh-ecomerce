@@ -93,9 +93,45 @@
                         </li>
 
                         @auth
-                            <li class="nav-item">
-                                <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index') ? 'active' : '' }}">Dashboard</a>
-                            </li>
+                            @if(auth()->user()->role_id == 2)
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.index') }}" class="nav-link">
+                                        Admin Panel
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index') ? 'active' : '' }}">Admin Panel</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="{{ route('user-support.index') }}" class="nav-link">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{ route('dashboard') }}" class="nav-link">
+                                        My Account
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="{{ route('my-orders') }}" class="nav-link">Dashboard</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('my-orders') }}" class="nav-link">My Orders</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('user-support.index') }}" class="nav-link">Supports</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
+
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Login</a>

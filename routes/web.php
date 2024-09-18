@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\CustomReviewController;
 
 
 
@@ -239,6 +240,8 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('admin-service',AdminServiceController::class);
     Route::resource('admin-faq',AdminFaqController::class);
     Route::resource('admin-slider',AdminSliderController::class);
+    Route::resource('custom-review',CustomReviewController::class);
+
 
     // Order Details
     Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');
