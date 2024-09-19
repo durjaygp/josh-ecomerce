@@ -1,6 +1,6 @@
 @extends('frontEnd.master')
 @section('title')
-    Home
+{{ setting()->name ?? "Home" }}
 @endsection
 @section('content')
     <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
@@ -105,48 +105,32 @@
         <div class="container-fluid">
             <div class="section-title">
                 <span>TESTIMONIALS</span>
-                <h2>What <b>Our Clients </b> Say About Us <span class="overlay"></span></h2>
+                <h2>What <b>Our Clients</b> Say About Us <span class="overlay"></span></h2>
             </div>
 
             <div class="testimonials-slides owl-carousel owl-theme">
+                @foreach($reviews as $review)
+                    <div class="single-testimonials-card" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                        <p>{{ $review->review }}</p>
 
-
-                <div class="single-testimonials-card" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
-                    <p>Contact was immediate and a date to work was set within just a few days. Technician was knowledgeable and quick. Notes were made to help me remember items new to me. Very good experience 2/17/2022 /</p>
-
-                    <div class="info-item-box">
-                        <img src="https://jsb-tech.com/public/images/testimonial/1674596813_testimonial.png" class="rounded-circle" alt="IT Management Service">
-                        <h4>Catherine J., <span>Tech support at my house</span></h4>
-                        <ul class="rating-list">
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-line"></i></li>
-                        </ul>
+                        <div class="info-item-box">
+                            <img src="{{ $review->image ? asset($review->image) : 'default_image_path' }}" class="rounded-circle" alt="{{ $review->subject }}">
+                            <h4>{{ $review->name }}, <span>{{ $review->subject }}</span></h4>
+                            <ul class="rating-list">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <li>
+                                        <i class="{{ $i <= $review->rating ? 'ri-star-fill' : 'ri-star-line' }}"></i>
+                                    </li>
+                                @endfor
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="single-testimonials-card" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
-                    <p>Very personable. Anxious to please and do a good job.</p>
-
-                    <div class="info-item-box">
-                        <img src="https://jsb-tech.com/public/images/testimonial/1674596793_testimonial.png" class="rounded-circle" alt="IT Management Service">
-                        <h4>Lynda G., <span>Very personable</span></h4>
-                        <ul class="rating-list">
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-fill"></i></li>
-                            <li><i class="ri-star-line"></i></li>
-                        </ul>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div>
     <!-- End Testimonials Area -->
+
 
     <!-- Start Skill Area -->
     <div class="skill-area ptb-100">
@@ -154,78 +138,20 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="skill-content">
-                        <span>JSBTech</span>
-                        <h3>Document management by the numbers <span class="overlay"></span></h3>
+                        <span>{{$about->header}}</span>
+                        <h3>{{$about->title}} <span class="overlay"></span></h3>
                     </div>
 
-                    <div class="skill-bar" data-percentage="90%" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
-                        <p class="progress-title-holder">
-                            <span class="progress-title">Of critical info is only on papers</span>
-                            <span class="progress-number-wrapper">
-                            <span class="progress-number-mark">
-                                <span class="percent"></span>
-                                <span class="down-arrow"></span>
-                            </span>
-                        </span>
-                        </p>
-                        <div class="progress-content-outter">
-                            <div class="progress-content"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar" data-percentage="70%" data-aos="fade-up" data-aos-delay="60" data-aos-duration="600" data-aos-once="true">
-                        <p class="progress-title-holder">
-                            <span class="progress-title">Of paper documents are losts</span>
-                            <span class="progress-number-wrapper">
-                            <span class="progress-number-mark">
-                                <span class="percent"></span>
-                                <span class="down-arrow"></span>
-                            </span>
-                        </span>
-                        </p>
-                        <div class="progress-content-outter bg-D5158F">
-                            <div class="progress-content bg-D5158F"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar" data-percentage="50%" data-aos="fade-up" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                        <p class="progress-title-holder">
-                            <span class="progress-title">To reproduce a lost documents</span>
-                            <span class="progress-number-wrapper">
-                            <span class="progress-number-mark">
-                                <span class="percent"></span>
-                                <span class="down-arrow"></span>
-                            </span>
-                        </span>
-                        </p>
-                        <div class="progress-content-outter bg-FEB302">
-                            <div class="progress-content bg-FEB302"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar" data-percentage="53%" data-aos="fade-up" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
-                        <p class="progress-title-holder">
-                            <span class="progress-title">Of businesses aren’t disaster ready</span>
-                            <span class="progress-number-wrapper">
-                            <span class="progress-number-mark">
-                                <span class="percent"></span>
-                                <span class="down-arrow"></span>
-                            </span>
-                        </span>
-                        </p>
-                        <div class="progress-content-outter bg-A66BFF">
-                            <div class="progress-content bg-A66BFF"></div>
-                        </div>
-                    </div>
+                    <p>{!! $about->description !!}</p>
 
                     <div class="skill-bar-btn" data-aos="fade-up" data-aos-delay="90" data-aos-duration="900" data-aos-once="true">
-                        <a href="https://jsb-tech.com/about-us" class="default-btn">Explore More</a>
+                        <a href="{{route('home.about')}}" class="default-btn">Explore More</a>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-md-12">
                     <div class="skill-image" data-aos="fade-left" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
-                        <img src="{{asset('homePage/fr.jpg')}}" alt="IT Management" data-tilt>
+                        <img src="{{asset($about->image)}}" alt="{{$about->title}}" data-tilt>
 
                         <div class="skill-shape-1">
                             <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image">
@@ -278,7 +204,7 @@
         </div>
 
         <div class="blog-shape-1">
-            <img src="assets/images/blog/blog-shape-1.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/blog/blog-shape-1.png" alt="image">
         </div>
     </div>
     <!-- End Blog Area -->

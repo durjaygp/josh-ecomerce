@@ -39,20 +39,28 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Your Name</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Durjay Ghosh" value="{{$row->title}}">
+                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="About Page Title" value="{{$row->title}}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Position</label>
-                                    <input type="text" name="header" class="form-control" placeholder="Position" value="{{$row->header}}">
+                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Short Title (Optional)</label>
+                                    <input type="text" name="header" class="form-control" placeholder="Short Title (Optional" value="{{$row->header}}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label fw-semibold">Description</label>
                                     <textarea name="description" id="" cols="10" rows="5" class="form-control" placeholder="Write a short Description">{{$row->description}}</textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Content</label>
+                                    <textarea name="main_content" id="summernote" cols="10" rows="5" class="form-control" placeholder="Write a short Description">{{$row->main_content}}</textarea>
 
                                 </div>
                             </div>

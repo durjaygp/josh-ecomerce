@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,7 +17,8 @@ use Illuminate\Support\Str;
 class PageController extends Controller
 {
     public function about(){
-        return view('frontEnd.pages.about');
+        $about = About::find(1);
+        return view('frontEnd.pages.about',compact('about'));
     }
     public function faq(){
         $faqs = Faq::whereStatus(1)->get();

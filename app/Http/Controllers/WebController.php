@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\AffiliateProduct;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\CustomReview;
 use App\Models\NewPages;
 use App\Models\Page;
 use App\Models\Project;
@@ -23,7 +24,9 @@ class WebController extends Controller
         $latestBlogs = Blog::latest()->whereStatus(1)->take(6)->get();
         $sliders = Slider::latest()->whereStatus(1)->get();
         $services = Service::latest()->whereStatus(1)->take(3)->get();
-        return view('frontEnd.home.index',compact('latestBlogs','sliders','services'));
+        $about = About::find(1);
+        $reviews = CustomReview::whereStatus(1)->latest()->get();
+        return view('frontEnd.home.index',compact('latestBlogs','sliders','services','about','reviews'));
     }
     public function services(){
         $services = Service::latest()->whereStatus(1)->paginate(9);

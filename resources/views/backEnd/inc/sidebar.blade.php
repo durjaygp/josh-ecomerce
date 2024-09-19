@@ -243,14 +243,14 @@
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Website</span>
                     </li>
-{{--                    <li class="sidebar-item">--}}
-{{--                        <a class="sidebar-link" href="{{route('page.homeAbout')}}">--}}
-{{--                      <span>--}}
-{{--                        <i class="ti ti-user-bolt"></i>--}}
-{{--                      </span>--}}
-{{--                            <span class="hide-menu">About Section</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('page.homeAbout')}}">
+                      <span>
+                        <i class="ti ti-user-bolt"></i>
+                      </span>
+                            <span class="hide-menu">About Section</span>
+                        </a>
+                    </li>
                     @can('subscriber-list')
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{route('newsletters.index')}}">

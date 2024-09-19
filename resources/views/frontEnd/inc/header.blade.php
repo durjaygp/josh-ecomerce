@@ -103,9 +103,14 @@
                                         <li class="nav-item">
                                             <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index') ? 'active' : '' }}">Admin Panel</a>
                                         </li>
-
                                         <li class="nav-item">
-                                            <a href="{{ route('user-support.index') }}" class="nav-link">Logout</a>
+                                            <!-- Logout -->
+                                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </li>
@@ -126,17 +131,35 @@
                                             <a href="{{ route('user-support.index') }}" class="nav-link">Supports</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                                            <!-- Logout -->
+                                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </li>
                             @endif
-
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Login</a>
+                                <a href="{{ route('dashboard') }}" class="nav-link">
+                                   Login
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ route('login') }}" class="nav-link{{ request()->routeIs('login') ? 'active' : '' }}">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('register') }}" class="nav-link">Register</a>
+                                    </li>
+                                </ul>
                             </li>
                         @endauth
+
+
 
                         <li class="nav-item d-flex">
                             <div class="dropdown cart_drop01 my-auto">

@@ -42,6 +42,7 @@ class AdminController extends Controller
         $about->title = $request->title;
         $about->header = $request->header;
         $about->description = $request->description;
+        $about->main_content = $request->main_content;
         if ($request->file('image')) {
             $about->image = $this->saveImage($request);
         }
