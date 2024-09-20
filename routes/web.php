@@ -111,7 +111,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/user-profile', [ProfileController::class, 'edit'])->name('user-profile.edit');
+    Route::get('/user-profile', [ProfileController::class, 'editUser'])->name('user-profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -137,6 +137,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/chat/send', [SupportChatController::class, 'sendMessage'])->name('chat.send');
     Route::get('/chat/messages/{supportId}', [SupportChatController::class, 'fetchMessages']);
 
+    //Close Support
+    Route::post('support-close/{id}',[AdmniSupportController::class,'closeTicket'])->name('admin-support-close');
 
 });
 
@@ -250,6 +252,9 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
 
     Route::get('admin-support-list',[AdmniSupportController::class,'index'])->name('admin-support-list');
     Route::get('admin-support/{id}',[AdmniSupportController::class,'chat'])->name('admin-chat');
+    Route::delete('admin-support-delete/{id}',[AdmniSupportController::class,'destroy'])->name('admin-chat-delete');
+
+
 
 
 

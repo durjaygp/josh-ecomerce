@@ -22,6 +22,13 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function editUser(Request $request): View
+    {
+        return view('user.profile.index', [
+            'user' => $request->user(),
+        ]);
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -47,10 +54,10 @@ class ProfileController extends Controller
 
             $user->save();
 
-            return redirect()->route('profile.edit')->with('status', 'Profile Updated');
+            return redirect()->back()->with('success', 'Profile Updated');
         } catch (\Exception $e) {
             // Log the error
-            \Log::error('Profile update error: ' . $e->getMessage());
+       //     \Log::error('Profile update error: ' . $e->getMessage());
 
             // Redirect back with an error message
             return redirect()->back()->with('error', 'An error occurred during profile update.');

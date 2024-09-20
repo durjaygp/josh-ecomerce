@@ -65,7 +65,7 @@
                             <div id="card-errors" role="alert" class="text-danger mt-2"></div>
                         </div>
 
-                        <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" style="margin-top: 20px;">Pay Now ($100)</button>
+                        <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" style="margin-top: 20px;">Pay Now</button>
                     </form>
                 </div>
             </div>

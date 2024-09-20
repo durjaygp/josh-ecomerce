@@ -34,11 +34,6 @@
                     <div class="col-md-4 ">
                         <h2>Update Personal Details</h2>
                     </div>
-                    <div class="col-md-8 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-                        <a href="{{route('blog.list')}}" class="btn btn-info d-flex align-items-center">
-                            <i class="ti ti-list-details text-white me-1 fs-5"></i> Blog List
-                        </a>
-                    </div>
                 </div>
                 <div class="card-body">
                     @php

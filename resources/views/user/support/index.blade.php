@@ -31,7 +31,7 @@
                             <h2>Support Tickets</h2>
                         </div>
                         <div class="col-md-8 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-                            <a href="{{route('admin-products.create')}}" class="btn btn-info d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <a href="#" class="btn btn-info d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <i class="ti ti-new-section text-white me-1 fs-5"></i> Create New Ticket
                             </a>
 
@@ -81,6 +81,9 @@
                                                     </a>
                                                     @else
                                                     @endif
+                                                        <a href="#" class="btn btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdropt{{$row->id}}">
+                                                            <i class="ti ti-corner-right-up fs-5"></i>
+                                                        </a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -169,5 +172,65 @@
         </div>
     </div>
     <!-- Button trigger modal -->
+
+    @foreach($support as $row)
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdropt{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header d-flex align-items-center">
+                        <h4 class="modal-title" id="myLargeModalLabel">
+                            Close This Ticket
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    @if($row->status == 2)
+                        <h3 class="text-success">{{$row->close_description}}</h3>
+                    @else
+                        <div class="modal-body">
+                            <form method="post" action="{{route('admin-support-close',$row->id)}}" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-4">
+                                            <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Update Status <small class="text-danger">*</small></label>
+                                            <select name="status" id="order_item_id" class="form-control" required>
+                                                <option value="">Select Status</option>
+                                                <option value="1" >Open</option>
+                                                <option value="2" >Close</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="mb-4">
+                                            <label for="close_description" class="form-label fw-semibold">Description</label>
+                                            <textarea name="close_description" id="close_description" class="form-control" placeholder="Description" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="gap-3 d-flex align-items-center">
+                                            <button class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    @endif
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+    @endforeach
 
 @endsection

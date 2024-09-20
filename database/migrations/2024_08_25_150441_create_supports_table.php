@@ -23,6 +23,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('status')->nullable();
             $table->string('close_by_id')->nullable();
+            $table->text('close_description')->nullable();
             $table->timestamps();
         });
     }

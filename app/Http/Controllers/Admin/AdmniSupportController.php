@@ -26,6 +26,21 @@ class AdmniSupportController extends Controller
         return view('user.support.chat',compact('support','messages','supportId'));
     }
 
+    public function closeTicket(Request $request, $supportId)
+    {
+        $request->validate([
+            'status'=>'required',
+            'close_description'=>'required'
+        ]);
+        $support = Support::find($supportId);
+        $support->status = $request->status;
+        $support->close_description = $request->close_description;
+        $support->close_by_id = auth()->user()->id;
+        $support->save();
+        return redirect()->back()->with('success','Ticket Status Changed Successfully');
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -71,6 +86,8 @@ class AdmniSupportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $support = Support::find($id);
+        $support->delete();
+        return redirect()->back()->with('success','Support Deleted Successfully');
     }
 }
