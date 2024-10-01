@@ -3,7 +3,6 @@
 {{ setting()->name ?? "Home" }}
 @endsection
 @section('content')
-    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
 
     <div class="main-hero-area">
         <div class="hero-slides owl-carousel owl-theme">
@@ -222,7 +221,7 @@
     color: black;"><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">We are committed to providing quality IT Services</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;</span><span class="icon-list-text">Provided by experts to help challenge critical activities</span></li><li class="icon-list-item"><span class="icon-list-icon"><span aria-hidden="true" class="fas fa-check"></span>&nbsp;JSB-Tech LLC is a company with employees that have a passion for technology and want to do a good job.</span></li></ul><ul class="icon-list-items">
                         </ul>
 
-                        <a href="https://jsb-tech.com/about-us" class="mt-2 btn default-btn"> Learn More  </a>
+                        <a href="{{route('home.about')}}" class="mt-2 btn default-btn"> Learn More  </a>
                     </div>
                 </div>
 
@@ -231,8 +230,10 @@
                         <span>LET'S TALK</span>
                         <h3>We Would Like To Hear From You Anytime <span class="overlay"></span></h3>
 
-                        <form id="contactFormTwo" method="post" action="https://jsb-tech.com/contact-store">
-                            <input type="hidden" name="_token" value="Nys3Y4vFWn5PhAhilUpboTNeFWeJ5El7E588t3we">                                                <div class="row">
+                        <form id="contactFormTwo" method="post" action="{{route('contact.save')}}">
+                            @csrf
+
+                                                                    <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control" required data-error="Please enter your name" placeholder="Your name">
@@ -251,13 +252,13 @@
                                     <div class="form-group">
 
                                         <select name="service" class="form-control" required data-error="Please select service">
-                                            <option selected disabled>Select Service</option>
-                                            <option value="Data backup and Recovery">Data backup and Recovery</option>
-                                            <option value="Email Anti-Spam Solutions">Email Anti-Spam Solutions</option>
-                                            <option value="Remote Computer repair">Remote Computer repair</option>
-                                            <option value="Server and Network Managment">Server and Network Managment</option>
-                                            <option value="VOIP Phone Services recommnedation and contract nogotiation.">VOIP Phone Services recommnedation and contract nogotiation.</option>
-                                            <option value="Ransomware Remediation">Ransomware Remediation</option>
+                                            <option value="">Select Service</option>
+                                            @php
+                                                $servies = App\Models\Service::where('status',1)->get();
+                                            @endphp
+                                            @foreach ($servies as $row)
+                                                <option value="{{$row->title}}">{{$row->title}}</option>
+                                            @endforeach
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -277,9 +278,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12 col-md-12">
-                                    <div data-sitekey="6LfY_SAkAAAAAK_UZFLnxFfWj36HYisD59zAz6Ol" class="g-recaptcha"></div>
+                                <!-- Honeypot field -->
+                                <div style="display: none;">
+                                    <label for="honeypot">Leave this field blank</label>
+                                    <input type="text" name="honeypot" id="honeypot" value="">
                                 </div>
+
+
 
                                 <div class="mt-2 col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn">Submit<span></span></button>

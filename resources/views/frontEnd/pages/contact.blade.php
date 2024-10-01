@@ -42,9 +42,10 @@
                         <span>LET'S TALK</span>
                         <h3>We Would Like To Hear From You Anytime <span class="overlay"></span></h3>
 
-                        <form id="contactFormTwo" method="post" action="https://jsb-tech.com/contact-store">
-                            <input type="hidden" name="_token" value="SAoUCpQyeE7mQXUHBdL3ZDk68lAVSQQUpBR1kwsy">                                                    <input type="hidden" name="contact_form" value="contact">
-                            <div class="row">
+                        <form id="contactFormTwo" method="post" action="{{route('contact.save')}}">
+                            @csrf
+
+                                                                    <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control" required data-error="Please enter your name" placeholder="Your name">
@@ -63,13 +64,13 @@
                                     <div class="form-group">
 
                                         <select name="service" class="form-control" required data-error="Please select service">
-                                            <option selected disabled>Select Service</option>
-                                            <option value="Data backup and Recovery">Data backup and Recovery</option>
-                                            <option value="Email Anti-Spam Solutions">Email Anti-Spam Solutions</option>
-                                            <option value="Remote Computer repair">Remote Computer repair</option>
-                                            <option value="Server and Network Managment">Server and Network Managment</option>
-                                            <option value="VOIP Phone Services recommnedation and contract nogotiation.">VOIP Phone Services recommnedation and contract nogotiation.</option>
-                                            <option value="Ransomware Remediation">Ransomware Remediation</option>
+                                            <option value="">Select Service</option>
+                                            @php
+                                                $servies = App\Models\Service::where('status',1)->get();
+                                            @endphp
+                                            @foreach ($servies as $row)
+                                                <option value="{{$row->title}}">{{$row->title}}</option>
+                                            @endforeach
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -89,13 +90,17 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12 col-md-12">
-                                    <div data-sitekey="6LfY_SAkAAAAAK_UZFLnxFfWj36HYisD59zAz6Ol" class="g-recaptcha"></div>
+                                <!-- Honeypot field -->
+                                <div style="display: none;">
+                                    <label for="honeypot">Leave this field blank</label>
+                                    <input type="text" name="honeypot" id="honeypot" value="">
                                 </div>
 
-                                <div class="col-lg-12 col-md-12 mt-2">
+
+
+                                <div class="mt-2 col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn">Submit<span></span></button>
-                                    <div id="msgSubmitTwo" class="h3 text-center hidden"></div>
+                                    <div id="msgSubmitTwo" class="hidden text-center h3"></div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>

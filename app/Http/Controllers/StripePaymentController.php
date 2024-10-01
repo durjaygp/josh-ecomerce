@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Status;
 use App\Models\Cart;
 use App\Models\CartItems;
 use App\Models\Order;
@@ -101,18 +102,32 @@ class StripePaymentController extends Controller
             ],
         ]);
 
+        // // Create the order
+        // $order = Order::create([
+        //     'user_id' => $user->id,
+        //     'order_number' => uniqid('ORD-'),
+        //     'coupon_id' => $mainCart->coupon_id,
+        //     'total_price' => $total,
+        //     'shipping_id' => $shipping->id,
+        //     'status' => 'completed',
+        //     'payment_status' => 'paid',
+        //     'shipping_status' => 'pending',
+        //     'payment_method' => 'Stripe',
+        // ]);
         // Create the order
+
         $order = Order::create([
             'user_id' => $user->id,
-            'order_number' => uniqid('ORD-'),
+            'order_number' => 'ORD-' . strtoupper(substr(uniqid(), -5)), // Generates a 5-character unique ID
             'coupon_id' => $mainCart->coupon_id,
             'total_price' => $total,
             'shipping_id' => $shipping->id,
-            'status' => 'completed',
+            'status' => Status::IN_PROGRESS(),
             'payment_status' => 'paid',
-            'shipping_status' => 'pending',
+            'shipping_status' => Status::PENDING(),
             'payment_method' => 'Stripe',
         ]);
+
 
         // Store order items
         foreach ($cartItems as $cartItem) {
@@ -133,7 +148,7 @@ class StripePaymentController extends Controller
         }
 
         // Send invoice email to user
-        Mail::to($user->email)->send(new InvoiceMail($order, $cartItems, $subtotal, $discount, $total));
+        // Mail::to($user->email)->send(new InvoiceMail($order, $cartItems, $subtotal, $discount, $total));
 
 
         return view('order_success');

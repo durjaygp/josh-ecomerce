@@ -24,9 +24,7 @@
         </div>
         <div class="widget-content searchable-container list">
             <!-- --------------------- start Contact ---------------- -->
-            <div class="card card-body">
 
-            </div>
             <div class="card">
                 <div class="row">
                     <div class="col-md-4 ">

@@ -36,7 +36,8 @@ class SupportController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'order_item_id' => 'required',
+            'type' => 'required|string|max:255',
+            'priority' => 'required|string|max:255',
             'reason' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg', // Validate the image

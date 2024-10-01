@@ -86,7 +86,8 @@ class OrderController extends Controller
         session([
             'order_data' => [
                 'user_id' => $user->id,
-                'order_number' => 'ORD-' . strtoupper(uniqid()),
+                // 'order_number' => 'ORD-' . strtoupper(uniqid()),
+                'order_number' => 'ORD-' . strtoupper(substr(uniqid(), -5)),
                 'coupon_id' => optional($mainCart->coupon)->id,
                 'total_price' => $total,
                 'shipping_id' => $shipping->id,

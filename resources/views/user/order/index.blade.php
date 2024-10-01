@@ -36,17 +36,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
-                                <table id="zero_config"
-                                       class="table border table-striped table-bordered text-nowrap table-responsive">
+                                <table width="100%" id="zero_config" class="table border table-striped table-bordered text-nowrap table-responsive">
                                     <thead>
                                     <!-- start row -->
                                     <tr>
                                         <th>#</th>
-                                        <th>Customer Details</th>
+                                        <th>Order No.</th>
+                                        <th>Personal Details</th>
                                         <th>Price</th>
                                         <th>Shipping Address</th>
                                         <th>Payment Method</th>
                                         <th>Payment Status</th>
+                                        <th>Order Status</th>
+                                        <th>Shiping Status</th>
                                         <th>Action</th>
                                     </tr>
                                     <!-- end row -->
@@ -56,6 +58,7 @@
                                         <!-- start row -->
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
+                                            <td>{{$row->order_number}}</td>
                                             <td>
                                                 <p>{{$row->user->name}}</p>
                                                 <p>{{$row->user->email}}</p>
@@ -68,14 +71,45 @@
                                                 <p>{{$row->ship?->address}}</p>
                                                 <p>{{$row->ship?->phone}}</p>
                                             </td>
-                                            <td>
-                                                <p>{{$row->payment_method}}</p>
-                                            </td>
+
+                                            <td><p>{{$row->payment_method}}</p></td>
+
                                             <td>
                                                 @if($row->payment_status == "paid")
                                                     <span class="badge bg-secondary">Paid</span>
                                                 @else
                                                     <span class="badge bg-danger">Not Paid</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($row->status == App\Enums\Status::IN_PROGRESS())
+                                                    <span class="badge bg-secondary">In Progress</span>
+                                                @elseif($row->status == App\Enums\Status::COMPLETE())
+                                                    <span class="badge bg-success">Complete</span>
+                                                @elseif($row->status == App\Enums\Status::FAILED())
+                                                    <span class="badge bg-danger">Failed</span>
+                                                @elseif($row->status == App\Enums\Status::SHIPPED())
+                                                    <span class="badge bg-info">Shipped</span>
+                                                @elseif($row->status == App\Enums\Status::PENDING())
+                                                    <span class="badge bg-warning">Pending</span>
+                                                @elseif($row->status == App\Enums\Status::CANCELED())
+                                                    <span class="badge bg-dark">Canceled</span>
+                                                @else
+                                                    <span class="badge bg-light text-black">Unknown Status</span>
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if($row->shipping_status == App\Enums\Status::IN_PROGRESS())
+                                                    <span class="badge bg-secondary">In Progress</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::SHIPPED())
+                                                    <span class="badge bg-info">Shipped</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::PENDING())
+                                                    <span class="badge bg-warning">Pending</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::CANCELED())
+                                                    <span class="badge bg-dark">Canceled</span>
+                                                @else
+                                                    <span class="badge bg-light text-black">Unknown Status</span>
                                                 @endif
                                             </td>
 

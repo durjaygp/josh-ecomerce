@@ -26,50 +26,7 @@
                     </div>
                 </div>
             </div>
-            @php
-                $totalgame = \App\Models\Category::count();
-                $totaluser = \App\Models\User::count();
-                $totalblog = \App\Models\Blog::count();
-            @endphp
-            <div class="col-md-3">
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-success shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="{{asset('back')}}/assets/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-3" alt="" />
-                                <p class="fw-semibold fs-3 text-warning mb-1">Total Category</p>
-                                <h5 class="fw-semibold text-warning mb-0">{{$totalgame}}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-warning shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="{{asset('back')}}/assets/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-3" alt="" />
-                                <p class="fw-semibold fs-3 text-warning mb-1">Total User</p>
-                                <h5 class="fw-semibold text-warning mb-0">{{$totaluser}}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-warning shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="{{asset('back')}}/assets/images/svgs/icon-connect.svg" width="50" height="50" class="mb-3" alt="" />
-                                <p class="fw-semibold fs-3 text-warning mb-1">Total Blog</p>
-                                <h5 class="fw-semibold text-warning mb-0">{{$totalblog}}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 @endsection

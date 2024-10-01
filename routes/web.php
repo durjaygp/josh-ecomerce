@@ -87,7 +87,9 @@ Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.coun
 
 Route::get('/search',[WebController::class,'searchBlog'])->name('search.blog');
 Route::get('sitemap.xml', [WebController::class, 'siteMap']);
+
 Route::post('/contact/save', [HomeController::class,'contactMessage'])->name('contact.save');
+
 Route::post('comment/save',[CommentController::class,'store'])->name('comment.save');
 Route::post('newsletter/save',[NewsletterController::class,'store'])->name('newsletter.save');
 Route::get('/comments/delete/{id}', [CommentController::class,'destroy'])->name('comments.destroy');
@@ -197,6 +199,7 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
 
     // ================= Contact Message =================
     Route::get('/admin/contact/message',[AdminController::class,'message'])->name('contact.message');
+    Route::post('/admin/contact/message',[AdminController::class,'updateSpamKeywords'])->name('settings.updateSpamKeywords');
     Route::get('/admin/delete/message/{id}',[AdminController::class,'messageDelete'])->name('contact.message.delete');
 
     Route::get('/admin/delete/comment/{id}',[CommentController::class,'delete'])->name('comment.delete');
@@ -249,6 +252,8 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     // Order Details
     Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');
     Route::get('/admin/order/invoice/{id}',[AdminOrderController::class,'invoice'])->name('admin-order.invoice');
+    Route::get('/admin/order/orderDelete/{id}',[AdminOrderController::class,'orderDelete'])->name('admin-order.orderDelete');
+    Route::post('/admin/order/orderStatus/{id}',[AdminOrderController::class,'orderStatusUpdate'])->name('admin-order.orderStatus');
 
     Route::get('admin-support-list',[AdmniSupportController::class,'index'])->name('admin-support-list');
     Route::get('admin-support/{id}',[AdmniSupportController::class,'chat'])->name('admin-chat');

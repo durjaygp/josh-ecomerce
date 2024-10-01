@@ -41,17 +41,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
-                                <table id="zero_config"
-                                       class="table border table-striped table-bordered text-nowrap table-responsive">
+                                <table width="100%" id="zero_config" class="table border table-striped table-bordered text-nowrap table-responsive">
                                     <thead>
                                     <!-- start row -->
                                     <tr>
                                         <th>#</th>
+                                        <th>Order No.</th>
                                         <th>Customer Details</th>
                                         <th>Price</th>
                                         <th>Shipping Address</th>
                                         <th>Payment Method</th>
                                         <th>Payment Status</th>
+                                        <th>Order Status</th>
+                                        <th>Shiping Status</th>
                                         <th>Action</th>
                                     </tr>
                                     <!-- end row -->
@@ -61,6 +63,7 @@
                                         <!-- start row -->
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
+                                            <td>{{$row->order_number}}</td>
                                             <td>
                                                 <p>{{$row->user->name}}</p>
                                                 <p>{{$row->user->email}}</p>
@@ -73,9 +76,9 @@
                                                 <p>{{$row->ship?->address}}</p>
                                                 <p>{{$row->ship?->phone}}</p>
                                             </td>
-                                            <td>
-                                                <p>{{$row->payment_method}}</p>
-                                            </td>
+
+                                            <td><p>{{$row->payment_method}}</p></td>
+
                                             <td>
                                                 @if($row->payment_status == "paid")
                                                     <span class="badge bg-secondary">Paid</span>
@@ -83,9 +86,49 @@
                                                     <span class="badge bg-danger">Not Paid</span>
                                                 @endif
                                             </td>
+                                            <td>
+                                                @if($row->status == App\Enums\Status::IN_PROGRESS)
+                                                    <span class="badge bg-secondary">{{ App\Enums\Status::map()[App\Enums\Status::IN_PROGRESS] }}</span>
+                                                @elseif($row->status == App\Enums\Status::COMPLETE)
+                                                    <span class="badge bg-success">{{ App\Enums\Status::map()[App\Enums\Status::COMPLETE] }}</span>
+                                                @elseif($row->status == App\Enums\Status::FAILED)
+                                                    <span class="badge bg-danger">{{ App\Enums\Status::map()[App\Enums\Status::FAILED] }}</span>
+                                                @elseif($row->status == App\Enums\Status::SHIPPED)
+                                                    <span class="badge bg-info">{{ App\Enums\Status::map()[App\Enums\Status::SHIPPED] }}</span>
+                                                @elseif($row->status == App\Enums\Status::PENDING)
+                                                    <span class="badge bg-warning">{{ App\Enums\Status::map()[App\Enums\Status::PENDING] }}</span>
+                                                @elseif($row->status == App\Enums\Status::CANCELED)
+                                                    <span class="badge bg-dark">{{ App\Enums\Status::map()[App\Enums\Status::CANCELED] }}</span>
+                                                @else
+                                                    <span class="badge bg-light text-black">Unknown Status</span>
+                                                @endif
+                                            </td>
+
+
+                                            <td>
+                                                @if($row->shipping_status == App\Enums\Status::IN_PROGRESS)
+                                                    <span class="badge bg-secondary">{{ App\Enums\Status::map()[App\Enums\Status::IN_PROGRESS] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::COMPLETE)
+                                                    <span class="badge bg-success">{{ App\Enums\Status::map()[App\Enums\Status::COMPLETE] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::FAILED)
+                                                    <span class="badge bg-danger">{{ App\Enums\Status::map()[App\Enums\Status::FAILED] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::SHIPPED)
+                                                    <span class="badge bg-info">{{ App\Enums\Status::map()[App\Enums\Status::SHIPPED] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::PENDING)
+                                                    <span class="badge bg-warning">{{ App\Enums\Status::map()[App\Enums\Status::PENDING] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::CANCELED)
+                                                    <span class="badge bg-dark">{{ App\Enums\Status::map()[App\Enums\Status::CANCELED] }}</span>
+                                                @else
+                                                    <span class="badge bg-light text-black">Unknown Status</span>
+                                                @endif
+                                            </td>
+
 
                                             <td>
                                                 <div class="action-btn">
+                                                    <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$row->id}}">
+                                                        Change Status
+                                                     </a>
                                                     <a href="{{route('admin-order.invoice',$row->id)}}" class="btn btn-sm btn-primary">
                                                         <i class="ti ti-file-invoice fs-5"></i>
                                                     </a>
@@ -97,7 +140,7 @@
                                                         <i class="ti ti-trash fs-5"></i>
                                                     </a>
 
-                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('blog.delete', $row->id) }}" method="get" style="display: none;">
+                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('admin-order.orderDelete', $row->id) }}" method="get" style="display: none;">
                                                         @csrf
                                                     </form>
 
@@ -105,6 +148,74 @@
                                             </td>
                                         </tr>
                                         <!-- end row -->
+
+
+     <!-- Modal -->
+ <div class="modal fade" id="staticBackdrop{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myLargeModalLabel">
+                    Update Order Status [Order Number: {{$row->order_number}}]
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{{ route('admin-order.orderStatus',$row->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <!-- Order Status -->
+                        <div class="col-lg-12">
+                            <div class="mb-4">
+                                <label for="status" class="form-label fw-semibold" style="text-align: left;">
+                                    Order Status <small class="text-danger">*</small>
+                                </label>
+                                <select name="status" id="status" class="form-control" required>
+                                    <option value=""> Select </option>
+                                    @foreach(App\Enums\Status::map() as $value => $label)
+                                        <option value="{{ $value }}" @if($row->status == $value) selected @endif >{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Status -->
+                        <div class="col-lg-12">
+                            <div class="mb-4">
+                                <label for="shipping_status" class="form-label fw-semibold" style="text-align: left;">
+                                    Shipping Status <small class="text-danger">*</small>
+                                </label>
+                                <select name="shipping_status" id="shipping_status" class="form-control" required>
+                                    <option value=""> Select </option>
+                                    @foreach(App\Enums\Status::map() as $value => $label)
+                                        <option value="{{ $value }}" @if($row->shipping_status == $value) selected @endif >{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <div class="gap-3 d-flex align-items-center">
+                                <button class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+
+
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -116,4 +227,6 @@
 
         </div>
     </div>
+
+
 @endsection

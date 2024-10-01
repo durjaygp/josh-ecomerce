@@ -21,11 +21,6 @@ class HomeController extends Controller
         return view('frontEnd.pages.details',compact('page'));
     }
 
-    public function index(){
-        $books = Book::latest()->where('is_featured',1)->take(1)->get();
-        return view('frontEnd_old.home.index',compact('books'));
-    }
-
     public function pay(){
         return view('payfast');
     }
@@ -40,51 +35,60 @@ class HomeController extends Controller
         return view('homePage.blog.details',compact('blog','comments'));
     }
 
-    public function category($slug){
-        $category = Category::where('slug',$slug)->first();
-        $recipes = Recipe::where('category_id',$category->id)->latest()->get();
-        return view('frontEnd_old.recipe.category',compact('category','recipes'));
-    }
+
     public function blog(){
         $blogs = Blog::latest()->whereStatus(1)->get();
         return view('homePage.blog.blog',compact('blogs'));
     }
 
-    public function searchBooks(Request $request){
-        $search = '%' . $request->input('search') . '%';
 
-        $books = Book::where('name', 'like', $search)
-            ->orWhere('description', 'like', $search)
-            ->orWhere('body', 'like', $search)
-            ->get();
 
-        return view('frontEnd_old.books.search', compact('books', 'search'));
-    }
-
-    public function searchRecipe(Request $request){
-        $search = '%' . $request->input('search') . '%';
-
-        $recipes = Recipe::where('name', 'like', $search)
-            ->orWhere('description', 'like', $search)
-            ->orWhere('recipe', 'like', $search)
-            ->get();
-
-        return view('frontEnd_old.recipe.search', compact('recipes', 'search'));
-    }
-
-    public function contactMessage(Request $request){
+    public function contactMessage(Request $request) {
         $request->validate([
-            'name'=>'required|max:255',
-            'email'=>'required',
-            'message'=>'required|max:255',
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'service' => 'required',
+            'phone' => 'required',
+            'description' => 'required|max:500',
+            'honeypot' => 'nullable', // Validate honeypot as optional
         ]);
-        $message = new Contact();
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->message = $request->message;
-        $message->save();
-        return redirect()->back()->with('success','Message Send Successful');
+
+        // Check if the honeypot field is filled
+        if (!empty($request->honeypot)) {
+            return redirect()->back()->withErrors(['honeypot' => 'Spam detected.']);
+        }
+
+        // Fetch spam keywords from the database
+        $settings = setting(); // Assuming a `setting()` helper function or use your model directly
+        $spamKeywords = json_decode($settings->contact_spam_keywords, true) ?? [];
+
+        // Check if description contains any spam keywords
+        if ($this->containsSpam($request->description, $spamKeywords)) {
+            return redirect()->back()->withErrors(['description' => 'Your message appears to be spam.']);
+        }
+
+        // Explicitly select the fields to prevent mass assignment issues
+        $messageData = $request->only(['name', 'email', 'service', 'phone', 'description']);
+
+        // Create the contact message
+        Contact::create($messageData);
+
+        return redirect()->back()->with('success', 'Message sent successfully.');
     }
+
+
+    protected function containsSpam($description, $spamKeywords) {
+        foreach ($spamKeywords as $keyword) {
+            if (stripos($description, $keyword) !== false) {
+                return true; // Found a spam keyword
+            }
+        }
+        return false; // No spam keywords found
+    }
+
+
+
+
 
 
 

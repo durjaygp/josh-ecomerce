@@ -122,7 +122,7 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="{{ route('my-orders') }}" class="nav-link">Dashboard</a>
+                                            <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ route('my-orders') }}" class="nav-link">My Orders</a>

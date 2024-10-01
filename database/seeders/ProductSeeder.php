@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
                 'seo_title' => $faker->sentence,
                 'seo_description' => $faker->sentence,
                 'seo_keywords' => implode(', ', $faker->words(5)),
-                'status' => $faker->randomElement(['1', '2']),
+                'status' => $faker->randomElement(['1']),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

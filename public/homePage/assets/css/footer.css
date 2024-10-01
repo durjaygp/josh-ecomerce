@@ -104,12 +104,12 @@ Footer Area CSS
   color: var(--main-color);
 }
 
-.single-footer-widget .newsletter-form {
+.single-footer-widget .newsletter-form-p {
   margin-top: 20px;
   position: relative;
 }
 
-.single-footer-widget .newsletter-form .input-newsletter {
+.single-footer-widget .newsletter-form-p .input-newsletter {
   display: block;
   width: 100%;
   background-color: #2E2141;
@@ -123,51 +123,51 @@ Footer Area CSS
   transition: var(--transition);
 }
 
-.single-footer-widget .newsletter-form .input-newsletter::-webkit-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter::-webkit-input-placeholder {
   color: #CDC4D9;
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:-ms-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter:-ms-input-placeholder {
   color: #CDC4D9;
 }
 
-.single-footer-widget .newsletter-form .input-newsletter::-ms-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter::-ms-input-placeholder {
   color: #CDC4D9;
 }
 
-.single-footer-widget .newsletter-form .input-newsletter::placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter::placeholder {
   color: #CDC4D9;
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:focus {
+.single-footer-widget .newsletter-form-p .input-newsletter:focus {
   border: 1px solid var(--main-color);
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:focus::-webkit-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter:focus::-webkit-input-placeholder {
   color: transparent;
   -webkit-transition: var(--transition);
   transition: var(--transition);
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:focus:-ms-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter:focus:-ms-input-placeholder {
   color: transparent;
   -webkit-transition: var(--transition);
   transition: var(--transition);
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:focus::-ms-input-placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter:focus::-ms-input-placeholder {
   color: transparent;
   -webkit-transition: var(--transition);
   transition: var(--transition);
 }
 
-.single-footer-widget .newsletter-form .input-newsletter:focus::placeholder {
+.single-footer-widget .newsletter-form-p .input-newsletter:focus::placeholder {
   color: transparent;
   -webkit-transition: var(--transition);
   transition: var(--transition);
 }
 
-.single-footer-widget .newsletter-form button {
+.single-footer-widget .newsletter-form-p button {
   border: none;
   width: 100%;
   border-radius: 15px;
@@ -175,7 +175,7 @@ Footer Area CSS
   margin-top: 15px;
 }
 
-.single-footer-widget .newsletter-form #validator-newsletter {
+.single-footer-widget .newsletter-form-p #validator-newsletter {
   color: red;
   font-weight: 400;
   font-size: 14px;

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('support_messages', function (Blueprint $table) {
             $table->id();
             $table->longText('message');
-            $table->json('files')->nullable();
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->nullable();
             $table->string('support_id');

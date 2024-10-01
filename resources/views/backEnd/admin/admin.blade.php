@@ -30,6 +30,8 @@
                 $totalblog = \App\Models\Blog::count();
                 $totalproduct = \App\Models\Product::count();
                 $totalService = \App\Models\Service::count();
+                $newSupport = \App\Models\Support::count();
+                $openSupport = \App\Models\Support::where('status',1)->count();
                 $totalsale = \App\Models\Order::sum('total_price');
             @endphp
 
@@ -106,6 +108,32 @@
                                 <img src="{{asset('back')}}/assets/images/svgs/icon-connect.svg" width="50" height="50" class="mb-3" alt="" />
                                 <p class="fw-semibold fs-3 text-warning mb-1">Total Blog</p>
                                 <h5 class="fw-semibold text-warning mb-0">{{$totalblog}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="item">
+                    <div class="card border-0 zoom-in bg-light-warning shadow-none">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="{{asset('back')}}/assets/images/svgs/icon-mail.svg" width="50" height="50" class="mb-3" alt="" />
+                                <p class="fw-semibold fs-3 text-warning mb-1">New Open Support</p>
+                                <h5 class="fw-semibold text-warning mb-0">{{$openSupport}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="item">
+                    <div class="card border-0 zoom-in bg-light-warning shadow-none">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="{{asset('back')}}/assets/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-3" alt="" />
+                                <p class="fw-semibold fs-3 text-warning mb-1">Total Support</p>
+                                <h5 class="fw-semibold text-warning mb-0">{{$newSupport}}</h5>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@
     <link  id="themeColors"  rel="stylesheet" href="{{asset('back')}}/assets/css/style.min.css" />
     <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @vite('resources/js/app.js')
+
 </head>
 <body>
 <!-- Preloader -->
@@ -41,7 +41,8 @@
     <!-- Main wrapper -->
     <div class="body-wrapper">
         <!-- Header Start -->
-    @include('user.inc.header')
+         @include('user.inc.header')
+
     <!-- Header End -->
     @yield('content')
     <!-- container-fluid over -->
@@ -65,15 +66,7 @@
 <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 <script src="{{asset('back')}}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('back')}}/assets/js/datatable/datatable-basic.init.js"></script>
-<script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
-<script>
-    window.Echo = new Echo({
-        broadcaster: 'pusher',
-        key: '{{ env('PUSHER_APP_KEY') }}', // Make sure your .env has these values
-        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-        forceTLS: true
-    });
-</script>
+
 
 @yield('script')
 

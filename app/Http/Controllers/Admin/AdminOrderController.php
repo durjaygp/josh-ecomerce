@@ -64,4 +64,30 @@ class AdminOrderController extends Controller
         $order->save();
         return redirect()->back()->with('success','Approved Successfully');
     }
+
+
+    public function orderDelete($id)
+    {
+        $order = Order::find($id);
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found');
+        }
+        $orderitems = OrderItems::where('order_id', $order->id)->get();
+
+        foreach ($orderitems as $item) {
+            $item->delete();
+        }
+        $order->delete();
+        return redirect()->back()->with('success', 'Order Deleted');
+    }
+
+    public function orderStatusUpdate(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->status;
+        $order->shipping_status = $request->shipping_status;
+        $order->save();
+        return redirect()->back()->with('success', 'Order Status Updated');
+    }
+
 }

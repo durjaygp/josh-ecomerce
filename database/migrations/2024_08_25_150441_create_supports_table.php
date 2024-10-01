@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->nullable();
-            $table->unsignedBigInteger('order_item_id');
-            $table->foreign('order_item_id')->references('id')->on('order_items')->nullable();
             $table->string('reason')->nullable();
+            $table->string('type')->nullable();
+            $table->string('priority')->nullable();
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->string('status')->nullable();

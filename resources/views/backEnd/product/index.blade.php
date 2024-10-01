@@ -41,8 +41,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
-                                <table id="zero_config"
-                                       class="table border table-striped table-bordered text-nowrap table-responsive">
+                                <table width="100%" id="zero_config" class="table border table-striped table-bordered text-nowrap table-responsive">
                                     <thead>
                                     <!-- start row -->
                                     <tr>

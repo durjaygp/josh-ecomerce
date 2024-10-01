@@ -14,10 +14,41 @@ class AdminController extends Controller
     public function index(){
         return view('backEnd.admin.update');
     }
-    public function message(){
+    public function message() {
         $message = Contact::latest()->get();
-        return view('backEnd.admin.message',compact('message'));
+
+        // Get the spam keywords from settings
+        $spams = setting()->contact_spam_keywords;
+
+        // Check if $spams is a JSON string; if so, decode it
+        if (is_string($spams)) {
+            $spams = json_decode($spams, true);
+        } else {
+            $spams = []; // Default to an empty array if it's not a string
+        }
+
+        return view('backEnd.admin.message', compact('message', 'spams'));
     }
+
+
+    public function updateSpamKeywords(Request $request) {
+        $request->validate([
+            'contact_spam_keywords' => 'required|string',
+        ]);
+
+        // Convert the comma-separated string to an array
+        $keywordsArray = explode(',', $request->contact_spam_keywords);
+
+        // Save the keywords as a JSON array in the settings
+        $settings = setting(); // Assuming you have a way to get the settings instance
+        $settings->contact_spam_keywords = json_encode(array_map('trim', $keywordsArray)); // Trim spaces
+        $settings->save();
+
+        return redirect()->back()->with('success', 'Spam keywords updated successfully.');
+    }
+
+
+
     public function messageDelete($id){
         $message = Contact::find($id);
         $message->delete();

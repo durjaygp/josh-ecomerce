@@ -34,7 +34,7 @@ class WebController extends Controller
     }
 
     public function blog(){
-        $blogs = Blog::latest()->whereStatus(1)->paginate(8);
+        $blogs = Blog::latest()->whereStatus(1)->with('user')->paginate(8);
         return view('frontEnd.blog.index',compact('blogs'));
     }
 

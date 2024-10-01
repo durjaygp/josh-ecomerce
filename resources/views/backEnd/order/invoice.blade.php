@@ -37,7 +37,7 @@
     <main>
         <div class="row">
             <div class="col-sm-6"><strong>Date:</strong> {{$order->created_at->format('d M Y')}}</div>
-            <div class="col-sm-6 text-sm-end"> <strong>Invoice No:</strong> 16835</div>
+            <div class="col-sm-6 text-sm-end"> <strong>Invoice No:</strong> {{$order->order_number}}</div>
 
         </div>
         <hr>

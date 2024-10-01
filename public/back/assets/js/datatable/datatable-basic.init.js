@@ -17,7 +17,12 @@ $(function () {
 /****************************************
  *       Basic Table                   *
  ****************************************/
-$("#zero_config").DataTable();
+// $("#zero_config").DataTable();
+ $("#zero_config").DataTable({
+    scrollX: true,
+    scrolly: true,
+  });
+
 
 /****************************************
  *       Default Order Table           *

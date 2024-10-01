@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('email')->nullable();
             $table->text('phone')->nullable();
+            $table->json('contact_spam_keywords')->nullable();
             $table->timestamps();
         });
     }

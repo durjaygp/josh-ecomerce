@@ -260,6 +260,15 @@
                                 <span class="hide-menu">Subscriber</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{route('contact.message')}}">
+                      <span>
+                        <i class="ti ti-message"></i>
+                      </span>
+                                <span class="hide-menu">Contact Message List</span>
+                            </a>
+                        </li>
                     @endcan
 {{--                    <li class="sidebar-item">--}}
 {{--                        <a class="sidebar-link" href="{{route('page.homePrivacy')}}">--}}

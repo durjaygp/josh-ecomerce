@@ -5,7 +5,7 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6">
-                <div class="single-footer-widget" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500" data-aos-once="true">
+                <div class="single-footer-widget">
                     <div class="widget-logo">
                         <a href="{{route('home')}}"><img src="{{asset(setting()->website_logo)}}" alt="image"></a>
                     </div>
@@ -37,7 +37,8 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <div class="single-footer-widget ps-5" data-aos="fade-up" data-aos-delay="60" data-aos-duration="600" data-aos-once="true">
+                {{-- <div class="single-footer-widget ps-5" data-aos="fade-up" data-aos-delay="60" data-aos-duration="600" data-aos-once="true"> --}}
+                <div class="single-footer-widget ps-5">
                     <h3>Links</h3>
 
                     <ul class="quick-links">
@@ -51,7 +52,7 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <div class="single-footer-widget ps-5" data-aos="fade-up" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                <div class="single-footer-widget ps-5">
                     <h3>Pages</h3>
 
                     <ul class="quick-links">
@@ -63,14 +64,14 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <div class="single-footer-widget" data-aos="fade-up" data-aos-delay="80" data-aos-duration="800" data-aos-once="true">
+                <div class="single-footer-widget">
                     <h3>Subscribe Newsletter</h3>
 
-                    <form class="newsletter-form" data-bs-toggle="validator">
-                        <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL" required autocomplete="off">
+                    <form class="newsletter-form-p" action="{{route('newsletter.save')}}" method="post">
+                        @csrf
+                        <input type="email" class="input-newsletter" placeholder="Enter your email" name="email" required>
 
                         <button type="submit" class="default-btn">Subscribe</button>
-                        <div id="validator-newsletter" class="form-result"></div>
                     </form>
                 </div>
             </div>
