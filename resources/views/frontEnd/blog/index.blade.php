@@ -2,6 +2,24 @@
 @section('title')
     Blog
 @endsection
+@section('meta_tag')
+    <meta name="description" content="{{$blog->seo_description}}">
+    <link rel="canonical" href="{{url('/')}}/details/{{$blog->slug}}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{$blog->name}}">
+    <meta property="og:description" content="{{$blog->seo_description}}">
+    <meta property="og:tags" content="{{$blog->seo_tags}}">
+    <meta property="og:keywords" content="{{$blog->seo_keywords}}">
+    <meta property="og:url" content="{{url('/')}}/blog/{{$blog->slug}}">
+    <meta property="og:site_name" content="{{ setting()->name }}">
+    <meta property="og:image" content="{{asset($blog->image)}}">
+    <meta property="og:image:secure_url" content="{{asset($blog->image)}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="{{$blog->name}}">
+    <meta name="twitter:title" content="{{$blog->name}}">
+    <meta name="twitter:image" content="{{asset($blog->image)}}">
+@endsection
 @section('content')
     <!-- Start Page Banner Area -->
     <div class="page-banner-area bg-4 jarallax" data-jarallax='{"speed": 0.3}'>

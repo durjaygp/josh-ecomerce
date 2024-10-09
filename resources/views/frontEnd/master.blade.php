@@ -4,21 +4,8 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!">
-    <meta name="keywords" content="">
     <meta name="robots" content="index, follow" />
-
-    <meta property="og:title" content="jsb-teche">
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!" />
-    <meta property="og:url" content="{{url('/')}}">
-
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="jsb-teche" />
-    <meta name="twitter:description" content="JSB Tech - IT management experts delivering efficient solutions for your business. Optimize your IT infrastructure with our trusted services. Call us Now!" />
-    <meta name="twitter:url" content="https://jsb-tech.com/" />
-
-    <meta name="twitter:card" content="summary_large_image">
+    @yield('meta_tag')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--  Favicon -->
     <link rel="shortcut icon" type="image/png" href="{{asset(optional(setting())->fav_icon)}}" />
@@ -48,7 +35,6 @@
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/responsive.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/image-uploader.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/fancybox.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         var SITE_URL = "https:\/\/jsb-tech.com"
@@ -110,7 +96,6 @@
 <script src="{{asset('homePage')}}/assets/js/main.js"></script>
 <script src="{{asset('homePage')}}/image-uploader.min.js"></script>
 <script src="{{asset('homePage')}}/fancybox.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
 
 
