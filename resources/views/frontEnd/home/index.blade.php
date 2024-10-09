@@ -35,7 +35,7 @@
                                     {{$row->description}}</p>
 
                                 <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                                    <a href="contact.html" class="default-btn mb-5">Get Started</a>
+                                    <a href="{{route('register')}}" class="default-btn mb-5">Get Started</a>
                                 </div>
                             </div>
                         </div>

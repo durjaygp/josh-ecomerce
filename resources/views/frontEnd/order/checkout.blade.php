@@ -122,7 +122,7 @@
                                     @foreach($carts as $row)
                                         <tr>
                                             <td class="product-name">
-                                                <a href="products-details.html">{{ $row->product->name }} X {{ $row->quantity }}</a>
+                                                <a href="{{route('home.product',$row->product?->slug)}}">{{ $row->product->name }} X {{ $row->quantity }}</a>
                                             </td>
 
                                             <td class="product-total">

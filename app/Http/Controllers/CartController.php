@@ -19,12 +19,16 @@ class CartController extends Controller
         $mainCart = Cart::where('user_id',$user)->first();
        return view('frontEnd.order.cart',compact('carts','mainCart'));
     }
+    public function cartCount()
+    {
+        if (auth()->check()) {
+            $cartCount = Cart::where('user_id', auth()->id())->count(); // or however you're counting cart items
+        } else {
+            $cartCount = 0; // For guests, return 0 or a custom value
+        }
 
-    public function cartCount(){
-        $cart = CartItems::where('user_id',auth()->user()->id)->sum('quantity');
-        return response()->json(['cart' => $cart]);
+        return response()->json(['cart' => $cartCount]);
     }
-
     public function removeCart($id){
         $cart = CartItems::find($id);
         $cart->delete();
