@@ -14,7 +14,6 @@
     <link rel="canonical" href="https://jsb-tech.com/">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/assets/css/bootstrap.min.css">
@@ -36,18 +35,18 @@
     <link rel="stylesheet" href="{{asset('homePage')}}/image-uploader.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-        var SITE_URL = "https:\/\/jsb-tech.com"
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ76SN2K4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+{{--    <script>--}}
+{{--        var SITE_URL = "https:\/\/jsb-tech.com"--}}
+{{--    </script>--}}
+{{--    <!-- Google tag (gtag.js) -->--}}
+{{--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ76SN2K4"></script>--}}
+{{--    <script>--}}
+{{--        window.dataLayer = window.dataLayer || [];--}}
+{{--        function gtag(){dataLayer.push(arguments);}--}}
+{{--        gtag('js', new Date());--}}
 
-        gtag('config', 'G-QCJ76SN2K4');
-    </script>
+{{--        gtag('config', 'G-QCJ76SN2K4');--}}
+{{--    </script>--}}
 
     <style>
         .main-hero-content{
