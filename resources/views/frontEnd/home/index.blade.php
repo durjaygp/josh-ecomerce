@@ -42,7 +42,7 @@
 
                         <div class="col-lg-5 col-md-12" data-aos="fade-down" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
                             <div class="main-slides-image" data-tilt>
-                                <img src="{{asset($row->image)}}" alt="{{$row->title}}">
+                                <img src="{{asset($row->image)}}" alt="{{$row->title}}" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="services-item h-100">
                             <div class="services-image">
                                 <a href="{{route('service.details',$row->slug)}}">
-                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}"></a>
+                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}"  loading="lazy"></a>
                             </div>
                             <div class="services-content">
                                 <h3>
@@ -88,10 +88,10 @@
         </div>
 
         <div class="services-shape-1">
-            <img src="{{asset('homePage')}}/assets/images/services/services-shape-1.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/services/services-shape-1.png" alt="image" loading="lazy">
         </div>
         <div class="services-shape-2">
-            <img src="{{asset('homePage')}}/assets/images/services/services-shape-2.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/services/services-shape-2.png" alt="image" loading="lazy">
         </div>
     </div>
     <!-- End Services Area -->
@@ -118,7 +118,7 @@
                         <p>{{ $review->review }}</p>
 
                         <div class="info-item-box">
-                            <img src="{{ $review->image ? asset($review->image) : 'default_image_path' }}" class="rounded-circle" alt="{{ $review->subject }}">
+                            <img src="{{ $review->image ? asset($review->image) : 'default_image_path' }}" class="rounded-circle" alt="{{ $review->subject }}" loading="lazy">
                             <h4>{{ $review->name }}, <span>{{ $review->subject }}</span></h4>
                             <ul class="rating-list">
                                 @for ($i = 1; $i <= 5; $i++)
@@ -158,10 +158,10 @@
                         <img src="{{asset($about->image)}}" alt="{{$about->title}}" data-tilt>
 
                         <div class="skill-shape-1">
-                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image" loading="lazy">
                         </div>
                         <div class="skill-shape-2">
-                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-2.png" alt="image">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-2.png" alt="image" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
         </div>
 
         <div class="skill-bg-shape">
-            <img src="{{asset('homePage')}}/assets/images/skill/skill-bg-shape.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/skill/skill-bg-shape.png" alt="image" loading="lazy">
         </div>
     </div>
     <!-- End Skill Area -->
@@ -188,7 +188,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="blog-image">
-                                    <a href="{{route('home.blog',$row->slug)}}"><img src="{{asset($row->image)}}" alt="{{$row->name}}"></a>
+                                    <a href="{{route('home.blog',$row->slug)}}"><img src="{{asset($row->image)}}" alt="{{$row->name}}" loading="lazy"></a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -208,7 +208,7 @@
         </div>
 
         <div class="blog-shape-1">
-            <img src="{{asset('homePage')}}/assets/images/blog/blog-shape-1.png" alt="image">
+            <img src="{{asset('homePage')}}/assets/images/blog/blog-shape-1.png" alt="image" loading="lazy">
         </div>
     </div>
     <!-- End Blog Area -->
@@ -258,10 +258,7 @@
 
                                         <select name="service" class="form-control" required data-error="Please select service">
                                             <option value="">Select Service</option>
-                                            @php
-                                                $servies = App\Models\Service::where('status',1)->get();
-                                            @endphp
-                                            @foreach ($servies as $row)
+                                            @foreach ($services as $row)
                                                 <option value="{{$row->title}}">{{$row->title}}</option>
                                             @endforeach
                                         </select>
