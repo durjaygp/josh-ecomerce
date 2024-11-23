@@ -1,0 +1,2 @@
+[27-Sep-2024 07:04:19 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.1.29. in /home/jsbtech/stage2024.jsb-tech.com/vendor/composer/platform_check.php on line 24
+[27-Sep-2024 07:05:13 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.1.29. in /home/jsbtech/stage2024.jsb-tech.com/vendor/composer/platform_check.php on line 24
