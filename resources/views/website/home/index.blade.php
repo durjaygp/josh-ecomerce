@@ -44,18 +44,8 @@ $setting = setting();
         <div class="shapes shape-two"></div>
         <div class="shapes shape-three"></div>
         <div class="container">
-            <!-- Title Section -->
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="text-center mb-4">
-                        <h2>
-                        <span>
-                            Services
-                            <img src="{{asset('website')}}/images/shape/line-shape-2.svg" alt="">
-                        </span>
-                        </h2>
-                    </div>
-                </div>
+            <div class="text-center mb-4">
+                <h2 class="title-style-two bold">Services </h2>
             </div>
 
             <!-- Blog Posts Section -->
