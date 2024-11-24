@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(FaqSeeder::class);
+        $this->call(CustomReviewSeeder::class);
 
 
     }
