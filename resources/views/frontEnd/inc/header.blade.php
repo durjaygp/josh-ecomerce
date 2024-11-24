@@ -142,6 +142,7 @@
                                     </ul>
                                 </li>
                             @endif
+
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link">
@@ -159,8 +160,6 @@
                             </li>
                         @endauth
 
-
-
                         <li class="nav-item d-flex">
                             <div class="dropdown cart_drop01 my-auto">
                                 <a href="{{ route('home.cart') }}" class="btn default-btn px-3 py-2 {{ request()->routeIs('home.cart') ? 'active' : '' }}" data-toggle="dropdown">
@@ -168,6 +167,8 @@
                                 </a>
                             </div>
                         </li>
+
+
                     </ul>
                 </div>
 

@@ -1,60 +1,92 @@
-@php
- $setting = setting();
-@endphp
 @extends('frontEnd.master')
 @section('title')
-{{ $setting->name ?? "Home" }}
+{{ setting()->name ?? "Home" }}
 @endsection
 @section('meta_tag')
-    <meta name="description" content="{{$setting->description ?? ""}}">
-    <meta name="keywords" content="{{$setting->keywords ?? ""}}">
-    <meta property="og:title" content="{{$setting->name ?? ""}}">
+    <meta name="description" content="{{setting()->description ?? ""}}">
+    <meta name="keywords" content="{{setting()->keywords ?? ""}}">
+    <meta property="og:title" content="{{setting()->name ?? ""}}">
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="{{$setting->description ?? ""}}" />
+    <meta property="og:description" content="{{setting()->description ?? ""}}" />
     <meta property="og:url" content="{{url('/')}}">
 
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="{{$setting->name ?? ""}}" />
-    <meta name="twitter:description" content="{{$setting->description ?? ""}}" />
+    <meta name="twitter:title" content="{{setting()->name ?? ""}}" />
+    <meta name="twitter:description" content="{{setting()->description ?? ""}}" />
     <meta name="twitter:url" content="{{url('/')}}" />
-    <meta name="twitter:card" content="{{asset(optional($setting)->website_logo)}}">
+    <meta name="twitter:card" content="{{asset(optional(setting())->website_logo)}}">
 @endsection
 
 @section('content')
-
     <!-- Start Main Slides Area -->
     <div class="main-slides-area">
         <div class="home-slides owl-carousel owl-theme">
             @foreach($sliders as $row)
-            <div class="main-slides-item">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-slides-content">
-                                <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">{{$row->upper_subtitle}}</span>
-                                <h2 class="text-white mb-5" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                                    {{$row->title}} <span class="overlay"></span></h2>
-                                <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                                    {{$row->description}}</p>
+                <div class="main-slides-item">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-12">
+                                <div class="main-slides-content">
+                                    <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">{{$row->upper_subtitle}}</span>
+                                    <h2 class="text-white mb-5" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                        {{$row->title}} <span class="overlay"></span></h2>
+                                    <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                        {{$row->description}}</p>
 
-                                <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                                    <a href="{{route('register')}}" class="default-btn mb-5">Get Started</a>
+                                    <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                        <a href="{{route('register')}}" class="default-btn mb-5">Get Started</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-5 col-md-12" data-aos="fade-down" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
-                            <div class="main-slides-image" data-tilt>
-                                <img src="{{asset($row->image)}}" alt="{{$row->title}}" loading="lazy">
+                            <div class="col-lg-5 col-md-12" data-aos="fade-down" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">
+                                <div class="main-slides-image" data-tilt>
+                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
     <!-- End Main Slides Area -->
+
+{{--    <div class="main-hero-area">--}}
+{{--        <div class="hero-slides owl-carousel owl-theme">--}}
+{{--            @foreach($sliders as $row)--}}
+{{--                <div class="main-hero-item jarallax"  style="background-image: url({{asset($row->image)}});" data-jarallax='{"speed": 0.3}'>--}}
+{{--                    <div class="container-fluid">--}}
+{{--                        <div class="main-hero-content">--}}
+{{--                            <span data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">{{$row->upper_subtitle}}</span>--}}
+{{--                            <h1 data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">--}}
+{{--                                {{$row->title}}--}}
+{{--                                <span class="overlay"></span>--}}
+{{--                            </h1>--}}
+{{--                            <p data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">--}}
+{{--                                {!! $row->description !!}--}}
+{{--                            </p>--}}
+
+{{--                            <div class="slides-btn" data-aos="fade-right" data-aos-delay="70" data-aos-duration="700" data-aos-once="true">--}}
+{{--                                <a href="{{route('register')}}" class="default-btn">Sign Up Now</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+
+{{--        <div class="hero-shape-1">--}}
+{{--            <img src="{{asset('homePage/assets/images/main-hero/slides-shape-1.png')}}" alt="image">--}}
+{{--        </div>--}}
+{{--        <div class="hero-shape-2">--}}
+{{--            <img src="{{asset('homePage')}}/assets/images/main-hero/slides-shape-2.png" alt="image">--}}
+{{--        </div>--}}
+{{--        <div class="hero-shape-3">--}}
+{{--            <img src="{{asset('homePage')}}/assets/images/main-hero/slides-shape-3.png" alt="image">--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <!-- End Main Hero Area -->--}}
 
     <!-- Start Services Area -->
     <div class="services-area bg-with-14042C-color ptb-100">
@@ -71,7 +103,7 @@
                         <div class="services-item h-100">
                             <div class="services-image">
                                 <a href="{{route('service.details',$row->slug)}}">
-                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}"  loading="lazy"></a>
+                                    <img src="{{asset($row->image)}}" alt="{{$row->title}}"></a>
                             </div>
                             <div class="services-content">
                                 <h3>
@@ -90,12 +122,7 @@
             </div>
         </div>
 
-        <div class="services-shape-1">
-            <img src="{{asset('homePage')}}/assets/images/services/services-shape-1.png" alt="image" loading="lazy">
-        </div>
-        <div class="services-shape-2">
-            <img src="{{asset('homePage')}}/assets/images/services/services-shape-2.png" alt="image" loading="lazy">
-        </div>
+      
     </div>
     <!-- End Services Area -->
 
@@ -121,7 +148,7 @@
                         <p>{{ $review->review }}</p>
 
                         <div class="info-item-box">
-                            <img src="{{ $review->image ? asset($review->image) : 'default_image_path' }}" class="rounded-circle" alt="{{ $review->subject }}" loading="lazy">
+                            <img src="{{ $review->image ? asset($review->image) : 'default_image_path' }}" class="rounded-circle" alt="{{ $review->subject }}">
                             <h4>{{ $review->name }}, <span>{{ $review->subject }}</span></h4>
                             <ul class="rating-list">
                                 @for ($i = 1; $i <= 5; $i++)
@@ -161,10 +188,10 @@
                         <img src="{{asset($about->image)}}" alt="{{$about->title}}" data-tilt>
 
                         <div class="skill-shape-1">
-                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image" loading="lazy">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-1.png" alt="image">
                         </div>
                         <div class="skill-shape-2">
-                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-2.png" alt="image" loading="lazy">
+                            <img src="{{asset('homePage')}}/assets/images/skill/skill-shape-2.png" alt="image">
                         </div>
                     </div>
                 </div>
@@ -172,7 +199,7 @@
         </div>
 
         <div class="skill-bg-shape">
-            <img src="{{asset('homePage')}}/assets/images/skill/skill-bg-shape.png" alt="image" loading="lazy">
+            <img src="{{asset('homePage')}}/assets/images/skill/skill-bg-shape.png" alt="image">
         </div>
     </div>
     <!-- End Skill Area -->
@@ -191,7 +218,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="blog-image">
-                                    <a href="{{route('home.blog',$row->slug)}}"><img src="{{asset($row->image)}}" alt="{{$row->name}}" loading="lazy"></a>
+                                    <a href="{{route('home.blog',$row->slug)}}"><img src="{{asset($row->image)}}" alt="{{$row->name}}"></a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -211,7 +238,7 @@
         </div>
 
         <div class="blog-shape-1">
-            <img src="{{asset('homePage')}}/assets/images/blog/blog-shape-1.png" alt="image" loading="lazy">
+            <img src="{{asset('homePage')}}/assets/images/blog/blog-shape-1.png" alt="image">
         </div>
     </div>
     <!-- End Blog Area -->
@@ -261,7 +288,10 @@
 
                                         <select name="service" class="form-control" required data-error="Please select service">
                                             <option value="">Select Service</option>
-                                            @foreach ($services as $row)
+                                            @php
+                                                $servies = App\Models\Service::where('status',1)->get();
+                                            @endphp
+                                            @foreach ($servies as $row)
                                                 <option value="{{$row->title}}">{{$row->title}}</option>
                                             @endforeach
                                         </select>

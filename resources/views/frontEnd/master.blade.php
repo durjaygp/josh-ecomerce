@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="index, follow" />
+
     @yield('meta_tag')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--  Favicon -->
     <link rel="shortcut icon" type="image/png" href="{{asset(optional(setting())->fav_icon)}}" />
@@ -35,7 +37,18 @@
     <link rel="stylesheet" href="{{asset('homePage')}}/image-uploader.min.css">
     <link rel="stylesheet" href="{{asset('homePage')}}/fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{{--    <script>--}}
+{{--        var SITE_URL = "https:\/\/jsb-tech.com"--}}
+{{--    </script>--}}
+{{--    <!-- Google tag (gtag.js) -->--}}
+{{--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ76SN2K4"></script>--}}
+{{--    <script>--}}
+{{--        window.dataLayer = window.dataLayer || [];--}}
+{{--        function gtag(){dataLayer.push(arguments);}--}}
+{{--        gtag('js', new Date());--}}
 
+{{--        gtag('config', 'G-QCJ76SN2K4');--}}
+{{--    </script>--}}
 
     <style>
         .main-hero-content{

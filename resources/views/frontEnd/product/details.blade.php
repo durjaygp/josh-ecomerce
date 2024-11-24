@@ -128,7 +128,7 @@
                         <div class="products-review-comments">
                             <h3>Reviews</h3>
                             <div class="user-review">
-                                <img src="assets/images/products/image-1.jpg" alt="image">
+                                <img src="{{asset('homePage/assets/images/products/image-1.jpg')}}" alt="image">
 
                                 <div class="review-rating">
                                     <div class="review-stars">
@@ -215,10 +215,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-products-card">
                             <div class="products-image">
-                                <a href="products-details.html"><img src="{{asset($row->image)}}" alt="image"></a>
+                                <a href="{{route('home.product',$row->slug)}}"><img src="{{asset($row->image)}}" alt="image"></a>
 
                                 <div class="heart-line">
-                                    <a href="wishlist.html"><i class="ri-heart-line"></i></a>
+                                    <a href="{{route('home.product',$row->slug)}}"><i class="ri-heart-line"></i></a>
                                 </div>
                                 <div class="add-to-cart-btn">
                                     <a href="#" class="default-btn" data-product-id="{{ $row->id }}">Add To Cart</a>
@@ -226,7 +226,7 @@
                             </div>
                             <div class="products-content">
                                 <h3>
-                                    <a href="products-details.html">{{$row->name }}</a>
+                                    <a href="{{route('home.product',$row->slug)}}">{{$row->name }}</a>
                                 </h3>
                                 <span>$ {{$row->price}}</span>
                             </div>

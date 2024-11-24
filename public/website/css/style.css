@@ -2982,7 +2982,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .theme-menu-two .language-button-group li a.active {color: #000;}
 .theme-menu-two .language-button-group {margin-right: 80px;}
 /*---------------------Theme Hero Banner/Two ---------------*/
-.hero-banner-two {padding: 90px 0 110px; position: relative; z-index: 1;}
+.hero-banner-two {position: relative; z-index: 1;}
 .hero-banner-two .container {
   max-width: 1490px;
   position: relative;
@@ -3322,19 +3322,6 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   animation: jumpThree 5s infinite linear;
 }
 /*---------------- Fancy Text block Eight ---------------*/
-.block-style-six {position: relative;}
-.block-style-six:nth-child(even):before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 13px;
-  left: 0;
-  bottom: 0;
-  background: url(../images/shape/line-shape-4.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
 .block-style-six .text-details .title {
   font-size: 42px;
   line-height: 1.26em;
@@ -3663,13 +3650,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding: 82px 50px 89px;
   position: relative;
 }
-.fancy-short-banner-three .bg-wrapper:before {
-  content: url(../images/shape/43.svg);
-  position: absolute;
-  top:-124px;
-  right: -104px;
-  z-index: -1;
-}
+
 .fancy-short-banner-three .title-style-one h2 {font-size: 48px;}
 .fancy-short-banner-three .form-wrapper {padding-left: 65px;}
 .fancy-short-banner-three .form-wrapper form {

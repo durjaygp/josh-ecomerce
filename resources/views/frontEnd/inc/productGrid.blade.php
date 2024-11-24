@@ -8,7 +8,7 @@
                     <img src="{{ asset($row->image) }}" alt="image">
                 </a>
                 <div class="heart-line">
-                    <a href="{{ route('home.product', $row->slug) }}"><i class="ri-heart-line"></i></a>
+                    <a href="wishlist.html"><i class="ri-heart-line"></i></a>
                 </div>
                 <div class="add-to-cart-btn">
                     <a href="#" class="default-btn" data-product-id="{{ $row->id }}">Add To Cart</a>

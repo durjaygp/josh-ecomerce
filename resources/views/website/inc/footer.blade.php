@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-2 col-12 footer-about-widget" data-aos="fade-up" data-aos-duration="1200">
-                    <a href="index-customer-support.html" class="logo"><img src="{{asset('website')}}/images/logo/deski_03.svg" alt=""></a>
+                    <a href="index-customer-support.html" class="logo"><img src="{{asset('website/images/logo/deski_03.svg')}}" alt=""></a>
                 </div> <!-- /.about-widget -->
                 <div class="col-lg-2 col-md-3 col-sm-6 footer-list" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="50">
                     <h5 class="footer-title">Products</h5>

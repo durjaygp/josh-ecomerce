@@ -56,10 +56,6 @@
             </div>
         </div>
     </div>
-
-    <div class="about-circle-shape">
-        <img src="{{asset('homePage/about-circle.png')}}" alt="image">
-    </div>
 </div>
 <!-- End About Area -->
 @endsection
