@@ -1,12 +1,12 @@
 
 /* CSS Document */
 
-/* 
+/*
     Created on   : 19/06/2021.
     Theme Name   : Deski-Saas & Software HTML Template
     Version      : 1.0.
     Developed by : (me@heloshape.com) / (www.me.heloshape.com)
-   
+
 */
     /*   01 - Loading Transition  */
 /*   02 - Global style  */
@@ -134,7 +134,7 @@
 *************************** Start Styling Your theme from here ***************************
 
 ==========================================================================================*/
-/*** 
+/***
 
 ====================================================================
   Loading Transition
@@ -298,7 +298,7 @@
 }
 body {
   /*
-  font-family: 'gilroy-black';   
+  font-family: 'gilroy-black';
   font-family: 'gilroy-bold';
   font-family: 'gilroy-semibold';
   font-family: 'gilroy-light';
@@ -698,8 +698,8 @@ body .theme-btn-one {
   transition: all 0.3s ease-in-out;
 }
 body .theme-btn-one.btn-lg {
-  padding: 0 50px; 
-  line-height: 55px; 
+  padding: 0 50px;
+  line-height: 55px;
   text-transform: uppercase;
   letter-spacing: 1.14px;
 }
@@ -946,7 +946,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .theme-main-menu.bg-none {background: transparent;}
 .theme-main-menu.sticky-menu.fixed {
   z-index: 9999;
-  padding-top: 0; 
+  padding-top: 0;
   padding-bottom: 0;
   background: #fff;
   box-shadow: 0 13px 35px -12px rgba(35,35,35,0.1);
@@ -976,7 +976,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 /*---------------------Theme Hero Banner/One ---------------*/
 .hero-banner-one {position: relative;}
 .hero-banner-one .hero-upper-container {
-  position: relative; 
+  position: relative;
   padding: 60px 0 165px;
   text-align: center;
   z-index: 5;
@@ -1308,8 +1308,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .block-style-one .block-meta-data:nth-child(4) .icon-box {border-color:  #FFBA12;color: #FFBA12;}
 .block-style-one .block-meta-data:nth-child(4) .icon-box:before {border-color: #FFE0B8;}
 .block-style-one .icon-box img {
-  margin:0 auto; 
-  position: relative; 
+  margin:0 auto;
+  position: relative;
   top:50%;
   transform: translateY(-50%);
 }
@@ -1363,7 +1363,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .block-style-two {margin: 0 -60px}
 .block-style-two> [class*="col-"] {padding: 0 60px;}
 .block-style-two .text-wrapper h6 {
-  font-size: 16px; 
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1.6px;
   padding-bottom: 15px;
@@ -2078,7 +2078,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   text-decoration: none;
   position: relative;
 }
-.faq-classic .card .card-header button:before {  
+.faq-classic .card .card-header button:before {
   content: "+";
   position: absolute;
   font-size: 24px;
@@ -2607,8 +2607,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .team-section-one .team-member {cursor: pointer; transition: all 0.3s ease-in-out;}
 .team-section-one .team-member:hover {transform: translateY(-5px);}
 .team-section-one .team-member img {
-  width: 180px; 
-  height: 180px; 
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   margin: 0 auto;
 }
@@ -2619,7 +2619,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .team-section-one .team-member strong {color: #A5A5A5; font-weight: normal;}
 .team-section-one .mix,.team-section-one .gap {
-  width: calc(100%/4 - (((4 - 1) * 1rem) / 4)); 
+  width: calc(100%/4 - (((4 - 1) * 1rem) / 4));
   display: inline-block;
 }
 .team-section-one .mix {margin-bottom: 100px;}
@@ -2668,15 +2668,15 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .fancy-text-block-four:before {
   content: url(../images/shape/13.svg);
   position: absolute;
-  top:-48px; 
-  left: 0; 
+  top:-48px;
+  left: 0;
   animation: jumpTwo 4s infinite linear;
 }
 .fancy-text-block-four:after {
   content: url(../images/shape/14.svg);
   position: absolute;
-  bottom:-140px; 
-  right: 0; 
+  bottom:-140px;
+  right: 0;
   animation: jumpThree 4s infinite linear;
 }
 .fancy-text-block-four .wrapper {position: relative; z-index: 1;}
@@ -2739,8 +2739,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   line-height: 1.64em;
 }
 .block-style-four a {
-  font-size: 30px; 
-  color: #303030; 
+  font-size: 30px;
+  color: #303030;
   margin-top: 30px;
 }
 .block-style-four:hover a {color: var(--blue-dark);}
@@ -2938,7 +2938,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 
 /*=======================================================================
-                              CUSTOMER SUPPORT                
+                              CUSTOMER SUPPORT
 =========================================================================*/
 .theme-main-menu>div {position: relative;}
 .theme-menu-two .logo {
@@ -2984,12 +2984,12 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 /*---------------------Theme Hero Banner/Two ---------------*/
 .hero-banner-two {padding: 90px 0 110px; position: relative; z-index: 1;}
 .hero-banner-two .container {
-  max-width: 1490px; 
-  position: relative; 
+  max-width: 1490px;
+  position: relative;
   padding: 0 40px;
 }
 .hero-banner-two .hero-text-wrapper h1 {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 78px;
   line-height: 1.11em;
 }
@@ -3237,7 +3237,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   text-decoration: none;
   position: relative;
 }
-.accordion-style-two .card .card-header button:before {  
+.accordion-style-two .card .card-header button:before {
   content: "";
   font-family: 'font-awesome';
   position: absolute;
@@ -3973,12 +3973,12 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   animation: jumpThree 5s infinite linear;
 }
 .team-section-two .team-member {
-  text-align: center; 
+  text-align: center;
   margin-top: 50px;
   cursor: pointer;
 }
 .team-section-two .team-member img {
-  width: 100%; 
+  width: 100%;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
@@ -4518,8 +4518,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   color: #fff;
 }
 .fancy-text-block-fifteen .text-wrapper h6 {
-  font-size: 20px; 
-  font-weight: 500; 
+  font-size: 20px;
+  font-weight: 500;
   color: #fff;
   padding-top: 37px;
 }
@@ -4555,7 +4555,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding-bottom: 25px;
 }
 .fancy-hero-four h2 {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 80px;
   line-height: 1.1em;
 }
@@ -4648,7 +4648,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .pricing-section-two .pricing-table-area .tab-content {background: #fff;}
 .pricing-section-two .pricing-table-area .pr-bg {border-right: 1px solid #F1F1F1;}
 .pricing-section-two .pr-table-wrapper {
-  text-align: center; 
+  text-align: center;
   padding: 20px 0 40px;
   width: 100%;
 }
@@ -4667,7 +4667,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .pricing-section-two .pr-table-wrapper .price sup {font-size: 25px; top:-45px;}
 .pricing-section-two .pr-table-wrapper .bill-cycle {
-  font-size: 18px; 
+  font-size: 18px;
   color: #000;
   margin-bottom: 22px;
 }
@@ -4730,7 +4730,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   border-bottom: 1px solid transparent;
 }
 .accordion-style-three .card:first-child .card-header button {border-top: 1px solid #000000;}
-.accordion-style-three .card .card-header button:before {  
+.accordion-style-three .card .card-header button:before {
   content: "\f107";
   font-family: 'font-awesome';
   position: absolute;
@@ -4868,7 +4868,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .faqs-header .icon {height: 55px; margin-right: 32px;}
 .faqs-header h3 {
   font-family: 'gilroy-semibold';
-  font-size: 36px; 
+  font-size: 36px;
 }
 .faqs-header .collection-preview {font-size: 20px; line-height: 1.6em; padding-bottom: 25px;}
 .faqs-header .avatar {margin-top: -7px;}
@@ -4910,13 +4910,13 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .all-faqs .faqs-all-qus .article-preview[onclick*="location"] {cursor: pointer;}
 .faqs-all-qus .article-preview .avatar-img {
-  width: 50px; 
-  height: 50px; 
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 22px;
 }
 .faqs-all-qus .article-preview h3 {
-  font-size: 24px; 
+  font-size: 24px;
   padding-bottom: 10px;
 }
 .faqs-all-qus .article-preview .avatar-info {
@@ -5079,7 +5079,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .user-data-form .input-group-meta .placeholder_icon span {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   cursor: pointer;
   display: block;
   position: relative;
@@ -5140,7 +5140,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .user-data-form .agreement-checkbox a:hover {text-decoration: underline; color:var(--p-color);}
 .user-data-form .theme-btn-one { width: 100%;}
 .user-data-page .full-height {
-  min-height: 100vh; 
+  min-height: 100vh;
   padding: 20px 0;
   flex-direction: column;
   text-align: center;
@@ -5311,7 +5311,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .blog-v4 .post-meta .post {padding: 45px 0 0;}
 .blog-v4 .post-meta .post .date {font-size: 16px; color: rgba(0,0,0,0.3);}
 .blog-v4 .post-meta .post .title {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 48px;
   line-height: 1.04em;
   color: #000;
@@ -5344,7 +5344,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding-top: 35px;
 }
 .blog-details-post-v1 .post-meta h4 {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 36px;
   padding-top: 60px;
 }
@@ -5385,7 +5385,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding: 50px 40px 30px;
 }
 .blog-details-post-v1 .comment-area .title {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 36px;
   padding-bottom: 40px;
 }
@@ -5434,7 +5434,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding: 50px 40px 60px;
 }
 .blog-details-post-v1 .comment-form-section .title {
-  font-family: 'gilroy-black'; 
+  font-family: 'gilroy-black';
   font-size: 36px;
   padding-bottom: 15px;
 }
@@ -5443,7 +5443,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   color: #2A2A2A;
 }
 .blog-details-post-v1 .comment-form-section p a {
-  font-weight: 500; 
+  font-weight: 500;
   color: #000;
   text-decoration:underline;
 }
@@ -5454,7 +5454,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .blog-details-post-v1 .comment-form-section .form-style-light [class*="col-"] {display: block;}
 /*=======================================================================
-                              Documentation                
+                              Documentation
 =========================================================================*/
 .theme-menu-three .logo {
   position: absolute;
@@ -5520,8 +5520,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding: 25px 0 45px;
 }
 .hero-banner-three .sing-in-call {
-  font-size: 16px; 
-  padding-top: 25px; 
+  font-size: 16px;
+  padding-top: 25px;
   color: #2C2C2C;
   text-align: center;
 }
@@ -6164,7 +6164,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding-top: 50px;
 }
 .doc-sidebar {
-  border-right: 1px solid rgba(0,0,0,0.09); 
+  border-right: 1px solid rgba(0,0,0,0.09);
   height: 100vh;
   position: sticky;
   top: 90px;
@@ -6193,8 +6193,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .doc-sidebar .search-form form button img {margin: 0 auto;}
 #doc-sidebar-nav {
-  max-height: 100vh; 
-  overflow-y: auto; 
+  max-height: 100vh;
+  overflow-y: auto;
   padding-right: 45px;
 }
 .doc-sidebar .list-item>li {
@@ -6386,7 +6386,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   height: 100%;
 }
 /*=======================================================================
-                              Event               
+                              Event
 =========================================================================*/
 .theme-main-menu.sticky-menu.fixed.theme-menu-four {background: #FBF3EC;}
 .theme-menu-four .logo img {max-width: 120px;}
@@ -6928,7 +6928,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   text-decoration: none;
   position: relative;
 }
-.accordion-style-four .card .card-header button:before {  
+.accordion-style-four .card .card-header button:before {
   content: "\f107";
   font-family: 'font-awesome';
   position: absolute;
@@ -7018,13 +7018,13 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   top: -50px;
 }
 .theme-footer-four .footer-about-widget ul li a {
-  font-size: 20px; 
+  font-size: 20px;
   color:#343434;
   margin-bottom: 5px;
   transition: all 0.2s ease-in-out;
 }
 .theme-footer-four .footer-about-widget ul li a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
   color: var(--purple-blue);
 }
 .theme-footer-four .footer-title {
@@ -7149,7 +7149,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .team-section-four .team-wrapper {position: relative; z-index: 5;}
 .team-section-four .team-member {
-  margin-bottom: 60px; 
+  margin-bottom: 60px;
   text-align: center;
   background: #fff;
   border-radius: 10px;
@@ -7208,7 +7208,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .feature-blog-four .feature-article-meta .post-meta .author_info {font-size: 20px; color: var(--heading); margin-top: 25px;}
 .feature-blog-four .feature-article-meta .post-meta .author_info span {color: #B7B7B7;}
 /*=======================================================================
-                              Product landing               
+                              Product landing
 =========================================================================*/
 .theme-menu-five .logo {
   position: absolute;
@@ -7256,13 +7256,13 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   line-height:1.219em;
 }
 .hero-banner-five .hero-heading span {
-  position: relative; 
+  position: relative;
   color: #FF2759;
   text-decoration: underline;
   text-decoration-thickness: 4px;
 }
 .hero-banner-five .hero-sub-heading {
-  font-size: 24px; 
+  font-size: 24px;
   padding: 20px 0 62px;
   color: #000;
 }
@@ -7301,7 +7301,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .hero-banner-five .button-group a.ios-button {background: #111111; color: #fff;}
 .hero-banner-five .button-group a.ios-button span {color: rgba(255, 255, 255, 0.7);}
 .hero-banner-five .img-gallery {
-  border-bottom: 1px solid #EAEAEA; 
+  border-bottom: 1px solid #EAEAEA;
   margin-top: 80px;
   position: relative;
   z-index: 1;
@@ -7732,7 +7732,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .theme-footer-five .social-icon li a:hover {
   background: #FF2759;
-  border-color: #FF2759; 
+  border-color: #FF2759;
   color: #fff;
 }
 .theme-footer-five .email {color: #000;}
@@ -7874,7 +7874,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   z-index: -2;
 }
 /*=======================================================================
-                              Product landing Dark            
+                              Product landing Dark
 =========================================================================*/
 /*-------------------- Menu ---------------*/
 .dark-style .theme-main-menu {background: transparent;}
@@ -7916,7 +7916,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   color: #FFFFFF;
 }
 .hero-banner-six .hero-heading span {
-  color: #FF275B; 
+  color: #FF275B;
   text-decoration: underline;
   text-decoration-thickness: 5px;
 }
@@ -8660,14 +8660,14 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .theme-footer-six .social-icon li a:hover {
   background: #FF2759;
-  border-color: #FF2759; 
+  border-color: #FF2759;
   color: #fff;
 }
 .theme-footer-six .email {color: rgba(255, 255, 255, 0.8);}
 .theme-footer-six .email:hover {text-decoration: underline;}
 .theme-footer-six .copyright {text-align: center; font-size: 16px; padding: 45px 0 0;}
 /*=======================================================================
-                              Product landing / Note Taking            
+                              Product landing / Note Taking
 =========================================================================*/
 /*-------------------- Menu ---------------*/
 .theme-menu-five .right-widget .signIn-action {
@@ -9027,7 +9027,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   width: 530px;
   height: 513px;
   background: #F0F6FB;
-  position: relative; 
+  position: relative;
   display: inline-block;
   border-radius: 25px;
   margin-left: auto;
@@ -9052,7 +9052,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   padding: 90px 0 40px;
 }
 .fancy-feature-seventeen .block-meta {
-  margin-bottom: 70px; 
+  margin-bottom: 70px;
   text-align: center;
   padding: 0 30px;
 }
@@ -9069,7 +9069,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 /*------------------- Pricing Section Six ------------------*/
 .pricing-nav-four {
-  margin: 70px auto 95px; 
+  margin: 70px auto 95px;
   border:2px solid #000;
   padding: 6px;
   border-radius: 10px;
@@ -9177,12 +9177,12 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .pricing-table-area-six .pr-table-wrapper .trial-button:hover,
 .pricing-table-area-six .pr-table-wrapper.active .trial-button {background: #FFEAA0; border-color: #FFEAA0;}
 /*-------------- Client Feedback Slider Six ----------------*/
-.clientSliderSix {
+.clientSliderSixaaa {
   max-width: 1740px;
   margin: 30px auto 0;
 }
-.clientSliderSix .item {margin: 80px 25px;}
-.clientSliderSix .feedback-wrapper {
+.clientSliderSixaaa .item {margin: 80px 25px;}
+.clientSliderSixaaa .feedback-wrapper {
   border: 1px solid #E8EDF0;
   border-radius: 10px;
   background: #fff;
@@ -9192,43 +9192,43 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
-.clientSliderSix .feedback-wrapper .ribbon {
+.clientSliderSixaaa .feedback-wrapper .ribbon {
   height: 8px;
   position: absolute;
   left: -1px;
   right: -1px;
   top: -1px;
 }
-.clientSliderSix .slick-center .feedback-wrapper {
+.clientSliderSixaaa .slick-center .feedback-wrapper {
   border-color: #fff;
   box-shadow: 0px 35px 60px rgba(14, 29, 45, 0.04);
 }
-.clientSliderSix .feedback-wrapper:before {
+.clientSliderSixaaa .feedback-wrapper:before {
   content: url(../images/icon/101.svg);
   position: absolute;
   bottom: 41px;
   right: 57px;
 }
-.clientSliderSix .feedback-wrapper p {
+.clientSliderSixaaa .feedback-wrapper p {
   font-size: 20px;
   line-height: 38px;
   color: #000;
   padding-bottom: 45px;
 }
-.clientSliderSix .feedback-wrapper .avatar {
+.clientSliderSixaaa .feedback-wrapper .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 15px;
 }
-.clientSliderSix .feedback-wrapper .name {
+.clientSliderSixaaa .feedback-wrapper .name {
   font-weight: 500;
   font-size: 18px;
 }
-.clientSliderSix .feedback-wrapper .name span {font-weight: normal;font-size: 16px; color: #C1C1C1;}
-.clientSliderSix .slick-dots {text-align: center;}
-.clientSliderSix .slick-dots li {display: inline-block;}
-.clientSliderSix .slick-dots li button {
+.clientSliderSixaaa .feedback-wrapper .name span {font-weight: normal;font-size: 16px; color: #C1C1C1;}
+.clientSliderSixaaa .slick-dots {text-align: center;}
+.clientSliderSixaaa .slick-dots li {display: inline-block;}
+.clientSliderSixaaa .slick-dots li button {
   text-indent: -50000px;
   width: 8px;
   height: 8px;
@@ -9237,11 +9237,11 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   margin: 0 5px;
   transition: all 0.3s ease-in-out;
 }
-.clientSliderSix .slick-dots li.slick-active button {
+.clientSliderSixaaa .slick-dots li.slick-active button {
   background: #000;
   border-color: #000;
 }
-.clientSliderSix.style-two .feedback-wrapper .ribbon {
+.clientSliderSixaaa.style-two .feedback-wrapper .ribbon {
   top: auto;
   bottom: -1px;
   height: 5px;
@@ -9249,7 +9249,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   border-radius:0 0 10px 10px;
   transition: all 0.3s ease-in-out;
 }
-.clientSliderSix.style-two .slick-center .feedback-wrapper .ribbon {transform: scale(1 , 1);}
+.clientSliderSixaaa.style-two .slick-center .feedback-wrapper .ribbon {transform: scale(1 , 1);}
 /*----------------- Fancy Short Banner Eight ---------------*/
 .fancy-short-banner-eight {
   background: #FCF7EA;
@@ -9398,11 +9398,11 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .theme-footer-seven.dark-bg .bottom-footer .social-icon a {color: #fff;}
 .theme-footer-seven.dark-bg .bottom-footer {border-top: 1px solid rgba(255, 255, 255, 0.08);}
 /*=======================================================================
-                    Product landing / Online Video Editor           
+                    Product landing / Online Video Editor
 =========================================================================*/
 /*---------------- Theme Hero Banner ---------------*/
 .hero-banner-eight {
-  position: relative; 
+  position: relative;
   z-index: 5;
   text-align: center;
   margin-top: 62px;
@@ -9804,7 +9804,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   animation: fade-in 1.5s infinite linear;
 }
 /*=======================================================================
-                              Product landing / Schedule Appointment           
+                              Product landing / Schedule Appointment
 =========================================================================*/
 /*-------------------- Menu ---------------*/
 .theme-menu-six .navbar-nav .nav-item .nav-link {
@@ -9982,7 +9982,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   line-height: 1.85em;
 }
 .block-style-twentyThree .screen-container {
-  position: relative; 
+  position: relative;
   max-width: 508px;
   height: 415px;
 }
@@ -10234,7 +10234,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 /*-------------------- Footer Style Eight --------------------*/
 .theme-footer-eight .footer-about-widget ul li a {
-  font-size: 18px; 
+  font-size: 18px;
   color:#343434;
   margin-bottom: 5px;
   transition: all 0.2s ease-in-out;
@@ -10414,7 +10414,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 /*----------------- Terms and Condition ---------------*/
 .terms_and_policy {
-  padding: 120px 0; 
+  padding: 120px 0;
   border-bottom: 1px solid #ECECEC;
 }
 .terms_and_policy .nav-tabs {
@@ -10442,15 +10442,15 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .terms_and_policy .tab-content {padding: 0 0 0 50px;}
 .terms_and_policy .tab-content h2 {font-size: 55px; padding-bottom: 10px;}
 .terms_and_policy .tab-content .update-date {
-  font-size: 16px; 
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
 }
 .terms_and_policy .tab-content h3 {
-  font-family: 'gilroy-semibold'; 
-  font-size: 28px; 
+  font-family: 'gilroy-semibold';
+  font-size: 28px;
   padding: 50px 0 25px;
-} 
+}
 .terms_and_policy .tab-content p {
   line-height: 34px;
   margin-bottom: 15px;
@@ -10468,8 +10468,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   min-height: 100vh;
 }
 .error-page .img-holder {
-  width: 50%; 
-  height: 100vh; 
+  width: 50%;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -10522,7 +10522,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   left: 5%;
 }
 /*=======================================================================
-                              Product landing / Mobile App           
+                              Product landing / Mobile App
 =========================================================================*/
 /*---------------------Theme Hero Banner/Ten ---------------*/
 .hero-banner-ten {
@@ -10572,7 +10572,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .hero-banner-ten .button-group a.ios-button {background: #303030; color: #fff;}
 .hero-banner-ten .button-group a.ios-button span {color: rgba(255, 255, 255, 0.7);}
 .hero-banner-ten [class*="icon-box"] {
-  position: absolute; 
+  position: absolute;
   z-index: -1;
   border-radius: 10px;
 }
@@ -10900,7 +10900,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   left: 0;
 }
 /*=======================================================================
-                              Product landing / Doc Signature        
+                              Product landing / Doc Signature
 =========================================================================*/
 /*---------------------Theme Hero Banner/Eleven ---------------*/
 .hero-banner-eleven {
@@ -10910,7 +10910,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .hero-banner-eleven .hero-text-wrapper h1 {
   font-family: 'gordita';
-  font-weight: 700; 
+  font-weight: 700;
   font-size: 82px;
   line-height: 1.30em;
 }
@@ -10956,8 +10956,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .hero-banner-eleven form button:hover {background: #FFB840; }
 .hero-banner-eleven .term-text {
-  font-size: 16px; 
-  color: #979797; 
+  font-size: 16px;
+  color: #979797;
   margin-top: 22px;
   letter-spacing: -0.5px;
 }
@@ -11110,7 +11110,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   transform: translateY(-50%);
 }
 .useable-tools-section-four .logo-container .icon {
-  height: 235px; 
+  height: 235px;
   background: #fff;
   margin: 35px 0;
 }
@@ -11201,7 +11201,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   background: #373737;
   color: #fff;
 }
-.pricing-section-eight .trial-text { 
+.pricing-section-eight .trial-text {
   font-size: 16px;
   margin-top: 20px;
 }
@@ -11252,7 +11252,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   border-bottom: 1px solid transparent;
 }
 .accordion-style-five .card:first-child .card-header button {border-top: 1px solid #E5E5E5;}
-.accordion-style-five .card .card-header button:before {  
+.accordion-style-five .card .card-header button:before {
   content: "\f107";
   font-family: 'font-awesome';
   position: absolute;
@@ -11310,7 +11310,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   color: var(--heading);
 }
 .fancy-hero-six .sub-heading {
-  font-size: 24px; 
+  font-size: 24px;
   margin-top: 22px;
   color: #000;
 }
@@ -11405,8 +11405,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .portfolio_slider_one .item {padding: 0 25px;}
 .portfolio-block-three .img-holder {
   display: block;
-  border-radius: 32px; 
-  overflow: hidden; 
+  border-radius: 32px;
+  overflow: hidden;
   position: relative;
   margin-bottom: 36px;
 }
@@ -11423,7 +11423,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .slick-center .portfolio-block-three .img-holder:hover img {transform: scale3d(1.1, 1.1, 1.0);}
 .portfolio-block-three .text {
-  opacity: 0; 
+  opacity: 0;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
@@ -11460,7 +11460,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .fancy-portfolio-five .slider-arrows li:first-child i {transform: rotate(-180deg); display: inline-block;}
 .fancy-portfolio-five .slider-arrows li:hover {
   background: #353535;
-  color: #fff; 
+  color: #fff;
   transform: scale(1);
 }
 /*-------------------- Fancy Portfolio Six ---------------------*/
@@ -11567,7 +11567,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .portfolio-details-one .portfolio-pagination a:hover .tp2 {text-decoration: underline;}
 /*=======================================================================
-                              Product landing / Website Builder      
+                              Product landing / Website Builder
 =========================================================================*/
 /*-------------------- Menu ---------------*/
 .theme-main-menu.sticky-menu.fixed.theme-menu-seven {background: #242424;}
@@ -12120,7 +12120,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .service-details-one .sidebar .social-icon li a:hover {color: #000;}
 /*=======================================================================
-                              Form Survey      
+                              Form Survey
 =========================================================================*/
 /*---------------------Theme Hero Banner / Thirteen ---------------*/
 .hero-banner-thirteen {
@@ -12320,7 +12320,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .fancy-feature-thirtyFive .slider-arrows li:first-child i {transform: rotate(-180deg); display: inline-block;}
 .fancy-feature-thirtyFive .slider-arrows li:hover {
   background: #353535;
-  color: #fff; 
+  color: #fff;
   transform: scale(1);
 }
 /*-------------- Client Feedback Slider Eight ----------------*/
@@ -12436,7 +12436,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   left: 0;
 }
 .pricing-section-nine .pr-table-wrapper .trial-text {
-  font-size: 16px; 
+  font-size: 16px;
   padding-top: 30px;
   color: rgba(0, 0, 0, 0.4);
 }
@@ -12444,8 +12444,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .feature-blog-five .post-meta {width: 100%;}
 .feature-blog-five .post-data {padding: 25px 35px 0 0;}
 .feature-blog-five .post-meta .post-img {
-  border-radius: 10px; 
-  overflow: hidden; 
+  border-radius: 10px;
+  overflow: hidden;
   background: #212121;
   position: relative;
 }
@@ -12483,7 +12483,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .theme-footer-nine .footer-nav a:hover,
 .theme-footer-nine .social-icon a:hover {color: #6F6CFF;}
 /*=======================================================================
-                              VR Landing     
+                              VR Landing
 =========================================================================*/
 /*---------------------Theme Hero Banner / Fourteen ---------------*/
 .hero-banner-fourteen {
@@ -12616,7 +12616,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .fancy-feature-thirtySix .slider-arrows li:first-child i {transform: rotate(-180deg); display: inline-block;}
 .fancy-feature-thirtySix .slider-arrows li:hover {
-  color: #FF57C5; 
+  color: #FF57C5;
   transform: scale(1);
 }
 /*-------------------- Fancy Feature Thirty Seven --------------------*/
@@ -12665,7 +12665,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   }
 }
 .fancy-feature-thirtyNine .video-icon .icon {
-  display: block; 
+  display: block;
   position: relative;
   border-radius: 50%;
   animation: ripple 3s linear infinite;
@@ -12821,7 +12821,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .fancy-feature-fortyOne .buy-btn:hover {background: #2B0937; color: #fff;}
 /*=======================================================================
-                              E-Commerce     
+                              E-Commerce
 =========================================================================*/
 /*-------------------- Menu ---------------*/
 .theme-main-menu.sticky-menu.fixed.theme-menu-eight {padding-top: 10px; padding-bottom: 10px;}
@@ -13225,7 +13225,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   transition: all 0.3s ease-in-out;
 }
 .product-block-one .rating li {
-  font-size: 14px; 
+  font-size: 14px;
   margin-left: 5px;
   color: #B3B3B3;
 }
@@ -13320,7 +13320,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   transition: all 0.3s ease-in-out;
 }
 .product-block-two .rating li {
-  font-size: 14px; 
+  font-size: 14px;
   margin: 0 3px;
   color: #B3B3B3;
 }
@@ -13362,8 +13362,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   border: 1px solid #E0E0E0;
 }
 .block-style-thirtyNine h3 {
-  font-size: 24px; 
-  font-weight: 500; 
+  font-size: 24px;
+  font-weight: 500;
   letter-spacing: -0.5px;
   margin: 30px 0 16px;
 }
@@ -13403,7 +13403,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   margin: 30px 0 10px;
 }
 .product-details-one .product-info .rating li {
-  font-size: 15px; 
+  font-size: 15px;
   margin-right: 6px;
   color: #B3B3B3;
 }
@@ -13617,7 +13617,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   margin-bottom: 4px;
 }
 .product-details-one .user-comment-area .rating li {
-  font-size: 15px; 
+  font-size: 15px;
   margin: 0 3px;
   color: #B3B3B3;
 }
@@ -13684,8 +13684,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .cart-list-form .table th:first-child {text-align: left;}
 .cart-list-form .table tbody td {
-  padding: 0 0 60px; 
-  border: none; 
+  padding: 0 0 60px;
+  border: none;
   vertical-align: middle;
   text-align: center;
 }
@@ -13766,7 +13766,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .cart-section .cart-footer .cart-total-table tr th,
 .cart-section .cart-footer .cart-total-table tr td {padding-bottom: 16px;}
 .cart-section .cart-footer .theme-btn-seven {
-  line-height: 50px; 
+  line-height: 50px;
   padding: 0 35px;
   border-radius: 0;
   font-size: 16px;
@@ -13775,7 +13775,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 /*^^^^^^^^^^^^^^^^^^^^^ CheckOut Page ^^^^^^^^^^^^^^^^^^^^^^^^*/
 .checkout-toggle-area .card {border: none; background: transparent;}
 .checkout-toggle-area p {
-  margin-bottom: 8px; 
+  margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.8);
   background: transparent;
   padding: 0;
@@ -14020,7 +14020,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   border-color:  #373737;
 }
 .checkout-section .theme-btn-seven {
-  line-height: 50px; 
+  line-height: 50px;
   padding: 0 35px;
   border-radius: 0;
   font-size: 16px;

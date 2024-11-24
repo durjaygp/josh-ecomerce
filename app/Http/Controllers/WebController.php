@@ -7,6 +7,7 @@ use App\Models\AffiliateProduct;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\CustomReview;
+use App\Models\Faq;
 use App\Models\NewPages;
 use App\Models\Page;
 use App\Models\Project;
@@ -44,18 +45,23 @@ class WebController extends Controller
             return Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
         });
 
+        $faqs = Cache::remember('faqs', now()->addMinutes(10), function () {
+            return Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+        });
+
         $about = Cache::remember('about', now()->addMinutes(10), function () {
             return About::find(1);
         });
 
-        $reviews = Cache::remember('review', now()->addMinutes(10), function () {
+        $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
             return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')
                 ->whereStatus(1)
                 ->latest()
+                ->take(6)
                 ->get();
         });
 
-        return view('website.home.index', compact('latestBlogs', 'sliders', 'services', 'about', 'reviews'));
+        return view('website.home.index', compact('latestBlogs','faqs', 'sliders', 'services', 'about', 'reviews'));
     }
 
 

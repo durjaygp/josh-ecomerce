@@ -41,32 +41,32 @@
     <!-- ===================================================
         Loading Transition
     ==================================================== -->
-    <section>
-        <div id="preloader">
-            <div id="ctn-preloader" class="ctn-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                    <div class="txt-loading">
-								<span data-text-preloader="D" class="letters-loading">
-									D
-								</span>
-                        <span data-text-preloader="E" class="letters-loading">
-									E
-								</span>
-                        <span data-text-preloader="S" class="letters-loading">
-									S
-								</span>
-                        <span data-text-preloader="K" class="letters-loading">
-									K
-								</span>
-                        <span data-text-preloader="I" class="letters-loading">
-									I
-								</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section>--}}
+{{--        <div id="preloader">--}}
+{{--            <div id="ctn-preloader" class="ctn-preloader">--}}
+{{--                <div class="animation-preloader">--}}
+{{--                    <div class="spinner"></div>--}}
+{{--                    <div class="txt-loading">--}}
+{{--								<span data-text-preloader="D" class="letters-loading">--}}
+{{--									D--}}
+{{--								</span>--}}
+{{--                        <span data-text-preloader="E" class="letters-loading">--}}
+{{--									E--}}
+{{--								</span>--}}
+{{--                        <span data-text-preloader="S" class="letters-loading">--}}
+{{--									S--}}
+{{--								</span>--}}
+{{--                        <span data-text-preloader="K" class="letters-loading">--}}
+{{--									K--}}
+{{--								</span>--}}
+{{--                        <span data-text-preloader="I" class="letters-loading">--}}
+{{--									I--}}
+{{--								</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
 
     <!-- ==== Theme Main Menu == -->
@@ -82,6 +82,8 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- jQuery -->
     <script src="{{asset('website')}}/vendor/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Popper js -->
     <script src="{{asset('website')}}/vendor/popper.js/popper.min.js"></script>
     <!-- Bootstrap JS -->
