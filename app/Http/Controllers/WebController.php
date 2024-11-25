@@ -33,7 +33,7 @@ class WebController extends Controller
 
     public function index()
     {
-        $latestBlogs = Cache::remember('latest_blogs', now()->addMinutes(10), function () {
+        $latestBlogs = Cache::remember('latestBlogs', now()->addMinutes(10), function () {
             return Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(6)->get();
         });
 

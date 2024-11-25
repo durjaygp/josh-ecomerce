@@ -1,4 +1,4 @@
-@extends('frontEnd.master')
+@extends('website.master')
 @section('title','404')
 @section('content')
 
@@ -10,7 +10,4 @@
                 <a href="{{route('home')}}" class="theme-btn btn-style-one"><span class="txt">Go to home page</span></a>
             </div>
         </div>
-
-
-
 @endsection

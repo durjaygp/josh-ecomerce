@@ -252,6 +252,60 @@ $setting = setting();
 
 
 
+{{--    Latest Blog--}}
+
+    <div class="feature-blog-one blog-page-bg">
+        <div class="shapes shape-two"></div>
+        <div class="shapes shape-three"></div>
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="title-style-two mb-3" style="font-weight: bold;">Latest Blog</h2>
+            </div>
+
+            <!-- Services Section -->
+            <div class="row">
+                @foreach($latestBlogs as $service)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1200">
+                        <div class="post-meta">
+                            <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" class="image-meta">
+                            <h3>
+                                <a href="{{ route('home.blog', $service->slug) }}" class="title">
+                                    {{ $service->name }}
+                                </a>
+                            </h3>
+                            <p>{{ Str::limit($service->description, 100) }}</p>
+                            <a href="{{ route('home.blog', $service->slug) }}" class="read-more d-flex justify-content-between align-items-center">
+                                <span>Read More</span>
+                                <i class="flaticon-right-arrow"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div class="text-center">
+                <div class="text-center mt-4">
+                    <a href="sign-up.html"
+                       style="background: var(--red-light);
+                               width: 184px;
+                               height: 50px;
+                               border-radius: 5px;
+                               text-align: center;
+                               color: #fff;
+                               font-size: 17px;
+                               font-weight: 500;
+                               transition: all 0.3s ease-in-out;
+                               display: inline-flex;
+                               justify-content: center;
+                               align-items: center;"
+                    > Explore All Blogs</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 
 

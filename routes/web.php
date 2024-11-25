@@ -54,7 +54,7 @@ use App\Http\Controllers\CustomReviewController;
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
 
-Route::get('/details/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
+Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/services', [WebController::class,'services'])->name('home.services');
 Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('service.details');
