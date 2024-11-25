@@ -1,14 +1,6 @@
-// js Document
-
-    // Created on   : 19/06/2021.
-    // Theme Name   : Deski-Saas & Software HTML Template
-    // Version      : 1.0.
-    // Developed by : (me@heloshape.com) / (www.me.heloshape.com)
-
-
 (function($) {
     "use strict";
-    
+
 // ----------------------------- Counter Function
         var timer = $('.timer');
         if(timer.length) {
@@ -18,7 +10,7 @@
         }
 
 // ------------------------ Navigation Scroll
-        $(window).on('scroll', function (){   
+        $(window).on('scroll', function (){
           var sticky = $('.sticky-menu'),
           scroll = $(window).scrollTop();
           if (scroll >= 100) sticky.addClass('fixed');
@@ -34,7 +26,7 @@
             $('.scroll-top').fadeOut();
           }
         });
-        
+
 //---------------------- Click event to scroll to top
         $('.scroll-top').on('click', function() {
           $('html, body').animate({scrollTop : 0},1500);
@@ -63,7 +55,7 @@
           $(this).addClass("active");
           // $(this).parent("li").addClass("active");
         })
-          
+
 // ----------------------------- MixItUp
         if ($(".mixitUp-container").length) {
           var containerEl = document.querySelector('.mixitUp-container');
@@ -174,7 +166,7 @@
         }
 
 
-// ------------------------ Image Slick Slider 
+// ------------------------ Image Slick Slider
         if($(".img-slick-slider").length) {
           $('.img-slick-slider').slick({
               dots: true,
@@ -386,7 +378,7 @@
         }
 
 
-// ------------------------ App Screen Preview 
+// ------------------------ App Screen Preview
         if($(".app-preview-slider-one").length) {
           $('.app-preview-slider-one').slick({
               dots: false,
@@ -499,7 +491,7 @@
         }
 
 
-// ------------------------ Portfolio Three 
+// ------------------------ Portfolio Three
         if($(".portfolio_slider_three").length) {
           $('.portfolio_slider_three').slick({
               dots: false,
@@ -608,7 +600,7 @@
             });
             $(this).on('focusout', function() {
                 $(this).attr('placeholder',$(this).data('holder'));
-            });     
+            });
         });
 
 
@@ -629,7 +621,7 @@
                 $(this).parent('li').children('ul').removeClass('show');
                 } else {
                 $('.sub-menu.show').removeClass('show');
-                $(this).parent('li').children('ul').addClass('show');    
+                $(this).parent('li').children('ul').addClass('show');
                 };
             });
 
@@ -638,7 +630,7 @@
                 $(this).parent('li').children('ul').removeClass('open');
                 } else {
                 $('.sub-menu.open').removeClass('open');
-                $(this).parent('li').children('ul').addClass('open');    
+                $(this).parent('li').children('ul').addClass('open');
                 };
             });
 
@@ -654,7 +646,7 @@
                 $(this).parent('.card').children('.collapse').removeClass('show');
                 } else {
                 $('.collapse.show').removeClass('show');
-                $(this).parent('.card').children('.collapse').addClass('show');    
+                $(this).parent('.card').children('.collapse').addClass('show');
                 };
             });
 
@@ -730,7 +722,7 @@
           });
         }
 
-// ------------------------ Credit Card Option 
+// ------------------------ Credit Card Option
         if($("#credit-card").length) {
           $(".payment-radio-button").on('click',function(){
              if ($("#credit-card").is(":checked")) {
@@ -748,7 +740,7 @@
               maxGlare: .3
           })
         }
-        
+
 // --------------------------------- Contact Form
           // init the validator
           // validator files are included in the download package
@@ -793,7 +785,7 @@
             });
           }
 
-    
+
     $(window).on ('load', function (){ // makes sure the whole site is loaded
 
 // -------------------- Site Preloader
@@ -804,13 +796,13 @@
 
 
 // ------------------------------- AOS Animation
-        if ($("[data-aos]").length) { 
+        if ($("[data-aos]").length) {
             AOS.init({
             duration: 1000,
             mirror: true
           });
         }
-        
+
 // ------------------------------------- Fancybox
         var fancy = $ (".fancybox");
         if(fancy.length) {
@@ -832,7 +824,7 @@
 
 
 // ------------------------------- AOS Animation
-        if ($(".map-canvas").length) { 
+        if ($(".map-canvas").length) {
             var map = new google.maps.Map($(".map-canvas")[0], {
                 zoom: 14,
                 center: new google.maps.LatLng(40.72, -74),
@@ -849,5 +841,5 @@
         }
 
     });  //End On Load Function
-    
+
 })(jQuery);

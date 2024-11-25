@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\CustomReviewController;
+use App\Http\Controllers\HomepageSettingController;
 
 
 
@@ -257,12 +258,14 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
 
     Route::get('admin-support-list',[AdmniSupportController::class,'index'])->name('admin-support-list');
     Route::get('admin-support/{id}',[AdmniSupportController::class,'chat'])->name('admin-chat');
+
     Route::delete('admin-support-delete/{id}',[AdmniSupportController::class,'destroy'])->name('admin-chat-delete');
 
 
 
 
-
+    Route::get('home-page-setting',[HomepageSettingController::class,'index'])->name('home-page-setting');
+    Route::post('home-page-setting-update',[HomepageSettingController::class,'update'])->name('home-page-setting-update');
 
 });
 require __DIR__.'/auth.php';

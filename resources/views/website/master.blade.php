@@ -11,7 +11,7 @@
     <meta name='og:image' content='images/assets/ogg.png'>
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- For Resposive Device -->
+    <!-- For Responsive Device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For Window Tab Color -->
     <!-- Chrome, Firefox OS and Opera -->
@@ -28,7 +28,7 @@
     <!-- responsive style sheet -->
     <link rel="stylesheet" type="text/css" href="{{asset('website')}}/css/responsive.css">
 
-    <!-- Fix Internet Explorer ______________________________________-->
+    <!-- Fix Internet Explorer -->
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{asset('website')}}/vendor/html5shiv.js"></script>
@@ -85,20 +85,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Popper js -->
-    <script src="{{asset('website')}}/vendor/popper.js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="{{asset('website')}}/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!-- menu  -->
-    <script src="{{asset('website')}}/vendor/mega-menu/assets/js/custom.js"></script>
-    <!-- AOS js -->
-    <script src="{{asset('website')}}/vendor/aos-next/dist/aos.js"></script>
-    <!-- js count to -->
-    <script src="{{asset('website')}}/vendor/jquery.appear.js"></script>
-    <script src="{{asset('website')}}/vendor/jquery.countTo.js"></script>
+    <script src="{{asset('website/vendor/popper.js/popper.min.js')}}"></script>
+    <script src="{{asset('website/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('website/vendor/mega-menu/assets/js/custom.js')}}"></script>
+    <script src="{{asset('website/vendor/aos-next/dist/aos.js')}}"></script>
+    <script src="{{asset('website/vendor/jquery.appear.js')}}"></script>
+    <script src="{{asset('website/vendor/jquery.countTo.js')}}"></script>
     <!-- Slick Slider -->
-    <script src="{{asset('website')}}/vendor/slick/slick.min.js"></script>
+    <script src="{{asset('website/vendor/slick/slick.min.js')}}"></script>
     <!-- Theme js -->
-    <script src="{{asset('website')}}/js/theme.js"></script>
+    <script src="{{asset('website/js/theme.js')}}"></script>
 
 </div>
 </body>

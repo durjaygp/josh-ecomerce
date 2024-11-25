@@ -34,7 +34,7 @@ class WebController extends Controller
     public function index()
     {
         $latestBlogs = Cache::remember('latestBlogs', now()->addMinutes(10), function () {
-            return Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(6)->get();
+            return Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
         });
 
         $sliders = Cache::remember('sliders', now()->addMinutes(10), function () {
@@ -146,7 +146,7 @@ class WebController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         $image = $request->file('image');

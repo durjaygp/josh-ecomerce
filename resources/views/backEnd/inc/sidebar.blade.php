@@ -136,6 +136,16 @@
                     </li>
 
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('home-page-setting')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-home-check"></i>
+                  </span>
+                            <span class="hide-menu">Home Page Setting</span>
+                        </a>
+                    </li>
+
+
                 <!-- =================== -->
                     <!-- Support Intro -->
                     <!-- =================== -->
