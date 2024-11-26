@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
- use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
- use Illuminate\Database\Eloquent\Factories\HasFactory;
- use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
- use Database\Seeders\BlogSeeder;
+use Database\Seeders\BlogSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -70,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(FaqSeeder::class);
         $this->call(CustomReviewSeeder::class);
+        $this->call(HomepageSettingsSeeder::class);
 
 
     }

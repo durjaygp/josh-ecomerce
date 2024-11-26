@@ -63,15 +63,10 @@ Route::get('/category/{slug}', [WebController::class,'category'])->name('home.ca
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
 Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
-
-
 Route::get('/about-us', [PageController::class,'about'])->name('home.about');
 Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
 Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
-
 Route::get('/products/search', [WebProductController::class, 'search'])->name('products.search');
-
-
 Route::controller(PageController::class)->group(function(){
     Route::get('image-upload', 'index');
     Route::post('image-upload', 'store')->name('image.store');

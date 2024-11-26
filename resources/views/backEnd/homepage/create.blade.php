@@ -36,7 +36,7 @@
                             @php
                                 $sections = [
                                     'Hero' => ['hero_section_title', 'hero_section_paragraph', 'hero_section_image', 'hero_section_status'],
-                                    'About' => ['about_section_title', 'about_section_header', 'about_section_paragraph', 'about_section_link', 'about_section_image', 'about_section_status'],
+                                 //   'About' => ['about_section_title', 'about_section_header', 'about_section_paragraph', 'about_section_link', 'about_section_image', 'about_section_status'],
                                     'Service' => ['service_section_title', 'service_section_header', 'service_section_paragraph', 'service_section_link', 'service_section_status'],
                                     'Review' => ['review_section_header', 'review_section_paragraph', 'review_section_link', 'review_section_status'],
                                     'Faq' => ['faq_section_title', 'faq_section_header', 'faq_section_paragraph', 'faq_section_link', 'faq_section_status'],

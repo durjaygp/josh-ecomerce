@@ -13,7 +13,7 @@
                     </li>
                     <li>
                         <i class="ri-mail-line"></i>
-                        <span>Mail: <a href="mailto:support@jsb-tech.com">{{setting()->email ?? ""}}</a></span>
+                        <span>Mail: <a href="mailto:{{setting()->email ?? ""}}">{{setting()->email ?? ""}}</a></span>
                     </li>
                     <li class="sm-none">
                         <i class="ri-map-pin-line"></i>

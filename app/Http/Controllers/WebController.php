@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\CustomReview;
 use App\Models\Faq;
+use App\Models\HomepageSetting;
 use App\Models\NewPages;
 use App\Models\Page;
 use App\Models\Project;
@@ -53,6 +54,10 @@ class WebController extends Controller
             return About::find(1);
         });
 
+        $homepage = Cache::remember('homepage', now()->addMinutes(10), function () {
+            return HomepageSetting::find(1);
+        });
+
         $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
             return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')
                 ->whereStatus(1)
@@ -61,7 +66,7 @@ class WebController extends Controller
                 ->get();
         });
 
-        return view('website.home.index', compact('latestBlogs','faqs', 'sliders', 'services', 'about', 'reviews'));
+        return view('website.home.index', compact('homepage','latestBlogs','faqs', 'sliders', 'services', 'about', 'reviews'));
     }
 
 
