@@ -11,24 +11,14 @@
     <meta name='og:image' content='images/assets/ogg.png'>
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- For Responsive Device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- For Window Tab Color -->
-    <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#fd6a5e">
-    <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#fd6a5e">
-    <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#fd6a5e">
     <title>@yield('title')</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="56x56" href="{{asset('website')}}/images/fav-icon/icon.png">
-    <!-- Main style sheet -->
-    <link rel="stylesheet" type="text/css" href="{{asset('website')}}/css/style.css">
-    <!-- responsive style sheet -->
-    <link rel="stylesheet" type="text/css" href="{{asset('website')}}/css/responsive.css">
-
-    <!-- Fix Internet Explorer -->
+    <link rel="icon" type="image/png" sizes="56x56" href="{{asset('website/images/fav-icon/icon.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('website/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('website/css/responsive.css')}}">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{asset('website')}}/vendor/html5shiv.js"></script>
@@ -83,7 +73,6 @@
     <!-- jQuery -->
     <script src="{{asset('website')}}/vendor/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Popper js -->
     <script src="{{asset('website/vendor/popper.js/popper.min.js')}}"></script>
     <script src="{{asset('website/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -91,9 +80,7 @@
     <script src="{{asset('website/vendor/aos-next/dist/aos.js')}}"></script>
     <script src="{{asset('website/vendor/jquery.appear.js')}}"></script>
     <script src="{{asset('website/vendor/jquery.countTo.js')}}"></script>
-    <!-- Slick Slider -->
     <script src="{{asset('website/vendor/slick/slick.min.js')}}"></script>
-    <!-- Theme js -->
     <script src="{{asset('website/js/theme.js')}}"></script>
 
 </div>
