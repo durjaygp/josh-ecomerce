@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartItems;
+use App\Models\Cupon;
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\Product;
 use App\Models\Shiping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,16 +18,82 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
+//    public function index()
+//    {
+//        $user = auth()->user()->id;
+//        $mainCart = Cart::where('user_id',$user)->first();
+//        if ($mainCart){
+//            $carts = CartItems::where('user_id',$user)->get();
+//            $ship = Shiping::where('user_id',$user)->first();
+//            return view('frontEnd.order.checkout',compact('ship','carts','mainCart'));
+//        }
+//        return redirect()->route('home.products')->with('error','Please add some product');
+//    }
+
     public function index()
     {
-        $user = auth()->user()->id;
-        $mainCart = Cart::where('user_id',$user)->first();
-        if ($mainCart){
-            $carts = CartItems::where('user_id',$user)->get();
-            $ship = Shiping::where('user_id',$user)->first();
-            return view('frontEnd.order.checkout',compact('ship','carts','mainCart'));
+        // Retrieve the cart data from the session
+        $cart = session()->get('cart', [
+            'items' => [],
+            'total_quantity' => 0,
+        ]);
+
+        // If the cart is empty, redirect the user
+        if (empty($cart['items'])) {
+            return redirect()->route('home.products')->with('error', 'Please add some product');
         }
-        return redirect()->route('home.products')->with('error','Please add some product');
+
+        // Get the shipping information (if available in the session)
+        $ship = session()->get('shipping_address', null);
+
+        // Prepare the cart items data
+        $carts = [];
+        foreach ($cart['items'] as $cartItem) {
+            $product = Product::find($cartItem['product_id']);
+            if ($product) {
+                $carts[] = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $cartItem['quantity'],
+                    'total_price' => $product->price * $cartItem['quantity'],
+                    'image' => $product->image,
+                    'slug' => $product->slug,
+                ];
+            }
+        }
+
+        // Calculate the subtotal
+        $subtotal = 0;
+        foreach ($carts as $cart) {
+            $subtotal += $cart['total_price'];
+        }
+
+        // Calculate discount
+        $coupon = session()->get('coupon');
+        $discount = 0;
+
+        if ($coupon) {
+            // Retrieve the full coupon details from the database
+            $cp = Cupon::where('code', $coupon['code'])->first();
+
+            if ($cp) {
+                if ($cp->type == 1) { // Percentage-based discount
+                    $discount = $subtotal * ($cp->value / 100);
+                } elseif ($cp->type == 2) { // Flat discount
+                    $discount = min($subtotal, $cp->value); // Ensure discount does not exceed subtotal
+                }
+            }
+        }
+
+        return view('frontEnd.order.checkout', [
+            'ship' => $ship,
+            'carts' => $carts,
+            'mainCart' => $cart,
+            'subtotal' => $subtotal,
+            'discount' => $discount,
+            'coupon' => $coupon,
+        ]);
     }
 
     /**

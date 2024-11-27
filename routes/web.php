@@ -73,6 +73,18 @@ Route::controller(PageController::class)->group(function(){
 });
 
 
+// Cart Functionality
+Route::get('cart/',[CartController::class,'index'])->name('home.cart');
+Route::get('cart/remove/{id}',[CartController::class,'removeCart'])->name('cart.remove');
+Route::get('cart/add/{id}',[CartController::class,'cartAdd'])->name('cart.cartAdd');
+Route::get('cart/cartOneRemove/{id}',[CartController::class,'cartOneRemove'])->name('cart.cartOneRemove');
+Route::post('coupon-apply',[CuponController::class,'applyCoupon'])->name('coupon-apply');
+Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remove-coupon');
+
+// Checkout
+//Checkout Controller
+Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
+Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
 
 
 
@@ -112,17 +124,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-profile', [ProfileController::class, 'editUser'])->name('user-profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('cart/',[CartController::class,'index'])->name('home.cart');
-    Route::get('cart/remove/{id}',[CartController::class,'removeCart'])->name('cart.remove');
-    Route::get('cart/add/{id}',[CartController::class,'cartAdd'])->name('cart.cartAdd');
-    Route::get('cart/cartOneRemove/{id}',[CartController::class,'cartOneRemove'])->name('cart.cartOneRemove');
-    Route::post('coupon-apply',[CuponController::class,'applyCoupon'])->name('coupon-apply');
-    Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remove-coupon');
-
-    //Checkout Controller
-    Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
-    Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
 
     // User Routes
 
