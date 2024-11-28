@@ -2153,10 +2153,10 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .theme-footer-one .bottom-footer-content ul {padding-right: 97px;}
 /*--------------------- Fancy Hero One --------------------*/
 .fancy-hero-one {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  padding: 75px 0 170px;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 0 0 20px;
 }
 .fancy-hero-one h2 {font-size: 80px; line-height: 1.1em;}
 .fancy-hero-one p {

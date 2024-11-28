@@ -82,8 +82,7 @@
     <script src="{{asset('website/vendor/jquery.countTo.js')}}"></script>
     <script src="{{asset('website/vendor/slick/slick.min.js')}}"></script>
     <script src="{{asset('website/js/theme.js')}}"></script>
-    <script src="{{asset('homePage/custom.js')}}"></script>
-    @yield('script')
+
 </div>
 </body>
 </html>
