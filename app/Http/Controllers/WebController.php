@@ -58,6 +58,8 @@ class WebController extends Controller
             return HomepageSetting::find(1);
         });
 
+//        return $homepage;
+
         $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
             return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')
                 ->whereStatus(1)
@@ -85,9 +87,9 @@ class WebController extends Controller
     public function blogDetails($slug){
         $blog = Blog::where('slug',$slug)->firstOrFail();
         $blogs = Blog::latest()->whereStatus(1)->whereCategoryId($blog->category_id)->take(4)->get();
-        $wordCount = str_word_count(strip_tags($blog->main_content));
-        $readingTime = ceil($wordCount / 200);
-        return view('frontEnd.blog.details',compact('blog','readingTime','blogs'));
+       //$wordCount = str_word_count(strip_tags($blog->main_content));
+       //$readingTime = ceil($wordCount / 200);
+        return view('website.blog.details',compact('blog','blogs'));
     }
 
 
@@ -103,8 +105,8 @@ class WebController extends Controller
 
     public function category($slug) {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $blogs = Blog::where('category_id', $category->id)->whereStatus(1)->paginate(9);
-        return view('frontEnd.blog.category', compact('category', 'blogs'));
+        $blogs = Blog::where('category_id', $category->id)->with('category')->whereStatus(1)->paginate(9);
+        return view('website.blog.category', compact('category', 'blogs'));
     }
 
 //    public function projectDetails($slug){

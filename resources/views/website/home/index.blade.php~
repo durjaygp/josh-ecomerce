@@ -7,7 +7,7 @@ $setting = setting();
 @endsection
 @section('content')
 
-    @if($homepage->hero_section_status === "1")
+    @if($homepage->hero_section_status === 1)
         <div class="hero-banner-two">
             <div class="container">
                 <div class="row align-items-start justify-content-between">
@@ -49,7 +49,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->about_section_status === "1")
+    @if($homepage->about_section_status === 1)
     <div class="fancy-text-block-eight pt-150 pb-100 mt-20">
         <div class="container">
             <div class="title-style-two text-center md-mb-70">
@@ -90,7 +90,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->service_section_status === "1")
+    @if($homepage->service_section_status === 1)
     <div class="feature-blog-one blog-page-bg">
         <div class="shapes shape-two"></div>
         <div class="shapes shape-three"></div>
@@ -150,7 +150,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->review_section_status === "1")
+    @if($homepage->review_section_status === 1)
     <!-- Client Feedback  -->
     <div class="client-feedback-slider-six mt-150 md-mt-120" id="feedback">
         <div class="inner-container mb-3">
@@ -221,7 +221,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->faq_section_status === "1")
+    @if($homepage->faq_section_status === 1)
     <!-- Faq Classic -->
     <div class="faq-classic pt-225 md-pt-120">
         <div class="container">
@@ -270,7 +270,7 @@ $setting = setting();
     </div> <!-- /.faq-classic -->
     @endif
 
-    @if($homepage->blog_section_status === "1")
+    @if($homepage->blog_section_status === 1)
     {{--    Latest Blog--}}
     <div class="feature-blog-one blog-page-bg">
         <div class="shapes shape-two"></div>

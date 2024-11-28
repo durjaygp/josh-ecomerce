@@ -35,7 +35,7 @@
 
         </div>
 
-        <div class="row mt-30 md-mt-10 aos-init" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="50">
+        <div class="mt-30 md-mt-10 aos-init" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="50">
             <div class="text-center">
                 <div class="page-pagination-one pt-15">
                     <ul class="d-flex align-items-center">
