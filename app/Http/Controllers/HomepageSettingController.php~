@@ -61,7 +61,7 @@ class HomepageSettingController extends Controller
             $data["hero_section_image"] = $this->saveImage($request);
         }
 
-        if ($request->file('about_section_image')) {
+        if ($request->file('hero_section_image')) {
             $data["about_section_image"] = $this->saveAnotherImage($request);
         }
 

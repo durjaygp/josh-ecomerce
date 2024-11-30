@@ -57,8 +57,6 @@
 
                         </ul>
 
-
-
                         <ul class="right-widget">
                             <li class="d-sm-flex">
 
@@ -73,6 +71,7 @@
                                         <a href="{{route('home.cart')}}" class="signUp-action"> Cart <span class="ms-1 cart-count"></span></a>
                                     </li>
                                 </ul>
+
                             </li>
                         </ul>
 

@@ -7,7 +7,7 @@ $setting = setting();
 @endsection
 @section('content')
 
-    @if($homepage->hero_section_status === 1)
+    @if($homepage->hero_section_status === "1")
         <div class="hero-banner-two">
             <div class="container">
                 <div class="row align-items-start justify-content-between">
@@ -49,14 +49,14 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->about_section_status === 1)
+    @if($homepage->about_section_status === "1")
     <div class="fancy-text-block-eight pt-150 pb-100 mt-20">
         <div class="container">
             <div class="title-style-two text-center md-mb-70">
                 <div class="row">
                     <div class="col-xl-8 col-lg-9 col-md-10 m-auto">
                         <h2>
-                            About Us
+                            {{$homepage->about_section_title}}
                         </h2>
                     </div>
                 </div>
@@ -66,18 +66,17 @@ $setting = setting();
                 <div class="row">
                     <div class="col-lg-5 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1200">
                         <div class="text-details pt-35 md-pb-50">
-                            <img src="{{asset('website/images/icon/27.svg')}}" alt="" class="icon">
-                            <h3 class="title font-gilroy-bold">Make communication Fast &amp; efficient.</h3>
-                            <p class="text-meta">Our chatbots and live chat capture more ipsum of your best leads and convert them while they’re hot dummy text.
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque excepturi fuga magnam, numquam officia porro quas unde voluptas. Neque, repudiandae.
+                            <img src="{{asset('website/images/icon/27.svg')}}" alt=" {{$homepage->about_section_title}} {{$homepage->about_section_header}}" class="icon">
+                            <h3 class="title font-gilroy-bold">{{$homepage->about_section_header}}</h3>
+                            <p class="text-meta">{{$homepage->about_section_paragraph}}
                             </p>
-                            <a href="faqs.html" class="theme-btn-one">Read more</a>
+                            <a href="{{$homepage->about_section_link}}" class="theme-btn-one">Read more</a>
                         </div> <!-- /.text-details -->
                     </div>
 
                     <div class="col-lg-7 col-md-9 m-auto aos-init aos-animate" data-aos="fade-left" data-aos-duration="1200">
                         <div class="illustration-holder illustration-one">
-                            <img src="{{asset('website')}}/images/assets/feature-img-09.png" alt="" class="ml-auto">
+                            <img src="{{asset($homepage->about_section_image)}}" alt=" {{$homepage->about_section_title}} {{$homepage->about_section_header}}"  class="ml-auto">
                         </div>
                     </div>
                 </div>
@@ -90,16 +89,16 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->service_section_status === 1)
+    @if($homepage->service_section_status === "1")
     <div class="feature-blog-one blog-page-bg">
         <div class="shapes shape-two"></div>
         <div class="shapes shape-three"></div>
         <div class="container">
             <div class="text-center mb-4">
-                <p class="mb-3">OUR SERVICES</p>
-                <h2 class="title-style-two mb-3" style="font-weight: bold;">Solutions & Focus Areas</h2>
+                <p class="mb-3">{{$homepage->service_section_title}}</p>
+                <h2 class="title-style-two mb-3" style="font-weight: bold;">{{$homepage->service_section_header}}</h2>
                 <p>
-                    JSB-Tech LLC provides technology solutions and services to make your business run more efficiently and business-ready.
+                    {{$homepage->service_section_paragraph}}
                 </p>
             </div>
 
@@ -127,7 +126,7 @@ $setting = setting();
 
             <div class="text-center">
                 <div class="text-center mt-4">
-                    <a href="sign-up.html"
+                    <a href="{{$homepage->service_section_link}}"
                        style="background: var(--red-light);
                                width: 184px;
                                height: 50px;
@@ -150,7 +149,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->review_section_status === 1)
+    @if($homepage->review_section_status === "1")
     <!-- Client Feedback  -->
     <div class="client-feedback-slider-six mt-150 md-mt-120" id="feedback">
         <div class="inner-container mb-3">
@@ -159,8 +158,8 @@ $setting = setting();
                     <div class="col-12">
                         <img src="{{asset('website/images/icon/100.svg')}}" alt="" class="m-auto">
                         <div class="title-style-seven text-center mt-20">
-                            <h2><span>Client</span> love us & we love them</h2>
-                            <p>Kind words from our deski Clients.</p>
+                            <h2>{{$homepage->review_section_header}}</h2>
+                            <p>{{$homepage->review_section_paragraph}}</p>
                         </div> <!-- /.title-style-six -->
                     </div>
                 </div>
@@ -221,7 +220,7 @@ $setting = setting();
     @endif
 
 
-    @if($homepage->faq_section_status === 1)
+    @if($homepage->faq_section_status === "1")
     <!-- Faq Classic -->
     <div class="faq-classic pt-225 md-pt-120">
         <div class="container">
@@ -229,7 +228,7 @@ $setting = setting();
                 <div class="row">
                     <div class="col-xl-8 col-lg-9 col-md-10 m-auto">
                         <h2>
-                           FAQ
+                            {{$homepage->faq_section_title}}
                         </h2>
                     </div>
                 </div>
@@ -238,10 +237,10 @@ $setting = setting();
             <div class="row">
                 <div class="col-lg-6">
                     <div class="title-style-one">
-                        <h6 class="font-rubik">Find your answers</h6>
-                        <h2>Have any thought? Look here.</h2>
+                        <h6 class="font-rubik">{{$homepage->faq_section_header}}</h6>
+                        <h2>{{$homepage->faq_section_paragraph}}</h2>
                     </div> <!-- /.title-style-one -->
-                    <a href="faqs.html" class="theme-btn-one mt-50 md-mt-30">Go to Faq</a>
+                    <a href="{{$homepage->faq_section_link}}" class="theme-btn-one mt-50 md-mt-30">Go to Faq</a>
                 </div>
                 <div class="col-lg-6">
                     <!-- ================== FAQ Panel ================ -->
@@ -270,14 +269,14 @@ $setting = setting();
     </div> <!-- /.faq-classic -->
     @endif
 
-    @if($homepage->blog_section_status === 1)
+    @if($homepage->blog_section_status === "1")
     {{--    Latest Blog--}}
     <div class="feature-blog-one blog-page-bg">
         <div class="shapes shape-two"></div>
         <div class="shapes shape-three"></div>
         <div class="container">
             <div class="text-center mb-4">
-                <h2 class="title-style-two mb-3" style="font-weight: bold;">Latest Blog</h2>
+                <h2 class="title-style-two mb-3" style="font-weight: bold;">{{$homepage->blog_section_title}}</h2>
             </div>
 
             <!-- Services Section -->
