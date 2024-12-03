@@ -63,6 +63,7 @@
 
                                 <ul class="user-login-button d-flex align-items-center justify-content-center">
                                     @auth
+
                                         @if(auth()->user()->role_id == 2)
                                             <li>
                                                 <a href="{{route('admin.index')}}" class="signIn-action">Admin Panel</a>
@@ -71,7 +72,9 @@
                                             <li>
                                                 <a href="{{route('dashboard')}}" class="signIn-action">Dashboard</a>
                                             </li>
-                                        @endif
+
+                                    @endif
+
                                     @else
                                         <li>
                                             <a href="{{route('login')}}" class="signIn-action">Login</a>
