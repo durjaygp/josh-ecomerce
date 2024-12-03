@@ -34,7 +34,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('optimize.clear')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-eraser"></i>
+                    <i class="ti ti-clear-formatting"></i>
                   </span>
                             <span class="hide-menu">Site Optimize</span>
                         </a>

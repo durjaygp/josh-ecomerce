@@ -164,11 +164,11 @@
                 <div class="logo"><a href="{{route('home')}}"><img src="{{asset($setting->website_logo)}}" alt="{{$setting->name}}"></a></div>
                 <a href="{{route('home')}}" class="font-rubik go-back-button">Go to home</a>
             </div>
-            <form action="{{route('login')}}" class="user-data-form mt-80 md-mt-40" method="POST">
+            <form action="#" class="user-data-form mt-80 md-mt-40">
                 <h2>Hi buddy, welcome <br> Back!</h2>
                 <p class="header-info pt-30 pb-50">Still don't have an account? <a href="{{route('register')}}">Sign up</a></p>
 
-                <row class="row">
+                <form action="{{route('login')}}" class="row" method="POST">
                     @csrf
                     <div class="col-12">
                         <div class="input-group-meta mb-80 sm-mb-70">
@@ -198,7 +198,7 @@
                     <div class="col-12">
                         <p class="text-center font-rubik copyright-text">{{$setting->footer}}</p>
                     </div>
-                </row>
+                </form>
             </form>
         </div> <!-- /.form-wrapper -->
     </div> <!-- /.user-data-page -->
