@@ -13577,9 +13577,12 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 }
 .cart-list-form .table tbody tr:first-child td {padding-top: 40px;}
 .cart-list-form .table tbody tr:last-child td {padding-bottom: 20px;}
-.cart-list-form .table .product-thumbnails {width: 85px;}
 .cart-list-form .table .product-thumbnails img {max-height: 100%; max-width: none;}
-.cart-list-form .table .product-img {display: block; max-width: 85px; max-height: 85px; overflow: hidden;}
+.cart-list-form .table .product-img {
+    width: 100px;
+    height: 100px;
+
+}
 .cart-list-form .table .product-info {padding-left: 30px;text-align: left;}
 .cart-list-form .table .product-info .product-name {
   font-weight: 500;

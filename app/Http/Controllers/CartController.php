@@ -65,7 +65,7 @@ class CartController extends Controller
         $total = max(0, $subtotal - $discount); // Ensure total is not negative
 
         // Pass data to the view
-        return view('frontEnd.order.cart', [
+        return view('website.order.cart', [
             'items' => $items,
             'subtotal' => $subtotal,
             'discount' => $discount,
