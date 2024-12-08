@@ -5035,7 +5035,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 /*------------------- Blog Pages ----------------*/
 .blog-page-bg {
   background: linear-gradient(45deg, #FFFBF2, #EDFFFD);
-  padding: 180px 0 150px;
+  padding: 110px 0 150px;
   position: relative;
   z-index: 5;
 }

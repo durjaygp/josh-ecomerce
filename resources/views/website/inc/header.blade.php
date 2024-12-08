@@ -1,11 +1,12 @@
 @php
     $cartCount = \App\Models\Cart::where('user_id', auth()->id())->count();
     $servics = \App\Models\Service::whereStatus(1)->latest()->get();
+    $setting = setting();
 @endphp
 
 <div class="theme-main-menu sticky-menu theme-menu-two">
     <div class="d-flex align-items-center justify-content-center">
-        <div class="logo"><a href="index-customer-support.html"><img src="{{asset('website')}}/images/logo/deski_01.svg" alt=""></a></div>
+        <div class="logo"><a href="{{route('home')}}"><img src="{{asset($setting->website_logo)}}" alt="{{$setting->name ?? ""}}"></a></div>
 
         <nav id="mega-menu-holder" class="navbar navbar-expand-lg">
             <div  class="nav-container">
