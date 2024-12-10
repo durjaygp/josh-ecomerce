@@ -49,6 +49,7 @@
                                         <th>Image</th>
                                         <th>Product Category</th>
                                         <th>Name</th>
+                                        <th>Price</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -65,6 +66,7 @@
                                             {{ $row->productCategory?->name }}
                                         </td>
                                         <td>{{\Illuminate\Support\Str::limit($row->name,20)}}</td>
+                                        <td>$ {{ $row->price }}</td>
                                         <td>{{\Illuminate\Support\Str::limit($row->description,20)}}</td>
                                         <td>
                                             @if($row->status == 1)

@@ -31,14 +31,10 @@ $setting = setting();
                                 <br>
                                 <img src="{{asset('website/images/shape/line-shape-1.svg')}}" alt="" class="cs-screen">
                             </span>
-                                {{ trim($remainingWords) }} <!-- Remaining content -->
+                                {{ trim($remainingWords) }}
                             </h1>
-
                             <p class="sub-text">{{$homepage->hero_section_paragraph}}</p>
-                            <form action="#">
-                                <input type="email" placeholder="Enter your email">
-                                <button>Get Started</button>
-                            </form>
+                            <a href="{{$homepage->hero_section_button_link}}" class="theme-btn-five">{{$homepage->hero_section_button_text}}</a>
                         </div> <!-- /.hero-text-wrapper -->
                     </div>
                 </div> <!-- /.row -->

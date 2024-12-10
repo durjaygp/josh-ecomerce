@@ -145,10 +145,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::get('/admin',[DashboardController::class,'index'])->name('admin.index');
 
-
+ 
     Route::get('/optimize-clear', function () {
         Artisan::call('optimize:clear');
-        return 'Cache cleared successfully!';
+        return redirect()->back()->with('success', 'Cache cleared successfully!');
     })->name('optimize.clear');
 
 
