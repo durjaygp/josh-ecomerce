@@ -18,7 +18,7 @@ class PageController extends Controller
 {
     public function about(){
         $about = About::find(1);
-        return view('website.pages.about',compact('about'));
+        return view('frontEnd.pages.about',compact('about'));
     }
     public function faq(){
         $faqs = Faq::whereStatus(1)->get();

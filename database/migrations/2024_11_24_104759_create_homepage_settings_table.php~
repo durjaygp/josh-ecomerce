@@ -17,8 +17,6 @@ return new class extends Migration
             $table->longText('hero_section_paragraph')->nullable();
             $table->string('hero_section_status')->nullable();
             $table->string('hero_section_image')->nullable();
-            $table->text('hero_section_button_link')->nullable();
-            $table->text('hero_section_button_text')->nullable();
             // About Section
             $table->string('about_section_title')->nullable();
             $table->text('about_section_header')->nullable();

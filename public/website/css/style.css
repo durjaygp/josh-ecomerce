@@ -2692,7 +2692,6 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   z-index: 1;
 }
 .contact-us-light:before {
-  content: url(../images/shape/15.svg);
   position: absolute;
   left: 0;
   bottom:-140px;
@@ -3602,16 +3601,7 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
   left: 11%;
   z-index: -1;
 }
-.theme-footer-two:after {
-  content: " ";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #F77A56;
-  bottom: 19%;
-  right: 30%;
-  z-index: -1;
-}
+
 .theme-footer-two .top-footer [class*="col-"] {margin-bottom: 30px;}
 .theme-footer-two .top-footer .footer-title {
   font-family: 'Rubik', sans-serif;

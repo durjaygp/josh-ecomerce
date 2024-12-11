@@ -31,6 +31,9 @@
                                             <a href="{{ route('service.details', $row->slug) }}" class="dropdown-item {{ request()->is('service/'.$row->slug) ? 'active' : '' }}">{{ $row->title }}</a>
                                         </li>
                                     @endforeach
+                                        <li class="nav-item">
+                                            <a href="{{ route('home.services') }}" class="dropdown-item {{ request()->is('home.services') ? 'active' : '' }}">All Services</a>
+                                        </li>
                                 </ul> <!-- /.dropdown-menu -->
                             </li>
 

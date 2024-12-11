@@ -4,15 +4,14 @@
 @endsection
 @section('content')
 
-
     <!-- Product Details One -->
-<div class="product-details-one lg-container pt-180 lg-pt-150">
+<div class="product-details-one lg-container lg-pt-150">
     <div class="breadcrumb-area pb-70">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <nav class="breadcrumb-style-one mt-20">
                     <ol class="breadcrumb bg-white style-none m0 p0">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{route('home.products')}}">Products</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $product->name}} </li>
                     </ol>
@@ -37,101 +36,25 @@
             <div class="col-lg-5 order-lg-2">
                 <div class="tab-content product-img-tab-content h-100">
                     <div class="tab-pane fade show active h-100" id="img1" role="tabpanel" >
-                        <a class="fancybox h-100 w-100 d-flex align-items-center justify-content-center" data-fancybox="" href="{{asset($product->image)}}" tabindex="-1">
-                            <img src="{{asset($product->image)}}" alt="" class="m-auto">
-                        </a>
+                        <div class="fancybox h-100 w-100 d-flex align-items-center justify-content-center">
+                            <img src="{{asset($product->image)}}" alt="{{$product->name}}" class="m-auto">
+                        </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-1 order-lg-1">
-                <ul class="nav nav-tabs flex-lg-column product-img-tab" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <button class="nav-link active" data-toggle="tab" data-target="#img1" type="button" role="tab" aria-controls="img1" aria-selected="true"><img src="{{asset($product->image)}}" alt="" class="m-auto"></button>
-                    </li>
 
-
-                </ul>
-            </div>
-            <div class="col-lg-6 order-lg-3">
+            <div class="col-lg-7 order-lg-3">
                 <div class="product-info pl-xl-5 md-mt-50">
 
                     <h3 class="product-name">{{$product->name}}</h3>
                     <div class="price">$ {{$product->price}}</div>
                     <p class="description-text">{{ $product->description }} </p>
-                    <ul class="product-feature style-none">
-                        <li>Free delivery available</li>
-                        <li>Use promo-code and save up to 25%</li>
-                    </ul>
-                    <div class="customize-order">
-                        <div class="row">
-                            <div class="col-xl-11">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-sm-4">
-                                        <div class="quantity mt-25">
-                                            <h6>Quantity</h6>
-                                            <div class="button-group">
-                                                <ul class="style-none d-flex align-items-center">
-                                                    <li><button class="value-decrease">-</button></li>
-                                                    <li><input type="number" min="1" max="22" value="1" disabled="" class="product-value val"></li>
-                                                    <li><button class="value-increase">+ </button></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-4">
-                                        <div class="color-selection mt-25">
-                                            <h6>Colors</h6>
-                                            <ul class="style-none d-flex align-items-center color-custome-input">
-                                                <li>
-                                                    <input type="radio" name="color" value="color01" class="color-check-btn" checked="checked">
-                                                    <label style="background:#9CD2FF;"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="color" value="color02" class="color-check-btn">
-                                                    <label style="background:#FF9153;"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="color" value="color03" class="color-check-btn">
-                                                    <label style="background:#5FF2BE;"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="color" value="color04" class="color-check-btn">
-                                                    <label style="background:#9A82FF;"></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-5 col-md-6 col-sm-4">
-                                        <div class="size-selection mt-25">
-                                            <h6>Size</h6>
-                                            <ul class="style-none d-flex align-items-center size-custome-input">
-                                                <li>
-                                                    <input type="radio" name="size" value="small" class="size-check-btn">
-                                                    <label>S</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="size" value="medium" class="size-check-btn">
-                                                    <label>M</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="size" value="large" class="size-check-btn">
-                                                    <label>L</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="size" value="extra large" class="size-check-btn">
-                                                    <label>XL</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- /.customize-order -->
+
                     <div class="button-group mt-30 d-sm-flex align-items-center">
-                        <a href="cart.html" class="cart-btn mt-15 mr-sm-4 d-block">Add To Cart</a>
-                        <a href="#" class="wishlist-btn mt-15 d-block">Add To wishlist</a>
+                        <div class="add-to-cart-btn">
+                            <a href="#" class="cart-btn mt-15 mr-sm-4 d-block default-btn" data-product-id="{{ $product->id }}">Add To Cart</a>
+                        </div>
                     </div>
                 </div> <!-- /.product-info -->
             </div>
@@ -142,113 +65,20 @@
                 <li class="nav-item">
                     <button class="nav-link active" data-toggle="tab" data-target="#item1" type="button" role="tab" aria-selected="true">Description</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-toggle="tab" data-target="#item2" type="button" role="tab"  aria-selected="false">Technical Info</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-toggle="tab" data-target="#item3" type="button" role="tab"  aria-selected="false">Feedback</button>
-                </li>
             </ul>
             <div class="tab-content mt-40 lg-mt-20">
                 <div class="tab-pane fade show active" id="item1" role="tabpanel" >
                     <div class="row gx-5">
                         <div class="col-xl-6">
-                            <h5>Specifications:</h5>
-                            <p>One touch of a red-hot stove is usually all we need to avoid that . The same is true as we experience in emotional sensation of stress from our first instances of social rejection ridicule.</p>
+                            <p>{!! $product->main_content !!}</p>
                         </div>
-                        <div class="col-xl-6">
-                            <h5>Check product main features:</h5>
-                            <ul class="style-none product-feature">
-                                <li>Lorem ipsum best lightweight bra cool rejection avoid text</li>
-                                <li>Lightweight bras cool rejection quickly quis.</li>
-                                <li>We quickly learn to fear and automatically avoid potentially</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="item2" role="tabpanel" >
-                    <div class="row gx-5">
-                        <div class="col-xl-6">
-                            <h5>Check product main features:</h5>
-                            <ul class="style-none product-feature">
-                                <li>Lorem ipsum best lightweight bra cool rejection avoid text</li>
-                                <li>Lightweight bras cool rejection quickly quis.</li>
-                                <li>We quickly learn to fear and automatically avoid potentially</li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-6">
-                            <h5>Specifications:</h5>
-                            <p>One touch of a red-hot stove is usually all we need to avoid that . The same is true as we experience in emotional sensation of stress from our first instances of social rejection ridicule.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="item3" role="tabpanel" >
-                    <div class="user-comment-area">
-                        <div class="single-comment d-flex align-items-top">
-                            <img src="images/shop/avatar_01.jpg" alt="" class="user-img">
-                            <div class="user-comment-data">
-                                <h6 class="name">Rashed ka.</h6>
-                                <ul class="style-none d-flex rating">
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                </ul>
-                                <p>One touch of a red-hot stove is usually all we need to avoid that kind of discomfort in future. The same true we experience the emotional sensation.</p>
-                            </div> <!-- /.user-comment-data -->
-                        </div> <!-- /.single-comment -->
-                        <div class="single-comment d-flex align-items-top">
-                            <img src="images/shop/avatar_02.jpg" alt="" class="user-img">
-                            <div class="user-comment-data">
-                                <h6 class="name">Zubayer hasan</h6>
-                                <ul class="style-none d-flex rating">
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                </ul>
-                                <p>One touch of a red-hot stove is usually all we need to avoid that kind of discomfort in future. The same true we experience the emotional sensation.</p>
-                            </div> <!-- /.user-comment-data -->
-                        </div> <!-- /.single-comment -->
-                    </div>
-                </div>
-            </div>
-        </div> <!-- /.product-review-tab -->
 
-        <div class="mt-60 lg-mt-40">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6" data-aos="fade-up">
-                    <div class="block-style-thirtyNine mt-40 text-center">
-                        <div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><img src="images/icon/203.svg" alt=""></div>
-                        <h3>Free Shipping</h3>
-                        <p class="pl-xl-3 pr-xl-3">Simplify the process to create proposals.</p>
-                    </div> <!-- /.block-style-thirtyNine -->
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="block-style-thirtyNine mt-40 text-center">
-                        <div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><img src="images/icon/204.svg" alt=""></div>
-                        <h3>Free Return</h3>
-                        <p class="pl-xl-3 pr-xl-3">Return money within 7 days only!</p>
-                    </div> <!-- /.block-style-thirtyNine -->
-                </div>
-                <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="block-style-thirtyNine mt-40 text-center">
-                        <div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><img src="images/icon/205.svg" alt=""></div>
-                        <h3>Secured Payment</h3>
-                        <p class="pl-xl-3 pr-xl-3">We ensure secure payment with PEV</p>
-                    </div> <!-- /.block-style-thirtyNine -->
-                </div>
-                <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="block-style-thirtyNine mt-40 text-center">
-                        <div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><img src="images/icon/206.svg" alt=""></div>
-                        <h3>100% Safe</h3>
-                        <p class="pl-xl-3 pr-xl-3">We provide world best security system</p>
-                    </div> <!-- /.block-style-thirtyNine -->
-                </div>
+
             </div>
         </div>
+
     </div>
 </div> <!-- /.product-details-one -->
 
@@ -264,116 +94,31 @@
             </div>
         </div>
     </div>
-    <div class="xl-container mt-60 lg-mt-40">
-        <div class="product_slider_two product_slider_space">
-            <div class="item">
-                <div class="product-block-two">
-                    <div class="img-holder">
-                        <a href="shop-details.html" class="d-flex align-items-center justify-content-center h-100">
-                            <img src="images/shop/img_13.png" alt="" class="product-img tran4s">
+    <div class="container mt-2">
+        <div class="row">
+            @foreach($relatedProducts as $row)
+                <div class="col-md-4">
+                    <div class="card m-2 p-2">
+                        <a href="{{ route('home.product', $row->slug) }}" class="d-flex align-items-center justify-content-center h-100">
+                            <img src="{{ asset($row->image) }}" alt="{{ $row->name }}" class="product-img tran4s">
                         </a>
-                        <a href="cart.html" class="cart-icon" title="Add To Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div> <!-- /.img-holder -->
-                    <div class="product-meta">
-                        <ul class="style-none d-flex justify-content-center rating">
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <a href="shop-details.html" class="product-title">Quilted Gilet With Hood</a>
-                        <div class="price">$17.99</div>
-                    </div> <!-- /.product-meta -->
-                </div> <!-- /.product-block-two -->
-            </div>
-            <div class="item">
-                <div class="product-block-two">
-                    <div class="img-holder">
-                        <a href="shop-details.html" class="d-flex align-items-center justify-content-center h-100">
-                            <img src="images/shop/img_14.png" alt="" class="product-img tran4s">
-                        </a>
-                        <a href="cart.html" class="cart-icon" title="Add To Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div> <!-- /.img-holder -->
-                    <div class="product-meta">
-                        <ul class="style-none d-flex justify-content-center rating">
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <a href="shop-details.html" class="product-title">Rolex Gold Watch</a>
-                        <div class="price">$139.99</div>
-                    </div> <!-- /.product-meta -->
-                </div> <!-- /.product-block-two -->
-            </div>
-            <div class="item">
-                <div class="product-block-two">
-                    <div class="img-holder">
-                        <a href="shop-details.html" class="d-flex align-items-center justify-content-center h-100">
-                            <img src="images/shop/img_15.png" alt="" class="product-img tran4s">
-                        </a>
-                        <a href="cart.html" class="cart-icon" title="Add To Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div> <!-- /.img-holder -->
-                    <div class="product-meta">
-                        <ul class="style-none d-flex justify-content-center rating">
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <a href="shop-details.html" class="product-title">Quilted Gilet With Hood</a>
-                        <div class="price">$17.99</div>
-                    </div> <!-- /.product-meta -->
-                </div> <!-- /.product-block-two -->
-            </div>
-            <div class="item">
-                <div class="product-block-two">
-                    <div class="img-holder">
-                        <a href="shop-details.html" class="d-flex align-items-center justify-content-center h-100">
-                            <img src="images/shop/img_16.png" alt="" class="product-img tran4s">
-                        </a>
-                        <a href="cart.html" class="cart-icon" title="Add To Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div> <!-- /.img-holder -->
-                    <div class="product-meta">
-                        <ul class="style-none d-flex justify-content-center rating">
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <a href="shop-details.html" class="product-title">Jogers with Black strip</a>
-                        <div class="price">$217.99</div>
-                    </div> <!-- /.product-meta -->
-                </div> <!-- /.product-block-two -->
-            </div>
-            <div class="item">
-                <div class="product-block-two">
-                    <div class="img-holder">
-                        <a href="shop-details.html" class="d-flex align-items-center justify-content-center h-100">
-                            <img src="images/shop/img_14.png" alt="" class="product-img tran4s">
-                        </a>
-                        <a href="cart.html" class="cart-icon" title="Add To Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                    </div> <!-- /.img-holder -->
-                    <div class="product-meta">
-                        <ul class="style-none d-flex justify-content-center rating">
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                        </ul>
-                        <a href="shop-details.html" class="product-title">Rolex Gold Watch</a>
-                        <div class="price">$139.99</div>
-                    </div> <!-- /.product-meta -->
-                </div> <!-- /.product-block-two -->
-            </div>
+                        <div class="text-center">
+                            <a href="{{ route('home.product', $row->slug) }}" class="product-title">{{ $row->name }}</a>
+                            <div class="price">$ {{ $row->price }}</div>
+                            <div class="add-to-cart-btn">
+                                <a href="#" class="btn btn-primary" data-product-id="{{ $row->id }}">Add to Cart</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            @endforeach
         </div>
-    </div> <!-- /.xl-container -->
-</div> <!-- /.fancy-feature-fortyThree -->
+    </div>
+
+</div>
+    <!-- /.fancy-feature-fortyThree -->
 
 
 @endsection
