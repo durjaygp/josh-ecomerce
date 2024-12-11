@@ -2,6 +2,21 @@
 @section('title')
 Blog
 @endsection
+@section('meta_tag')
+    <meta name="description" content="{{setting()->description ?? ""}}">
+    <meta name="keywords" content="{{setting()->keywords ?? ""}}">
+    <meta property="og:title" content="{{setting()->name ?? ""}}">
+    <meta property="og:type" content="Blog" />
+    <meta property="og:description" content="{{setting()->description ?? ""}}" />
+    <meta property="og:url" content="{{url('/')}}">
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="{{setting()->name ?? ""}}" />
+    <meta name="twitter:description" content="{{setting()->description ?? ""}}" />
+    <meta name="twitter:url" content="{{url('/')}}" />
+    <meta name="twitter:card" content="{{asset(optional(setting())->website_logo)}}">
+@endsection
+
 @section('content')
 
 

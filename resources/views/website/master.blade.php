@@ -1,3 +1,6 @@
+@php
+$setting = setting();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +19,12 @@
     <meta name="msapplication-navbutton-color" content="#fd6a5e">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fd6a5e">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/png" sizes="56x56" href="{{asset('website/images/fav-icon/icon.png')}}">
+    <link rel="icon" type="image/png" sizes="56x56" href="{{asset($setting->fav_icon)}}">
     <link rel="stylesheet" type="text/css" href="{{asset('website/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('website/css/responsive.css')}}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{asset('website')}}/vendor/html5shiv.js"></script>
@@ -28,35 +34,6 @@
 
 <body>
 <div class="main-page-wrapper">
-    <!-- ===================================================
-        Loading Transition
-    ==================================================== -->
-{{--    <section>--}}
-{{--        <div id="preloader">--}}
-{{--            <div id="ctn-preloader" class="ctn-preloader">--}}
-{{--                <div class="animation-preloader">--}}
-{{--                    <div class="spinner"></div>--}}
-{{--                    <div class="txt-loading">--}}
-{{--								<span data-text-preloader="D" class="letters-loading">--}}
-{{--									D--}}
-{{--								</span>--}}
-{{--                        <span data-text-preloader="E" class="letters-loading">--}}
-{{--									E--}}
-{{--								</span>--}}
-{{--                        <span data-text-preloader="S" class="letters-loading">--}}
-{{--									S--}}
-{{--								</span>--}}
-{{--                        <span data-text-preloader="K" class="letters-loading">--}}
-{{--									K--}}
-{{--								</span>--}}
-{{--                        <span data-text-preloader="I" class="letters-loading">--}}
-{{--									I--}}
-{{--								</span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 
 
     <!-- ==== Theme Main Menu == -->
@@ -71,7 +48,7 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- jQuery -->
-    <script src="{{asset('website')}}/vendor/jquery.min.js"></script>
+    <script src="{{asset('homePage')}}/assets/js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Popper js -->
     <script src="{{asset('website/vendor/popper.js/popper.min.js')}}"></script>
@@ -82,6 +59,44 @@
     <script src="{{asset('website/vendor/jquery.countTo.js')}}"></script>
     <script src="{{asset('website/vendor/slick/slick.min.js')}}"></script>
     <script src="{{asset('website/js/theme.js')}}"></script>
+    <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
+
+
+
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <script>
+                iziToast.error({
+                    title: '',
+                    position:'topRight',
+                    message: '{{$error}}',
+            });
+            </script>
+        @endforeach
+    @endif
+
+
+    @if(session()->get('success'))
+        <script>
+            iziToast.success({
+                title: '',
+                position:'topRight',
+                message: '{{session()->get('success')}}',
+        });
+
+        </script>
+    @endif
+
+    @if(session()->get('error'))
+        <script>
+            iziToast.error({
+                title: '',
+                position:'topRight',
+                message: '{{session()->get('error')}}',
+        });
+        </script>
+    @endif
+
     <script src="{{asset('homePage/custom.js')}}"></script>
     @yield('script')
 </div>

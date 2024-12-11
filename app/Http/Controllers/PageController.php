@@ -27,7 +27,7 @@ class PageController extends Controller
 
     public function contact(){
         $faqs = Faq::whereStatus(1)->get();
-        return view('frontEnd.pages.contact',compact('faqs'));
+        return view('website.pages.contact',compact('faqs'));
     }
 
     public function index()

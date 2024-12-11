@@ -50,7 +50,7 @@ class WebProductController extends Controller
         }
 
         // Return the full view for initial load
-        return view('frontEnd.product.index', compact('products'));
+        return view('website.product.index', compact('products'));
     }
 
 
