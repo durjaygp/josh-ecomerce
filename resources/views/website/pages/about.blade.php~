@@ -36,7 +36,7 @@
 
                     <h3 class="product-name">{{$about->title}}</h3>
                     <p class="description-text">{{ $about->description }} </p>
-                    <a href="{{route('home.products')}}" class="theme-btn-five mt-3">Products</a>
+                    <a href="{{route('home.products')}}" class="theme-btn-five">Products</a>
                 </div> <!-- /.product-info -->
             </div>
         </div>

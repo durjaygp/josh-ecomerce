@@ -37,11 +37,11 @@ $setting = setting();
 
 
     <!-- ==== Theme Main Menu == -->
-        @include('website.inc.header')
+    @include('website.inc.header')
     <!-- /.theme-main-menu -->
 
 
-        @yield('content')
+    @yield('content')
 
    @include('website.inc.footer')
     <!-- Optional JavaScript _____________________________  -->

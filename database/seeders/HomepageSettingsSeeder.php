@@ -19,6 +19,8 @@ class HomepageSettingsSeeder extends Seeder
             'hero_section_paragraph' => 'We provide the best services to make your life better.',
             'hero_section_status' => 1,
             'hero_section_image' => 'hero_image.jpg',
+            'hero_section_button_link' => 'https://example.com/',
+            'hero_section_button_text' => 'Explore More',
 
             // About Section
             'about_section_title' => 'About Us',

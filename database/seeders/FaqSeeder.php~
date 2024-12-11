@@ -16,7 +16,7 @@ class FaqSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 1; $i <= 20; $i++) { // Generating 20 FAQs
+        for ($i = 1; $i <= 5; $i++) { // Generating 5 FAQs
             DB::table('faqs')->insert([
                 'question' => $faker->sentence,
                 'answer' => $faker->paragraph,

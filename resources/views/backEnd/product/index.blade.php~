@@ -80,7 +80,7 @@
                                                 <a href="{{route('admin-products.edit',$row->id)}}" class="btn btn-sm btn-primary">
                                                     <i class="ti ti-pencil fs-5"></i>
                                                 </a>
-                                                <a href="{{route('home.product',$row->slug)}}" target="_blank" class="btn btn-sm btn-warning">
+                                                <a href="{{route('home.product',$row->slug)}}" target="_blank" class="btn btn-sm btn-primary">
                                                     <i class="ti ti-eye fs-5"></i>
                                                 </a>
                                                 <a href="#"

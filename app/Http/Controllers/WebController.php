@@ -75,7 +75,7 @@ class WebController extends Controller
 
     public function services(){
         $services = Service::latest()->whereStatus(1)->paginate(9);
-        return view('frontEnd.service.index',compact('services'));
+        return view('website.service.index',compact('services'));
     }
 
     public function blog(){
@@ -134,7 +134,7 @@ class WebController extends Controller
             ->orWhere('main_content', 'like', $search)
             ->paginate(9);
 
-        return view('frontEnd.blog.index', compact('blogs', 'cleanedSearch'));
+        return view('website.blog.index', compact('blogs', 'cleanedSearch'));
     }
 
     public function siteMap(): Response // Update the type hint to Illuminate\Http\Response

@@ -18,8 +18,10 @@ FAQ
     </div>
 
 
-<!-- Faq Classic -->
-<div class="faq-classic md-pt-120">
+
+    @if($homepage->faq_section_status === "1")
+        <!-- Faq Classic -->
+        <div class="faq-classic md-pt-120">
             <div class="container">
                 <div class="title-style-two text-center md-mb-70 mt-70 mb-70">
                     <div class="row">
@@ -57,7 +59,6 @@ FAQ
                     </div> <!-- /.col- -->
                 </div>
             </div>
-        </div>
-<!-- /.faq-classic -->
-
+        </div> <!-- /.faq-classic -->
+    @endif
 @endsection
