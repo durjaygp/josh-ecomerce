@@ -82,32 +82,36 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($row->status == App\Enums\Status::IN_PROGRESS())
-                                                    <span class="badge bg-secondary">In Progress</span>
-                                                @elseif($row->status == App\Enums\Status::COMPLETE())
-                                                    <span class="badge bg-success">Complete</span>
-                                                @elseif($row->status == App\Enums\Status::FAILED())
-                                                    <span class="badge bg-danger">Failed</span>
-                                                @elseif($row->status == App\Enums\Status::SHIPPED())
-                                                    <span class="badge bg-info">Shipped</span>
-                                                @elseif($row->status == App\Enums\Status::PENDING())
-                                                    <span class="badge bg-warning">Pending</span>
-                                                @elseif($row->status == App\Enums\Status::CANCELED())
-                                                    <span class="badge bg-dark">Canceled</span>
+                                                @if($row->status == App\Enums\Status::IN_PROGRESS)
+                                                    <span class="badge bg-secondary">{{ App\Enums\Status::map()[App\Enums\Status::IN_PROGRESS] }}</span>
+                                                @elseif($row->status == App\Enums\Status::COMPLETE)
+                                                    <span class="badge bg-success">{{ App\Enums\Status::map()[App\Enums\Status::COMPLETE] }}</span>
+                                                @elseif($row->status == App\Enums\Status::FAILED)
+                                                    <span class="badge bg-danger">{{ App\Enums\Status::map()[App\Enums\Status::FAILED] }}</span>
+                                                @elseif($row->status == App\Enums\Status::SHIPPED)
+                                                    <span class="badge bg-info">{{ App\Enums\Status::map()[App\Enums\Status::SHIPPED] }}</span>
+                                                @elseif($row->status == App\Enums\Status::PENDING)
+                                                    <span class="badge bg-warning">{{ App\Enums\Status::map()[App\Enums\Status::PENDING] }}</span>
+                                                @elseif($row->status == App\Enums\Status::CANCELED)
+                                                    <span class="badge bg-dark">{{ App\Enums\Status::map()[App\Enums\Status::CANCELED] }}</span>
                                                 @else
                                                     <span class="badge bg-light text-black">Unknown Status</span>
                                                 @endif
                                             </td>
 
                                             <td>
-                                                @if($row->shipping_status == App\Enums\Status::IN_PROGRESS())
-                                                    <span class="badge bg-secondary">In Progress</span>
-                                                @elseif($row->shipping_status == App\Enums\Status::SHIPPED())
-                                                    <span class="badge bg-info">Shipped</span>
-                                                @elseif($row->shipping_status == App\Enums\Status::PENDING())
-                                                    <span class="badge bg-warning">Pending</span>
-                                                @elseif($row->shipping_status == App\Enums\Status::CANCELED())
-                                                    <span class="badge bg-dark">Canceled</span>
+                                                @if($row->shipping_status == App\Enums\Status::IN_PROGRESS)
+                                                    <span class="badge bg-secondary">{{ App\Enums\Status::map()[App\Enums\Status::IN_PROGRESS] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::COMPLETE)
+                                                    <span class="badge bg-success">{{ App\Enums\Status::map()[App\Enums\Status::COMPLETE] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::FAILED)
+                                                    <span class="badge bg-danger">{{ App\Enums\Status::map()[App\Enums\Status::FAILED] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::SHIPPED)
+                                                    <span class="badge bg-info">{{ App\Enums\Status::map()[App\Enums\Status::SHIPPED] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::PENDING)
+                                                    <span class="badge bg-warning">{{ App\Enums\Status::map()[App\Enums\Status::PENDING] }}</span>
+                                                @elseif($row->shipping_status == App\Enums\Status::CANCELED)
+                                                    <span class="badge bg-dark">{{ App\Enums\Status::map()[App\Enums\Status::CANCELED] }}</span>
                                                 @else
                                                     <span class="badge bg-light text-black">Unknown Status</span>
                                                 @endif
