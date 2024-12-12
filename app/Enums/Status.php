@@ -7,7 +7,7 @@ use Rexlabs\Enum\Enum;
 class Status extends Enum
 {
     const IN_PROGRESS = 'in_progress';
-    const COMPLETE = 'complete';
+    const COMPLETE = 'completed';
     const SHIPPED = 'shipped';
     const DELIVERED = 'delivered';
     const PENDING = 'pending';

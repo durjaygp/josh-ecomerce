@@ -38,12 +38,11 @@ class StripePaymentController extends Controller
         try {
             // Start transaction
             DB::beginTransaction();
-
+            
         // Store shipping information
         $shipping = Shiping::where('user_id', $user->id)->first();
 
-
-
+// Retrieve cart data from the session
         $cart = session()->get('cart', ['items' => [], 'total_quantity' => 0]);
         $carts = [];
         foreach ($cart['items'] as $cartItem) {
@@ -143,12 +142,6 @@ class StripePaymentController extends Controller
         session()->forget('coupon');
 
         return view('order_success');
-
-        } catch (\Exception $e) {
-            // Rollback transaction on failure
-            DB::rollBack();
-            return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
-        }
     }
 //
 //    public function stripePost(Request $request)

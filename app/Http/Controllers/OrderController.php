@@ -9,7 +9,11 @@ use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Product;
 use App\Models\Shiping;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -86,7 +90,7 @@ class OrderController extends Controller
             }
         }
 
-        return view('frontEnd.order.checkout', [
+        return view('website.order.checkout', [
             'ship' => $ship,
             'carts' => $carts,
             'mainCart' => $cart,
@@ -110,6 +114,9 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        try {
+            // Start transaction
+            DB::beginTransaction();
         // Validate the incoming request
         $request->validate([
             'first_name' => 'required|string|max:255',
@@ -121,115 +128,150 @@ class OrderController extends Controller
             'postal_code' => 'required|string|max:20',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
+            'password' => 'nullable',
             'details' => 'nullable|string|max:500',
+            'radioGroup' => 'required|integer', // Ensure payment method is selected
         ]);
 
-        $user = auth()->user();
+        if (auth()->check()) {
+            $user = auth()->user();
+        }else{
+            // Create a new user
+            $user = User::create([
+                'name' => $request->first_name . ' ' . $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => 1,
+            ]);
+
+            Auth::login($user);
+        }
+
 
         // Store shipping information
         $shipping = Shiping::updateOrCreate(
             ['user_id' => $user->id],
-            $request->all()
+            $request->except('password', 'radioGroup')
         );
 
-        // Retrieve the main cart and its items
-        $mainCart = Cart::where('user_id', $user->id)->first();
-        $cartItems = CartItems::where('user_id', $user->id)->where('cart_id', $mainCart->id)->get();
-
-        $subtotal = 0;
-        foreach ($cartItems as $item) {
-            $subtotal += $item->product->price * $item->quantity;
+        // Retrieve cart data from the session
+        $cart = session()->get('cart', ['items' => [], 'total_quantity' => 0]);
+        $carts = [];
+        foreach ($cart['items'] as $cartItem) {
+            $product = Product::find($cartItem['product_id']);
+            if ($product) {
+                $carts[] = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $cartItem['quantity'],
+                    'total_price' => $product->price * $cartItem['quantity'],
+                    'image' => $product->image,
+                    'slug' => $product->slug,
+                ];
+            }
         }
 
+        // Calculate subtotal
+        $subtotal = array_reduce($carts, fn($carry, $item) => $carry + $item['total_price'], 0);
+
+        // Calculate discount
+        $coupon = session()->get('coupon');
         $discount = 0;
-        if(optional($mainCart->coupon)->type == 1){
-            $discount = $subtotal * (optional($mainCart->coupon)->value / 100);
-        } elseif(optional($mainCart->coupon)->type == 2) {
-            $discount = optional($mainCart->coupon)->value;
+        $cp = null;
+
+        if ($coupon) {
+            $cp = Cupon::where('code', $coupon['code'])->first();
+            if ($cp) {
+                $discount = $cp->type == 1
+                    ? $subtotal * ($cp->value / 100)
+                    : min($subtotal, $cp->value);
+            }
         }
 
+        // Calculate total
         $total = $subtotal - $discount;
 
-         // Save order data in session
+        // Store order data in the session
         session([
             'order_data' => [
                 'user_id' => $user->id,
-                // 'order_number' => 'ORD-' . strtoupper(uniqid()),
                 'order_number' => 'ORD-' . strtoupper(substr(uniqid(), -5)),
-                'coupon_id' => optional($mainCart->coupon)->id,
+                'coupon_id' => optional($cp)->id,
                 'total_price' => $total,
                 'shipping_id' => $shipping->id,
-                'cart_items' => $cartItems->toArray()
+                'cart_items' => $carts,
             ]
         ]);
 
-
+        // Process payment based on the selected method
         if ($request->radioGroup == 1) {
-            $provider = new PayPalClient;
-            $provider->setApiCredentials(config('paypal'));
-            $paypalToken = $provider->getAccessToken();
-
-            $response = $provider->createOrder([
-                "intent" => "CAPTURE",
-                "application_context" => [
-                    "return_url" => route('successTransaction'),
-                    "cancel_url" => route('cancelTransaction'),
-                ],
-                "purchase_units" => [
-                    0 => [
-                        "amount" => [
-                            "currency_code" => "USD",
-                            "value" => number_format($total, 2, '.', ''), // Use the dynamic total value
-                            "breakdown" => [
-                                "item_total" => [
-                                    "currency_code" => "USD",
-                                    "value" => number_format($subtotal, 2, '.', ''),
-                                ],
-                                "discount" => [
-                                    "currency_code" => "USD",
-                                    "value" => number_format($discount, 2, '.', ''),
-                                ]
-                            ]
-                        ],
-                        "description" => $request->details, // Add a description
-                        "invoice_id" => "INV-".uniqid(), // Add a unique invoice ID
-                        "custom_id" => $user->id,
-                        "cart_id" => $mainCart->id,
-                        "items" => $cartItems->map(function($item) {
-                            return [
-                                "name" => $item->product->name,
-                                "unit_amount" => [
-                                    "currency_code" => "USD",
-                                    "value" => number_format($item->product->price, 2, '.', '')
-                                ],
-                                "quantity" => $item->quantity,
-                                "sku" => $item->product->sku,
-                            ];
-                        })->toArray()
-                    ]
-                ]
-            ]);
-
-
-            if (isset($response['id']) && $response['id'] != null) {
-                // Redirect to approve href
-                foreach ($response['links'] as $links) {
-                    if ($links['rel'] == 'approve') {
-                        return redirect()->away($links['href']);
-                    }
-                }
-                return redirect()->back()->with('error', 'No approval link found.');
-            } else {
-                // \Log::error('PayPal error:', $response);
-                return redirect()->back()->with('error', $response['message'] ?? 'Something went wrong.');
-            }
-
+            return $this->processPayPalPayment($carts, $subtotal, $discount, $total, $user, $request);
         } elseif ($request->radioGroup == 2) {
             return view('stripe');
         }
 
         return redirect()->back()->with('success', 'Order successfully placed.');
+
+        } catch (\Exception $e) {
+            // Rollback transaction on failure
+            DB::rollBack();
+            return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
+        }
     }
+
+
+    /**
+     * Process PayPal Payment
+     */
+    private function processPayPalPayment($carts, $subtotal, $discount, $total, $user, $request)
+    {
+        $provider = new PayPalClient;
+        $provider->setApiCredentials(config('paypal'));
+        $paypalToken = $provider->getAccessToken();
+
+        $response = $provider->createOrder([
+            "intent" => "CAPTURE",
+            "application_context" => [
+                "return_url" => route('successTransaction'),
+                "cancel_url" => route('cancelTransaction'),
+            ],
+            "purchase_units" => [
+                [
+                    "amount" => [
+                        "currency_code" => "USD",
+                        "value" => number_format($total, 2, '.', ''),
+                        "breakdown" => [
+                            "item_total" => ["currency_code" => "USD", "value" => number_format($subtotal, 2, '.', '')],
+                            "discount" => ["currency_code" => "USD", "value" => number_format($discount, 2, '.', '')],
+                        ]
+                    ],
+                    "description" => $request->details ?? "Order Payment",
+                    "invoice_id" => "INV-" . uniqid(),
+                    "custom_id" => $user->id,
+                    "items" => array_map(function ($item) {
+                        return [
+                            "name" => $item['name'],
+                            "unit_amount" => ["currency_code" => "USD", "value" => number_format($item['price'], 2, '.', '')],
+                            "quantity" => $item['quantity'],
+                        ];
+                    }, $carts),
+                ]
+            ]
+        ]);
+
+        if (isset($response['id']) && $response['id'] != null) {
+            foreach ($response['links'] as $links) {
+                if ($links['rel'] == 'approve') {
+                    return redirect()->away($links['href']);
+                }
+            }
+            return redirect()->back()->with('error', 'No approval link found.');
+        }
+
+        return redirect()->back()->with('error', $response['message'] ?? 'Something went wrong.');
+    }
+
 
 
     /**
@@ -256,7 +298,7 @@ class OrderController extends Controller
                      'coupon_id' => $orderData['coupon_id'],
                      'total_price' => $orderData['total_price'],
                      'shipping_id' => $orderData['shipping_id'],
-                     'status' => 'completed',
+                     'status' => 'pending',
                      'payment_status' => 'paid',
                      'shipping_status' => 'pending',
                      'payment_method' => 'PayPal',
@@ -271,19 +313,11 @@ class OrderController extends Controller
                          'quantity' => $cartItem['quantity'],
                      ]);
                  }
-                 $delCart = Cart::where('user_id', $orderData['user_id'])->first();
-
-                 // Delete the cart items
-                 CartItems::where('cart_id', $delCart->id)->delete();
-
-                 // Delete the cart
-                 $delCart = Cart::where('user_id', $orderData['user_id'])->first();
-                 if ($delCart) {
-                     $delCart->delete();
-                 }
 
                  // Clear session data after successful order
                  session()->forget('order_data');
+                 session()->forget('cart');
+                 session()->forget('coupon');
 
                  return view('order_success');
              }
