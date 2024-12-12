@@ -63,7 +63,10 @@
 
             <!-- Product Grid Container -->
             <div id="product-grid" class="row justify-content-center">
+
+
                 @include('frontEnd.inc.productGrid', ['products' => $products])
+
             </div>
         </div>
     </div>

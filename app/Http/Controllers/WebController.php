@@ -95,7 +95,7 @@ class WebController extends Controller
 
     public function serviceDetails($slug){
         $service = Service::where('slug',$slug)->firstOrFail();
-        return view('frontEnd.service.service',compact('service'));
+        return view('website.service.service',compact('service'));
     }
 
     public function pageDetails($slug){

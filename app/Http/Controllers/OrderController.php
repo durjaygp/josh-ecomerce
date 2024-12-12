@@ -86,7 +86,7 @@ class OrderController extends Controller
             }
         }
 
-        return view('frontEnd.order.checkout', [
+        return view('website.order.checkout', [
             'ship' => $ship,
             'carts' => $carts,
             'mainCart' => $cart,
