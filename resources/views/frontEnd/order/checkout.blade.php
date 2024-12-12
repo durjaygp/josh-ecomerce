@@ -307,7 +307,7 @@
                                             <span>Cart Subtotal</span>
                                         </td>
                                         <td class="order-subtotal-price">
-                                            <span class="order-subtotal-amount">${{ number_format($subtotal, 2) }}</span>
+                                            <span class="order-subtotal-amount">$ {{ number_format($subtotal, 2) }}</span>
                                         </td>
                                     </tr>
 
@@ -341,11 +341,11 @@
                             <div class="payment-box">
                                 <div class="payment-method">
                                     <p>
-                                        <input type="radio" id="paypal" name="payment_method" value="paypal" required>
+                                        <input type="radio" id="paypal" name="radioGroup" value="1" required>
                                         <label for="paypal">PayPal</label>
                                     </p>
                                     <p>
-                                        <input type="radio" id="stripe" name="payment_method" value="stripe" required>
+                                        <input type="radio" id="stripe" name="radioGroup" value="2" required>
                                         <label for="stripe">Stripe</label>
                                     </p>
                                 </div>
