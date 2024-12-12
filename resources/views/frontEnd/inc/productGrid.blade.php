@@ -27,6 +27,34 @@
 
 <div class="col-lg-12 col-md-12">
     <div class="pagination-area d-flex justify-content-center">
-        {{ $products->links('frontEnd.inc.blogPaginate') }}
+
+        <div class="page-pagination-one pt-15">
+            <ul class="d-flex align-items-center">
+                {{-- Previous Page Link --}}
+                @if ($products->onFirstPage())
+                    <li class="disabled"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></li>
+                @else
+                    <li><a href="{{ $products->previousPageUrl() }}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                @endif
+
+                {{-- Pagination Elements --}}
+                @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                    @if ($page == $products->currentPage())
+                        <li><a href="#" class="active">{{ $page }}</a></li>
+                    @elseif ($page == 1 || $page == $products->lastPage() || abs($page - $products->currentPage()) < 2)
+                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                    @elseif ($loop->first || $loop->last)
+                        <li> &nbsp; ... &nbsp;</li>
+                    @endif
+                @endforeach
+
+                {{-- Next Page Link --}}
+                @if ($products->hasMorePages())
+                    <li><a href="{{ $products->nextPageUrl() }}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                @else
+                    <li class="disabled"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></li>
+                @endif
+            </ul>
+        </div>
     </div>
 </div>
