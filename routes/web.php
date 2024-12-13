@@ -173,7 +173,6 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
         return view('backEnd.admin.comments');
     })->name('comment.message');
 
-
     //========== Blog Routes =================
     Route::get('admin/blog/create',[BlogController::class,'create'])->name('blog.create');
     Route::get('admin/blog',[BlogController::class,'index'])->name('blog.list');
