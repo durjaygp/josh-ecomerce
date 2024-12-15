@@ -10,9 +10,7 @@
                 <div class="text-center">
                     <a href="{{ route('home.product', $row->slug) }}" class="product-title">{{ $row->name }}</a>
                     <div class="price">$ {{ $row->price }}</div>
-                    <div class="add-to-cart-btn">
-                        <a href="#" class="btn btn-primary" data-product-id="{{ $row->id }}">Add to Cart</a>
-                    </div>
+                    <a href="#" class="add-to-cart-btn btn btn-primary" data-product-id="{{ $row->id }}">Add to Cart</a>
                 </div>
 
             </div>
@@ -22,9 +20,6 @@
     </div>
 
 </div>
-
-
-
 <div class="col-lg-12 col-md-12">
     <div class="pagination-area d-flex justify-content-center">
         {{ $products->links('frontEnd.inc.blogPaginate') }}

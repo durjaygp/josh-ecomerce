@@ -32,7 +32,7 @@
     <!-- Start Products Area -->
     <div class="products-area pt-100 pb-100">
         <div class="container">
-            <div class="products-grid-sorting row align-items-center m-2">
+            <div class="products-grid-sorting row align-items-center">
                 <div class="col-lg-6 col-md-6 result-count">
                     <p>Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} Results</p>
                 </div>
