@@ -3594,13 +3594,6 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .fancy-short-banner-three .form-wrapper p a:hover {text-decoration: underline;}
 /*----------------- Footer Style Two --------------*/
 .theme-footer-two {position: relative; overflow: hidden;}
-.theme-footer-two:before {
-  content: url(../images/shape/44.svg);
-  position: absolute;
-  bottom: -10px;
-  left: 11%;
-  z-index: -1;
-}
 
 .theme-footer-two .top-footer [class*="col-"] {margin-bottom: 30px;}
 .theme-footer-two .top-footer .footer-title {

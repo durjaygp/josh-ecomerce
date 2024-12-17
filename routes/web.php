@@ -85,7 +85,7 @@ Route::get('remove-coupon',[CuponController::class,'removeCoupon'])->name('remov
 // Checkout
 //Checkout Controller
 Route::get('checkout',[OrderController::class,'index'])->name('home.checkout');
-Route::post('checkout-store',[OrderController::class,'store'])->name('checkout.store');
+Route::get('checkout-store',[OrderController::class,'store'])->name('checkout.store');
 
 
 
@@ -114,6 +114,7 @@ Route::controller(StripePaymentController::class)->group(function(){
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 
+Route::get('/payment/return', [OrderController::class, 'handleReturn'])->name('payment.return');
 
 Route::get('/dashboard', function () {
     return view('user.dashboard.index');

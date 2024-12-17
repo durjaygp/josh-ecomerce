@@ -19,6 +19,7 @@ $setting = setting();
     <meta name="msapplication-navbutton-color" content="#fd6a5e">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fd6a5e">
     <title>@yield('title')</title>
+    @yield('style')
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset($setting->fav_icon)}}">
     <link rel="stylesheet" type="text/css" href="{{asset('website/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('website/css/responsive.css')}}">

@@ -1,3 +1,7 @@
+@php
+    $services = \App\Models\Service::whereStatus(1)->latest()->take(5)->get();
+    $setting = setting();
+@endphp
 <!--
     =====================================================
         Fancy Short Banner Three
@@ -57,11 +61,9 @@
                 <div class="col-lg-2 col-md-3 col-sm-6 footer-list">
                     <h5 class="footer-title">Services</h5>
                     <ul>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Wordpress</a></li>
-                        <li><a href="#">Online Marketing</a></li>
-                        <li><a href="#">Content</a></li>
+                        @foreach($services as $row)
+                            <li><a href="{{ route('service.details', $row->slug) }}">{{$row->title}}</a></li>
+                        @endforeach
                     </ul>
                 </div> <!-- /.footer-list -->
                 <div class="col-lg-2 col-md-3 col-sm-6 footer-list">
@@ -77,8 +79,8 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 address-list">
                     <h5 class="footer-title">Address</h5>
                     <ul class="info">
-                        <li><a href="#">companyinfo@mail.com</a></li>
-                        <li><a href="#" class="mobile-num">+761 412 3224</a></li>
+                        <li><a href="#">{{$setting->email}}</a></li>
+                        <li><a href="#" class="mobile-num">{{$setting->phone}}</a></li>
                     </ul>
                     <ul class="social-icon d-flex">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
