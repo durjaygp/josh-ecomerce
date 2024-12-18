@@ -4,6 +4,18 @@ $setting = setting();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        var SITE_URL = "https:\/\/jsb-tech.com"
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ76SN2K4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QCJ76SN2K4');
+    </script>
     <meta charset="UTF-8">
     <meta name="keywords" content="Digital marketing agency, Digital marketing company, Digital marketing services, sass, software company">
     <meta name="description" content="Deski is a creative saas and software html template designed for saas and software Agency websites.">

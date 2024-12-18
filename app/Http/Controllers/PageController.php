@@ -27,6 +27,8 @@ class PageController extends Controller
 
     public function contact(){
         $faqs = Faq::whereStatus(1)->get();
+        app('mathcaptcha')->reset();
+
         return view('website.pages.contact',compact('faqs'));
     }
 

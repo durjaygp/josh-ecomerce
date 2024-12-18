@@ -112,7 +112,12 @@
         <p class="text-1"><strong>NOTE :</strong> This is computer generated receipt and does not require physical signature.</p>
         <div class="btn-group btn-group-sm d-print-none">
 
-            <a class="btn btn-primary" href="{{route('admin-order.index')}}">Back</a>
+            @if(auth()->user()->role_id == 1)
+                <a class="btn btn-primary" href="{{route('my-orders')}}">Back</a>
+            @else
+                <a class="btn btn-primary" href="{{route('admin-order.index')}}">Back</a>
+            @endif
+
 
             <a href="javascript:window.print()" class="btn btn-success border text-white shadow-none">
                 &#128438; Print & Download</a>
