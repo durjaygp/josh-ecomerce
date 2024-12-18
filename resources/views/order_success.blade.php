@@ -69,15 +69,16 @@
         <i class="bi bi-check-circle-fill"></i>
         <img src="{{asset('order.gif')}}" alt="">
     </div>
-    <div class="message">Thank you for ordering!</div>
+    <div class="message">Thank you for your order!</div>
     <div class="subtext">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+        Your order has been successfully placed. We are processing it and will notify you once it is shipped. You can track your order status in your account.
     </div>
     <div class="d-grid gap-2 d-md-block">
         <a href="{{route('my-orders')}}" class="btn btn-outline-secondary" type="button">View Order</a>
         <a href="{{route('home.products')}}" class="btn btn-primary" type="button">Continue Shopping</a>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

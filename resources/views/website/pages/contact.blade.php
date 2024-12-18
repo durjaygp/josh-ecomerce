@@ -3,10 +3,6 @@
     Contact Us
 @endsection
 @section('content')
-
-
-
-
     <!--
     =============================================
          Hero
@@ -128,9 +124,6 @@
                             </span>
                             @endif
                         </div>
-
-
-
                         <div class="col-12"><button class="theme-btn-one btn-lg">Send Message</button></div>
                     </div>
                 </form>

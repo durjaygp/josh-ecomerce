@@ -100,136 +100,61 @@
 {{--    </div>--}}
 {{--@endsection--}}
 
-
 @php
-    $setting = \App\Models\Setting::first();
+    $setting = setting();
 @endphp
+@extends('website.master')
+@section('title')
+    {{ $setting->name }}
+@endsection
+@section('content')
+    <div class="container">
+    <div class="row">
+            <div class="col-md-2">
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="Digital marketing agency, Digital marketing company, Digital marketing services, sass, software company">
-    <meta name="description" content="Deski is a creative saas and software html template designed for saas and software Agency websites.">
-    <meta property="og:site_name" content="deski">
-    <meta property="og:url" content="{{url('/')}}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Deski: creative saas and software html template">
-    <meta name='og:image' content='images/assets/ogg.png'>
-    <!-- For IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- For Resposive Device -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- For Window Tab Color -->
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#7034FF">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#7034FF">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#7034FF">
-    <title>Deski-Saas & Software HTML Template</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="56x56" href="{{asset('website')}}/images/fav-icon/icon.png">
-    <!-- Main style sheet -->
-    <link rel="stylesheet" type="text/css" href="{{asset('website')}}/css/style.css">
-    <!-- responsive style sheet -->
-    <link rel="stylesheet" type="text/css" href="{{asset('website')}}/css/responsive.css">
-
-    <!-- Fix Internet Explorer ______________________________________-->
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="{{asset('website')}}/vendor/html5shiv.js"></script>
-    <script src="{{asset('website')}}/vendor/respond.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-<div class="main-page-wrapper p0">
-    <!-- ===================================================
-        Loading Transition
-    ==================================================== -->
-
-    <!--
-    =============================================
-        Sign In
-    ==============================================
-    -->
-    <div class="user-data-page clearfix d-lg-flex">
-        <div class="illustration-wrapper d-flex align-items-center justify-content-between flex-column">
-            <h3 class="font-rubik">Want your best managment <br>software? <a href="{{route('register')}}">sign up</a></h3>
-        </div> <!-- /.illustration-wrapper -->
-
-        <div class="form-wrapper">
-            <div class="d-flex justify-content-between">
-                <div class="logo"><a href="{{route('home')}}"><img src="{{asset($setting->website_logo)}}" alt="{{$setting->name}}"></a></div>
-                <a href="{{route('home')}}" class="font-rubik go-back-button">Go to home</a>
             </div>
-            <form action="{{route('login')}}" class="user-data-form mt-80 md-mt-40" method="POST">
-                <h2>Hi buddy, welcome <br> Back!</h2>
-                <p class="header-info pt-30 pb-50">Still don't have an account? <a href="{{route('register')}}">Sign up</a></p>
+            <div class="col-md-8">
+                <div class="form-wrapper">
 
-                <row class="row">
-                    @csrf
-                    <div class="col-12">
-                        <div class="input-group-meta mb-80 sm-mb-70">
-                            <label>Email</label>
-                            <input type="email" name="email" placeholder="example@mail.com">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group-meta mb-15">
-                            <label>Password</label>
-                            <input type="password" name="password" placeholder="Enter Password" class="pass_log_id">
-                            <span class="placeholder_icon"><span class="passVicon"><img src="images/icon/view.svg" alt=""></span></span>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="agreement-checkbox d-flex justify-content-between align-items-center">
-                            <div>
-                                <input type="checkbox" id="remember">
-                                <label for="remember">Keep me logged in</label>
+                    <form action="{{route('login')}}" class="user-data-form mt-80 md-mt-40" method="POST">
+                        <h2>Hi buddy, welcome <br> Back!</h2>
+                        <p class="header-info pt-30 pb-50">Still don't have an account? <a href="{{route('register')}}">Sign up</a></p>
+
+                        <row class="row">
+                            @csrf
+                            <div class="col-12">
+                                <div class="input-group-meta mb-80 sm-mb-70">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="example@mail.com">
+                                </div>
                             </div>
-                            <a href="{{route('password.email')}}">Forget Password?</a>
-                        </div> <!-- /.agreement-checkbox -->
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="theme-btn-one mt-50 mb-50">Login</button>
-                    </div>
-                    <div class="col-12">
-                        <p class="text-center font-rubik copyright-text">{{$setting->footer}}</p>
-                    </div>
-                </row>
-            </form>
-        </div> <!-- /.form-wrapper -->
-    </div> <!-- /.user-data-page -->
+                            <div class="col-12">
+                                <div class="input-group-meta mb-15">
+                                    <label>Password</label>
+                                    <input type="password" name="password" placeholder="Enter Password" class="pass_log_id">
+                                    <span class="placeholder_icon"><span class="passVicon"><img src="images/icon/view.svg" alt=""></span></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="agreement-checkbox d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <input type="checkbox" id="remember">
+                                        <label for="remember">Keep me logged in</label>
+                                    </div>
+                                    <a href="{{route('password.email')}}">Forget Password?</a>
+                                </div> <!-- /.agreement-checkbox -->
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="theme-btn-one mt-50 mb-50">Login</button>
+                            </div>
+                        </row>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
 
 
-
-
-
-    <!-- Optional JavaScript _____________________________  -->
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- jQuery -->
-    <script src="{{asset('website/vendor/jquery.min.js')}}"></script>
-    <!-- Popper js -->
-    <script src="{{asset('website')}}/vendor/popper.js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="{{asset('website')}}/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!-- menu  -->
-    <script src="{{asset('website')}}/vendor/mega-menu/assets/js/custom.js"></script>
-    <!-- AOS js -->
-    <script src="{{asset('website')}}/vendor/aos-next/dist/aos.js"></script>
-    <!-- js count to -->
-    <script src="{{asset('website')}}/vendor/jquery.appear.js"></script>
-    <script src="{{asset('website')}}/vendor/jquery.countTo.js"></script>
-
-    <!-- MixIt Up -->
-    <script src="{{asset('website')}}/vendor/mixitup-3/mixitup.min.js"></script>
-
-
-    <!-- Theme js -->
-    <script src="{{asset('website/js/theme.js')}}"></script>
-</div> <!-- /.main-page-wrapper -->
-</body>
-</html>
+@endsection
