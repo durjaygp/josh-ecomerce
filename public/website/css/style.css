@@ -13567,8 +13567,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .cart-list-form .table tbody tr:last-child td {padding-bottom: 20px;}
 .cart-list-form .table .product-thumbnails img {max-height: 100%; max-width: none;}
 .cart-list-form .table .product-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 
 }
 .cart-list-form .table .product-info {padding-left: 30px;text-align: left;}

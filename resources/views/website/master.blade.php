@@ -81,7 +81,7 @@ $setting = setting();
             <script>
                 iziToast.error({
                     title: '',
-                    position:'topRight',
+                    position:'bottomRight',
                     message: '{{$error}}',
             });
             </script>
@@ -93,7 +93,7 @@ $setting = setting();
         <script>
             iziToast.success({
                 title: '',
-                position:'topRight',
+                position:'bottomRight',
                 message: '{{session()->get('success')}}',
         });
 
@@ -104,7 +104,7 @@ $setting = setting();
         <script>
             iziToast.error({
                 title: '',
-                position:'topRight',
+                position:'bottomRight',
                 message: '{{session()->get('error')}}',
         });
         </script>

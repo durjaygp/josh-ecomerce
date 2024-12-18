@@ -4,8 +4,18 @@
 @endsection
 @section('content')
 
+    <div class="fancy-hero-one">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 m-auto">
+                    <h2 class="font-rubik">Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!-- Cart Page-->
-<div class="cart-section pt-200 pb-100 lg-pt-180 sm-pb-50">
+<div class="cart-section ">
     <div class="container">
         <div class="cart-list-form">
             <div class="table-responsive">
@@ -23,12 +33,12 @@
                     <tbody>
                     @foreach($items as $item)
                         <tr>
-                        <td class="product-thumbnails">
+                        <td>
                             <a href="{{ route('home.product', $item['slug']) }}" class="product-img"><img src="{{ asset($item['image']) }}" alt="" class="img-fluid"></a>
                         </td>
 
-                        <td class="product-info">
-                            <a href="{{ route('home.product', $item['slug']) }}" class="product-name">{{ $item['name'] }}</a>
+                        <td class="">
+                           <a href="{{ route('home.product', $item['slug']) }}">{{ $item['name'] }}</a>
                         </td>
                         <td class="price"><span>$ {{ number_format($item['price'], 2) }}</span></td>
                         <td class="quantity">
@@ -44,7 +54,7 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div> <!-- /.table-responsive -->
+            </div>
 
             <div class="d-sm-flex justify-content-between cart-footer">
                 @if(session()->has('coupon'))
