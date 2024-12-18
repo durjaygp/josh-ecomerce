@@ -6,7 +6,7 @@
 
 <div class="theme-main-menu sticky-menu theme-menu-two">
     <div class="d-flex align-items-center justify-content-center">
-        <div class="logo"><a href="{{route('home')}}"><img src="{{asset($setting->website_logo)}}" alt="{{$setting->name ?? ""}}"></a></div>
+        <div class="logo"><a href="{{route('home')}}"><img src="{{asset($setting->website_logo)}}" alt="{{$setting->name ?? ""}}" class="img-fluid w-25"></a></div>
 
         <nav id="mega-menu-holder" class="navbar navbar-expand-lg">
             <div  class="nav-container">

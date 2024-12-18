@@ -181,7 +181,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let supportId = '{{ $support->id }}';  // Get the current support ticket ID
-            let userImage = '{{asset(auth()->user()->image)}}';  // Get the current user's avatar
+            let userImage = '{{asset(auth()->user()->image ?? "user-4.jpg")}}';  // Get the current user's avatar
             let sendMessageBtn = document.getElementById('sendMessageBtn');
             let chatMessages = document.getElementById('chatMessages');
             let messageInput = document.querySelector('input[name="message"]');
@@ -227,10 +227,10 @@
                     },
                     success: function(response) {
                         fetchMessages(supportId);  // Fetch new messages after sending
-                        console.log('Message sent successfully.');
+                        //console.log('Message sent successfully.');
                     },
                     error: function(xhr) {
-                        console.log('Error sending message:', xhr.responseText);
+                       // console.log('Error sending message:', xhr.responseText);
                     }
                 });
             }
@@ -268,7 +268,7 @@
             function appendMessage(message) {
                 let currentUserId = '{{ auth()->id() }}'; // Get the current user's ID
                 let isSender = (message.user_id == currentUserId); // Check if the message is from the current user
-                let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/path-to-default-avatar.png';
+                let receiverImage = message.user.image ? `{{ asset('${message.user.image}') }}` : '/user-7.jpg';
 
                 // Format message timestamp dynamically
                 let messageTime = new Date(message.created_at);

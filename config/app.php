@@ -172,6 +172,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        ElicDev\MathCaptcha\MathCaptchaServiceProvider::class,
     ])->toArray(),
 
     /*

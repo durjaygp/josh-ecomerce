@@ -50,7 +50,11 @@ class HomeController extends Controller
             'service' => 'required',
             'phone' => 'required',
             'description' => 'required|max:500',
-            'honeypot' => 'nullable', // Validate honeypot as optional
+            'honeypot' => 'nullable',
+            'mathcaptcha' => 'required|mathcaptcha',
+        ], [
+            'mathcaptcha.required' => 'Please solve the math question.',
+            'mathcaptcha.mathcaptcha' => 'The math captcha answer is incorrect.',
         ]);
 
         // Check if the honeypot field is filled
