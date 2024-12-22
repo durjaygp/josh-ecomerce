@@ -9,6 +9,7 @@
         <div class="row">
             <div class="col-xl-9 col-lg-10 m-auto">
                 <h2 class="font-rubik">{{$category->name}}</h2>
+                <p>{!! $category->description !!}</p>
             </div>
         </div>
     </div>

@@ -36,8 +36,9 @@
                 <div class="col-md-2 address-list">
                     <h5 class="footer-title">Address</h5>
                     <ul class="info">
-                        <li><a href="#">{{$setting->email}}</a></li>
-                        <li><a href="#" class="mobile-num">{{$setting->phone}}</a></li>
+                        <li><a href="#">{{$setting->address}}</a></li>
+                        <li><a href="mailto:{{$setting->email}}">{{$setting->email}}</a></li>
+                        <li><a href="tel:{{$setting->phone}}" class="mobile-num">{{$setting->phone}}</a></li>
                     </ul>
                     <ul class="social-icon d-flex">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
