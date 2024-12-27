@@ -31,31 +31,42 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($items as $item)
+                    @forelse($items as $item)
                         <tr>
-                        <td>
-                            <a href="{{ route('home.product', $item['slug']) }}" class="product-img"><img src="{{ asset($item['image']) }}" alt="" class="img-fluid"></a>
-                        </td>
+                            <td>
+                                <a href="{{ route('home.product', $item['slug']) }}" class="product-img">
+                                    <img src="{{ asset($item['image']) }}" alt="" class="img-fluid">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('home.product', $item['slug']) }}">{{ $item['name'] }}</a>
+                            </td>
+                            <td class="price">
+                                <span>$ {{ number_format($item['price'], 2) }}</span>
+                            </td>
+                            <td class="quantity">
+                                <ul class="order-box style-none">
+                                    <li><a href="{{ route('cart.cartOneRemove', $item['product_id']) }}" class="btn value-decrease">-</a></li>
+                                    <li><input type="number" value="{{ $item['quantity'] }}" disabled class="product-value val"></li>
+                                    <li><a href="{{ route('cart.cartAdd', $item['product_id']) }}" class="btn value-increase">+ </a></li>
+                                </ul>
+                            </td>
+                            <td class="price total-price">
+                                <span>$ {{ number_format($item['total_price'], 2) }}</span>
+                            </td>
+                            <td>
+                                <a href="{{ route('cart.remove', $item['product_id']) }}" class="remove-product" onclick="return confirm('Are you sure you want to remove this item from the cart?');">x</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">No products available</td>
+                        </tr>
+                    @endforelse
 
-                        <td class="">
-                           <a href="{{ route('home.product', $item['slug']) }}">{{ $item['name'] }}</a>
-                        </td>
-                        <td class="price"><span>$ {{ number_format($item['price'], 2) }}</span></td>
-                        <td class="quantity">
-                            <ul class="order-box style-none">
-                                <li><a href="{{ route('cart.cartOneRemove', $item['product_id']) }}" class="btn value-decrease">-</a></li>
-                                <li><input type="number" value="{{ $item['quantity'] }}" disabled class="product-value val"></li>
-                                <li><a href="{{ route('cart.cartAdd', $item['product_id']) }}" class="btn value-increase">+ </a></li>
-                            </ul>
-                        </td>
-                        <td class="price total-price"><span>$ {{ number_format($item['total_price'], 2) }}</span></td>
-                        <td><a href="{{ route('cart.remove', $item['product_id']) }}" class="remove-product" onclick="return confirm('Are you sure you want to remove this item from the cart?');">x</a></td>
-                    </tr>
-                    @endforeach
                     </tbody>
                 </table>
             </div>
-
             <div class="d-sm-flex justify-content-between cart-footer">
                 @if(session()->has('coupon'))
                     <div class="coupon-section d-flex flex-column" >
@@ -78,6 +89,8 @@
                         </form>
                     </div>
                 @endif
+
+
 
 
                 <div class="cart-total-section d-flex flex-column sm-pt-40">

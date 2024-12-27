@@ -31,6 +31,7 @@ class WebController extends Controller
         $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         $homepage = HomepageSetting::find(1);
         $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+
         return view('website.home.index',compact('faqs','latestBlogs','services','about','reviews','homepage'));
     }
 

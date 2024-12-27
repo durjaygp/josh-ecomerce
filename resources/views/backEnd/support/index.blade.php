@@ -49,6 +49,7 @@
                              <!-- start row -->
                              <tr>
                                  <th>#</th>
+                                 <th>Date</th>
                                  <th>Title</th>
                                  <th>Reason</th>
                                  <th>Support Type </th>
@@ -63,6 +64,7 @@
                                  <!-- start row -->
                                  <tr>
                                      <td>{{$loop->iteration}}</td>
+                                     <td>{{ $row->created_at->format('d M Y') }}</td>
                                      <td>{{ $row->title }}</td>
                                      <td>{{ $row->reason }}</td>
                                      <td>
