@@ -24,12 +24,15 @@ use Illuminate\Http\Response; // Import the Response class
 class WebController extends Controller
 {
 //    public function index(){
-//        $latestBlogs = Blog::latest()->whereStatus(1)->take(6)->get();
-//        $sliders = Slider::latest()->whereStatus(1)->get();
-//        $services = Service::latest()->whereStatus(1)->take(3)->get();
+//        $latestBlogs = Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
+//      //  $sliders = Slider::select('id','title','description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
+//        $services = Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
 //        $about = About::find(1);
-//        $reviews = CustomReview::whereStatus(1)->latest()->get();
-//        return view('frontEnd.home.index',compact('latestBlogs','sliders','services','about','reviews'));
+//        $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
+//        $homepage = HomepageSetting::find(1);
+//        $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+//
+//        return view('website.home.index',compact('faqs','latestBlogs','services','about','reviews','homepage'));
 //    }
 
     public function index()
@@ -58,14 +61,9 @@ class WebController extends Controller
             return HomepageSetting::find(1);
         });
 
-//        return $homepage;
 
         $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
-            return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')
-                ->whereStatus(1)
-                ->latest()
-                ->take(6)
-                ->get();
+            return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         });
 
         return view('website.home.index', compact('homepage','latestBlogs','faqs', 'sliders', 'services', 'about', 'reviews'));

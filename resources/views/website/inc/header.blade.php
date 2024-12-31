@@ -83,7 +83,7 @@
                                     @endauth
 
                                     <li>
-                                        <a href="{{route('home.cart')}}" class="signUp-action"> Cart <span class="ms-1 cart-count"></span></a>
+                                        <a href="{{route('home.cart')}}" class="signUp-action"> Cart (<span class="ms-1 cart-count"></span>)</a>
                                     </li>
                                 </ul>
 

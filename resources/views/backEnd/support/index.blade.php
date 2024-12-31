@@ -44,202 +44,204 @@
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table id="scroll_hor"
-                                class="table border table-striped table-bordered text-nowrap table-responsive">
-                             <thead>
-                             <!-- start row -->
-                             <tr>
-                                 <th>#</th>
-                                 <th>Title</th>
-                                 <th>Reason</th>
-                                 <th>Support Type </th>
-                                 <th>Description</th>
-                                 <th>Status</th>
-                                 <th>Priority</th>
-                                 <th>Action</th>
-                             </tr>
-                             </thead>
-                             <tbody>
-                                 @foreach($support as $row)
-                                 <!-- start row -->
-                                 <tr>
-                                     <td>{{$loop->iteration}}</td>
-                                     <td>{{ $row->title }}</td>
-                                     <td>{{ $row->reason }}</td>
-                                     <td>
-                                         <!-- Support Type Badge -->
-                                         @if($row->type == 'Billing')
-                                             <span class="badge bg-info">Billing</span>
-                                         @elseif($row->type == 'Technical Support')
-                                             <span class="badge bg-warning">Technical Support</span>
-                                         @elseif($row->type == 'Sales')
-                                             <span class="badge bg-success">Sales</span>
-                                         @endif
-                                     </td>
-                                     <td>{{ Str::limit($row->description, 25, '...') }}</td>
+                                       class="table border table-striped table-bordered text-nowrap table-responsive">
+                                    <thead>
+                                    <!-- start row -->
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Title</th>
+                                        <th>Reason</th>
+                                        <th>Support Type </th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Priority</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($support as $row)
+                                        <!-- start row -->
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{ $row->created_at->format('d M Y') }}</td>
+                                            <td>{{ $row->title }}</td>
+                                            <td>{{ $row->reason }}</td>
+                                            <td>
+                                                <!-- Support Type Badge -->
+                                                @if($row->type == 'Billing')
+                                                    <span class="badge bg-info">Billing</span>
+                                                @elseif($row->type == 'Technical Support')
+                                                    <span class="badge bg-warning">Technical Support</span>
+                                                @elseif($row->type == 'Sales')
+                                                    <span class="badge bg-success">Sales</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ Str::limit($row->description, 25, '...') }}</td>
 
-                                     <td>
-                                         <!-- Status Badge -->
-                                         @if($row->status == 1)
-                                             <span class="badge bg-secondary">Open</span>
-                                         @elseif($row->status == 2)
-                                             <span class="badge bg-success">Closed</span>
-                                         @endif
-                                     </td>
+                                            <td>
+                                                <!-- Status Badge -->
+                                                @if($row->status == 1)
+                                                    <span class="badge bg-secondary">Open</span>
+                                                @elseif($row->status == 2)
+                                                    <span class="badge bg-success">Closed</span>
+                                                @endif
+                                            </td>
 
-                                     <td>
-                                         <!-- Priority Badge -->
-                                         @if($row->priority == 'Critical')
-                                             <span class="badge bg-danger">Critical</span>
-                                         @elseif($row->priority == 'High')
-                                             <span class="badge bg-warning">High</span>
-                                         @elseif($row->priority == 'Normal')
-                                             <span class="badge bg-success">Normal</span>
-                                         @elseif($row->priority == 'Low')
-                                             <span class="badge bg-secondary">Low</span>
-                                         @endif
-                                     </td>
+                                            <td>
+                                                <!-- Priority Badge -->
+                                                @if($row->priority == 'Critical')
+                                                    <span class="badge bg-danger">Critical</span>
+                                                @elseif($row->priority == 'High')
+                                                    <span class="badge bg-warning">High</span>
+                                                @elseif($row->priority == 'Normal')
+                                                    <span class="badge bg-success">Normal</span>
+                                                @elseif($row->priority == 'Low')
+                                                    <span class="badge bg-secondary">Low</span>
+                                                @endif
+                                            </td>
 
-                                     <td>
-                                         <div class="action-btn">
-                                             <a href="{{route('chat.index',$row->id)}}" class="btn btn btn-primary">
-                                                 <i class="ti ti-message-2-check fs-5"></i>
-                                             </a>
-                                             <a href="#" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#staticBackdropddd{{$row->id}}">
-                                                 <i class="ti ti-eye text-white"></i>
-                                             </a>
-                                             <a href="#" class="btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropt{{$row->id}}">
-                                                 <i class="ti ti-corner-right-up fs-5"></i>
-                                             </a>
+                                            <td>
+                                                <div class="action-btn">
+                                                    <a href="{{route('chat.index',$row->id)}}" class="btn btn btn-primary">
+                                                        <i class="ti ti-message-2-check fs-5"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#staticBackdropddd{{$row->id}}">
+                                                        <i class="ti ti-eye text-white"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropt{{$row->id}}">
+                                                        <i class="ti ti-corner-right-up fs-5"></i>
+                                                    </a>
 
-                                         </div>
-                                     </td>
-                                 </tr>
-                                 <!-- end row -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- end row -->
 
-                             <!-- View Ticket Modal -->
-                             <div class="modal fade" id="staticBackdropddd{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                 <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                                     <div class="modal-content">
-                                         <div class="modal-header d-flex align-items-center">
-                                             <h4 class="modal-title" id="myLargeModalLabel">
-                                         {{$row->title}}
-                                             </h4>
+                                        <!-- View Ticket Modal -->
+                                        <div class="modal fade" id="staticBackdropddd{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header d-flex align-items-center">
+                                                        <h4 class="modal-title" id="myLargeModalLabel">
+                                                            {{$row->title}}
+                                                        </h4>
 
-                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                         </div>
-                                         <div class="modal-body">
-                                             <img src="{{asset($row->image ?? "")}}" alt="">
-                                             <p>Reason: {{$row->reason}}</p>
-                                             <p>Type: {{$row->type}}</p>
-                                             <p>Priority: {{$row->priority}}</p>
-                                             <p>Description: {{$row->description}}</p>
-                                         </div>
-                                         <div class="modal-footer">
-                                             <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
-                                                 Close
-                                             </button>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- Button trigger modal -->
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="{{asset($row->image ?? "")}}" alt="">
+                                                        <p>Reason: {{$row->reason}}</p>
+                                                        <p>Type: {{$row->type}}</p>
+                                                        <p>Priority: {{$row->priority}}</p>
+                                                        <p>Description: {{$row->description}}</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button trigger modal -->
 
-                             <!-- Modal -->
-                                 <div class="modal fade" id="staticBackdropt{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                                         <div class="modal-content">
-                                             <div class="modal-header d-flex align-items-center">
-                                                 <h4 class="modal-title" id="myLargeModalLabel">
-                                                     Close This Ticket
-                                                 </h4>
-                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                             </div>
-
-                                             @if($row->status == 2)
-                                             <div class="modal-body">
-                                                <form method="post" action="{{route('admin-support-close',$row->id)}}" enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="mb-4">
-                                                                                <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Update Status <small class="text-danger">*</small></label>
-                                                                <select name="status" id="order_item_id" class="form-control" required>
-                                                                    <option value="">Select Status</option>
-                                                                    <option value="1" >Open</option>
-                                                                    <option value="2" >Close</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-12">
-                                                            <div class="mb-4">
-                                                                <label for="close_description" class="form-label fw-semibold">Description  <small class="text-danger">*</small></label>
-                                                                <textarea name="close_description" id="close_description" class="form-control" placeholder="Description" required></textarea>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <div class="gap-3 d-flex align-items-center">
-                                                                <button class="btn btn-primary">Submit</button>
-                                                            </div>
-                                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdropt{{$row->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header d-flex align-items-center">
+                                                        <h4 class="modal-title" id="myLargeModalLabel">
+                                                            Close This Ticket
+                                                        </h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
 
-                                                </form>
+                                                    @if($row->status == 2)
+                                                        <div class="modal-body">
+                                                            <form method="post" action="{{route('admin-support-close',$row->id)}}" enctype="multipart/form-data">
+                                                                @csrf
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-4">
+                                                                            <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Update Status <small class="text-danger">*</small></label>
+                                                                            <select name="status" id="order_item_id" class="form-control" required>
+                                                                                <option value="">Select Status</option>
+                                                                                <option value="1" >Open</option>
+                                                                                <option value="2" >Close</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-4">
+                                                                            <label for="close_description" class="form-label fw-semibold">Description  <small class="text-danger">*</small></label>
+                                                                            <textarea name="close_description" id="close_description" class="form-control" placeholder="Description" required></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-12">
+                                                                        <div class="gap-3 d-flex align-items-center">
+                                                                            <button class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </form>
+                                                        </div>
+
+                                                        <div class="modal-bod">
+                                                            <h3 class="text-success">Close Description: {{$row->close_description}}</h3>
+                                                        </div>
+                                                    @else
+                                                        <div class="modal-body">
+                                                            <form method="post" action="{{route('admin-support-close',$row->id)}}" enctype="multipart/form-data">
+                                                                @csrf
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-4">
+                                                                            <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Update Status <small class="text-danger">*</small></label>
+                                                                            <select name="status" id="order_item_id" class="form-control" required>
+                                                                                <option value="">Select Status</option>
+                                                                                <option value="1" >Open</option>
+                                                                                <option value="2" >Close</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-4">
+                                                                            <label for="close_description" class="form-label fw-semibold">Description  <small class="text-danger">*</small></label>
+                                                                            <textarea name="close_description" id="close_description" class="form-control" placeholder="Description" required></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-12">
+                                                                        <div class="gap-3 d-flex align-items-center">
+                                                                            <button class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </form>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <!-- Button trigger modal -->
+                                    @endforeach
 
-                                             <div class="modal-bod">
-                                                <h3 class="text-success">Close Description: {{$row->close_description}}</h3>
-                                             </div>
-                                             @else
-                                                 <div class="modal-body">
-                                                     <form method="post" action="{{route('admin-support-close',$row->id)}}" enctype="multipart/form-data">
-                                                         @csrf
-
-                                                         <div class="row">
-                                                             <div class="col-lg-12">
-                                                                 <div class="mb-4">
-                                                                                     <label for="order_item_id" class="form-label fw-semibold" style="text-align: left;">Update Status <small class="text-danger">*</small></label>
-                                                                     <select name="status" id="order_item_id" class="form-control" required>
-                                                                         <option value="">Select Status</option>
-                                                                         <option value="1" >Open</option>
-                                                                         <option value="2" >Close</option>
-                                                                     </select>
-                                                                 </div>
-                                                             </div>
-
-                                                             <div class="col-lg-12">
-                                                                 <div class="mb-4">
-                                                                     <label for="close_description" class="form-label fw-semibold">Description  <small class="text-danger">*</small></label>
-                                                                     <textarea name="close_description" id="close_description" class="form-control" placeholder="Description" required></textarea>
-                                                                 </div>
-                                                             </div>
-
-                                                             <div class="col-12">
-                                                                 <div class="gap-3 d-flex align-items-center">
-                                                                     <button class="btn btn-primary">Submit</button>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-
-                                                     </form>
-                                                 </div>
-                                             @endif
-
-                                             <div class="modal-footer">
-                                                 <button type="button" class="btn bg-danger-subtle text-danger waves-effect text-start" data-bs-dismiss="modal">
-                                                     Close
-                                                 </button>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             <!-- Button trigger modal -->
-                             @endforeach
-
-                             </tbody>
-                         </table>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -2152,9 +2152,13 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
     text-align: center;
     padding: 0 0 20px;
 }
-.fancy-hero-one h2 {font-size: 80px; line-height: 1.1em;}
+/*
+/*.fancy-hero-one h2 {*/
+/*    font-size: 80px; */
+/*    line-height: 1.1em;*/
+/*}*/
 .fancy-hero-one p {
-  font-size: 24px;
+  font-size: 16px;
   line-height: 1.75em;
   padding: 20px 25px 0;
   color: #232830;
@@ -13567,8 +13571,8 @@ body .shop-btn-two:hover {background: var(--purple-blue);}
 .cart-list-form .table tbody tr:last-child td {padding-bottom: 20px;}
 .cart-list-form .table .product-thumbnails img {max-height: 100%; max-width: none;}
 .cart-list-form .table .product-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 
 }
 .cart-list-form .table .product-info {padding-left: 30px;text-align: left;}

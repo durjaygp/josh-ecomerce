@@ -4,8 +4,18 @@
 @endsection
 @section('content')
 
+    <div class="fancy-hero-one">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 m-auto">
+                    <h2 class="font-rubik">Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!-- Cart Page-->
-<div class="cart-section pt-200 pb-100 lg-pt-180 sm-pb-50">
+<div class="cart-section ">
     <div class="container">
         <div class="cart-list-form">
             <div class="table-responsive">
@@ -21,31 +31,42 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($items as $item)
+                    @forelse($items as $item)
                         <tr>
-                        <td class="product-thumbnails">
-                            <a href="{{ route('home.product', $item['slug']) }}" class="product-img"><img src="{{ asset($item['image']) }}" alt="" class="img-fluid"></a>
-                        </td>
+                            <td>
+                                <a href="{{ route('home.product', $item['slug']) }}" class="product-img">
+                                    <img src="{{ asset($item['image']) }}" alt="" class="img-fluid">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('home.product', $item['slug']) }}">{{ $item['name'] }}</a>
+                            </td>
+                            <td class="price">
+                                <span>$ {{ number_format($item['price'], 2) }}</span>
+                            </td>
+                            <td class="quantity">
+                                <ul class="order-box style-none">
+                                    <li><a href="{{ route('cart.cartOneRemove', $item['product_id']) }}" class="btn value-decrease">-</a></li>
+                                    <li><input type="number" value="{{ $item['quantity'] }}" disabled class="product-value val"></li>
+                                    <li><a href="{{ route('cart.cartAdd', $item['product_id']) }}" class="btn value-increase">+ </a></li>
+                                </ul>
+                            </td>
+                            <td class="price total-price">
+                                <span>$ {{ number_format($item['total_price'], 2) }}</span>
+                            </td>
+                            <td>
+                                <a href="{{ route('cart.remove', $item['product_id']) }}" class="remove-product" onclick="return confirm('Are you sure you want to remove this item from the cart?');">x</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">No products available</td>
+                        </tr>
+                    @endforelse
 
-                        <td class="product-info">
-                            <a href="{{ route('home.product', $item['slug']) }}" class="product-name">{{ $item['name'] }}</a>
-                        </td>
-                        <td class="price"><span>$ {{ number_format($item['price'], 2) }}</span></td>
-                        <td class="quantity">
-                            <ul class="order-box style-none">
-                                <li><a href="{{ route('cart.cartOneRemove', $item['product_id']) }}" class="btn value-decrease">-</a></li>
-                                <li><input type="number" value="{{ $item['quantity'] }}" disabled class="product-value val"></li>
-                                <li><a href="{{ route('cart.cartAdd', $item['product_id']) }}" class="btn value-increase">+ </a></li>
-                            </ul>
-                        </td>
-                        <td class="price total-price"><span>$ {{ number_format($item['total_price'], 2) }}</span></td>
-                        <td><a href="{{ route('cart.remove', $item['product_id']) }}" class="remove-product" onclick="return confirm('Are you sure you want to remove this item from the cart?');">x</a></td>
-                    </tr>
-                    @endforeach
                     </tbody>
                 </table>
-            </div> <!-- /.table-responsive -->
-
+            </div>
             <div class="d-sm-flex justify-content-between cart-footer">
                 @if(session()->has('coupon'))
                     <div class="coupon-section d-flex flex-column" >
@@ -68,6 +89,8 @@
                         </form>
                     </div>
                 @endif
+
+
 
 
                 <div class="cart-total-section d-flex flex-column sm-pt-40">
