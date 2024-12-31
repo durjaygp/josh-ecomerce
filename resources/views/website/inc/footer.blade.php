@@ -93,5 +93,8 @@
     <i class="fa fa-angle-up" aria-hidden="true"></i>
 </button>
 
-
+<!-- Button to Open Chat Box -->
+<button id="open-chat" class="open-chat-btn">
+    💬
+</button>
 

@@ -189,6 +189,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Image' => Intervention\Image\Image::class,
+        'LSCache'   => Litespeed\LSCache\LSCache::class,
 
     ])->toArray(),
 

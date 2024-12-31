@@ -4,20 +4,21 @@ $(document).ready(function() {
     function updateCartCount() {
         $.ajax({
             url: "/cart/count",
-            type: 'GET',
+            type: "GET",
             success: function(response) {
-                if (response.cart !== undefined) {
-                    $('.cart-count').text('(' + response.cart + ')');
-                }
+                $('.cart-count').text(response.cart);
             },
             error: function() {
-                console.log('Error fetching cart count');
+                console.error("Failed to fetch cart count");
             }
         });
     }
 
-    // Call the function to update the cart count on page load
-    updateCartCount();
+// Call this function on page load to initialize the cart count
+    $(document).ready(function() {
+        updateCartCount();
+    });
+
 
     // Function to handle Add to Cart
     function bindAddToCart() {
@@ -32,7 +33,8 @@ $(document).ready(function() {
                 type: "POST",
                 data: {
                     product_id: product_id,
-                    quantity: quantity
+                    quantity: quantity,
+                    _token: $('meta[name="csrf-token"]').attr('content')
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -19,56 +19,62 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Http\Response; // Import the Response class
+use Litespeed\LSCache\LSCache;
 
 
 class WebController extends Controller
 {
-    public function index(){
-        $latestBlogs = Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
-      //  $sliders = Slider::select('id','title','description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
-        $services = Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
-        $about = About::find(1);
-        $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
-        $homepage = HomepageSetting::find(1);
-        $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
 
-        return view('website.home.index',compact('faqs','latestBlogs','services','about','reviews','homepage'));
+
+//    public function index(){
+//        $latestBlogs = Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
+//      //  $sliders = Slider::select('id','title','description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
+//        $services = Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
+//        $about = About::find(1);
+//        $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
+//        $homepage = HomepageSetting::find(1);
+//        $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+//
+//        return view('website.home.index',compact('faqs','latestBlogs','services','about','reviews','homepage'));
+//    }
+
+    public function index()
+    {
+        $latestBlogs = Cache::remember('latestBlogs', now()->addMinutes(10), function () {
+            return Blog::select('id', 'name', 'slug', 'description', 'image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
+        });
+
+        $sliders = Cache::remember('sliders', now()->addMinutes(10), function () {
+            return Slider::select('id', 'title', 'description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
+        });
+
+        $services = Cache::remember('services', now()->addMinutes(10), function () {
+            return Service::select('id', 'title', 'slug', 'description', 'image')->latest()->whereStatus(1)->take(3)->get();
+        });
+
+        $faqs = Cache::remember('faqs', now()->addMinutes(10), function () {
+            return Faq::select('id', 'question', 'answer', 'status')->latest()->whereStatus(1)->take(5)->get();
+        });
+
+        $about = Cache::remember('about', now()->addMinutes(10), function () {
+            return About::find(1);
+        });
+
+        $homepage = Cache::remember('homepage', now()->addMinutes(10), function () {
+            return HomepageSetting::find(1);
+        });
+
+        $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
+            return CustomReview::select('id', 'review', 'name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
+        });
+
+        // Set Cache-Control headers explicitly
+        return response()
+            ->view('website.home.index', compact('homepage', 'latestBlogs', 'faqs', 'sliders', 'services', 'about', 'reviews'))
+            ->header('Cache-Control', 'public, max-age=300')
+            ->header('Expires', now()->addSeconds(300)->toRfc7231String());
     }
 
-//    public function index()
-//    {
-//        $latestBlogs = Cache::remember('latestBlogs', now()->addMinutes(10), function () {
-//            return Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
-//        });
-//
-//        $sliders = Cache::remember('sliders', now()->addMinutes(10), function () {
-//            return Slider::select('id','title','description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
-//        });
-//
-//        $services = Cache::remember('services', now()->addMinutes(10), function () {
-//            return Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
-//        });
-//
-//        $faqs = Cache::remember('faqs', now()->addMinutes(10), function () {
-//            return Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
-//        });
-//
-//        $about = Cache::remember('about', now()->addMinutes(10), function () {
-//            return About::find(1);
-//        });
-//
-//        $homepage = Cache::remember('homepage', now()->addMinutes(10), function () {
-//            return HomepageSetting::find(1);
-//        });
-//
-////        return $homepage;
-//
-//        $reviews = Cache::remember('reviews', now()->addMinutes(10), function () {
-//            return CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
-//        });
-//
-//        return view('website.home.index', compact('homepage','latestBlogs','faqs', 'sliders', 'services', 'about', 'reviews'));
-//    }
 
 
 
