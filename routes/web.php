@@ -56,19 +56,24 @@ use Illuminate\Support\Facades\Artisan;
 // =============== Home Routes ===============
 Route::get('/', [WebController::class, 'index'])->name('home')->middleware('lscache:max-age=300;public;esi=on');
 
+Route::middleware('lscache:max-age=600;public;esi=on')->group(function () {
 
-Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
-Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs')->middleware('lscache:max-age=300;public');;
-Route::get('/services', [WebController::class,'services'])->name('home.services');
-Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('service.details');
-Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
-Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
-Route::get('products',[WebProductController::class,'index'])->name('home.products');
-Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
-Route::get('/about-us', [PageController::class,'about'])->name('home.about');
-Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
-Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
-Route::get('/products/search', [WebProductController::class, 'search'])->name('products.search');
+    Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
+    Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs')->middleware('lscache:max-age=300;public');
+    Route::get('/services', [WebController::class,'services'])->name('home.services');
+    Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('service.details');
+    Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
+    Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
+    Route::get('products',[WebProductController::class,'index'])->name('home.products');
+    Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
+    Route::get('/about-us', [PageController::class,'about'])->name('home.about');
+    Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
+    Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
+    Route::get('/products/search', [WebProductController::class, 'search'])->name('products.search');
+
+});
+
+
 Route::controller(PageController::class)->group(function(){
     Route::get('image-upload', 'index');
     Route::post('image-upload', 'store')->name('image.store');
