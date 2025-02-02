@@ -9,7 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 //use Intervention\Image\ImageManagerStatic;
 use Intervention\Image\Image; // Import the Image facade
-
+use App\Models\Page;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Str;
 
@@ -30,6 +30,12 @@ class PageController extends Controller
         app('mathcaptcha')->reset();
 
         return view('website.pages.contact',compact('faqs'));
+    }
+
+    public function privacy(){
+        $page = Page::whereStatus(1)->get();
+        return $page;
+        return view('website.pages.contact',compact('page'));
     }
 
     public function index()

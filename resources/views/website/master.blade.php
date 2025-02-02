@@ -43,11 +43,49 @@ $setting = setting();
     <script src="{{asset('website')}}/vendor/html5shiv.js"></script>
     <script src="{{asset('website')}}/vendor/respond.js"></script>
     <![endif]-->
+
+    <style>
+        /* Floating Button */
+        .open-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            border-radius: 50%;
+            border: none;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        /* Chat Popup Modal */
+        .chat-popup {
+            position: fixed;
+            bottom: -400px; /* Initially off-screen */
+            right: 20px;
+            width: 300px;
+            max-width: 100%;
+            transition: bottom 0.3s ease-in-out;
+        }
+
+        /* Chat Body Styles */
+        .chat-body {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .chat-footer input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-<div class="main-page-wrapper">
 
+
+<div class="main-page-wrapper">
 
     <!-- ==== Theme Main Menu == -->
     @include('website.inc.header')
@@ -112,6 +150,44 @@ $setting = setting();
 
     <script src="{{asset('homePage/custom.js')}}"></script>
     @yield('script')
+    <!-- Chat Box Popup Modal (Initially Hidden) -->
+    <div id="chat-popup" class="chat-popup">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Chat with us</h5>
+                <button id="close-chat" class="close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="card-body chat-body">
+                <p>Hello! How can we assist you today?</p>
+            </div>
+            <div class="card-footer">
+                <input type="text" class="form-control" placeholder="Type a message...">
+                <button class="btn btn-primary btn-block mt-2">Send</button>
+            </div>
+        </div>
+    </div>
+    <!-- Button to Open Chat Box -->
+    <button id="open-chat" class="open-chat-btn">
+        💬
+    </button>
+    <script>
+        // Get references to the elements
+        const openChatBtn = document.getElementById('open-chat');
+        const chatPopup = document.getElementById('chat-popup');
+        const closeChatBtn = document.getElementById('close-chat');
+
+        // Show chat popup when the button is clicked
+        openChatBtn.addEventListener('click', () => {
+            chatPopup.style.bottom = '20px'; // Slide chat box to the screen
+        });
+
+        // Close the chat popup when the close button is clicked
+        closeChatBtn.addEventListener('click', () => {
+            chatPopup.style.bottom = '-400px'; // Hide chat box off-screen
+        });
+    </script>
 </div>
 </body>
 </html>

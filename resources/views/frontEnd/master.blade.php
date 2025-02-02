@@ -56,8 +56,10 @@
             padding: 10px !important;
         }
     </style>
+
 </head>
 <body>
+
 <!-- Header Section -->
 @include('frontEnd.inc.header')
 
@@ -137,5 +139,6 @@
 
 <script src="{{asset('homePage/custom.js')}}"></script>
 @yield('script')
+
 </body>
 </html>

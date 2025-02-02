@@ -97,3 +97,4 @@ $services = \App\Models\Service::whereStatus(1)->latest()->get();
         <img src="{{asset('homePage/assets/images/footer/footer-shape-3.png')}}" alt="image">
     </div>
 </footer>
+

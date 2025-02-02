@@ -141,10 +141,12 @@ class WebController extends Controller
         $posts = Blog::latest()->whereStatus(1)->get();
         $categories = Category::latest()->whereStatus(1)->get();
         $pages = NewPages::latest()->whereStatus(1)->get();
+        $services = Service::latest()->whereStatus(1)->get();
 
         return response()->view('sitemap', [
             'posts' => $posts,
             'categories' => $categories,
+            'services' => $services,
             'pages' => $pages
         ])->header('Content-Type', 'text/xml');
     }
