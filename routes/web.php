@@ -41,6 +41,8 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\CustomReviewController;
 use App\Http\Controllers\HomepageSettingController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\VideoCategoryController;
+use App\Http\Controllers\VideoController;
 
 
 
@@ -247,6 +249,7 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('project',ProjectController::class);
     Route::resource('affiliate', AffiliateProductController::class);
     Route::resource('admin-products',ProductController::class);
+
     Route::resource('admin-product-category',ProductCategoryController::class);
     Route::resource('admin-coupons',CuponController::class);
 
@@ -254,7 +257,11 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::resource('admin-faq',AdminFaqController::class);
     Route::resource('admin-slider',AdminSliderController::class);
     Route::resource('custom-review',CustomReviewController::class);
+    // Video Crud
+    Route::resource('admin-video-category',VideoCategoryController::class);
+    Route::post('/upload/view', [VideoCategoryController::class, 'uploadFile'])->name('upload.view');
 
+    Route::resource('admin-video',VideoController::class);
 
     // Order Details
     Route::get('/admin/order/',[AdminOrderController::class,'index'])->name('admin-order.index');

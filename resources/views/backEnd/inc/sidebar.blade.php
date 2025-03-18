@@ -143,6 +143,16 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-video-category.create')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-video-plus"></i>
+                  </span>
+                            <span class="hide-menu">Video Upload</span>
+                        </a>
+                    </li>
+
+
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('home-page-setting')}}" aria-expanded="false">

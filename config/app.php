@@ -171,7 +171,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-     //   Barryvdh\Debugbar\ServiceProvider::class,
+        App\Services\WebDAVServiceProvider::class,
+
+        //   Barryvdh\Debugbar\ServiceProvider::class,
         ElicDev\MathCaptcha\MathCaptchaServiceProvider::class,
     ])->toArray(),
 

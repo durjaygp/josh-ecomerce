@@ -74,8 +74,10 @@ class ProductCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        $category->delete();
+        return redirect()->back()->with('success','Product Category Deleted Successfully');
     }
 }

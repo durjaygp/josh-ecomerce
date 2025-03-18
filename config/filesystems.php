@@ -1,4 +1,6 @@
 <?php
+use League\Flysystem\WebDAV\WebDAVAdapter;
+use Sabre\DAV\Client;
 
 return [
 
@@ -55,15 +57,12 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-        'custom_storage' => [
-            'driver' => 'sftp', // If using SFTP, otherwise API integration will differ
-            'host' => 'storage-site.com',
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'root' => '/path/to/store/videos',
-            'port' => 22,  // Usually 22 for SFTP
-            // Optional SSL settings
-            'ssl' => true,
+        'webdav' => [
+            'driver' => 'custom',
+            'via' => \App\Services\WebDAVServiceProvider::class,
+            'baseUri' => 'https://nx60960.your-storageshare.de/remote.php/dav/files/jsbtechweb/',
+            'userName' => 'jsbtechweb',
+            'password' => '23!!+$$rt$12',
         ],
 
     ],

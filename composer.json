@@ -14,6 +14,7 @@
         "laravel/reverb": "^1.2",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "league/flysystem-webdav": "^3.29",
         "litespeed/lscache-laravel": "^1.3",
         "pusher/pusher-php-server": "*",
         "spatie/laravel-permission": "^6.9",
