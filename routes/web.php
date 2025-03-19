@@ -43,7 +43,8 @@ use App\Http\Controllers\HomepageSettingController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\VideoController;
-
+use App\Http\Controllers\WebVideoController;
+Route::get('/videos', [WebVideoController::class,'index'])->name('home.video');
 
 
 
@@ -57,6 +58,7 @@ use App\Http\Controllers\VideoController;
 
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
+
 
 Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs');
