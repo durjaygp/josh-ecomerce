@@ -44,10 +44,41 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WebVideoController;
+use Sabre\DAV\Client;
+
+
+
 Route::get('/videos', [WebVideoController::class,'index'])->name('home.video');
+Route::get('/video/category/{slug}', [WebVideoController::class,'category'])->name('home.video-category');
+Route::get('/video/{slug}', [WebVideoController::class,'details'])->name('home.video-details');
+Route::get('/search-videos', [WebVideoController::class, 'search'])->name('search.videos');
 
 
+Route::get('/video/stream/{filename}', function ($filename) {
+    $client = new Client([
+        'baseUri'  => "https://nx60960.your-storageshare.de/remote.php/dav/files/jsbtechweb/video/",
+        'userName' => 'jsbtechweb',
+        'password' => '23!!+$$rt$12',
+    ]);
 
+    try {
+        // Get the full WebDAV file path
+        $filePath = "/remote.php/dav/files/jsbtechweb/video/{$filename}";
+
+        // Fetch file content
+        $fileContent = $client->request('GET', $filePath);
+
+        if ($fileContent['statusCode'] !== 200) {
+            return response()->json(['error' => 'Error fetching video'], 500);
+        }
+
+        return response($fileContent['body'], 200)
+            ->header('Content-Type', 'video/mp4')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'WebDAV error: ' . $e->getMessage()], 500);
+    }
+});
 
 
 

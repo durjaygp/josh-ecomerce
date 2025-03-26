@@ -23,7 +23,9 @@ return new class extends Migration
             $table->text('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
+            $table->text('views')->nullable();
             $table->string('status')->nullable();
+            $table->string('length')->nullable();
             $table->timestamps();
         });
     }
